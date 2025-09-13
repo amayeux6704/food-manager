@@ -1,1 +1,2 @@
-Here are the classes I will be working on: Customer, Delivery Person, Order
+These are the classes I will be working on: Customer, Delivery Person, Order, 
+These are the additional classes I will also be working on: Delivery Vehicle, Address
