@@ -1,3 +1,4 @@
 Restaurant
 Payment 
 Menu
+Inventory
