@@ -1,3 +1,5 @@
 Tasks:
 
-Created part 2 folder
+Created part 2 folder.
+Created the UML Diagram.
+Designed the Person, Customer, DeliveryPerson, Order, and Vehicle classes in the UML Diagram.
