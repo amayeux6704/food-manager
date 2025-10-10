@@ -1,0 +1,5 @@
+Tasks:
+
+
+Updated the UML Diagram.
+Designed the Payment, Menu, Dish, Restaurant, Inventory, and InventoryItem classes in the UML Diagram.
