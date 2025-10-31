@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.5">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.8">
   <diagram name="Page-1" id="2G-UBzK9TNp5vLxw_0e4">
-    <mxGraphModel dx="4415" dy="2978" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2276" dy="1851" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="qywuNPzPCbRa4dSA3wJB-5" value="Vehicle" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="100" width="200" height="400" as="geometry" />
+          <mxGeometry x="120" y="-20" width="200" height="400" as="geometry" />
         </mxCell>
         <mxCell id="qywuNPzPCbRa4dSA3wJB-6" value="- vehicleID: int&lt;div&gt;- make: String&lt;/div&gt;&lt;div&gt;- model: String&lt;/div&gt;&lt;div&gt;- year: short&lt;/div&gt;&lt;div&gt;- color: String&lt;/div&gt;&lt;div&gt;- bodyStyle: String&lt;/div&gt;&lt;div&gt;- licensePlate: String&lt;/div&gt;&lt;div&gt;- employee: DeliveryPerson&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="qywuNPzPCbRa4dSA3wJB-5" vertex="1">
           <mxGeometry y="26" width="200" height="134" as="geometry" />
@@ -29,7 +29,7 @@
           <mxGeometry y="168" width="200" height="232" as="geometry" />
         </mxCell>
         <mxCell id="qywuNPzPCbRa4dSA3wJB-17" value="Order" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-310" y="320" width="250" height="410" as="geometry" />
+          <mxGeometry x="-310" y="320" width="250" height="420" as="geometry" />
         </mxCell>
         <mxCell id="qywuNPzPCbRa4dSA3wJB-18" value="&lt;div&gt;- orderID: int&lt;/div&gt;&lt;div&gt;- contents: ArrayList&amp;lt;Dish&amp;gt;&lt;/div&gt;&lt;div&gt;- time: String&lt;/div&gt;&lt;div&gt;- date: String&lt;/div&gt;&lt;div&gt;- customer: Customer&lt;/div&gt;&lt;div&gt;- address: Address&lt;/div&gt;&lt;div&gt;- deliveryPerson: DeliveryPerson&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="qywuNPzPCbRa4dSA3wJB-17" vertex="1">
           <mxGeometry y="26" width="250" height="114" as="geometry" />
@@ -37,8 +37,8 @@
         <mxCell id="qywuNPzPCbRa4dSA3wJB-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="qywuNPzPCbRa4dSA3wJB-17" vertex="1">
           <mxGeometry y="140" width="250" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="qywuNPzPCbRa4dSA3wJB-20" value="+ Order(int)&lt;div&gt;+ Order(int, Dish)&lt;br&gt;&lt;div&gt;&lt;div&gt;+ getOrderID(): int&lt;/div&gt;&lt;div&gt;+ getTime(): String&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ getDate(): String&lt;/div&gt;&lt;div&gt;+ getCustomer(): Customer&lt;/div&gt;&lt;div&gt;+ getAddress(): Address&lt;/div&gt;&lt;div&gt;+ getDeliveryPerson(): DeliveryPerson&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;+ setTime(String): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ setDate(String): void&lt;/div&gt;&lt;div&gt;+ setCustomer(Customer): void&lt;/div&gt;&lt;div&gt;+ setAddress(Address): void&lt;/div&gt;&lt;div&gt;+ setDeliveryPerson(Address): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ addDish(Dish): void&lt;/div&gt;&lt;div&gt;+ removeDish(Dish): void&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="qywuNPzPCbRa4dSA3wJB-17" vertex="1">
-          <mxGeometry y="148" width="250" height="262" as="geometry" />
+        <mxCell id="qywuNPzPCbRa4dSA3wJB-20" value="+ Order(int)&lt;div&gt;+ Order(int, Dish)&lt;br&gt;&lt;div&gt;&lt;div&gt;+ getOrderID(): int&lt;/div&gt;&lt;div&gt;+ getTime(): String&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ getDate(): String&lt;/div&gt;&lt;div&gt;+ getCustomer(): Customer&lt;/div&gt;&lt;div&gt;+ getAddress(): Address&lt;/div&gt;&lt;div&gt;+ getDeliveryPerson(): DeliveryPerson&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;+ setTime(String): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ setDate(String): void&lt;/div&gt;&lt;div&gt;+ setCustomer(Customer): void&lt;/div&gt;&lt;div&gt;+ setAddress(Address): void&lt;/div&gt;&lt;div&gt;+ setDeliveryPerson(DeliveryPerson): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ addDish(Dish): void&lt;/div&gt;&lt;div&gt;+ removeDish(Dish): void&lt;/div&gt;&lt;div&gt;+ displayContents(): void&lt;/div&gt;&lt;div&gt;+ getTotalCost(): double&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="qywuNPzPCbRa4dSA3wJB-17" vertex="1">
+          <mxGeometry y="148" width="250" height="272" as="geometry" />
         </mxCell>
         <mxCell id="fJLxZldaC8GXOIMq1Dwn-1" value="Person" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-440" y="-300" width="250" height="330" as="geometry" />
@@ -53,7 +53,7 @@
           <mxGeometry y="118" width="250" height="212" as="geometry" />
         </mxCell>
         <mxCell id="fJLxZldaC8GXOIMq1Dwn-12" value="DeliveryPerson" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-240" y="120" width="240" height="180" as="geometry" />
+          <mxGeometry x="-240" y="110" width="240" height="180" as="geometry" />
         </mxCell>
         <mxCell id="fJLxZldaC8GXOIMq1Dwn-13" value="- deliveryVehicle: Vehicle" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="fJLxZldaC8GXOIMq1Dwn-12" vertex="1">
           <mxGeometry y="26" width="240" height="26" as="geometry" />
@@ -65,7 +65,7 @@
           <mxGeometry y="60" width="240" height="120" as="geometry" />
         </mxCell>
         <mxCell id="fJLxZldaC8GXOIMq1Dwn-16" value="Customer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-620" y="120" width="250" height="180" as="geometry" />
+          <mxGeometry x="-620" y="110" width="250" height="180" as="geometry" />
         </mxCell>
         <mxCell id="fJLxZldaC8GXOIMq1Dwn-17" value="- addresses: ArrayList&amp;lt;Address&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="fJLxZldaC8GXOIMq1Dwn-16" vertex="1">
           <mxGeometry y="26" width="250" height="26" as="geometry" />
@@ -212,10 +212,10 @@
         <mxCell id="lgsjcN5f_fQaCHDO9ABn-4" value="&lt;div&gt;&lt;div&gt;&lt;div&gt;+ PaymentMethod(String):&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ getName(): String&lt;/div&gt;&lt;div&gt;+ toString(): String&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="lgsjcN5f_fQaCHDO9ABn-1" vertex="1">
           <mxGeometry y="58" width="160" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="f6dO3EE6Y4DINkU0_tAP-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.999;entryY=0.284;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="lgsjcN5f_fQaCHDO9ABn-4" target="5nVbv-g8gykaqcQ3ydXq-26">
+        <mxCell id="f6dO3EE6Y4DINkU0_tAP-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.999;entryY=0.284;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" parent="1" source="lgsjcN5f_fQaCHDO9ABn-4" target="5nVbv-g8gykaqcQ3ydXq-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="f6dO3EE6Y4DINkU0_tAP-2" value="&lt;div&gt;CSCI-2210-1AW Semester Project Stage 2&lt;/div&gt;&lt;div&gt;&lt;strike&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/strike&gt;&lt;/div&gt;Food Manager System UML Diagram" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
+        <mxCell id="f6dO3EE6Y4DINkU0_tAP-2" value="&lt;div&gt;CSCI-2210-1AW Semester Project Stage 3&lt;/div&gt;&lt;div&gt;&lt;strike&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/strike&gt;&lt;/div&gt;Food Manager System UML Diagram" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
           <mxGeometry x="340" y="-230" width="100" height="40" as="geometry" />
         </mxCell>
       </root>
