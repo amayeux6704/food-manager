@@ -1,3 +1,5 @@
 Tasks:
 
-Added back the UML diagram for editing as needed.
+• Added back the UML diagram for editing as needed.
+• Write the code for the following classes:
+	- Person, Customer, DeliveryPerson, Vehicle, Order, Address, IDGenerator
