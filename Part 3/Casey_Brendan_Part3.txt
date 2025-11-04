@@ -1,1 +1,19 @@
-
+Tasks:
+• Created the Part 3 folder in the repository
+• Created the Casey_Brendan_Part3.txt file for keeping record of tasks
+• Updated the UML diagram
+• Created and began coding the java files:
+	- ComponentManager
+    - CostCalculation
+    - Dish
+    - EmailManager
+    - InventoryItem
+    - LocationManager
+    - Menu
+    - OpenHourManager
+    - Payment
+    - PaymentMethod
+    - PhoneNumberManager
+    - Restaurant
+    - SidesManager
+• Needing to finish code of existing files and edit the structure of the Inventory class for better functionality
