@@ -2,4 +2,26 @@ Tasks:
 
 • Added back the UML diagram for editing as needed.
 • Write the code for the following classes:
-	- Person, Customer, DeliveryPerson, Vehicle, Order, Address, IDGenerator
+AccountScreen
+Address
+AddressesSubmenu
+AddressesSubmenuManager
+AddressManager
+Customer
+CustomerEntrySubmenu
+CustomerManager
+CustomerPhoneSubmenu
+CustomerPhoneSubmenuManager
+CustomerSettingsManager
+CustomerSettingsSubmenu
+CustomerSubmenu
+DeliveryPerson
+GuestSubmenu
+IDGenerator
+Main
+MainMenu
+Order
+Person
+ProgramMenu
+Vehicle
+	

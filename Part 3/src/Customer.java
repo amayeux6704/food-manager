@@ -5,27 +5,26 @@ import java.util.ArrayList;
  * @author Alexander
  */
 public class Customer extends Person{
-    private ArrayList<Address> addresses;
     
-    public Customer(String name, int id){
+    private boolean guest;
+    private AddressManager addressManager;
+    
+    public Customer(String name, int id, Boolean guest){
         super(name, id);
-        
-        addresses = new ArrayList<>();
+        this.guest = guest;
+        addressManager = new AddressManager();
     }
     
-    public Address getAddress(int id){
-        return null;
-    }
+    public AddressManager getAddressManager(){return this.addressManager;}
     
-    public void removeAddress(int id){
-        
-    }
+    public Boolean isGuest(){return this.guest;}
     
-    public void addAddress(Address address){
-        
-    }
-    
-    public void updateAddress(int id){
-        
-    }
+    @Override
+    public String toString(){
+        String str = "Customer name: " + this.getName() +
+                     "\nCustomer ID: " + this.getID() +
+                     "\nEmail Address: " + this.getEmail() +
+                     "\n";
+        return str;
+    } 
 }
