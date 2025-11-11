@@ -3,14 +3,14 @@ import java.util.Scanner;
  *
  * @author Alexander
  */
-public class CustomerPhoneSubmenuManager {
+public class PhoneSubmenuManager {
     
-    private Customer customer;
+    private Person person;
     private PhoneNumberManager pm;
     
-    public CustomerPhoneSubmenuManager(Customer customer){
-        this.customer = customer;
-        pm = customer.getPNM();
+    public PhoneSubmenuManager(Person person){
+        this.person = person;
+        pm = person.getPNM();
     }
     
     public void showAllPhoneNumbers(){

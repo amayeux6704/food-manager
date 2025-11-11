@@ -5,14 +5,14 @@ import java.util.Scanner;
  *
  * @author Alexander
  */
-public class CustomerPhoneSubmenu implements ProgramMenu{
+public class PhoneSubmenu implements ProgramMenu{
     
-    private CustomerPhoneSubmenuManager cpsm;
-    private Customer customer;
+    private PhoneSubmenuManager psm;
+    private Person person;
     
-    public CustomerPhoneSubmenu(Customer customer){
-        this.customer = customer;
-        cpsm = new CustomerPhoneSubmenuManager(customer);
+    public PhoneSubmenu(Person person){
+        this.person = person;
+        psm = new PhoneSubmenuManager(this.person);
     }
     
     @Override
@@ -36,16 +36,16 @@ public class CustomerPhoneSubmenu implements ProgramMenu{
             
             switch(choice){
                 case 1:
-                    cpsm.showAllPhoneNumbers();
+                    psm.showAllPhoneNumbers();
                     break;
                 case 2:
-                    cpsm.addPhoneNumber();
+                    psm.addPhoneNumber();
                     break;
                 case 3:
-                    cpsm.updatePhoneNumber();
+                    psm.updatePhoneNumber();
                     break;
                 case 4:
-                    cpsm.removePhoneNumber();
+                    psm.removePhoneNumber();
                     break;
                 case 5:
                     break;

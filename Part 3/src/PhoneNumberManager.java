@@ -4,7 +4,7 @@ public class PhoneNumberManager {
 
     private ArrayList<String> phoneNumbers;
 
-    public PhoneMumberManager(){
+    public PhoneNumberManager(){
         this.phoneNumbers = new ArrayList<>();
     }
 

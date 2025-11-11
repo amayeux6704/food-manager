@@ -11,7 +11,7 @@ public class CustomerSettingsSubmenu implements ProgramMenu{
     private CustomerManager cm;
     private Customer customer;
     private AddressesSubmenu as;
-    private CustomerPhoneSubmenu cps;
+    private PhoneSubmenu ps;
     private int customerId;
     
     public CustomerSettingsSubmenu(CustomerManager cm, int id){
@@ -20,7 +20,7 @@ public class CustomerSettingsSubmenu implements ProgramMenu{
         customer = cm.searchCustomer(id);
         csm = new CustomerSettingsManager(this.cm);
         as = new AddressesSubmenu(this.customer);
-        cps = new CustomerPhoneSubmenu(this.customer);
+        ps = new PhoneSubmenu(this.customer);
     }
     
     @Override
@@ -59,7 +59,7 @@ public class CustomerSettingsSubmenu implements ProgramMenu{
                     as.showMenu();
                     break;
                 case 5:
-                    cps.showMenu();
+                    ps.showMenu();
                     break;
                 case 6:
                     csm.removeCustomer(customerId);
