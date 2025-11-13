@@ -2,26 +2,36 @@ Tasks:
 
 • Added back the UML diagram for editing as needed.
 • Write the code for the following classes:
-AccountScreen
-Address
-AddressesSubmenu
-AddressesSubmenuManager
-AddressManager
-Customer
-CustomerEntrySubmenu
-CustomerManager
-CustomerPhoneSubmenu
-CustomerPhoneSubmenuManager
-CustomerSettingsManager
-CustomerSettingsSubmenu
-CustomerSubmenu
-DeliveryPerson
-GuestSubmenu
-IDGenerator
-Main
-MainMenu
-Order
-Person
-ProgramMenu
-Vehicle
-	
+	AccountScreen
+	Address
+	AddressesSubmenu
+	AddressesSubmenuManager
+	AddressManager
+	Customer
+	CustomerEntrySubmenu
+	CustomerPhoneSubmenu
+	CustomerPhoneSubmenuManager
+	CustomerSettingsManager
+	CustomerSettingsSubmenu
+	CustomerSubmenu
+	CustomerSubmenuManager
+	DeliveryPerson
+	EditVehicleSubmenu
+	EditVehicleSubmenuManager
+	EmployeeEntrySubmenu
+	EmployeeSettingsManager
+	EmployeeSettingsSubmenu
+	GuestSubmenu
+	IDGenerator
+	Main
+	MainMenu
+	Order
+	OrderManager
+	Person
+	PersonManager
+	ProgramMenu
+	Vehicle
+	VehicleSubmenu
+	VehicleSubmenuManager
+• Need to devlop IDGenerator class fully and implement ordering.
+• Write the intsructions PDF for the program	
