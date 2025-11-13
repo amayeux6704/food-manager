@@ -4,31 +4,33 @@ Tasks:
 • Write the code for the following classes:
 	AccountScreen
 	Address
+	AddressManager
 	AddressesSubmenu
 	AddressesSubmenuManager
-	AddressManager
 	Customer
 	CustomerEntrySubmenu
-	CustomerPhoneSubmenu
-	CustomerPhoneSubmenuManager
+	CustomerManager
 	CustomerSettingsManager
 	CustomerSettingsSubmenu
 	CustomerSubmenu
 	CustomerSubmenuManager
 	DeliveryPerson
+	DeliveryPersonManager
 	EditVehicleSubmenu
 	EditVehicleSubmenuManager
 	EmployeeEntrySubmenu
 	EmployeeSettingsManager
 	EmployeeSettingsSubmenu
+	EmployeeSubmenu
+	EmployeeSubmenuManager
 	GuestSubmenu
 	IDGenerator
 	Main
 	MainMenu
 	Order
 	OrderManager
-	Person
-	PersonManager
+	PhoneSubmenu
+	PhoneSubmenuManager
 	ProgramMenu
 	Vehicle
 	VehicleSubmenu
