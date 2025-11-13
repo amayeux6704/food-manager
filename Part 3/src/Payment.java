@@ -1,46 +1,43 @@
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Payment {
 
-    private ArrayList<PaymentMethod> paymentMethods;
-    private PaymentMethod currentPaymentMethod;
+    private Set<String> paymentMethods;
+    private String currentPaymentMethod;
 
-    public Payment(PaymentMethod currentPaymentMethod){
-        this.paymentMethods = new ArrayList<>();
+    public Payment(String currentPaymentMethod){
+        this.paymentMethods = new HashSet<>();
         this.currentPaymentMethod = currentPaymentMethod;
     }
 
-    public ArrayList<PaymentMethod> getPayMethods(){
+    public Set<String> getPayMethods(){
         return paymentMethods;
     }
 
-    public PaymentMethod getCurrentPayMethod(){
+    public String getCurrentPayMethod(){
         return currentPaymentMethod;
     }
 
-    public void setCurrentPayMethod(PaymentMethod currentPaymentMethod){
+    public void setCurrentPayMethod(String currentPaymentMethod){
         this.currentPaymentMethod = currentPaymentMethod;
     }
 
-    public void addPayMethod(PaymentMethod newMethod){
-        for (PaymentMethod method : paymentMethods) {
-            if (method.equals(newMethod)){
-                System.out.println("This method already exists.");
-            } else {
-                paymentMethods.add(newMethod);
-                System.out.println(newMethod + " payment method added.");
-            }
+    public void addPayMethod(String newMethod){
+        if (paymentMethods.contains(newMethod.toLowerCase())){
+            System.out.println("This method already exists.");
+        } else {
+            paymentMethods.add(newMethod.toLowerCase());
+            System.out.println(newMethod.toLowerCase() + " payment method added.");
         }
     }
 
-    public void removePayMethod(PaymentMethod methodForRemoval){
-        for (PaymentMethod method : paymentMethods) {
-            if (method.equals(methodForRemoval)){
-                paymentMethods.remove(methodForRemoval);
-                System.out.println(methodForRemoval + " payment method removed.");
-            } else {
-                System.out.println("Method does not exist.");
-            }
+    public void removePayMethod(String methodForRemoval){
+        if (paymentMethods.contains(methodForRemoval.toLowerCase())){
+            paymentMethods.remove(methodForRemoval.toLowerCase());
+            System.out.println(methodForRemoval.toLowerCase() + " payment method removed.");
+        } else {
+            System.out.println("Method does not exist.");
         }
     }
 }

@@ -1,22 +1,36 @@
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LocationManager {
 
-    private ArrayList<String> locations;
+    private Set<String> locations;
 
     public LocationManager(){
-        this.locations = new ArrayList<>();
+        this.locations = new HashSet<>();
     }
 
     public void addLocation(String location){
-        this.locations.add(location);
+        this.locations.add(location.toLowerCase());
     }
 
     public void updateLocation(String oldLocation, String newLocation){
-
+        if(locations.contains(oldLocation.toLowerCase())){
+            this.locations.remove(oldLocation.toLowerCase());
+            this.locations.add(newLocation.toLowerCase());
+        } else {
+            System.out.println("The given location could not be found. Update failed.");
+        }
     }
 
     public void removeLocation(String location){
-        this.locations.remove(location);
+        if(locations.contains(location.toLowerCase())){
+            this.locations.remove(location.toLowerCase());
+        } else {
+            System.out.println("The given location could not be found for removal.");
+        }
+    }
+
+    public Set<String> getLocations(){
+        return new HashSet<>(locations);
     }
 }

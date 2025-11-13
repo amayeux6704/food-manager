@@ -5,7 +5,7 @@ public class InventoryItem {
 
     public InventoryItem(String name, int quantity){
         this.name = name;
-        this.quantity = 0;
+        this.quantity = quantity;
     }
 
     public String getName(){
@@ -20,8 +20,8 @@ public class InventoryItem {
         this.quantity = quantity;
     }
 
-    @Overide
+    @Override
     public String toString(){
-
+        return name + " ( Quantity: " + quantity + ")";
     }
 }

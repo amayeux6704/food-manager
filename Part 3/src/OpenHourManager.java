@@ -9,4 +9,8 @@ public class OpenHourManager {
     public void setOpenHours(String openHours){
         this.openHours = openHours;
     }
+
+    public String getOpenHours(){
+        return openHours;
+    }
 }
