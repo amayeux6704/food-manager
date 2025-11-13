@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class CustomerSubmenu implements ProgramMenu{
     
     private CustomerSettingsSubmenu css;
+    private CustomerSubmenuManager csubm;
     private CustomerManager cm;
     private Customer customer;
     private Menu menu;
@@ -17,8 +18,7 @@ public class CustomerSubmenu implements ProgramMenu{
         this.cm = cm;
         customerId = id;
         customer = cm.searchCustomer(customerId);
-        menu = new Menu();
-        css = new CustomerSettingsSubmenu(cm, customerId);
+        csubm = new CustomerSubmenuManager(this.cm, customer);
     }
     
     @Override
@@ -31,9 +31,10 @@ public class CustomerSubmenu implements ProgramMenu{
                                "______________________________________________\n"+
                                "1. Place an Order\n"+
                                "2. View Menu\n"+
-                               "3. View Order History\n" +
-                               "4. Go to Profile Settings\n" +
-                               "5. Logout\n"+
+                               "3. View Current Orders\n" +
+                               "4. View Order History\n" +
+                               "5. Go to Profile Settings\n" +
+                               "6. Logout\n"+
                                "______________________________________________\n"+
                                "Please select your choice: ");
             
@@ -43,16 +44,22 @@ public class CustomerSubmenu implements ProgramMenu{
             
             switch(choice){
                 case 1:
+                    csubm.placeOrder();
                     break;
                 case 2:
-                    menu.menuDisplay();
+                    csubm.viewMenu();
+                    csubm.showCurrentOrders();
                     break;
                 case 3:
+                    csubm.showCurrentOrders();
                     break;
                 case 4:
-                    css.showMenu();
+                    csubm.showOrderHistory();
                     break;
                 case 5:
+                    csubm.profileSettings();
+                    break;
+                case 6:
                     break;
                 default:
                     System.out.println("That choice was invalid..."+
@@ -60,6 +67,6 @@ public class CustomerSubmenu implements ProgramMenu{
                     break;
             }
         }
-        while(choice != 5 && cm.searchCustomer(customerId) != null);
+        while(choice != 6 && cm.searchCustomer(customerId) != null);
     }
 }

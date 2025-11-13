@@ -14,11 +14,10 @@ public class AddressManager {
         addresses = new HashMap<>();
     }
     
-    public void addAddress(Address address, Customer customer){
+    public void addAddress(Address address){
         
         int id = address.getAddressID();
         if(this.searchAddress(id) == null){
-            address.setCustomer(customer);
             addresses.put(id, address);
         }
         else{
@@ -76,9 +75,9 @@ public class AddressManager {
         System.out.println("Addresses on file: " + getNumAddresses()+ "\n" +
                            "______________________________________________\n");
         for(int id: addresses.keySet()){
-                
+            
             Address address = searchAddress(id);
-            address.showAddress();
+            address.showAddressInformation();
             
             System.out.println("----------------------------------------------\n");
         }

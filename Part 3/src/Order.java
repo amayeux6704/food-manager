@@ -15,6 +15,7 @@ class Order {
     private Menu menu;
     private Payment payment;
     private double totalCost;
+    private boolean fulfilled;
     
     public Order(int id, Menu menu){
         
@@ -99,6 +100,33 @@ class Order {
     
     public double getTotalCost(){
         return this.totalCost;
+    }
+    
+    public void setFulfillment(boolean fulfilled) {this.fulfilled = fulfilled;}
+    
+    public boolean isFulfilled(){return this.fulfilled;}
+    
+    @Override
+    public String toString(){
+        String str, fulfillment;
+        
+        if(isFulfilled()){fulfillment = "Fulfilled";}
+        else{fulfillment = "In Progress";}
+        
+        str = "Order for: " + customer.getName() + " (" + fulfillment + ")\n"+
+              "______________________________________________\n"+
+              "Order Placed on " + getDate() + " " + getTime() + "\n";
+        
+        for(Dish dish: contents){
+            str += dish.getName() + ": " + dish.getPrice()+ "\n";
+        }
+        
+        str += "Total: " + getTotalCost() + "\n" +
+               "Delivery Driver: " + deliveryPerson.getName() +
+               "Deliver to:\n" + 
+                address.toString();
+        
+        return str;
     }
     
 }

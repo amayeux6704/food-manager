@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Set;
 /**
  *
  * @author Alexander
@@ -14,7 +15,18 @@ public class PhoneSubmenuManager {
     }
     
     public void showAllPhoneNumbers(){
+        Set<String> phoneNumbers = pm.getPhoneNumbers();
         
+        if(phoneNumbers.isEmpty()){
+            System.out.println("There are no phone numbers associated with this user.\n");
+        }
+        else{
+            System.out.println("Phone Numbers:\n"+
+                               "______________________________________________\n");
+            for(String phoneNumber: phoneNumbers){
+                System.out.println(" * " + phoneNumber + "\n");
+            }
+        }
     }
     
     public void addPhoneNumber(){

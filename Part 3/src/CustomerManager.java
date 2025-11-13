@@ -58,7 +58,7 @@ public class CustomerManager {
     public void removeCustomer(int id){
         if(searchCustomer(id) != null){
             customers.remove(id);
-            System.out.println("Customer information has been deleted successfully.");
+            System.out.println("This customer's information has been deleted successfully.");
         }
         else
             System.out.println("No customer with the provided information exists");

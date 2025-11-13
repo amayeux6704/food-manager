@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -6,23 +8,29 @@ import java.util.Scanner;
  */
 public class AccountScreen {
     
-    private CustomerManager cm;
-    
-    public AccountScreen(CustomerManager cm){
-        this.cm = cm;
+    public void getCredentials(Queue<String> credentials){
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Please enter your email address: ");
+        credentials.add(input.next());
+        
+        System.out.print("Please enter your password: ");
+        credentials.add(input.next());
     }
     
-    public Customer logIn(){
+    public Customer logIn(CustomerManager cm){
         Scanner input = new Scanner(System.in);
         System.out.println("Account Login\n"+
                            "______________________________________________");
+        
         String email, password;
         
-        System.out.print("Please enter your email address: ");
-        email = input.next();
+        Queue<String> credentials = new LinkedList<>();
         
-        System.out.print("Please enter your password: ");
-        password = input.next();
+        getCredentials(credentials);
+        
+        email = credentials.remove();
+        password = credentials.remove();
         
         Customer customer = cm.searchCustomer(email, password);
         
@@ -36,7 +44,33 @@ public class AccountScreen {
         }
     }
     
-    public Customer signUp(){
+    public DeliveryPerson logIn(DeliveryPersonManager dpm){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Account Login\n"+
+                           "______________________________________________");
+        
+        String email, password;
+        
+        Queue<String> credentials = new LinkedList<>();
+        
+        getCredentials(credentials);
+        
+        email = credentials.remove();
+        password = credentials.remove();
+        
+        DeliveryPerson deliveryPerson = dpm.searchDeliveryPerson(email, password);
+        
+        if(deliveryPerson != null){
+            System.out.println("Successfully logged in!\n");
+            return deliveryPerson;
+        }
+        else{
+            System.out.println("Incorrect email or password.\n");
+            return null;
+        }
+    }
+    
+    public Customer signUp(CustomerManager cm){
         Scanner input = new Scanner(System.in);
         
         Customer customer;
@@ -49,12 +83,12 @@ public class AccountScreen {
         System.out.print("Please enter your name: ");
         name = input.nextLine();
         
-        System.out.print("Please enter your email address: ");
-        email = input.nextLine();
+        Queue<String> credentials = new LinkedList<>();
         
-        System.out.print("Please enter a new password: ");
-        password = input.nextLine();
+        getCredentials(credentials);
         
+        email = credentials.remove();
+        password = credentials.remove();
         
         if(cm.searchCustomer(email) == null){
             customer = new Customer(name, 100/*Placeholder ID*/, false);
@@ -69,6 +103,43 @@ public class AccountScreen {
         }
         else{
             System.out.println("A customer associated with this email address already exists.\n");
+            return null;
+        }
+    }
+    
+    public DeliveryPerson signUp(DeliveryPersonManager dpm){
+        Scanner input = new Scanner(System.in);
+        
+        DeliveryPerson deliveryPerson;
+        
+        String name, email, password;
+        
+        System.out.println("Create New Employee Profile\n"+
+                           "______________________________________________");
+        
+        System.out.print("Please enter your name: ");
+        name = input.nextLine();
+        
+        Queue<String> credentials = new LinkedList<>();
+        
+        getCredentials(credentials);
+        
+        email = credentials.remove();
+        password = credentials.remove();
+        
+        if(dpm.searchDeliveryPerson(email) == null){
+            deliveryPerson = new DeliveryPerson(name, 100/*Placeholder ID*/);
+            
+            deliveryPerson.setEmail(email);
+            deliveryPerson.setPassword(password);
+            
+            dpm.addDeliveryPerson(deliveryPerson);
+            
+            System.out.println("Account has been successfully created!\n");
+            return deliveryPerson;
+        }
+        else{
+            System.out.println("An employee associated with this email address already exists.\n");
             return null;
         }
     }

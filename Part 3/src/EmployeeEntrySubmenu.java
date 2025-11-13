@@ -1,19 +1,22 @@
 
 import java.util.Scanner;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
 /**
  *
  * @author Alexander
  */
-public class CustomerEntrySubmenu implements ProgramMenu{
-    
-    private CustomerManager cm;
-    private CustomerSubmenu cs;
-    private GuestSubmenu gs;
+public class EmployeeEntrySubmenu implements ProgramMenu{
+    private DeliveryPersonManager dpm;
+    private EmployeeSubmenu es;
     private AccountScreen as;
     
-    public CustomerEntrySubmenu(CustomerManager cm){
-        this.cm = cm;
+    public EmployeeEntrySubmenu(DeliveryPersonManager dpm){
+        this.dpm = dpm;
         as = new AccountScreen();
     }
     
@@ -22,48 +25,38 @@ public class CustomerEntrySubmenu implements ProgramMenu{
         byte choice = 0;
         Scanner input = new Scanner(System.in);
         do{
-            System.out.print("Customer Entry:\n"+
+            System.out.print("Employee Entry:\n"+
                                "______________________________________________\n"+
                                "1. Login\n"+
-                               "2. Sign Up\n"+
-                               "3. Order as Guest\n"+
-                               "4. Back to Main\n"+
+                               "2. Create new Profile\n"+
+                               "3. Back to Main\n"+
                                "______________________________________________\n"+
                                "Please select your choice: ");
             
             choice = input.nextByte();
-            Customer customer = null;
+            DeliveryPerson deliveryPerson = null;
             
             System.out.println("");
             
             switch(choice){
                 case 1:
-                    customer = as.logIn(cm);
+                    deliveryPerson = as.logIn(dpm);
                     break;
                 case 2:
-                    customer = as.signUp(cm);
+                    deliveryPerson = as.signUp(dpm);
                     break;
                 case 3:
-                    customer = as.guest();
-                    break;
-                case 4:
                     break;
                 default:
                     System.out.println("That choice was invalid..."+
                                        "Please try again.");
                     break;
             }
-            if(customer != null){
-                if(!customer.isGuest()){
-                    cs = new CustomerSubmenu(cm, customer.getID());
-                    cs.showMenu();
-                }
-                else{
-                    gs = new GuestSubmenu();
-                    gs.showMenu();
-                }
+            if(deliveryPerson != null){
+                es = new EmployeeSubmenu(dpm, deliveryPerson.getID());
+                es.showMenu();
             }
         }
-        while(choice != 4);
+        while(choice != 3);
     }
 }

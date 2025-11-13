@@ -49,7 +49,7 @@ public class AddressesSubmenuManager {
         Scanner input = new Scanner(System.in);
         Address address = am.searchAddress(id);
         
-        address.showAddress();
+        address.showAddressInformation();
         
         System.out.print("Is this the address you wish to change? y/n: ");
         
@@ -68,11 +68,11 @@ public class AddressesSubmenuManager {
         
         id = am.getNumAddresses() + 1;
         
-        Address address = new Address(id);
+        Address address = new Address(customer, id);
         
         inputAddress(address);
         
-        am.addAddress(address, this.customer);
+        am.addAddress(address);
         if(am.getNumAddresses() > 1)
             changePrimaryPrompt(id);
         else

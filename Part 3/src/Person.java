@@ -12,12 +12,11 @@ public class Person {
     private PhoneNumberManager phoneNumberManager;
     private String emailAddress;
     private String password;
-    private ArrayList<Order> orderHistory;
+    private OrderManager orderHistory;
     
     public Person(String name, int id){
         phoneNumberManager = new PhoneNumberManager();
-        orderHistory = new ArrayList<>();
-        
+        orderHistory = new OrderManager(this);
         this.name = name;
         this.personID = id;
     }
@@ -38,22 +37,5 @@ public class Person {
     
     public PhoneNumberManager getPNM() {return this.phoneNumberManager;}
     
-    
-    public void addOrder(Order order){
-        orderHistory.add(order);
-    }
-    
-    public void removeOrder(Order order){
-        orderHistory.remove(order);
-    }
-    
-    public void showOrderHistory(){
-        if(orderHistory.isEmpty()){System.out.println("You have not placed any orders yet!");}
-        else
-        {
-            for(Order order: orderHistory){
-                System.out.println(order);
-            }
-        }
-    }
+    public OrderManager getOrderHistory(){return this.orderHistory;}
 }

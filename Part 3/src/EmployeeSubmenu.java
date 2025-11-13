@@ -8,8 +8,17 @@ import java.util.Scanner;
  */
 public class EmployeeSubmenu implements ProgramMenu{
     
-    private EmployeeSubmenuManager esm;
+    private EmployeeSubmenuManager esubm;
+    private DeliveryPersonManager dpm;
     private DeliveryPerson deliveryPerson;
+    private int employeeId;
+    
+    public EmployeeSubmenu(DeliveryPersonManager dpm, int id){
+        this.dpm = dpm;
+        employeeId = id;
+        deliveryPerson = dpm.searchDeliveryPerson(employeeId);
+        esubm = new EmployeeSubmenuManager(dpm, deliveryPerson);
+    }
     
     @Override
     public void showMenu(){
@@ -19,9 +28,9 @@ public class EmployeeSubmenu implements ProgramMenu{
             System.out.print("Welcome, " + deliveryPerson.getName()+ "!\n"+
                                "What would you like to do today?\n"+
                                "______________________________________________\n"+
-                               "1. Place an Order\n"+
-                               "2. View Menu\n"+
-                               "3. View Order History\n" +
+                               "1. View Current Order Assignments\n"+
+                               "2. View Order History\n" +
+                               "3. Menu Settings\n" +
                                "4. Go to Profile Settings\n" +
                                "5. Logout\n"+
                                "______________________________________________\n"+
@@ -33,14 +42,16 @@ public class EmployeeSubmenu implements ProgramMenu{
             
             switch(choice){
                 case 1:
+                    esubm.showOrderAssignments();
                     break;
                 case 2:
-                    menu.menuDisplay();
+                    esubm.showOrderHistory();
                     break;
                 case 3:
+                    esubm.menuSettings();
                     break;
                 case 4:
-                    css.showMenu();
+                    esubm.profileSettings();
                     break;
                 case 5:
                     break;
@@ -50,6 +61,6 @@ public class EmployeeSubmenu implements ProgramMenu{
                     break;
             }
         }
-        while(choice != 5 && cm.searchCustomer(customerId) != null);
+        while(choice != 5 && dpm.searchDeliveryPerson(employeeId) != null);
     }
 }

@@ -9,7 +9,7 @@ class Address {
     private Customer customer;
     private boolean primary;
     
-    public Address(int id){
+    public Address(Customer customer, int id){
         this.id = id;
     }
     
@@ -43,7 +43,7 @@ class Address {
     
     public void setPrimary(boolean primary){this.primary = primary;}
     
-    public void showAddress(){
+    public void showAddressInformation(){
         
         String primary = "";
         
@@ -51,11 +51,18 @@ class Address {
         System.out.println( "Address " + getAddressID() + primary + ":\n" +
                             "______________________________________________\n"+
                             getCustomer().getName() + "\n" +
-                            getLine1());
-        if(!getLine2().equals(""))
-        {System.out.println(getLine2());}
-        System.out.println( getCity() + ", " + getState() + " " + getZipCode());
+                            this);
         
+    }
+    
+    public String toString(){
+        
+        String str = getLine1() + "\n";
+        if(!getLine2().equals(""))
+        {str += getLine2();}
+        str += getCity() + ", " + getState() + " " + getZipCode();
+        
+        return str;
     }
     
 }

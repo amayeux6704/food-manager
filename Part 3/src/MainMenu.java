@@ -12,10 +12,16 @@ import java.util.Scanner;
  */
 public class MainMenu implements ProgramMenu{
     
+    private CustomerManager cm;
+    private DeliveryPersonManager dpm;
     private CustomerEntrySubmenu ces;
+    private EmployeeEntrySubmenu ees;
     
-    public MainMenu(){
-        ces = new CustomerEntrySubmenu();
+    public MainMenu(CustomerManager cm, DeliveryPersonManager dpm){
+        this.cm = cm;
+        this.dpm = dpm;
+        ces = new CustomerEntrySubmenu(cm);
+        ees = new EmployeeEntrySubmenu(dpm);
     }
     
     @Override
@@ -40,6 +46,7 @@ public class MainMenu implements ProgramMenu{
                     ces.showMenu();
                     break;
                 case 2:
+                    ees.showMenu();
                     break;
                 case 3:
                     System.out.println("Goodbye!");

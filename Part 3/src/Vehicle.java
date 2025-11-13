@@ -9,8 +9,9 @@ class Vehicle {
     private short year;
     private DeliveryPerson employee;
     
-    public Vehicle(){
-        
+    public Vehicle(DeliveryPerson employee, int vehicleID){
+        this.employee = employee;
+        this.vehicleID = vehicleID;
     }
     
     public int getVehicleID(){return this.vehicleID;}
@@ -27,6 +28,8 @@ class Vehicle {
     
     public String getLicensePlate(){return this.licensePlate;}
     
+    public DeliveryPerson getEmployee(){return this.employee;}
+    
     public void setMake(String make){this.make = make;}
     
     public void setModel(String model){this.model = model;}
@@ -39,4 +42,13 @@ class Vehicle {
 
     public void setLicensePlate(String licensePlate){this.licensePlate = licensePlate;} 
     
+    @Override
+    public String toString(){
+        String str = "Vehicle: " + getYear() + " " + getMake() + " " + getModel() + "\n" +
+                     "Color: " + getColor() + "\n" +
+                     "Body Style: " + getBodyStyle() + "\n" + 
+                     "License plate: " + getLicensePlate() + "\n";
+        
+        return str;
+    }
 }
