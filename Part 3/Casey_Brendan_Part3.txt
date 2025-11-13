@@ -3,7 +3,6 @@ Tasks:
 • Created the Casey_Brendan_Part3.txt file for keeping record of tasks
 • Updated the UML diagram
 • Created and began coding the java files:
-	- ComponentManager
     - CostCalculation
     - Dish
     - EmailManager
@@ -12,8 +11,9 @@ Tasks:
     - Menu
     - OpenHourManager
     - Payment
-    - PaymentMethod
     - PhoneNumberManager
     - Restaurant
     - SidesManager
-• Needing to finish code of existing files and edit the structure of the Inventory class for better functionality
+	- RecipeManager
+	- IngredientManager
+• Needing to finalize code of existing files and create menus for running my classes. Also need to update UML Diagram to match the state of my classes.
