@@ -3,22 +3,52 @@ import java.util.Set;
 
 public class Menu {
 
-    private Set<Dish> dishes;
-    private int nextDishID;
+    private DishManager dishManager;
     private SidesManager sidesManager;
 
     public Menu(){
-        this.dishes = new HashSet<>();
-        this.nextDishID = 1;
+        this.dishManager = new DishManager();
         this.sidesManager = new SidesManager();
     }
 
-    public Set<String> getSides(){
+    public void addDish(String name, double price){
+        dishManager.addDish(name, price);
+    }
+
+    public void addDishRecipe(int dishID, RecipeManager recipe){
+        dishManager.addDishRecipe(dishID, recipe);
+    }
+
+    public void removeDish(int dishID){
+        dishManager.removeDish(dishID);
+    }
+
+    public void updateDishName(int dishId, String newName){
+        dishManager.updateDishName(dishId, newName);
+    }
+
+    public void updateDishPrice(int dishID, double newPrice){
+        dishManager.updateDishPrice(dishID, newPrice);
+    }
+
+    public Dish findDish(int dishID){
+        return dishManager.findDish(dishID);
+    }
+
+    public double getDishPrice(int dishID){
+        return dishManager.getDishPrice(dishID);
+    }
+
+    public Set<Side> getSides(){
         return sidesManager.getSides();
     }
 
     public void addSide(String side){
         sidesManager.addSide(side);
+    }
+
+    public void addSideRecipe(RecipeManager recipe, String side){
+        sidesManager.addSideRecipe(recipe, side);
     }
 
     public void removeSide(String side){
@@ -29,94 +59,26 @@ public class Menu {
         sidesManager.updateSide(oldSide, newSide);
     }
 
-    public void addDishRecipe(int dishID, RecipeManager recipe){
-        Dish dish = findDish(dishID);
-        if (dish != null){
-            dish.setRecipe(recipe);
-            System.out.println("Recipe added to dish " + dish.getName());
+    public void menuDisplay(){
+        if(dishManager.getDishes().isEmpty()){
+            System.out.println("The menu is empty");
         } else {
-            System.out.println("Dish could not be found");
-        }
-    }
-    public void addSideRecipe(RecipeManager recipe){
-        sidesManager.setRecipe(recipe);
-        System.out.println("Recipe added to side " + sidesManager.getName());
-    }
-
-    public Dish findDish(int dishID){
-        for(Dish dish : dishes) {
-            if(dish.getDishID() == dishID){
-                return dish;
+            System.out.println("-- Dishes --");
+            for(Dish dish : dishManager.getDishes()){
+                System.out.println(dish);
+                if(!dish.getRecipe().getIngredients().isEmpty()){
+                    System.out.println(dish.getRecipe());
+                }
             }
         }
-        return null;
-    }
-
-    public double getDishPrice(int dishID){
-        Dish dish = findDish(dishID);
-        if(dish != null){
-            return dish.getPrice();
-        } else {
-        System.out.println("Dish could not be found");
-        return 0.0;
-        }
-    }
-
-    public void addDish(String dishName, double price){
-        boolean exists = false;
-        for(Dish dish : dishes){
-            if(dish.getName().equalsIgnoreCase(dishName)){
-                exists = true;
-                break;
-            }    
-        }
-        if(!exists) {
-            Dish newDish = new Dish(nextDishID, dishName, price);
-            dishes.add(newDish);
-            System.out.println("Added: " + newDish + " to the list of available dishes!");
-            nextDishID++;       
-        } else {
-            System.out.println("Dish  " + dishName + " Already exists");
-        }
-    }
-
-    public void removeDish(int dishID){
-        Dish dishForRemoval = findDish(dishID);
-        if (dishForRemoval != null){
-            dishes.remove(dishForRemoval);
-            System.out.println("Removed: " + dishForRemoval.getName() + " from the list of available dishes!");
-        } else {
-            System.out.println("Dish does not exist.");
-        }
-    }
-
-    public void updateDishName(int dishID, String newName){
-        Dish dish = findDish(dishID);
-        if (dish != null){
-            dish.setName(newName);
-            System.out.println("Dish name has been updated.");
-        } else {
-            System.out.println("Dish does not exist.");
-        }
-    }
-
-    public void updateDishPrice(int dishID, double newPrice){
-        Dish dish = findDish(dishID);
-        if (dish != null){
-            dish.setPrice(newPrice);
-            System.out.println("Dish price has been updated.");
-        } else {
-            System.out.println("Dish does not exist.");
-        }
-    }
-    
-    public void menuDisplay(){
-        if(dishes.isEmpty()){
-            System.out.println("The menu is empty.");
-        } else {
-            for(Dish dish : dishes){
-            System.out.println(dish);
-            System.out.println(dish.getRecipe());
+        System.out.println("-- Sides --");
+        if(sidesManager.getSides().isEmpty()){
+            System.out.println("The sides menu is empty");
+        } 
+        for(Side side : sidesManager.getSides()){
+            System.out.println(side.getName());
+            if(!side.getRecipe().getIngredients().isEmpty()){
+                    System.out.println(side.getRecipe());
             }
         }
     }

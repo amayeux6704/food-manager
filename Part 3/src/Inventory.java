@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class Inventory {
     private Set<InventoryItem> inventory;
 

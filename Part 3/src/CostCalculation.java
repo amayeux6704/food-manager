@@ -26,7 +26,8 @@ public class CostCalculation {
     }
 
     public void calculateTaxCost(double taxRate){
-        this.taxCost = (taxRate/100)*subTotal;
+        double unrounded = (taxRate/100) * subTotal;
+        this.taxCost = Math.round(unrounded * 100.0) / 100.0;
     }
 
     public void calculateDishSubTotal(Dish dish){
@@ -37,6 +38,9 @@ public class CostCalculation {
 
     public void calculateTotalCost(){
         this.totalCost = subTotal + taxCost;
-        System.out.println("The total cost of the order is: " + totalCost);
+    }
+
+    public void displayTotalCost(double totalCost){
+        System.out.println("The total cost of the order is: $" + totalCost);
     }
 }

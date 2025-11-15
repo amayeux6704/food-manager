@@ -3,46 +3,61 @@ import java.util.Set;
 
 public class SidesManager {
 
-    private Set<String> sides;
-    private RecipeManager recipe;
+    private Set<Side> sides;
 
     public SidesManager(){
         this.sides = new HashSet<>();
-        this.recipe = new RecipeManager();
     }
 
-    public RecipeManager getRecipe(){
-        return recipe;
+    public void addSideRecipe(RecipeManager recipe, String sideName){
+        Side side = findSide(sideName);
+        if (side != null){
+            side.setRecipe(recipe);
+            System.out.println("Recipe added to side: " + sideName);
+        } else {
+            System.out.println("Side with name "+ sideName + " could not be found");
+        }
     }
 
-    public void setRecipe(RecipeManager recipe){
-        this.recipe = recipe;
+    public Side findSide(String name){
+        for (Side side : sides){
+            if (side.getName().equalsIgnoreCase(name)){
+                return side;
+            }
+        }
+        return null;
     }
 
-    public Set<String> getSides(){
+    public Set<Side> getSides(){
         return new HashSet<>(sides);
     }
 
     public void addSide(String side){
-        this.sides.add(side.toLowerCase());
+        if (findSide(side) == null){
+            this.sides.add(new Side(side));
+            System.out.println("Added side: " + side);
+        } else {
+            System.out.println("Side " + side + " already exists");
+        }
     }
 
     public void removeSide(String side){
-        if(sides.contains(side.toLowerCase())){
-            this.sides.remove(side.toLowerCase());
-            System.out.println(side.toLowerCase() + " has successfully been removed.");
+        Side sideToRemove = findSide(side);
+        if(sideToRemove != null){
+            this.sides.remove(sideToRemove);
+            System.out.println(side + " has successfully been removed");
         } else {
             System.out.println("The given side could not be found for removal");
         }
     }
 
     public void updateSide(String oldSide, String newSide){
-        if(sides.contains(oldSide.toLowerCase())){
-            this.sides.remove(oldSide.toLowerCase());
-            this.sides.add(newSide.toLowerCase());
-            System.out.println("The side has been updated.");
+        Side sideToUpdate = findSide(oldSide);
+        if(sideToUpdate != null){
+            sideToUpdate.setName(newSide);
+            System.out.println("The side has been updated");
         } else {
-            System.out.println("The given side could not be found. Update failed.");
+            System.out.println("The given side could not be found. Update failed");
         }
     }
 }

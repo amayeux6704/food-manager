@@ -42,19 +42,19 @@ public class Restaurant {
     }
 
     public void addPhoneNumber(String phoneNumber){
-        phoneNumberManager.addphoneNumber(phoneNumber);
+        phoneNumberManager.addPhoneNumber(phoneNumber);
     }
 
     public void updatePhoneNumber(String oldPhoneNumber, String newPhoneNumber){
-        phoneNumberManager.updatephoneNumber(oldPhoneNumber, newPhoneNumber);
+        phoneNumberManager.updatePhoneNumber(oldPhoneNumber, newPhoneNumber);
     }
 
     public void removePhoneNumber(String phoneNumber){
-        phoneNumberManager.removephoneNumber(phoneNumber);
+        phoneNumberManager.removePhoneNumber(phoneNumber);
     }
 
     public Set<String> getPhoneNumbers(){
-        return phoneNumberManager.getphoneNumbers();
+        return phoneNumberManager.getPhoneNumbers();
     }
 
     public void addEmail(String email){
