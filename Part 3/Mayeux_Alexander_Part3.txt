@@ -25,15 +25,19 @@ Tasks:
 	EmployeeSubmenuManager
 	GuestSubmenu
 	IDGenerator
+	InitialDataGenerator
 	Main
 	MainMenu
 	Order
 	OrderManager
+	OrderPlacer
 	PhoneSubmenu
 	PhoneSubmenuManager
+	PlaceOrderScreen
 	ProgramMenu
+	ReceiptGenerator
 	Vehicle
 	VehicleSubmenu
 	VehicleSubmenuManager
-• Need to devlop IDGenerator class fully and implement ordering.
+
 • Write the intsructions PDF for the program	
