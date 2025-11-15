@@ -7,8 +7,14 @@ public class Main {
         
         CustomerManager customerManager = new CustomerManager();
         DeliveryPersonManager deliveryPersonManager = new DeliveryPersonManager();
+        OrderManager generalOrderManager = new OrderManager();
+        Menu menu = new Menu();
         
-        MainMenu mainMenu = new MainMenu(customerManager, deliveryPersonManager);
+        InitialDataGenerator idg = new InitialDataGenerator(customerManager, deliveryPersonManager, generalOrderManager, menu);
+        
+        idg.generateDummyData();
+        
+        MainMenu mainMenu = new MainMenu(customerManager, deliveryPersonManager, generalOrderManager, menu);
         mainMenu.showMenu();
     }
 }

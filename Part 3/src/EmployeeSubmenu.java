@@ -13,11 +13,11 @@ public class EmployeeSubmenu implements ProgramMenu{
     private DeliveryPerson deliveryPerson;
     private int employeeId;
     
-    public EmployeeSubmenu(DeliveryPersonManager dpm, int id){
+    public EmployeeSubmenu(DeliveryPersonManager dpm, int id, OrderManager gom){
         this.dpm = dpm;
         employeeId = id;
         deliveryPerson = dpm.searchDeliveryPerson(employeeId);
-        esubm = new EmployeeSubmenuManager(dpm, deliveryPerson);
+        esubm = new EmployeeSubmenuManager(dpm, deliveryPerson, gom);
     }
     
     @Override
@@ -28,11 +28,12 @@ public class EmployeeSubmenu implements ProgramMenu{
             System.out.print("Welcome, " + deliveryPerson.getName()+ "!\n"+
                                "What would you like to do today?\n"+
                                "______________________________________________\n"+
-                               "1. View Current Order Assignments\n"+
-                               "2. View Order History\n" +
-                               "3. Menu Settings\n" +
-                               "4. Go to Profile Settings\n" +
-                               "5. Logout\n"+
+                               "1. View Avaliable Orders for Delivery\n"+
+                               "2. View Current Order Assignments\n"+
+                               "3. View Order History\n" +
+                               "4. Menu Settings\n" +
+                               "5. Go to Profile Settings\n" +
+                               "6. Logout\n"+
                                "______________________________________________\n"+
                                "Please select your choice: ");
             
@@ -42,18 +43,21 @@ public class EmployeeSubmenu implements ProgramMenu{
             
             switch(choice){
                 case 1:
-                    esubm.showOrderAssignments();
+                    esubm.showAvailableOrders();
                     break;
                 case 2:
-                    esubm.showOrderHistory();
+                    esubm.showOrderAssignments();
                     break;
                 case 3:
-                    esubm.menuSettings();
+                    esubm.showOrderHistory();
                     break;
                 case 4:
-                    esubm.profileSettings();
+                    esubm.menuSettings();
                     break;
                 case 5:
+                    esubm.profileSettings();
+                    break;
+                case 6:
                     break;
                 default:
                     System.out.println("That choice was invalid..."+
@@ -61,6 +65,6 @@ public class EmployeeSubmenu implements ProgramMenu{
                     break;
             }
         }
-        while(choice != 5 && dpm.searchDeliveryPerson(employeeId) != null);
+        while(choice != 6 && dpm.searchDeliveryPerson(employeeId) != null);
     }
 }

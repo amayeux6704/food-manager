@@ -17,11 +17,11 @@ public class MainMenu implements ProgramMenu{
     private CustomerEntrySubmenu ces;
     private EmployeeEntrySubmenu ees;
     
-    public MainMenu(CustomerManager cm, DeliveryPersonManager dpm){
+    public MainMenu(CustomerManager cm, DeliveryPersonManager dpm, OrderManager gom, Menu menu){
         this.cm = cm;
         this.dpm = dpm;
-        ces = new CustomerEntrySubmenu(cm);
-        ees = new EmployeeEntrySubmenu(dpm);
+        ces = new CustomerEntrySubmenu(cm, gom, menu);
+        ees = new EmployeeEntrySubmenu(dpm, gom);
     }
     
     @Override

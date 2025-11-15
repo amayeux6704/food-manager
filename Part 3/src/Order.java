@@ -13,17 +13,18 @@ class Order {
     private Address address;
     private DeliveryPerson deliveryPerson;
     private Menu menu;
-    private Payment payment;
-    private double totalCost;
+    private String payment;
     private boolean fulfilled;
+    private CostCalculation costCalculation;
+    private float taxRate = 0.04875f;
     
     public Order(int id, Menu menu){
         
         this.contents = new ArrayList<>();
+        this.costCalculation = new CostCalculation();
         
         this.orderID = id;
         this.menu = menu;
-        this.totalCost = 0;
     }
     
     public int getOrderId(){return this.orderID;}
@@ -38,6 +39,10 @@ class Order {
     
     public DeliveryPerson getDeliveryPerson(){return this.deliveryPerson;}
     
+    public ArrayList<Dish> getContents(){return this.contents;}
+    
+    public int getNumContents(){return contents.size();}
+    
     public void setTime(String time){this.time = time;}
     
     public void setDate(String date){this.date = date;}
@@ -48,34 +53,23 @@ class Order {
     
     public void setDeliveryPerson(DeliveryPerson DP){this.deliveryPerson = DP;}
     
+    public void setPayMethod(String payMethod){this.payment = payMethod;}
+    
     public void addDish(int dishId){
         Dish dish = menu.findDish(dishId);
-        if(dish != null){
-            double dishCost = menu.getDishPrice(dishId);
         
-            contents.add(dish);
-            this.addToTotalCost(dishCost);
-        }
-        else{
-            System.out.println("That dish does not exist.");
-        }
+        contents.add(dish);
+        costCalculation.calculateDishSubTotal(dish);
     }
     
     public void removeDish(int dishId){
         Dish dish = menu.findDish(dishId);
-        if(dish != null){
-            if(contents.contains(dish)){
-                double dishCost = menu.getDishPrice(dishId);
+        if(contents.contains(dish)){
         
-                contents.remove(dish);
-                this.subtractFromTotalCost(dishCost);
-            }
-            else{
-                System.out.println("This order does not contain that dish");
-            }
+            contents.remove(dish);
         }
         else{
-            System.out.println("That dish does not exist.");
+            System.out.println("This order does not contain that dish");
         }
     }
     
@@ -90,16 +84,11 @@ class Order {
         }
     }
     
-    public void addToTotalCost(double dishCost){
-        this.totalCost += dishCost;
-    }
-    
-    public void subtractFromTotalCost(double dishCost){
-        this.totalCost -= dishCost;
-    }
-    
     public double getTotalCost(){
-        return this.totalCost;
+        
+        costCalculation.calculateTaxCost(taxRate);
+        costCalculation.calculateTotalCost();
+        return this.costCalculation.getTotalCost();
     }
     
     public void setFulfillment(boolean fulfilled) {this.fulfilled = fulfilled;}
@@ -108,13 +97,17 @@ class Order {
     
     @Override
     public String toString(){
-        String str, fulfillment;
+        String str, fulfillment, dp;
         
         if(isFulfilled()){fulfillment = "Fulfilled";}
         else{fulfillment = "In Progress";}
         
+        if(getDeliveryPerson() != null){dp = getDeliveryPerson().getName();}
+        else{dp = "Not Yet Assigned";}
+        
         str = "Order for: " + customer.getName() + " (" + fulfillment + ")\n"+
               "______________________________________________\n"+
+              "Order #" + getOrderId() + "\n" +
               "Order Placed on " + getDate() + " " + getTime() + "\n";
         
         for(Dish dish: contents){
@@ -122,9 +115,9 @@ class Order {
         }
         
         str += "Total: " + getTotalCost() + "\n" +
-               "Delivery Driver: " + deliveryPerson.getName() +
+               "Delivery Driver: " + dp + "\n" +
                "Deliver to:\n" + 
-                address.toString();
+               address.toString();
         
         return str;
     }

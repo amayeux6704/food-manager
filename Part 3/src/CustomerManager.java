@@ -2,7 +2,6 @@
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  *
  * @author Alexander
@@ -63,4 +62,6 @@ public class CustomerManager {
         else
             System.out.println("No customer with the provided information exists");
     }
+    
+    public int getNumCustomers(){return customers.size();}
 }

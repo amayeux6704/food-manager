@@ -14,9 +14,11 @@ public class EmployeeEntrySubmenu implements ProgramMenu{
     private DeliveryPersonManager dpm;
     private EmployeeSubmenu es;
     private AccountScreen as;
+    private OrderManager gom;
     
-    public EmployeeEntrySubmenu(DeliveryPersonManager dpm){
+    public EmployeeEntrySubmenu(DeliveryPersonManager dpm, OrderManager gom){
         this.dpm = dpm;
+        this.gom = gom;
         as = new AccountScreen();
     }
     
@@ -53,7 +55,7 @@ public class EmployeeEntrySubmenu implements ProgramMenu{
                     break;
             }
             if(deliveryPerson != null){
-                es = new EmployeeSubmenu(dpm, deliveryPerson.getID());
+                es = new EmployeeSubmenu(dpm, deliveryPerson.getID(), gom);
                 es.showMenu();
             }
         }

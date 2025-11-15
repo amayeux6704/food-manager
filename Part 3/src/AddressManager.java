@@ -9,6 +9,7 @@ import java.util.Map;
 public class AddressManager {
     
     private Map<Integer, Address> addresses;
+    private int primaryId;
     
     public AddressManager(){
         addresses = new HashMap<>();
@@ -28,6 +29,8 @@ public class AddressManager {
     public Address searchAddress(int id){
         return addresses.get(id);
     }
+    
+    public int getPrimaryAddressID(){return this.primaryId;}
     
     public void deleteAddress(int id){
         
@@ -51,6 +54,7 @@ public class AddressManager {
         else{
             resetPrimaryAddress();
             newPrimary.setPrimary(true);
+            primaryId = id;
             System.out.println("New address has been set to primary!\n");
         }
     }

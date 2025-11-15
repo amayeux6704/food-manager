@@ -11,14 +11,13 @@ public class CustomerSubmenu implements ProgramMenu{
     private CustomerSubmenuManager csubm;
     private CustomerManager cm;
     private Customer customer;
-    private Menu menu;
     private int customerId;
     
-    public CustomerSubmenu(CustomerManager cm, int id){
+    public CustomerSubmenu(CustomerManager cm, int id, OrderManager gom, Menu menu){
         this.cm = cm;
         customerId = id;
-        customer = cm.searchCustomer(customerId);
-        csubm = new CustomerSubmenuManager(this.cm, customer);
+        customer = this.cm.searchCustomer(customerId);
+        csubm = new CustomerSubmenuManager(this.cm, customer, gom, menu);
     }
     
     @Override
@@ -48,7 +47,6 @@ public class CustomerSubmenu implements ProgramMenu{
                     break;
                 case 2:
                     csubm.viewMenu();
-                    csubm.showCurrentOrders();
                     break;
                 case 3:
                     csubm.showCurrentOrders();

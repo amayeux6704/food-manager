@@ -91,7 +91,10 @@ public class AccountScreen {
         password = credentials.remove();
         
         if(cm.searchCustomer(email) == null){
-            customer = new Customer(name, 100/*Placeholder ID*/, false);
+            IDGenerator idgen = new IDGenerator();
+            
+            int id = idgen.generateId(cm, false);
+            customer = new Customer(name, id, false);
             
             customer.setEmail(email);
             customer.setPassword(password);
@@ -128,7 +131,10 @@ public class AccountScreen {
         password = credentials.remove();
         
         if(dpm.searchDeliveryPerson(email) == null){
-            deliveryPerson = new DeliveryPerson(name, 100/*Placeholder ID*/);
+            IDGenerator idgen = new IDGenerator();
+            
+            int id = idgen.generateId(dpm);
+            deliveryPerson = new DeliveryPerson(name, id);
             
             deliveryPerson.setEmail(email);
             deliveryPerson.setPassword(password);
@@ -144,7 +150,14 @@ public class AccountScreen {
         }
     }
     
-    public Customer guest(){
-        return new Customer("Guest", 101/*Placeholder ID*/, true);
+    public Customer guest(CustomerManager cm){
+ 
+        IDGenerator idgen = new IDGenerator();
+            
+        int id = idgen.generateId(cm, false);
+        Customer guest = new Customer("Guest", id, true);
+        
+        cm.addCustomer(guest);
+        return guest;
     }
 }

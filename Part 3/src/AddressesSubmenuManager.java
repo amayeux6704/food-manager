@@ -63,10 +63,13 @@ public class AddressesSubmenuManager {
         }
     }
     public void addNewAddress(){
+        
+        IDGenerator idGenerator = new IDGenerator();
+        
         Scanner input = new Scanner(System.in);
         int id;
         
-        id = am.getNumAddresses() + 1;
+        id = idGenerator.generateId(am);
         
         Address address = new Address(customer, id);
         
@@ -132,6 +135,7 @@ public class AddressesSubmenuManager {
             id = input.nextInt();
         
             am.deleteAddress(id);
+            
         }
     }
 }

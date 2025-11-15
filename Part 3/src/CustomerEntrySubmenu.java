@@ -11,9 +11,13 @@ public class CustomerEntrySubmenu implements ProgramMenu{
     private CustomerSubmenu cs;
     private GuestSubmenu gs;
     private AccountScreen as;
+    private OrderManager gom;
+    private Menu menu;
     
-    public CustomerEntrySubmenu(CustomerManager cm){
+    public CustomerEntrySubmenu(CustomerManager cm, OrderManager gom, Menu menu){
         this.cm = cm;
+        this.gom = gom;
+        this.menu = menu;
         as = new AccountScreen();
     }
     
@@ -44,7 +48,7 @@ public class CustomerEntrySubmenu implements ProgramMenu{
                     customer = as.signUp(cm);
                     break;
                 case 3:
-                    customer = as.guest();
+                    customer = as.guest(cm);
                     break;
                 case 4:
                     break;
@@ -55,11 +59,11 @@ public class CustomerEntrySubmenu implements ProgramMenu{
             }
             if(customer != null){
                 if(!customer.isGuest()){
-                    cs = new CustomerSubmenu(cm, customer.getID());
+                    cs = new CustomerSubmenu(cm, customer.getID(), gom, menu);
                     cs.showMenu();
                 }
                 else{
-                    gs = new GuestSubmenu();
+                    gs = new GuestSubmenu(cm, customer.getID(), gom, menu);
                     gs.showMenu();
                 }
             }

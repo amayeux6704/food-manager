@@ -11,9 +11,12 @@ class Address {
     
     public Address(Customer customer, int id){
         this.id = id;
+        this.customer = customer;
     }
     
     public int getAddressID(){return this.id;}
+    
+    public void setAddressID(int id){this.id = id;}
     
     public String getLine1() {return line1;}
     

@@ -11,6 +11,10 @@ public class OrderManager {
     private Map<Integer, Order> orders;
     private Person person;
     
+    public OrderManager(){
+        orders = new HashMap<>();
+    }
+    
     public OrderManager(Person person){
         orders = new HashMap<>();
         this.person = person;
@@ -47,7 +51,7 @@ public class OrderManager {
         }
     }
     
-    public void showUnfulfilledOrders(){
+    public boolean showUnfulfilledOrders(){
         boolean allFulfilled = true;
         
         if(orders.isEmpty()){System.out.println("There are no orders here yet!\n");}
@@ -63,5 +67,7 @@ public class OrderManager {
             }
             if(allFulfilled){System.out.println("All orders have been fulfilled!\n");}
         }
+        
+        return !allFulfilled;
     }
 }

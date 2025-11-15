@@ -1,21 +1,79 @@
 
+import java.util.Scanner;
+
+
 /**
  *
  * @author Alexander
  */
 class EmployeeSubmenuManager {
     private DeliveryPersonManager dpm;
-    private OrderManager om;
+    private OrderManager om, gom;
     private EmployeeSettingsSubmenu ess;
+    private DeliveryPerson deliveryPerson;
     
-    public EmployeeSubmenuManager(DeliveryPersonManager dpm, DeliveryPerson deliveryPerson){
+    public EmployeeSubmenuManager(DeliveryPersonManager dpm, DeliveryPerson deliveryPerson, OrderManager gom){
         this.dpm = dpm;
+        this.gom = gom;
         this.om = deliveryPerson.getOrderHistory();
-        this.ess = new EmployeeSettingsSubmenu(this.dpm, deliveryPerson.getID());
+        this.deliveryPerson = deliveryPerson;
+        this.ess = new EmployeeSettingsSubmenu(this.dpm, this.deliveryPerson.getID());
+    }
+    
+    public void showAvailableOrders() {
+        if(gom.showUnfulfilledOrders()){
+            char yesNo;
+            int choice;
+            Scanner input = new Scanner(System.in);
+            
+            System.out.print("Would you like to take on any of these orders? y/n: ");
+            yesNo = input.nextLine().charAt(0);
+            
+            if(yesNo == 'y'){
+                
+                System.out.print("Enter the ID of the order you wish to take: ");
+                choice = input.nextInt();
+                
+                Order order = gom.searchOrder(choice);
+                
+                if(order != null){
+                    order.setDeliveryPerson(deliveryPerson);
+                    om.addOrder(order);
+                    System.out.println("You have been assigned Order #" + order.getOrderId() + "\n");
+                }
+            }
+            else{
+                System.out.println("Returning to previous...\n");
+            }
+            
+        }
     }
     
     public void showOrderAssignments(){
-        om.showUnfulfilledOrders();
+        if(om.showUnfulfilledOrders()){
+            char yesNo;
+            int choice;
+            Scanner input = new Scanner(System.in);
+            
+            System.out.print("Have you fulfilled any of these orders yet? y/n: ");
+            yesNo = input.nextLine().charAt(0);
+            
+            if(yesNo == 'y'){
+                
+                System.out.print("Enter the ID of the order you have fulfilled: ");
+                choice = input.nextInt();
+                
+                Order order = gom.searchOrder(choice);
+                
+                if(order != null){
+                    order.setFulfillment(true);
+                    System.out.println("Order #" + order.getOrderId() + " has been fulfilled!\n");
+                }
+            }
+            else{
+                System.out.println("Returning to previous...\n");
+            }
+        }
     }
     
     public void showOrderHistory(){
@@ -29,4 +87,5 @@ class EmployeeSubmenuManager {
     public void profileSettings(){
         ess.showMenu();
     }
+
 }

@@ -19,8 +19,8 @@ public class CustomerSettingsSubmenu implements ProgramMenu{
         customerId = id;
         customer = cm.searchCustomer(id);
         csm = new CustomerSettingsManager(this.cm);
-        as = new AddressesSubmenu(this.customer);
-        ps = new PhoneSubmenu(this.customer);
+        as = new AddressesSubmenu(customer);
+        ps = new PhoneSubmenu(customer);
     }
     
     @Override
