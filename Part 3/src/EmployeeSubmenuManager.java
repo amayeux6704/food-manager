@@ -11,13 +11,16 @@ class EmployeeSubmenuManager {
     private OrderManager om, gom;
     private EmployeeSettingsSubmenu ess;
     private DeliveryPerson deliveryPerson;
+    private SystemSettingsSubmenu sss;
     
-    public EmployeeSubmenuManager(DeliveryPersonManager dpm, DeliveryPerson deliveryPerson, OrderManager gom){
+    public EmployeeSubmenuManager(DeliveryPersonManager dpm, DeliveryPerson deliveryPerson, OrderManager gom, 
+            Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this.dpm = dpm;
         this.gom = gom;
         this.om = deliveryPerson.getOrderHistory();
         this.deliveryPerson = deliveryPerson;
         this.ess = new EmployeeSettingsSubmenu(this.dpm, this.deliveryPerson.getID());
+        this.sss = new SystemSettingsSubmenu(restaurant, menu, inventory, cc);
     }
     
     public void showAvailableOrders() {
@@ -83,7 +86,7 @@ class EmployeeSubmenuManager {
         om.showOrderHistory();
     }
     
-    public void menuSettings(){
+    public void systemSettings(){
         
     }
     

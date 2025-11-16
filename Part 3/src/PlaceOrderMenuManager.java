@@ -19,11 +19,11 @@ public class PlaceOrderMenuManager {
     private OrderAddressPlacer oap;
     private OrderPaymentPlacer opp;
     
-    public PlaceOrderMenuManager(Customer customer, OrderManager gom, Menu menu){
+    public PlaceOrderMenuManager(Customer customer, OrderManager gom, Menu menu, CostCalculation cc){
         this.customer = customer;
         this.gom = gom;
         this.menu = menu;
-        op = new OrderPlacer(this.customer, this.gom, this.menu);
+        op = new OrderPlacer(this.customer, this.gom, this.menu, cc);
         op.initializeOrder(menu);
         oap = new OrderAddressPlacer(this.customer, op);
         opp = new OrderPaymentPlacer(this.customer, op);

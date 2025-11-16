@@ -9,16 +9,22 @@ public class CustomerEntrySubmenu implements ProgramMenu{
     
     private CustomerManager cm;
     private CustomerSubmenu cs;
-    private GuestSubmenu gs;
     private AccountScreen as;
     private OrderManager gom;
     private Menu menu;
+    private Restaurant restaurant;
+    private Inventory inventory;
+    private CostCalculation cc;
     
-    public CustomerEntrySubmenu(CustomerManager cm, OrderManager gom, Menu menu){
+    public CustomerEntrySubmenu(CustomerManager cm, OrderManager gom, 
+            Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this.cm = cm;
         this.gom = gom;
         this.menu = menu;
         as = new AccountScreen();
+        this.restaurant = restaurant;
+        this.inventory = inventory;
+        this.cc = cc;
     }
     
     @Override
@@ -28,7 +34,7 @@ public class CustomerEntrySubmenu implements ProgramMenu{
         do{
             System.out.print("Customer Entry:\n"+
                                "______________________________________________\n"+
-                               "1. Login\n"+
+                               "1. Log In\n"+
                                "2. Sign Up\n"+
                                "3. Order as Guest\n"+
                                "4. Back to Main\n"+
@@ -58,14 +64,9 @@ public class CustomerEntrySubmenu implements ProgramMenu{
                     break;
             }
             if(customer != null){
-                if(!customer.isGuest()){
-                    cs = new CustomerSubmenu(cm, customer.getID(), gom, menu);
-                    cs.showMenu();
-                }
-                else{
-                    gs = new GuestSubmenu(cm, customer.getID(), gom, menu);
-                    gs.showMenu();
-                }
+                cs = new CustomerSubmenu(cm, customer.getID(), gom, menu, restaurant, inventory, cc);
+                cs.showMenu();
+
             }
         }
         while(choice != 4);

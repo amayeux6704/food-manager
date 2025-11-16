@@ -9,14 +9,23 @@ public class InitialDataGenerator {
     private OrderManager gom;
     private Menu menu;
     private Restaurant restaurant;
+    private Inventory inventory;
+    private CostCalculation costCalculation;
     
-    public InitialDataGenerator(CustomerManager cm, DeliveryPersonManager dpm, OrderManager gom, Menu menu, Restaurant restaurant, Inventory inventory){
+    public InitialDataGenerator(CustomerManager cm, DeliveryPersonManager dpm, OrderManager gom, 
+            Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation costCalculation){
         this.cm = cm;
         this.dpm = dpm;
         this.gom = gom;
         this.menu = menu;
         this.restaurant = restaurant;
         this.inventory = inventory;
+        this.costCalculation = costCalculation;
+    }
+    
+    public void initializeCostCalculation(){
+        float taxRate = 0.04875f;
+        costCalculation.setTaxRate(taxRate);
     }
     
     public void generateDummyData(){
@@ -25,6 +34,7 @@ public class InitialDataGenerator {
         generateDummyMenu();
         generateDummyInventory();
         generateDummyRestaurant();
+        initializeCostCalculation();
     }
 
     public void generateDummyInventory(){   

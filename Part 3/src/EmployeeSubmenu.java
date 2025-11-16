@@ -13,11 +13,12 @@ public class EmployeeSubmenu implements ProgramMenu{
     private DeliveryPerson deliveryPerson;
     private int employeeId;
     
-    public EmployeeSubmenu(DeliveryPersonManager dpm, int id, OrderManager gom){
+    public EmployeeSubmenu(DeliveryPersonManager dpm, int id, OrderManager gom, Menu menu,
+            Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this.dpm = dpm;
         employeeId = id;
         deliveryPerson = dpm.searchDeliveryPerson(employeeId);
-        esubm = new EmployeeSubmenuManager(dpm, deliveryPerson, gom);
+        esubm = new EmployeeSubmenuManager(dpm, deliveryPerson, gom, menu, restaurant, inventory, cc);
     }
     
     @Override
@@ -31,8 +32,8 @@ public class EmployeeSubmenu implements ProgramMenu{
                                "1. View Avaliable Orders for Delivery\n"+
                                "2. View Current Order Assignments\n"+
                                "3. View Order History\n" +
-                               "4. Menu Settings\n" +
-                               "5. Go to Profile Settings\n" +
+                               "4. Go to Profile Settings\n" +
+                               "5. System Settings\n" +
                                "6. Logout\n"+
                                "______________________________________________\n"+
                                "Please select your choice: ");
@@ -52,10 +53,10 @@ public class EmployeeSubmenu implements ProgramMenu{
                     esubm.showOrderHistory();
                     break;
                 case 4:
-                    esubm.menuSettings();
+                    esubm.profileSettings();
                     break;
                 case 5:
-                    esubm.profileSettings();
+                    esubm.systemSettings();
                     break;
                 case 6:
                     break;

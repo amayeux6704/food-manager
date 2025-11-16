@@ -10,13 +10,14 @@ public class CustomerSubmenuManager {
     private CustomerSettingsSubmenu css;
     private PlaceOrderMenu orderMenu;
     
-    public CustomerSubmenuManager(CustomerManager cm, Customer customer, OrderManager gom, Menu menu){
+    public CustomerSubmenuManager(CustomerManager cm, Customer customer, OrderManager gom, Menu menu, 
+            Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this.cm = cm;
         this.customer = customer;
         this.om = customer.getOrderHistory();
         this.menu = menu;
         css = new CustomerSettingsSubmenu(this.cm, this.customer.getID());
-        orderMenu = new PlaceOrderMenu(this.customer, gom, this.menu);
+        orderMenu = new PlaceOrderMenu(this.customer, gom, this.menu, cc);
     }
     
     
@@ -33,7 +34,10 @@ public class CustomerSubmenuManager {
     }
     
     public void profileSettings(){
-        css.showMenu();
+        if(!customer.isGuest())
+            css.showMenu();
+        else
+            System.out.println("This option is reserved for customers with a user profile.\n");
     }
     
     public void showCurrentOrders(){

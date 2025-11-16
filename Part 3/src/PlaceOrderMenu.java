@@ -13,11 +13,11 @@ public class PlaceOrderMenu implements ProgramMenu{
     private PlaceOrderMenuManager pomm;
     private boolean finishOrder;
     
-    public PlaceOrderMenu(Customer customer, OrderManager gom, Menu menu){
+    public PlaceOrderMenu(Customer customer, OrderManager gom, Menu menu, CostCalculation cc){
         this.customer = customer;
         this.gom = gom;
         this.menu = menu;
-        pomm = new PlaceOrderMenuManager(this.customer, this.gom, this.menu);
+        pomm = new PlaceOrderMenuManager(this.customer, this.gom, this.menu, cc);
     }
     
     public void showMenu(){

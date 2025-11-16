@@ -1,22 +1,23 @@
 
 import java.util.Scanner;
 
+
 /**
  *
  * @author Alexander
  */
-public class GuestSubmenu implements ProgramMenu{
+public class SystemSettingsSubmenu implements ProgramMenu{
     
+    private Restaurant restaurant;
     private Menu menu;
-    private CustomerSubmenuManager csubm;
-    private CustomerManager cm;
-    private Customer guest;
+    private Inventory inventory;
+    private CostCalculation costCalculation;
     
-    public GuestSubmenu(CustomerManager cm, int id, OrderManager gom, Menu menu){
-        this.cm = cm;
-        guest = this.cm.searchCustomer(id);
+    public SystemSettingsSubmenu(Restaurant restaurant, Menu menu, Inventory inventory, CostCalculation costCalculation){
+        this.restaurant = restaurant;
         this.menu = menu;
-        csubm = new CustomerSubmenuManager(this.cm, guest, gom, this.menu);
+        this.inventory = inventory;
+        this.costCalculation = costCalculation;
     }
     
     @Override
@@ -24,14 +25,13 @@ public class GuestSubmenu implements ProgramMenu{
         byte choice = 0;
         Scanner input = new Scanner(System.in);
         do{
-            System.out.print("Welcome, Guest!\n"+
-                               "What would you like to do today?\n"+
+            System.out.print("Food Delivery Management System Settings\n"+
                                "______________________________________________\n"+
-                               "1. Place an Order\n"+
-                               "2. View Menu\n"+
-                               "3. View Current Orders\n" +
-                               "4. View Order History\n" +
-                               "5. Return to previous\n"+
+                               "1. Manage Restaurant Information\n"+
+                               "2. Manage Menu\n"+
+                               "3. Manage Inventory\n" +
+                               "4. Manage Cost Settings\n" +
+                               "5. Return to Employee Submenu\n"+
                                "______________________________________________\n"+
                                "Please select your choice: ");
             
@@ -41,18 +41,19 @@ public class GuestSubmenu implements ProgramMenu{
             
             switch(choice){
                 case 1:
-                    csubm.placeOrder();
+                    
                     break;
                 case 2:
-                    csubm.viewMenu();
+                    
                     break;
                 case 3:
-                    csubm.showCurrentOrders();
+                    
                     break;
                 case 4:
-                    csubm.showOrderHistory();
+                    
                     break;
                 case 5:
+                    
                     break;
                 default:
                     System.out.println("That choice was invalid..."+

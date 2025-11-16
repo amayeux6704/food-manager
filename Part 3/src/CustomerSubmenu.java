@@ -13,11 +13,12 @@ public class CustomerSubmenu implements ProgramMenu{
     private Customer customer;
     private int customerId;
     
-    public CustomerSubmenu(CustomerManager cm, int id, OrderManager gom, Menu menu){
+    public CustomerSubmenu(CustomerManager cm, int id, OrderManager gom, Menu menu, 
+            Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this.cm = cm;
         customerId = id;
         customer = this.cm.searchCustomer(customerId);
-        csubm = new CustomerSubmenuManager(this.cm, customer, gom, menu);
+        csubm = new CustomerSubmenuManager(this.cm, customer, gom, menu, restaurant, inventory, cc);
     }
     
     @Override

@@ -7,15 +7,17 @@ public class OrderPlacer {
     private Customer customer;
     private OrderManager gom;
     private Order order;
+    private CostCalculation cc;
     
-    public OrderPlacer(Customer customer, OrderManager gom, Menu menu){
+    public OrderPlacer(Customer customer, OrderManager gom, Menu menu, CostCalculation cc){
         this.customer = customer;
         this.gom = gom;
+        this.cc = cc;
     }
     
     public void initializeOrder(Menu menu){
         IDGenerator idgen = new IDGenerator();
-        this.order = new Order(idgen.generateId(gom), menu);
+        this.order = new Order(idgen.generateId(gom), menu, cc);
         this.order.setFulfillment(false);
         this.order.setCustomer(customer);
     }

@@ -15,11 +15,20 @@ public class EmployeeEntrySubmenu implements ProgramMenu{
     private EmployeeSubmenu es;
     private AccountScreen as;
     private OrderManager gom;
+    private Menu menu;
+    private Restaurant restaurant;
+    private Inventory inventory;
+    private CostCalculation cc;
     
-    public EmployeeEntrySubmenu(DeliveryPersonManager dpm, OrderManager gom){
+    public EmployeeEntrySubmenu(DeliveryPersonManager dpm, OrderManager gom, Menu menu,
+            Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this.dpm = dpm;
         this.gom = gom;
         as = new AccountScreen();
+        this.menu = menu;
+        this.restaurant = restaurant;
+        this.inventory = inventory;
+        this.cc = cc;
     }
     
     @Override
@@ -55,7 +64,7 @@ public class EmployeeEntrySubmenu implements ProgramMenu{
                     break;
             }
             if(deliveryPerson != null){
-                es = new EmployeeSubmenu(dpm, deliveryPerson.getID(), gom);
+                es = new EmployeeSubmenu(dpm, deliveryPerson.getID(), gom, menu, restaurant, inventory, cc);
                 es.showMenu();
             }
         }

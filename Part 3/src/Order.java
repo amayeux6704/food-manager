@@ -19,11 +19,12 @@ class Order {
     private CostCalculation costCalculation;
     private float taxRate = 0.04875f;
     
-    public Order(int id, Menu menu){
+    public Order(int id, Menu menu, CostCalculation costCalculation){
         
         this.dishes = new ArrayList<>();
         this.orderID = id;
         this.menu = menu;
+        this.costCalculation = costCalculation;
     }
     
     public int getOrderId(){return this.orderID;}
@@ -116,7 +117,6 @@ class Order {
     }
     
     public void calculateTotalCost(){
-        costCalculation = new CostCalculation();
         
         for(Dish dish: dishes){
             costCalculation.calculateDishSubTotal(dish);
