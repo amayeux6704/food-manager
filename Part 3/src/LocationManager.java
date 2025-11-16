@@ -17,6 +17,7 @@ public class LocationManager {
         if(locations.contains(oldLocation.toLowerCase())){
             this.locations.remove(oldLocation.toLowerCase());
             this.locations.add(newLocation.toLowerCase());
+            System.out.println("The location has been updated successfully.");
         } else {
             System.out.println("The given location could not be found. Update failed.");
         }
@@ -25,6 +26,7 @@ public class LocationManager {
     public void removeLocation(String location){
         if(locations.contains(location.toLowerCase())){
             this.locations.remove(location.toLowerCase());
+            System.out.println(location + " has been removed successfully.");
         } else {
             System.out.println("The given location could not be found for removal.");
         }

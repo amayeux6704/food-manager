@@ -43,4 +43,8 @@ public class CostCalculation {
     public void displayTotalCost(double totalCost){
         System.out.println("The total cost of the order is: $" + totalCost);
     }
+
+    public void displayTaxRate(){
+        System.out.println("Tax rate: " + this.taxRate + "%");
+    }
 }

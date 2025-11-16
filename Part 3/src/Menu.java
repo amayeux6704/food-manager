@@ -43,6 +43,10 @@ public class Menu {
         return sidesManager.getSides();
     }
 
+    public SidesManager getSidesManager(){
+        return sidesManager;
+    }
+
     public void addSide(String side){
         sidesManager.addSide(side);
     }
@@ -60,6 +64,11 @@ public class Menu {
     }
 
     public void menuDisplay(){
+        DishDisplay();
+        SideDisplay();
+    }
+
+    public void DishDisplay(){
         if(dishManager.getDishes().isEmpty()){
             System.out.println("The menu is empty");
         } else {
@@ -71,6 +80,9 @@ public class Menu {
                 }
             }
         }
+    }
+
+    public void SideDisplay(){
         System.out.println("-- Sides --");
         if(sidesManager.getSides().isEmpty()){
             System.out.println("The sides menu is empty");

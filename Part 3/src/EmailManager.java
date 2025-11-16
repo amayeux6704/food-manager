@@ -17,6 +17,8 @@ public class EmailManager {
         if(this.emails.contains(oldEmail.toLowerCase())){
             this.emails.remove(oldEmail.toLowerCase());
             this.emails.add(newEmail.toLowerCase());
+            System.out.println("The email has been updated successfully.");
+
         } else {
             System.out.println("The email address could not be found. Update failed.");
         }
@@ -25,6 +27,7 @@ public class EmailManager {
     public void removeEmail(String email){
         if(this.emails.contains(email.toLowerCase())){
             this.emails.remove(email.toLowerCase());
+            System.out.println(email + " has been removed successfully.");
         } else {
             System.out.println("The email address could not be found for removal.");
         }

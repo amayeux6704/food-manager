@@ -19,6 +19,7 @@ public class Restaurant {
 
     public void setName(String name){
         this.name = name;
+        System.out.println("Updated restaurant name to " + name);
     }
 
     public String getName(){

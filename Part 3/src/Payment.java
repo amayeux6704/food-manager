@@ -19,8 +19,14 @@ public class Payment {
         return currentPaymentMethod;
     }
 
-    public void setCurrentPayMethod(String currentPaymentMethod){
-        this.currentPaymentMethod = currentPaymentMethod;
+    public void setCurrentPayMethod(String givenMethod){
+        String potentialNewMethod = givenMethod.toLowerCase();
+        if (paymentMethods.contains(potentialNewMethod)){
+            this.currentPaymentMethod = potentialNewMethod;
+            System.out.println("Current payment method is now: " + potentialNewMethod);
+        } else {
+            System.out.println("The Given method does not exist");
+        }
     }
 
     public void addPayMethod(String newMethod){
@@ -33,7 +39,12 @@ public class Payment {
     }
 
     public void removePayMethod(String methodForRemoval){
+        String method = methodForRemoval.toLowerCase();
         if (paymentMethods.contains(methodForRemoval.toLowerCase())){
+            if (method.equals(this.currentPaymentMethod)){
+                System.out.println("Method selected is set as the current method and can not be removed");
+                return;
+            }
             paymentMethods.remove(methodForRemoval.toLowerCase());
             System.out.println(methodForRemoval.toLowerCase() + " payment method removed.");
         } else {
