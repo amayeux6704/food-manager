@@ -87,7 +87,7 @@ class EmployeeSubmenuManager {
     }
     
     public void systemSettings(){
-        
+        sss.showMenu();
     }
     
     public void profileSettings(){
