@@ -6,7 +6,8 @@ import java.util.ArrayList;
  */
 class Order {
     private int orderID;
-    private ArrayList<Dish> contents;
+    private ArrayList<Dish> dishes;
+    private ArrayList<Side> sides;
     private String time;
     private String date;
     private Customer customer;
@@ -20,9 +21,7 @@ class Order {
     
     public Order(int id, Menu menu){
         
-        this.contents = new ArrayList<>();
-        this.costCalculation = new CostCalculation();
-        
+        this.dishes = new ArrayList<>();
         this.orderID = id;
         this.menu = menu;
     }
@@ -39,9 +38,15 @@ class Order {
     
     public DeliveryPerson getDeliveryPerson(){return this.deliveryPerson;}
     
-    public ArrayList<Dish> getContents(){return this.contents;}
+    public ArrayList<Dish> getDishes(){return this.dishes;}
     
-    public int getNumContents(){return contents.size();}
+    public ArrayList<Side> getSides(){return this.sides;}
+    
+    public int getNumDishes(){return dishes.size();}
+    
+    public int getNumSides(){return sides.size();}
+    
+    public String getPayMethod(){return this.payment;}
     
     public void setTime(String time){this.time = time;}
     
@@ -58,37 +63,79 @@ class Order {
     public void addDish(int dishId){
         Dish dish = menu.findDish(dishId);
         
-        contents.add(dish);
-        costCalculation.calculateDishSubTotal(dish);
+        dishes.add(dish);
     }
     
     public void removeDish(int dishId){
         Dish dish = menu.findDish(dishId);
-        if(contents.contains(dish)){
+        if(dishes.contains(dish)){
         
-            contents.remove(dish);
+            dishes.remove(dish);
         }
         else{
             System.out.println("This order does not contain that dish");
         }
     }
     
-    public void displayContents(){
-        if(contents.isEmpty()){
-            System.out.println("Nothing has been added to this order.");
+    public void addSide(Side side){
+        
+        sides.add(side);
+    }
+    
+    public void removeSide(Side side){
+       
+        if(sides.contains(side)){
+        
+            sides.remove(side);
         }
         else{
-            for(Dish dish: contents){
+            System.out.println("This order does not contain that side");
+        }
+    }
+    
+    public void displayDishes(){
+        if(dishes.isEmpty()){
+            System.out.println("No dishes have been added to this order.");
+        }
+        else{
+            for(Dish dish: dishes){
                 System.out.println(dish);
             }
         }
     }
     
-    public double getTotalCost(){
+    public void displaySides(){
+        if(sides.isEmpty()){
+            System.out.println("No sides have been added to this order.");
+        }
+        else{
+            for(Side side: sides){
+                System.out.println(side);
+            }
+        }
+    }
+    
+    public void calculateTotalCost(){
+        costCalculation = new CostCalculation();
+        
+        for(Dish dish: dishes){
+            costCalculation.calculateDishSubTotal(dish);
+        }
         
         costCalculation.calculateTaxCost(taxRate);
         costCalculation.calculateTotalCost();
-        return this.costCalculation.getTotalCost();
+    }
+    public double getTaxCost(){return this.costCalculation.getTaxCost();}
+    
+    public double getTotalCost(){return this.costCalculation.getTotalCost();}
+    
+    public void displayTotalCost(){
+        if(costCalculation == null){
+            System.out.println("This order has not yet been calculated.");
+        }
+        else{
+            costCalculation.displayTotalCost(costCalculation.getTotalCost());
+        }
     }
     
     public void setFulfillment(boolean fulfilled) {this.fulfilled = fulfilled;}
@@ -106,15 +153,26 @@ class Order {
         else{dp = "Not Yet Assigned";}
         
         str = "Order for: " + customer.getName() + " (" + fulfillment + ")\n"+
+              "Customer #" + customer.getID() + "\n" +
               "______________________________________________\n"+
               "Order #" + getOrderId() + "\n" +
-              "Order Placed on " + getDate() + " " + getTime() + "\n";
-        
-        for(Dish dish: contents){
+              "Order Placed on " + getDate() + " " + getTime() + "\n"+
+              "______________________________________________\n"+
+              "Dishes:\n"+
+              "----------------------------------------------\n";
+        for(Dish dish: dishes){
             str += dish.getName() + ": " + dish.getPrice()+ "\n";
         }
-        
-        str += "Total: " + getTotalCost() + "\n" +
+        str += "Sides:\n"+
+               "----------------------------------------------\n";
+         for(Side side: sides){
+            str += side.getName() + "\n";
+        }
+        str += "______________________________________________\n"+
+               "Tax:   $" + getTaxCost() + "\n" +
+               "Total: $" + getTotalCost() + "\n" +
+               "Paid with: " + getPayMethod() + "\n"+
+               "----------------------------------------------\n"+
                "Delivery Driver: " + dp + "\n" +
                "Deliver to:\n" + 
                address.toString();

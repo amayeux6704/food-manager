@@ -20,15 +20,19 @@ public class OrderPlacer {
         this.order.setCustomer(customer);
     }
     
-    public void addItem(int dishId, int num){
+    public void addItem(int id, int num){
         for(int i = 1; i <= num; i++){
-            order.addDish(dishId);
+            order.addDish(id);
         }
+    }
+    
+    public void calculateCost(){
+        order.calculateTotalCost();
     }
     
     public void removeItem(int dishId){order.removeDish(dishId);}
     
-    public int getNumItems(){return order.getNumContents();}
+    public int getNumItems(){return order.getNumDishes();}
     
     public void showOrder(){System.out.println(order);}
     
@@ -37,9 +41,7 @@ public class OrderPlacer {
         rg.showReceipt(order);
     }
     
-    
-    public void setPayment(){
-        String payment = customer.getPrimaryPayment();
+    public void setPayment(String payment){
         order.setPayMethod(payment);
     }
     
@@ -54,6 +56,18 @@ public class OrderPlacer {
     public void placeOrder(){
         customer.getOrderHistory().addOrder(order);
         gom.addOrder(order);
+        
+        displayOrder();
+        System.out.println("\nYour order has been successfully placed!\n"+
+                           "Please make sure to save your order number so the delivery driver\n"+
+                           "can confirm your order.\n"+
+                           "If you are a guest, please make sure you copy your guest ID number\n"+
+                           "before you log out, since you won't be able to log back in to view\n"+
+                           "your order.\n");
+    }
+    
+    public void displayOrder(){
+        System.out.println(order);
     }
     
 }

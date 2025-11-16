@@ -8,7 +8,7 @@ public class CustomerSubmenuManager {
     private OrderManager om;
     private Menu menu;
     private CustomerSettingsSubmenu css;
-    private PlaceOrderScreen orderScreen;
+    private PlaceOrderMenu orderMenu;
     
     public CustomerSubmenuManager(CustomerManager cm, Customer customer, OrderManager gom, Menu menu){
         this.cm = cm;
@@ -16,12 +16,12 @@ public class CustomerSubmenuManager {
         this.om = customer.getOrderHistory();
         this.menu = menu;
         css = new CustomerSettingsSubmenu(this.cm, this.customer.getID());
-        orderScreen = new PlaceOrderScreen(this.customer, gom, this.menu);
+        orderMenu = new PlaceOrderMenu(this.customer, gom, this.menu);
     }
     
     
     public void placeOrder(){
-       orderScreen.showScreen();
+       orderMenu.showMenu();
     }
     
     public void viewMenu(){

@@ -21,7 +21,7 @@ class EmployeeSubmenuManager {
     }
     
     public void showAvailableOrders() {
-        if(gom.showUnfulfilledOrders()){
+        if(gom.showAvaliableOrders()){
             char yesNo;
             int choice;
             Scanner input = new Scanner(System.in);
@@ -40,6 +40,9 @@ class EmployeeSubmenuManager {
                     order.setDeliveryPerson(deliveryPerson);
                     om.addOrder(order);
                     System.out.println("You have been assigned Order #" + order.getOrderId() + "\n");
+                }
+                else{
+                    System.out.println("That order does not exitst.\n");
                 }
             }
             else{

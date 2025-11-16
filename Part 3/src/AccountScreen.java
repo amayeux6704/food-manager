@@ -154,7 +154,7 @@ public class AccountScreen {
  
         IDGenerator idgen = new IDGenerator();
             
-        int id = idgen.generateId(cm, false);
+        int id = idgen.generateId(cm, true);
         Customer guest = new Customer("Guest", id, true);
         
         cm.addCustomer(guest);

@@ -40,34 +40,58 @@ public class OrderManager {
     }
     
     public void showOrderHistory(){
-        if(orders.isEmpty()){System.out.println("There are no orders here yet!\n");}
+        if(orders.isEmpty()){noOrdersHerePrompt();}
         else
         {
             for(int id: orders.keySet()){
                 Order order = searchOrder(id);
-                System.out.println(order);
-                System.out.println("______________________________________________\n");
+                displayOrder(order);
             }
         }
+    }
+    
+    public boolean showAvaliableOrders(){
+        boolean noneAvailable = true;
+        
+        if(orders.isEmpty()){noOrdersHerePrompt();}
+        else
+        {
+            for(int id: orders.keySet()){
+                Order order = searchOrder(id);
+                    if(order.getDeliveryPerson() == null){
+                        noneAvailable = false;
+                        displayOrder(order);
+                }
+            }
+        }
+        if(noneAvailable){noOrdersHerePrompt();}
+        
+        return !noneAvailable;
     }
     
     public boolean showUnfulfilledOrders(){
         boolean allFulfilled = true;
         
-        if(orders.isEmpty()){System.out.println("There are no orders here yet!\n");}
+        if(orders.isEmpty()){noOrdersHerePrompt();}
         else
         {
             for(int id: orders.keySet()){
                 Order order = searchOrder(id);
                     if(!order.isFulfilled()){
                         allFulfilled = false;
-                        System.out.println(order);
-                        System.out.println("______________________________________________\n");
+                        displayOrder(order);
                 }
             }
             if(allFulfilled){System.out.println("All orders have been fulfilled!\n");}
         }
         
         return !allFulfilled;
+    }
+    
+    public void noOrdersHerePrompt(){System.out.println("There are no orders here yet!\n");}
+    
+    public void displayOrder(Order order){
+        System.out.println(order);
+        System.out.println("______________________________________________\n");
     }
 }

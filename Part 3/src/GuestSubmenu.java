@@ -60,6 +60,6 @@ public class GuestSubmenu implements ProgramMenu{
                     break;
             }
         }
-        while(choice != 4);
+        while(choice != 5);
     }
 }

@@ -33,8 +33,8 @@ public class InitialDataGenerator {
         
         String c1Payment = "MasterCard";
         
-        c1.addPayMethod(c1Payment);
-        c1.setPrimaryPayment(c1Payment);
+        c1.getPayment().addPayMethod(c1Payment);
+        c1.getPayment().setCurrentPayMethod(c1Payment);
         
         int addrId1 = idGen.generateId(c1.getAddressManager());
         
@@ -58,8 +58,8 @@ public class InitialDataGenerator {
         
         String c2Payment = "Visa";
         
-        c2.addPayMethod(c2Payment);
-        c2.setPrimaryPayment(c2Payment);
+        c2.getPayment().addPayMethod(c2Payment);
+        c2.getPayment().setCurrentPayMethod(c2Payment);
         
         int addrId2 = idGen.generateId(c2.getAddressManager());
         

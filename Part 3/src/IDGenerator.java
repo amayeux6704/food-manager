@@ -35,9 +35,9 @@ public class IDGenerator {
         
         int id = baseId;
         
-        while(om.searchOrder(id) != null)
-            id++;
         
+        do{id++;}
+        while(om.searchOrder(id) != null);
         return id;
     }
     

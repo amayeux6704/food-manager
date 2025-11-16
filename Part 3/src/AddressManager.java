@@ -32,6 +32,8 @@ public class AddressManager {
     
     public int getPrimaryAddressID(){return this.primaryId;}
     
+    public boolean hasPrimaryAddress(){return getPrimaryAddressID() != 0;}
+    
     public void deleteAddress(int id){
         
         if(searchAddress(id) != null){
