@@ -8,17 +8,52 @@ public class InitialDataGenerator {
     private DeliveryPersonManager dpm;
     private OrderManager gom;
     private Menu menu;
+    private Restaurant restaurant;
     
-    public InitialDataGenerator(CustomerManager cm, DeliveryPersonManager dpm, OrderManager gom, Menu menu){
+    public InitialDataGenerator(CustomerManager cm, DeliveryPersonManager dpm, OrderManager gom, Menu menu, Restaurant restaurant, Inventory inventory){
         this.cm = cm;
         this.dpm = dpm;
         this.gom = gom;
         this.menu = menu;
+        this.restaurant = restaurant;
+        this.inventory = inventory;
     }
     
     public void generateDummyData(){
         generateDummyCustomers();
         generateDummyDeliveryPeople();
+        generateDummyMenu();
+        generateDummyInventory();
+        generateDummyRestaurant();
+    }
+
+    public void generateDummyInventory(){   
+        inventory.addOrUpdateItem("tomato", 100);
+        inventory.addOrUpdateItem("cheese", 1000);
+        inventory.addOrUpdateItem("dough", 75);
+        inventory.addOrUpdateItem("noodles", 50);
+        inventory.addOrUpdateItem("patties", 125);
+    }
+
+    public void generateDummyMenu(){
+        menu.addDish("pizza", 9.99);
+        menu.addDish("burger", 5.99);
+        menu.addDish("pasta", 7.99);
+    }
+
+    public void generateDummyRestaurant(){
+        restaurant.setName("Template Name");
+
+        restaurant.addLocation("ABC Street");
+        restaurant.addLocation("123 Avenue");
+
+        restaurant.setOpenHours("10AM-7PM");
+
+        restaurant.addPhoneNumber("123-456-7890");
+        restaurant.addPhoneNumber("098-765-4321");
+
+        restaurant.addEmail("yahoo@templatename.com");
+        restaurant.addEmail("hamee@templatename.com");
     }
     
     public void generateDummyCustomers(){
