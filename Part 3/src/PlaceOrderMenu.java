@@ -13,11 +13,12 @@ public class PlaceOrderMenu implements ProgramMenu{
     private PlaceOrderMenuManager pomm;
     private boolean finishOrder;
     
-    public PlaceOrderMenu(Customer customer, OrderManager gom, Menu menu, CostCalculation cc){
+    public PlaceOrderMenu(Customer customer, OrderManager gom, Menu menu, CostCalculation cc,
+            Inventory inventory){
         this.customer = customer;
         this.gom = gom;
         this.menu = menu;
-        pomm = new PlaceOrderMenuManager(this.customer, this.gom, this.menu, cc);
+        pomm = new PlaceOrderMenuManager(this.customer, this.gom, this.menu, cc, inventory);
     }
     
     public void showMenu(){
@@ -31,7 +32,7 @@ public class PlaceOrderMenu implements ProgramMenu{
                                "2. Add Side\n"+
                                "3. Remove Dish\n" +
                                "4. Remove Side\n" +
-                               "5. Continue to payment\n" +
+                               "5. View Order/Continue to payment\n" +
                                "6. Cancel Order\n" +
                                "______________________________________________\n"+
                                "Please select your choice: ");

@@ -35,6 +35,29 @@ class EmployeeSettingsManager {
         System.out.println("Your name has been successfully updated!\n");
     }
     
+    public void updateEmail(int id){
+        Scanner input = new Scanner(System.in);
+        char choice;
+        DeliveryPerson deliveryPerson = deliveryPersonManager.searchDeliveryPerson(id);
+        
+        System.out.println("Current email address: " + deliveryPerson.getEmail());
+        System.out.print("Are you sure you want to change this email address? y/n: ");
+        
+        choice = input.nextLine().charAt(0);
+        
+        if(Character.toLowerCase(choice) == 'y'){
+            String newEmail;
+            System.out.print("Please enter your updated email address: ");
+            newEmail = input.nextLine();
+            
+            deliveryPerson.setEmail(newEmail);
+            System.out.println("Your email address has been successfully changed!\n");
+        }
+        else{
+            System.out.println("Operation cancelled.\n");
+        }
+    }
+    
     public void updatePassword(int id){
         Scanner input = new Scanner(System.in);
         DeliveryPerson deliveryPerson = deliveryPersonManager.searchDeliveryPerson(id);

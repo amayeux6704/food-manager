@@ -17,9 +17,8 @@ public class CustomerSubmenuManager {
         this.om = customer.getOrderHistory();
         this.menu = menu;
         css = new CustomerSettingsSubmenu(this.cm, this.customer.getID());
-        orderMenu = new PlaceOrderMenu(this.customer, gom, this.menu, cc);
+        orderMenu = new PlaceOrderMenu(this.customer, gom, this.menu, cc, inventory);
     }
-    
     
     public void placeOrder(){
        orderMenu.showMenu();

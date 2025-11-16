@@ -5,6 +5,11 @@ public class RestaurantManagementMenu {
     private Scanner scanner = new Scanner(System.in);
     private Restaurant restaurant = new Restaurant("Template Name");
 
+    public RestaurantManagementMenu(Restaurant restaurant, Scanner scanner){
+        this.scanner = scanner;
+        this.restaurant = restaurant;
+    }
+    
     public void showMenu(){
         LocationManagementMenu locationManagementMenu = new LocationManagementMenu(scanner, restaurant);
         PhoneNumberManagementMenu phoneNumberManagementMenu = new PhoneNumberManagementMenu(scanner, restaurant);

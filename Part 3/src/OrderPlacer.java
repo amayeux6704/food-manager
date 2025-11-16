@@ -8,11 +8,18 @@ public class OrderPlacer {
     private OrderManager gom;
     private Order order;
     private CostCalculation cc;
+    private Inventory inventory;
+    private Menu menu;
+    private OrderInventoryChanger oic;
     
-    public OrderPlacer(Customer customer, OrderManager gom, Menu menu, CostCalculation cc){
+    public OrderPlacer(Customer customer, OrderManager gom, Menu menu, CostCalculation cc,
+            Inventory inventory){
         this.customer = customer;
         this.gom = gom;
         this.cc = cc;
+        this.inventory = inventory;
+        this.menu = menu;
+        oic = new OrderInventoryChanger(this.inventory);
     }
     
     public void initializeOrder(Menu menu){
@@ -22,17 +29,37 @@ public class OrderPlacer {
         this.order.setCustomer(customer);
     }
     
-    public void addItem(int id, int num){
+    public void addDish(int id, int num){
         for(int i = 1; i <= num; i++){
             order.addDish(id);
         }
+        Dish dish = menu.findDish(id);
+        oic.decreaseInventory(dish);
+    }
+    
+    public void addSide(Side side, int num){
+        for(int i = 1; i <= num; i++){
+            order.addSide(side);
+        }
+        oic.decreaseInventory(side);
     }
     
     public void calculateCost(){
         order.calculateTotalCost();
     }
     
-    public void removeItem(int dishId){order.removeDish(dishId);}
+    public void removeDish(int dishId){
+        order.removeDish(dishId);
+        
+        Dish dish = menu.findDish(dishId);
+        oic.increaseInventory(dish);
+    }
+    
+    public void removeSide(Side side){
+        order.removeSide(side);
+        
+        oic.increaseInventory(side);
+    }
     
     public int getNumItems(){return order.getNumDishes();}
     

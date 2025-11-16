@@ -27,7 +27,6 @@
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Person.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/OrderManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/IDGenerator.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/GuestSubmenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/PhoneNumberManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/PhoneSubmenuManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/PhoneSubmenu.java</file>
@@ -63,6 +62,8 @@
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/DishManagementMenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/PhoneNumberManagementMenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/IngredientManagementMenu.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/SystemSettingsSubmenu.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/CostCalculationMenu.java</file>
         </group>
     </open-files>
 </project-private>

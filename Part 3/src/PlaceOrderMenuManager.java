@@ -18,12 +18,15 @@ public class PlaceOrderMenuManager {
     private Menu menu;
     private OrderAddressPlacer oap;
     private OrderPaymentPlacer opp;
+    private Inventory inventory;
     
-    public PlaceOrderMenuManager(Customer customer, OrderManager gom, Menu menu, CostCalculation cc){
+    public PlaceOrderMenuManager(Customer customer, OrderManager gom, Menu menu, CostCalculation cc,
+            Inventory inventory){
         this.customer = customer;
         this.gom = gom;
         this.menu = menu;
-        op = new OrderPlacer(this.customer, this.gom, this.menu, cc);
+        this.inventory = inventory;
+        op = new OrderPlacer(this.customer, this.gom, this.menu, cc, inventory);
         op.initializeOrder(menu);
         oap = new OrderAddressPlacer(this.customer, op);
         opp = new OrderPaymentPlacer(this.customer, op);
@@ -53,14 +56,14 @@ public class PlaceOrderMenuManager {
         char cont;
         
         do{
-            int id;
+            String side;
             
             System.out.print("Please enter the name of the side you wish to add to your order: ");
-            id = input.nextInt();
-            searchDishToAdd(id);
+            side = input.nextLine();
+            searchSideToAdd(side);
+            
             
             System.out.print("Would you like to add any other sides to your order? y/n: ");
-            input.nextLine();
             cont = input.nextLine().charAt(0);
         }
         while(cont == 'y');
@@ -89,14 +92,13 @@ public class PlaceOrderMenuManager {
         char cont;
         
         do{
-            int id;
+            String side;
             
             System.out.print("Please enter the name of the side you wish to remove from your order: ");
-            id = input.nextInt();
-            searchDishToRemove(id);
+            side = input.nextLine();
+            searchSideToRemove(side);
             
             System.out.print("Would you like to remove any other sides from your order? y/n: ");
-            input.nextLine();
             cont = input.nextLine().charAt(0);
         }
         while(cont == 'y');
@@ -112,8 +114,11 @@ public class PlaceOrderMenuManager {
             num = input.nextInt();
             
             if(num > 0){
-                op.addItem(id, num);
+                op.addDish(id, num);
                 System.out.println("Dish has been added successfully!\n");
+            }
+            else{
+                System.out.println("No dishes have been added to your order.\n");
             }
         }
         else{
@@ -121,20 +126,54 @@ public class PlaceOrderMenuManager {
         }
     }
     
-     public void searchDishToRemove(int id){
-        Scanner input = new Scanner(System.in);
+    public void searchDishToRemove(int id){
         
         if(menu.findDish(id) != null){
             
-            op.removeItem(id);
-            System.out.println("Dish has been removed successfully!\n");
-            
+            op.removeDish(id);   
         }
         else{
             System.out.println("That dish does not exist.\n");
         }
     }
     
+    public void searchSideToAdd(String sideName){
+        Scanner input = new Scanner(System.in);
+        
+        for(Side side: menu.getSides()){
+            
+            if(side.getName().equals(sideName)){
+                int num;
+                
+                System.out.print("How many of these would you like to add to your order?: ");
+                num = input.nextInt();
+                
+                if(num > 0){
+                    op.addSide(side, num);
+                    System.out.println("Side has been added successfully!\n");
+                    return;
+                }
+                else{
+                    System.out.println("No sides have been added to your order.\n");
+                    return;
+                }
+            }
+        }
+        
+        System.out.println("That side does not exist.\n");
+    }
+    
+    public void searchSideToRemove(String sideName){
+        for(Side side: menu.getSides()){
+            if(side.getName().equals(sideName)){
+                op.removeSide(side);
+                return;
+            }
+        }
+        
+        System.out.println("That side does not exist.\n");
+    }
+     
     public boolean finishOrder(){
         
         if(confirmOrder()){

@@ -12,6 +12,7 @@ class EmployeeSubmenuManager {
     private EmployeeSettingsSubmenu ess;
     private DeliveryPerson deliveryPerson;
     private SystemSettingsSubmenu sss;
+    private Scanner input = new Scanner(System.in);
     
     public EmployeeSubmenuManager(DeliveryPersonManager dpm, DeliveryPerson deliveryPerson, OrderManager gom, 
             Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation cc){
@@ -20,14 +21,13 @@ class EmployeeSubmenuManager {
         this.om = deliveryPerson.getOrderHistory();
         this.deliveryPerson = deliveryPerson;
         this.ess = new EmployeeSettingsSubmenu(this.dpm, this.deliveryPerson.getID());
-        this.sss = new SystemSettingsSubmenu(restaurant, menu, inventory, cc);
+        this.sss = new SystemSettingsSubmenu(restaurant, menu, inventory, cc, input);
     }
     
     public void showAvailableOrders() {
         if(gom.showAvaliableOrders()){
             char yesNo;
             int choice;
-            Scanner input = new Scanner(System.in);
             
             System.out.print("Would you like to take on any of these orders? y/n: ");
             yesNo = input.nextLine().charAt(0);
@@ -59,7 +59,6 @@ class EmployeeSubmenuManager {
         if(om.showUnfulfilledOrders()){
             char yesNo;
             int choice;
-            Scanner input = new Scanner(System.in);
             
             System.out.print("Have you fulfilled any of these orders yet? y/n: ");
             yesNo = input.nextLine().charAt(0);

@@ -32,12 +32,13 @@ public class CustomerSettingsSubmenu implements ProgramMenu{
                                "______________________________________________\n"+
                                "1. View Customer Information\n"+
                                "2. Update Name\n"+
-                               "3. Update Password\n"+
-                               "4. Manage Addresses\n"+
-                               "5. Manage Phone Numbers\n"+
-                               "6. Manage Payment Information\n"+
-                               "7. Delete Account\n" +
-                               "8. Return to Previous\n"+
+                               "3. Update Email\n" +
+                               "4. Update Password\n"+
+                               "5. Manage Addresses\n"+
+                               "6. Manage Phone Numbers\n"+
+                               "7. Manage Payment Information\n"+
+                               "8. Delete Account\n" +
+                               "9. Return to Previous\n"+
                                "______________________________________________\n"+
                                "Please select your choice: ");
             
@@ -54,22 +55,25 @@ public class CustomerSettingsSubmenu implements ProgramMenu{
                     csm.updateName(customerId);
                     break;
                 case 3:
-                    csm.updatePassword(customerId);
+                    csm.updateEmail(customerId);
                     break;
                 case 4:
-                    as.showMenu();
+                    csm.updatePassword(customerId);
                     break;
                 case 5:
-                    ps.showMenu();
+                    as.showMenu();
                     break;
                 case 6:
+                    ps.showMenu();
+                    break;
+                case 7:
                     PaymentManagementMenu pmm = new PaymentManagementMenu(customer.getPayment(), input);
                     pmm.showMenu();
                     break;
-                case 7:
+                case 8:
                     csm.removeCustomer(customerId);
                     break;
-                case 8:
+                case 9:
                     break;
                 default:
                     System.out.println("That choice was invalid..."+
@@ -77,6 +81,6 @@ public class CustomerSettingsSubmenu implements ProgramMenu{
                     break;
             }
         }
-        while(choice != 8 && cm.searchCustomer(customerId) != null);
+        while(choice != 9 && cm.searchCustomer(customerId) != null);
     }
 }

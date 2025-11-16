@@ -31,11 +31,12 @@ public class EmployeeSettingsSubmenu implements ProgramMenu{
                                "______________________________________________\n"+
                                "1. View Employee Information\n"+
                                "2. Update Name\n"+
-                               "3. Update Password\n"+
-                               "4. Manage Vehicle\n"+
-                               "5. Manage Phone Numbers\n"+
-                               "6. Delete Account\n" +
-                               "7. Return to Previous\n"+
+                               "3. Update Email Address\n"+
+                               "4. Update Password\n"+
+                               "5. Manage Vehicle\n"+
+                               "6. Manage Phone Numbers\n"+
+                               "7. Delete Account\n" +
+                               "8. Return to Previous\n"+
                                "______________________________________________\n"+
                                "Please select your choice: ");
             
@@ -52,18 +53,21 @@ public class EmployeeSettingsSubmenu implements ProgramMenu{
                     estm.updateName(employeeId);
                     break;
                 case 3:
-                    estm.updatePassword(employeeId);
+                    estm.updateEmail(employeeId);
                     break;
                 case 4:
-                    vs.showMenu();
+                    estm.updatePassword(employeeId);
                     break;
                 case 5:
-                    ps.showMenu();
+                    vs.showMenu();
                     break;
                 case 6:
-                    estm.removeEmployee(employeeId);
+                    ps.showMenu();
                     break;
                 case 7:
+                    estm.removeEmployee(employeeId);
+                    break;
+                case 8:
                     break;
                 default:
                     System.out.println("That choice was invalid..."+
@@ -71,6 +75,6 @@ public class EmployeeSettingsSubmenu implements ProgramMenu{
                     break;
             }
         }
-        while(choice != 7 && dpm.searchDeliveryPerson(employeeId) != null);
+        while(choice != 8 && dpm.searchDeliveryPerson(employeeId) != null);
     }
 }

@@ -30,6 +30,29 @@ public class CustomerSettingsManager {
         System.out.println("Your name has been successfully updated!\n");
     }
     
+    public void updateEmail(int id){
+        Scanner input = new Scanner(System.in);
+        char choice;
+        Customer customer = customerManager.searchCustomer(id);
+        
+        System.out.println("Current email address: " + customer.getEmail());
+        System.out.print("Are you sure you want to change this email address? y/n: ");
+        
+        choice = input.nextLine().charAt(0);
+        
+        if(Character.toLowerCase(choice) == 'y'){
+            String newEmail;
+            System.out.print("Please enter your updated email address: ");
+            newEmail = input.nextLine();
+            
+            customer.setEmail(newEmail);
+            System.out.println("Your email address has been successfully changed!\n");
+        }
+        else{
+            System.out.println("Operation cancelled.\n");
+        }
+    }
+    
     public void updatePassword(int id){
         Scanner input = new Scanner(System.in);
         Customer customer = customerManager.searchCustomer(id);

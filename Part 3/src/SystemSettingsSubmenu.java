@@ -11,7 +11,8 @@ public class SystemSettingsSubmenu implements ProgramMenu{
     private CostCalculation costCalculation;
     private Scanner scanner;
     
-    public SystemSettingsSubmenu(Restaurant restaurant, Menu menu, Inventory inventory, CostCalculation costCalculation, Scanner scanner){
+    public SystemSettingsSubmenu(Restaurant restaurant, Menu menu, Inventory inventory,
+            CostCalculation costCalculation, Scanner scanner){
         this.restaurant = restaurant;
         this.menu = menu;
         this.inventory = inventory;

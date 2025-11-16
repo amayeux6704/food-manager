@@ -22,6 +22,7 @@ class Order {
     public Order(int id, Menu menu, CostCalculation costCalculation){
         
         this.dishes = new ArrayList<>();
+        this.sides = new ArrayList<>();
         this.orderID = id;
         this.menu = menu;
         this.costCalculation = costCalculation;
@@ -72,6 +73,7 @@ class Order {
         if(dishes.contains(dish)){
         
             dishes.remove(dish);
+            System.out.println("Dish has been removed successfully!\n");
         }
         else{
             System.out.println("This order does not contain that dish");
@@ -88,6 +90,7 @@ class Order {
         if(sides.contains(side)){
         
             sides.remove(side);
+            System.out.println("Side has been removed successfully!\n");
         }
         else{
             System.out.println("This order does not contain that side");
@@ -163,9 +166,9 @@ class Order {
         for(Dish dish: dishes){
             str += dish.getName() + ": " + dish.getPrice()+ "\n";
         }
-        str += "Sides:\n"+
+        str += "\nSides:\n"+
                "----------------------------------------------\n";
-         for(Side side: sides){
+        for(Side side: sides){
             str += side.getName() + "\n";
         }
         str += "______________________________________________\n"+

@@ -23,35 +23,74 @@ public class InitialDataGenerator {
         this.costCalculation = costCalculation;
     }
     
-    public void initializeCostCalculation(){
+    private void initializeCostCalculation(){
         float taxRate = 0.04875f;
         costCalculation.setTaxRate(taxRate);
     }
     
     public void generateDummyData(){
+        System.out.println("Initializing Data...");
         generateDummyCustomers();
         generateDummyDeliveryPeople();
         generateDummyMenu();
         generateDummyInventory();
         generateDummyRestaurant();
         initializeCostCalculation();
+        System.out.println("");
     }
 
-    public void generateDummyInventory(){   
+    private void generateDummyInventory(){   
         inventory.addOrUpdateItem("tomato", 100);
         inventory.addOrUpdateItem("cheese", 1000);
         inventory.addOrUpdateItem("dough", 75);
         inventory.addOrUpdateItem("noodles", 50);
         inventory.addOrUpdateItem("patties", 125);
+        inventory.addOrUpdateItem("bun", 250);
+        inventory.addOrUpdateItem("potato", 200);
     }
 
-    public void generateDummyMenu(){
+    private void generateDummyMenu(){
         menu.addDish("pizza", 9.99);
+        
+        RecipeManager pizzaRecipe = new RecipeManager();
+        pizzaRecipe.addIngredient("tomato", 5);
+        pizzaRecipe.addIngredient("cheese", 5);
+        pizzaRecipe.addIngredient("dough", 2);
+        
+        menu.addDishRecipe(1, pizzaRecipe);
+        
         menu.addDish("burger", 5.99);
+        
+        RecipeManager burgerRecipe = new RecipeManager();
+        burgerRecipe.addIngredient("patties", 1);
+        burgerRecipe.addIngredient("bun", 2);
+        
+        menu.addDishRecipe(2, burgerRecipe);
+        
         menu.addDish("pasta", 7.99);
+        
+        RecipeManager pastaRecipe = new RecipeManager();
+        pastaRecipe.addIngredient("noodles", 2);
+        pastaRecipe.addIngredient("tomato", 5);
+        
+        menu.addDishRecipe(3, pastaRecipe);
+        
+        menu.addSide("french fries");
+        
+        RecipeManager friesRecipe = new RecipeManager();
+        friesRecipe.addIngredient("potato", 5);
+        
+        menu.addSideRecipe(friesRecipe, "french fries");
+        
+        menu.addSide("breadsticks");
+        
+        RecipeManager breadsticksRecipe = new RecipeManager();
+        breadsticksRecipe.addIngredient("dough", 1);
+        
+        menu.addSideRecipe(breadsticksRecipe, "breadsticks");
     }
 
-    public void generateDummyRestaurant(){
+    private void generateDummyRestaurant(){
         restaurant.setName("Template Name");
 
         restaurant.addLocation("ABC Street");
@@ -66,7 +105,7 @@ public class InitialDataGenerator {
         restaurant.addEmail("hamee@templatename.com");
     }
     
-    public void generateDummyCustomers(){
+    private void generateDummyCustomers(){
         
         IDGenerator idGen = new IDGenerator();
         
@@ -121,7 +160,7 @@ public class InitialDataGenerator {
         cm.addCustomer(c2);
     }
     
-    public void generateDummyDeliveryPeople(){
+    private void generateDummyDeliveryPeople(){
         IDGenerator idGen = new IDGenerator();
         
         int id1 = idGen.generateId(dpm);
