@@ -23,12 +23,13 @@ Tasks:
 	EmployeeSettingsSubmenu
 	EmployeeSubmenu
 	EmployeeSubmenuManager
-	GuestSubmenu
 	IDGenerator
 	InitialDataGenerator
 	Main
 	MainMenu
+	Order
 	OrderAddressPlacer
+	OrderInventoryChanger
 	OrderManager
 	OrderPaymentPlacer
 	OrderPlacer
