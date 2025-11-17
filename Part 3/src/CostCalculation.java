@@ -30,7 +30,7 @@ public class CostCalculation {
     }
 
     public void calculateTaxCost(){
-        double unrounded = (this.taxRate/100) * subTotal;
+        double unrounded = (taxRate/100) * subTotal;
         this.taxCost = Math.round(unrounded * 100.0) / 100.0;
     }
 
