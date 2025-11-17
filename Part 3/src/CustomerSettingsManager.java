@@ -91,7 +91,7 @@ public class CustomerSettingsManager {
         
         choice = input.nextLine().charAt(0);
         
-        if(choice == 'y'){
+        if(choice == 'y' && confirmWithPassword(input, id)){
             customerManager.removeCustomer(id);
             
             System.out.println("Your account has been successfully deleted.\n"+
@@ -99,6 +99,35 @@ public class CustomerSettingsManager {
         }
         else{
             System.out.println("Operation cancelled.\n");
+        }
+    }
+    
+    public boolean confirmWithPassword(Scanner input, int id){
+        
+        String confirmPassword1;
+        String confirmPassword2;
+        
+        System.out.print("Please enter your password: ");
+        
+        confirmPassword1 = input.nextLine();
+        
+        if(confirmPassword1.equals(customerManager.searchCustomer(id).getPassword())){
+            System.out.print("Please enter your password again to confirm: ");
+            
+            confirmPassword2 = input.nextLine();
+            
+            if(confirmPassword2.equals(confirmPassword1)){
+                System.out.println("Operation Confirmed.");
+                return true;
+            }
+            else{
+                System.out.println("The entered passwords do not match.");
+                return false;
+            }
+        }
+        else{
+            System.out.println("Incorrect password.");
+            return false;
         }
     }
 }

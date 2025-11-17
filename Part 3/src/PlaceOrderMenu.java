@@ -22,6 +22,7 @@ public class PlaceOrderMenu implements ProgramMenu{
     }
     
     public void showMenu(){
+        pomm.createNewOrder();
         this.finishOrder = false;
         byte choice = 0;
         Scanner input = new Scanner(System.in);
@@ -32,7 +33,7 @@ public class PlaceOrderMenu implements ProgramMenu{
                                "2. Add Side\n"+
                                "3. Remove Dish\n" +
                                "4. Remove Side\n" +
-                               "5. View Order/Continue to payment\n" +
+                               "5. View/Continue to Place Order\n" +
                                "6. Cancel Order\n" +
                                "______________________________________________\n"+
                                "Please select your choice: ");

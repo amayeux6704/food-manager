@@ -8,8 +8,6 @@ class Order {
     private int orderID;
     private ArrayList<Dish> dishes;
     private ArrayList<Side> sides;
-    private String time;
-    private String date;
     private Customer customer;
     private Address address;
     private DeliveryPerson deliveryPerson;
@@ -17,7 +15,7 @@ class Order {
     private String payment;
     private boolean fulfilled;
     private CostCalculation costCalculation;
-    private float taxRate = 0.04875f;
+    private double taxRate;
     
     public Order(int id, Menu menu, CostCalculation costCalculation){
         
@@ -25,14 +23,10 @@ class Order {
         this.sides = new ArrayList<>();
         this.orderID = id;
         this.menu = menu;
-        this.costCalculation = costCalculation;
+        taxRate = costCalculation.getTaxRate();
     }
     
     public int getOrderId(){return this.orderID;}
-    
-    public String getTime(){return this.time;}
-    
-    public String getDate(){return this.date;}
     
     public Customer getCustomer(){return this.customer;}
     
@@ -49,10 +43,6 @@ class Order {
     public int getNumSides(){return sides.size();}
     
     public String getPayMethod(){return this.payment;}
-    
-    public void setTime(String time){this.time = time;}
-    
-    public void setDate(String date){this.date = date;}
     
     public void setCustomer(Customer customer){this.customer = customer;}
     
@@ -120,6 +110,8 @@ class Order {
     }
     
     public void calculateTotalCost(){
+        costCalculation = new CostCalculation();
+        costCalculation.setTaxRate(taxRate);
         
         for(Dish dish: dishes){
             costCalculation.calculateDishSubTotal(dish);
@@ -141,6 +133,24 @@ class Order {
         }
     }
     
+    public void displayTaxRate(){
+        if(costCalculation == null){
+            System.out.println("This order has not yet been calculated.");
+        }
+        else{
+            costCalculation.displayTaxRate();
+        }
+    }
+    
+    public void displayTaxCost(){
+        if(costCalculation == null){
+            System.out.println("This order has not yet been calculated.");
+        }
+        else{
+            System.out.println("Tax cost: " + getTaxCost());
+        }
+    }
+    
     public void setFulfillment(boolean fulfilled) {this.fulfilled = fulfilled;}
     
     public boolean isFulfilled(){return this.fulfilled;}
@@ -159,7 +169,6 @@ class Order {
               "Customer #" + customer.getID() + "\n" +
               "______________________________________________\n"+
               "Order #" + getOrderId() + "\n" +
-              "Order Placed on " + getDate() + " " + getTime() + "\n"+
               "______________________________________________\n"+
               "Dishes:\n"+
               "----------------------------------------------\n";

@@ -33,6 +33,10 @@ public class PlaceOrderMenuManager {
         
     }
     
+    public void createNewOrder(){
+        op.initializeOrder(menu);
+    }
+    
     public void addDishes(){
         Scanner input = new Scanner(System.in);
         char cont;
@@ -195,16 +199,23 @@ public class PlaceOrderMenuManager {
     }
      
     public boolean confirmOrder(){
-        showOrderReceipt();
-        Scanner input = new Scanner(System.in);
-        char choice;
-        System.out.print("Are you ready to place this order? y/n: ");
-        choice = input.nextLine().charAt(0);
-        
-        if(choice == 'y'){return true;}
-        else{
-            System.out.println("Operation cancelled.\n");
+        if(op.emptyOrder()){
+            System.out.println("This order cannot be placed because it is empty.\n");
             return false;
+        }
+        else{
+            op.calculateCost();
+            showOrderReceipt();
+            Scanner input = new Scanner(System.in);
+            char choice;
+            System.out.print("Are you ready to place this order? y/n: ");
+            choice = input.nextLine().charAt(0);
+        
+            if(choice == 'y'){return true;}
+            else{
+                System.out.println("Operation cancelled.\n");
+                return false;
+            }
         }
     }
     

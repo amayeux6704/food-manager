@@ -12,6 +12,10 @@ public class CostCalculation {
         this.subTotal = 0.0;
     }
 
+    public double getTaxRate(){
+        return taxRate;
+    }
+    
     public double getTaxCost(){
         return taxCost;
     }

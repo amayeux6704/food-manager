@@ -29,6 +29,11 @@ public class OrderPlacer {
         this.order.setCustomer(customer);
     }
     
+    public boolean emptyOrder(){
+        
+        return order.getDishes().isEmpty() && order.getSides().isEmpty();
+    }
+    
     public void addDish(int id, int num){
         for(int i = 1; i <= num; i++){
             order.addDish(id);

@@ -85,7 +85,7 @@ public class OrderPaymentPlacer {
             System.out.print("Please enter the payment method you want to use: ");
             payMethod = input.nextLine();
         }
-        while(customer.getPayment().getPayMethods().contains(payMethod));
+        while(!customer.getPayment().getPayMethods().contains(payMethod));
         customer.getPayment().setCurrentPayMethod(payMethod);
     }
 }

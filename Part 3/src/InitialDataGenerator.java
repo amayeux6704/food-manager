@@ -174,6 +174,7 @@ public class InitialDataGenerator {
         vehicle1.setMake("Toyota");
         vehicle1.setModel("Prius");
         vehicle1.setColor("White");
+        vehicle1.setBodyStyle("Hatchback");
         vehicle1.setLicensePlate("ABC123");
         
         dp1.setDeliveryVehicle(vehicle1);
@@ -191,6 +192,7 @@ public class InitialDataGenerator {
         vehicle2.setMake("Ford");
         vehicle2.setModel("Focus");
         vehicle2.setColor("Blue");
+        vehicle2.setBodyStyle("Sedan");
         vehicle2.setLicensePlate("DEF456");
         
         dp2.setDeliveryVehicle(vehicle2);
