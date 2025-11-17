@@ -117,7 +117,7 @@ class Order {
             costCalculation.calculateDishSubTotal(dish);
         }
         
-        costCalculation.calculateTaxCost(taxRate);
+        costCalculation.calculateTaxCost();
         costCalculation.calculateTotalCost();
     }
     public double getTaxCost(){return this.costCalculation.getTaxCost();}
