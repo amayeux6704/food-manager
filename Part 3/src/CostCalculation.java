@@ -12,6 +12,10 @@ public class CostCalculation {
         this.subTotal = 0.0;
     }
 
+    public double getTaxRate(){
+        return taxRate;
+    }
+
     public double getTaxCost(){
         return taxCost;
     }
@@ -25,8 +29,8 @@ public class CostCalculation {
         System.out.println("Tax rate set to " + taxRate);
     }
 
-    public void calculateTaxCost(double taxRate){
-        double unrounded = (taxRate/100) * subTotal;
+    public void calculateTaxCost(){
+        double unrounded = (this.taxRate/100) * subTotal;
         this.taxCost = Math.round(unrounded * 100.0) / 100.0;
     }
 
