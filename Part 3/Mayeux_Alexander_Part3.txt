@@ -45,3 +45,4 @@ Tasks:
 
 • Write the intsructions PDF for the program	
 • Converted UML diagram to PDF
+• Added readme.txt with instructions to compile the program.
