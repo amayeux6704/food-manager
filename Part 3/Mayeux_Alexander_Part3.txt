@@ -44,3 +44,4 @@ Tasks:
 	VehicleSubmenuManager
 
 • Write the intsructions PDF for the program	
+• Converted UML diagram to PDF
