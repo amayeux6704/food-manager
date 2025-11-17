@@ -33,23 +33,16 @@
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/EditVehicleSubmenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/CustomerSubmenuManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/EditVehicleSubmenuManager.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/EmployeeSubmenuManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/VehicleSubmenuManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Menu.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/CostCalculation.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Restaurant.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Inventory.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Dish.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/OrderPlacer.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/ReceiptGenerator.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/OpenHourManager.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/OrderInventoryChanger.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/EmployeeEntrySubmenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/LocationManager.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/RecipeManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/InitialDataGenerator.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/IngredientManager.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/InventoryItem.java</file>
-            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Side.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/PlaceOrderMenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/PlaceOrderMenuManager.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/OrderAddressPlacer.java</file>
@@ -64,6 +57,13 @@
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/IngredientManagementMenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/SystemSettingsSubmenu.java</file>
             <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/CostCalculationMenu.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/LocationManagementMenu.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Payment.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/EmailManagementMenu.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/RecipeManager.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/Dish.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/CostCalculation.java</file>
+            <file>file:/C:/Users/Alexander/Documents/Projects/CSCI-2210-1AW%20Final%20Project/food-manager/Part%203/src/ProgramMenu.java</file>
         </group>
     </open-files>
 </project-private>
