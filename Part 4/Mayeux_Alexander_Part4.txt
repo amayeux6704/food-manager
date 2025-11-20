@@ -1,0 +1,47 @@
+Tasks:
+
+• Added back the UML diagram for editing as needed.
+• Write the code for the following classes:
+	AccountScreen
+	Address
+	AddressManager
+	AddressesSubmenu
+	AddressesSubmenuManager
+	Customer
+	CustomerEntrySubmenu
+	CustomerManager
+	CustomerSettingsManager
+	CustomerSettingsSubmenu
+	CustomerSubmenu
+	CustomerSubmenuManager
+	DeliveryPerson
+	DeliveryPersonManager
+	EditVehicleSubmenu
+	EditVehicleSubmenuManager
+	EmployeeEntrySubmenu
+	EmployeeSettingsManager
+	EmployeeSettingsSubmenu
+	EmployeeSubmenu
+	EmployeeSubmenuManager
+	IDGenerator
+	InitialDataGenerator
+	Main
+	MainMenu
+	Order
+	OrderAddressPlacer
+	OrderInventoryChanger
+	OrderManager
+	OrderPaymentPlacer
+	OrderPlacer
+	PhoneSubmenu
+	PhoneSubmenuManager
+	PlaceOrderMenu
+	PlaceOrderMenuManager
+	ProgramMenu
+	ReceiptGenerator
+	Vehicle
+	VehicleSubmenu
+	VehicleSubmenuManager
+
+• Write the intsructions PDF for the program	
+• Added readme.txt with instructions to compile the program.
