@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class EmployeeEntrySubmenu implements ProgramMenu{
     private DeliveryPersonManager dpm;
     private EmployeeSubmenu es;
-    private AccountScreen as;
+    private AccountManager as;
     private OrderManager gom;
     private Menu menu;
     private Restaurant restaurant;
@@ -24,7 +24,7 @@ public class EmployeeEntrySubmenu implements ProgramMenu{
             Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this.dpm = dpm;
         this.gom = gom;
-        as = new AccountScreen();
+        as = new AccountManager();
         this.menu = menu;
         this.restaurant = restaurant;
         this.inventory = inventory;

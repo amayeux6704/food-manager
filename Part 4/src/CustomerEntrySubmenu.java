@@ -9,7 +9,7 @@ public class CustomerEntrySubmenu implements ProgramMenu{
     
     private CustomerManager cm;
     private CustomerSubmenu cs;
-    private AccountScreen as;
+    private AccountManager as;
     private OrderManager gom;
     private Menu menu;
     private Restaurant restaurant;
@@ -21,7 +21,7 @@ public class CustomerEntrySubmenu implements ProgramMenu{
         this.cm = cm;
         this.gom = gom;
         this.menu = menu;
-        as = new AccountScreen();
+        as = new AccountManager();
         this.restaurant = restaurant;
         this.inventory = inventory;
         this.cc = cc;

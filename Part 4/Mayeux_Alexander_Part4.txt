@@ -1,47 +1,65 @@
 Tasks:
 
+Key:
+	+: Classes that are in progress.
+	~: Classes that need to be implemented.
+	-: Classes that may need to be removed.
+
 • Added back the UML diagram for editing as needed.
 • Write the code for the following classes:
-	AccountScreen
-	Address
-	AddressManager
-	AddressesSubmenu
-	AddressesSubmenuManager
-	Customer
-	CustomerEntrySubmenu
-	CustomerManager
-	CustomerSettingsManager
-	CustomerSettingsSubmenu
-	CustomerSubmenu
-	CustomerSubmenuManager
-	DeliveryPerson
-	DeliveryPersonManager
-	EditVehicleSubmenu
-	EditVehicleSubmenuManager
-	EmployeeEntrySubmenu
-	EmployeeSettingsManager
-	EmployeeSettingsSubmenu
-	EmployeeSubmenu
-	EmployeeSubmenuManager
-	IDGenerator
-	InitialDataGenerator
+	AccountManager (Needs Documentation)
+	Address (Needs Documentation)
+	AddressManager (Needs Documentation)
+	-AddressesSubmenu
+	AddressesSubmenuManager (Needs Documentation)
+	Customer (Needs Documentation)
+	-CustomerEntrySubmenu
+	CustomerManager (Needs Documentation)
+	CustomerSettingsManager (Needs Documentation)
+	-CustomerSettingsSubmenu
+	-CustomerSubmenu
+	CustomerSubmenuManager (Needs Documentation)
+	DeliveryPerson (Needs Documentation)
+	DeliveryPersonManager (Needs Documentation)
+	-EditVehicleSubmenu
+	EditVehicleSubmenuManager (Needs Documentation)
+	-EmployeeEntrySubmenu
+	EmployeeSettingsManager (Needs Documentation)
+	-EmployeeSettingsSubmenu
+	-EmployeeSubmenu
+	EmployeeSubmenuManager (Needs Documentation)
+	IDGenerator (Needs Documentation)
+	InitialDataGenerator (Needs Documentation)
 	Main
-	MainMenu
-	Order
-	OrderAddressPlacer
-	OrderInventoryChanger
-	OrderManager
-	OrderPaymentPlacer
-	OrderPlacer
-	PhoneSubmenu
-	PhoneSubmenuManager
-	PlaceOrderMenu
-	PlaceOrderMenuManager
-	ProgramMenu
-	ReceiptGenerator
-	Vehicle
-	VehicleSubmenu
-	VehicleSubmenuManager
+	-MainMenu
+	Order (Needs Documentation)
+	OrderAddressPlacer (Needs Documentation)
+	OrderInventoryChanger (Needs Documentation)
+	OrderManager (Needs Documentation)
+	OrderPaymentPlacer (Needs Documentation)
+	OrderPlacer (Needs Documentation)
+	-PhoneSubmenu
+	PhoneSubmenuManager (Needs Documentation)
+	-PlaceOrderMenu
+	PlaceOrderMenuManager (Needs Documentation)
+	-ProgramMenu
+	ReceiptGenerator (Needs Documentation)
+	Vehicle (Needs Documentation)
+	-VehicleSubmenu
+	VehicleSubmenuManager (Needs Documentation)
+
+• Create GUI Frames for the following Menus:
+	~AddressSubmenuGUI
+	+CustomerMenuGUI (Needs Documentation)
+	~CustomerSettingsSubmenuGUI
+	~EditVehicleSubmenuGUI
+	+EmployeeMenuGUI (Needs Documentation)
+	~EmployeeSettingsSubmenuGUI
+	+MainMenuGUI
+	~PhoneSubmenuGUI
+	~PlaceOrderMenuGUI
+	+UserEntryMenuGUI
+	~VehicleSubmenuGUI
 
 • Write the intsructions PDF for the program	
 • Added readme.txt with instructions to compile the program.
