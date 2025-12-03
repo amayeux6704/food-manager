@@ -1,0 +1,67 @@
+Added Casey_Brendan_Part4 txt file for keeping record of tasks
+Need to add documentation to previous classes
+
+Added Classes:
+ Added FindItemByNameGUI
+ Added InventoryDisplayGUI
+ Added ItemAddQuantityGUI
+ Added ItemDecreaseQuantityGUI
+ Added MenuDisplayGUI
+ Added RestaurantNameEditorGUI
+ Added RestaurantNameGUI
+ Added SetTaxRateGUI
+ Added TaxRateDisplayGUI
+
+Key:
+
+	+: Completed
+	~: In Progress May Need Extra Menus
+	-: Not Started
+
+GUI Display Template Completion:
+
++ CostCalculationMenu
+~ DishManagementMenu
+~ SideManagementMenu
+~ EmailManagementMenu
+~ IngredientManagementMenu
++ InventoryManagementMenu
+~ LocationManagementMenu
++ MenuManagementMenu
+~ OpenHourManagementMenu
+~ PaymentManagementMenu
+~ PhoneNumberManagementMenu
++ RestaurantManagementMenu
++ FindItemByNameGUI
++ InventoryDisplayGUI
++ ItemAddQuantityGUI
++ ItemDecreaseQuantityGUI
++ MenuDisplayGUI
++ RestaurantNameEditorGUI
++ RestaurantNameGUI
++ SetTaxRateGUI
++ TaxRateDisplayGUI
+
+GUI Functionality Completion:
+
+- CostCalculationMenu
+- DishManagementMenu
+- SideManagementMenu
+- EmailManagementMenu
+- IngredientManagementMenu
+- InventoryManagementMenu
+- LocationManagementMenu
+- MenuManagementMenu
+- OpenHourManagementMenu
+- PaymentManagementMenu
+- PhoneNumberManagementMenu
+- RestaurantManagementMenu
+- FindItemByNameGUI
+- InventoryDisplayGUI
+- ItemAddQuantityGUI
+- ItemDecreaseQuantityGUI
+- MenuDisplayGUI
+- RestaurantNameEditorGUI
+~ RestaurantNameGUI
+- SetTaxRateGUI
+- TaxRateDisplayGUI
