@@ -25,10 +25,10 @@ public class Customer extends Person{
     
     @Override
     public String toString(){
-        String str = "Customer name: " + this.getName() +
-                     "\nCustomer ID: " + this.getID() +
-                     "\nEmail Address: " + this.getEmail() +
-                     "\n";
+        String str = "<html>Customer name: " + this.getName() +
+                     "<br>Customer ID: " + this.getID() +
+                     "<br>Email Address: " + this.getEmail() +
+                     "<br>";
         return str;
     } 
 }

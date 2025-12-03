@@ -60,9 +60,9 @@ class Address {
     
     public String toString(){
         
-        String str = getLine1() + "\n";
+        String str = "<html>" + getLine1() + "<br>";
         if(!getLine2().equals(""))
-        {str += getLine2();}
+        {str += getLine2() + "<br>";}
         str += getCity() + ", " + getState() + " " + getZipCode();
         
         return str;

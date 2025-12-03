@@ -51,7 +51,7 @@ Key:
 • Create GUI Frames for the following Menus:
 	~AddressSubmenuGUI
 	+CustomerMenuGUI (Needs Documentation)
-	~CustomerSettingsSubmenuGUI
+	+CustomerSettingsSubmenuGUI (Needs Documentation)
 	~EditVehicleSubmenuGUI
 	+EmployeeMenuGUI (Needs Documentation)
 	~EmployeeSettingsSubmenuGUI
@@ -59,6 +59,7 @@ Key:
 	~PhoneSubmenuGUI
 	~PlaceOrderMenuGUI
 	+UserEntryMenuGUI
+	+UserInfoGUI (Needs Documentation)
 	~VehicleSubmenuGUI
 
 • Write the intsructions PDF for the program	

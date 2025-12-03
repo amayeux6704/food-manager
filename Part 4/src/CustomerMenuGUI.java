@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -30,7 +33,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         customerId = id;
         customer = this.cm.searchCustomer(customerId);
         csubm = new CustomerSubmenuManager(this.cm, customer, gom, menu, restaurant, inventory, cc);
-        welcomeLabel.setText("Welcome, " + customer.getName() + "!");
+        refreshInfo();
     }
 
     /**
@@ -52,16 +55,23 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        customerMenuMenuBar = new javax.swing.JMenuBar();
+        customerSubmenu = new javax.swing.JMenu();
+        profileMenuItem = new javax.swing.JMenuItem();
+        logoutMenuItem = new javax.swing.JMenuItem();
+        OrdersSubmenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         jButton4.setText("jButton4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         welcomeLabel.setText("Welcome, Customer!");
@@ -129,24 +139,34 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Customer");
+        customerSubmenu.setText("Customer");
 
-        jMenuItem1.setText("Profile Settings");
-        jMenu1.add(jMenuItem1);
+        profileMenuItem.setText("Profile Settings");
+        profileMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileMenuItemActionPerformed(evt);
+            }
+        });
+        customerSubmenu.add(profileMenuItem);
 
-        jMenuItem2.setText("Logout");
-        jMenu1.add(jMenuItem2);
+        logoutMenuItem.setText("Logout");
+        logoutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutMenuItemActionPerformed(evt);
+            }
+        });
+        customerSubmenu.add(logoutMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        customerMenuMenuBar.add(customerSubmenu);
 
-        jMenu2.setText("Orders");
+        OrdersSubmenu.setText("Orders");
 
         jMenuItem3.setText("Order History");
-        jMenu2.add(jMenuItem3);
+        OrdersSubmenu.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu2);
+        customerMenuMenuBar.add(OrdersSubmenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(customerMenuMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,6 +189,35 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void profileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileMenuItemActionPerformed
+        // TODO add your handling code here:
+        if(!customer.isGuest()){
+            CustomerSettingsSubmenuGUI cssGUI = new CustomerSettingsSubmenuGUI(cm, customerId);
+            cssGUI.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "This option is reserved for customers with a user profile.");
+        }
+    }//GEN-LAST:event_profileMenuItemActionPerformed
+
+    private void logoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Log out", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            this.dispose();
+        }
+    }//GEN-LAST:event_logoutMenuItemActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        refreshInfo();
+    }//GEN-LAST:event_formWindowGainedFocus
+    
+    private void refreshInfo(){
+        welcomeLabel.setText("Welcome, " + customer.getName() + "!");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -195,21 +244,21 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu OrdersSubmenu;
+    private javax.swing.JMenuBar customerMenuMenuBar;
+    private javax.swing.JMenu customerSubmenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
+    private javax.swing.JMenuItem logoutMenuItem;
+    private javax.swing.JMenuItem profileMenuItem;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
