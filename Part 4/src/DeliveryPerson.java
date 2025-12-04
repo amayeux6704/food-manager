@@ -22,10 +22,10 @@ public class DeliveryPerson extends Person{
     
     @Override
     public String toString(){
-        String str = "Employee name: " + this.getName() +
-                     "\nEmployee ID: " + this.getID() +
-                     "\nEmail Address: " + this.getEmail() +
-                     "\n";
+        String str = "<html>Employee name: " + this.getName() +
+                     "<br>Employee ID: " + this.getID() +
+                     "<br>Email Address: " + this.getEmail() +
+                     "<br>";
         return str;
     }
 }

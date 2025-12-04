@@ -44,10 +44,10 @@ class Vehicle {
     
     @Override
     public String toString(){
-        String str = "Vehicle: " + getYear() + " " + getMake() + " " + getModel() + "\n" +
-                     "Color: " + getColor() + "\n" +
-                     "Body Style: " + getBodyStyle() + "\n" + 
-                     "License plate: " + getLicensePlate() + "\n";
+        String str = "<html>Vehicle: " + getYear() + " " + getMake() + " " + getModel() + "<br>" +
+                     "Color: " + getColor() + "<br>" +
+                     "Body Style: " + getBodyStyle() + "<br>" + 
+                     "License plate: " + getLicensePlate() + "<br>";
         
         return str;
     }

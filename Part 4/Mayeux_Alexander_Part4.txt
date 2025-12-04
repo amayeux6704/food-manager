@@ -8,8 +8,8 @@ Key:
 • Added back the UML diagram for editing as needed.
 • Write the code for the following classes:
 	AccountManager (Needs Documentation)
-	Address (Needs Documentation)
-	AddressManager (Needs Documentation)
+	Address (Needs Documentation) (Added new Method)
+	AddressManager (Needs Documentation) (Added new Method)
 	-AddressesSubmenu
 	AddressesSubmenuManager (Needs Documentation)
 	Customer (Needs Documentation)
@@ -49,15 +49,17 @@ Key:
 	VehicleSubmenuManager (Needs Documentation)
 
 • Create GUI Frames for the following Menus:
-	~AddressSubmenuGUI
+	+AddressesSubmenuGUI (Needs Documentation
 	+CustomerMenuGUI (Needs Documentation)
 	+CustomerSettingsSubmenuGUI (Needs Documentation)
+	+EditAddressSubmenuGUI (Needs Documentation)
 	~EditVehicleSubmenuGUI
 	+EmployeeMenuGUI (Needs Documentation)
-	~EmployeeSettingsSubmenuGUI
+	+EmployeeSettingsSubmenuGUI (Needs Documentation)
 	+MainMenuGUI
-	~PhoneSubmenuGUI
+	+PhoneSubmenuGUI (Needs Documentation)
 	~PlaceOrderMenuGUI
+	+UpdateAddPhoneSubmenuGUI (Needs Documentation)
 	+UserEntryMenuGUI
 	+UserInfoGUI (Needs Documentation)
 	~VehicleSubmenuGUI

@@ -13,8 +13,7 @@ import javax.swing.JOptionPane;
 public class UserInfoGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UserInfoGUI.class.getName());
-    private Customer customer;
-    private DeliveryPerson deliveryPerson;
+    private Person person;
     /**
      * Creates new form CustomerInfoGUI
      */
@@ -23,18 +22,11 @@ public class UserInfoGUI extends javax.swing.JFrame {
         enableDisablePWChange(false);
     }
     
-    public UserInfoGUI(Customer customer){
+    public UserInfoGUI(Person person){
         this();
-        this.customer = customer;
-        nameTF.setText(customer.getName());
-        emailTF.setText(customer.getEmail());
-    }
-    
-    public UserInfoGUI(DeliveryPerson deliveryPerson){
-        this();
-        this.deliveryPerson = deliveryPerson;
-        nameTF.setText(deliveryPerson.getName());
-        emailTF.setText(deliveryPerson.getEmail());
+        this.person = person;
+        nameTF.setText(person.getName());
+        emailTF.setText(person.getEmail());
     }
 
     /**
@@ -63,9 +55,11 @@ public class UserInfoGUI extends javax.swing.JFrame {
         cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit User Information");
 
         settingsDescrLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        settingsDescrLabel.setText("Edit Customer Information");
+        settingsDescrLabel.setText("Edit User Information");
+        settingsDescrLabel.setToolTipText("");
 
         nameLabel.setText("Name:");
 
@@ -217,35 +211,24 @@ public class UserInfoGUI extends javax.swing.JFrame {
     
     private void updateName(){
         String name = nameTF.getText();
-        
-        if(customer != null){
-            customer.setName(name);
-        }
-        if(deliveryPerson != null){
-            deliveryPerson.setName(name);
-        }
+        person.setName(name);
+
     }
     
     private void updateEmail(){
         String email = emailTF.getText();
-        
-        if(customer != null){
-            customer.setEmail(email);
-        }
-        if(deliveryPerson != null){
-            deliveryPerson.setEmail(email);
-        }
+        person.setEmail(email);
     }
     
     private boolean updatePassword(){
         String oldPassword = new String(currPWField.getPassword());
         
-        if(customer.getPassword().equals(oldPassword)){
+        if(person.getPassword().equals(oldPassword)){
             String newPassword = new String(newPWField.getPassword());
             String newPassword1 = new String(reEnterNewPWField.getPassword());
             
             if(newPassword.equals(newPassword1)){
-                customer.setPassword(newPassword);
+                person.setPassword(newPassword);
                 return true;
             }
             else{

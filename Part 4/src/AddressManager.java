@@ -30,6 +30,10 @@ public class AddressManager {
         return addresses.get(id);
     }
     
+    public Map<Integer, Address> getAddresses(){
+        return this.addresses;
+    }
+    
     public int getPrimaryAddressID(){return this.primaryId;}
     
     public boolean hasPrimaryAddress(){return getPrimaryAddressID() != 0;}

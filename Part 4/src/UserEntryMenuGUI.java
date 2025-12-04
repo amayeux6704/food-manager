@@ -116,6 +116,7 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
             Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this(gom, menu, restaurant, inventory, cc);
         this.cm = cm;
+        this.setTitle("Customer Entry");
     }
     
     /**
@@ -139,6 +140,7 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
             Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this(gom, menu, restaurant, inventory, cc);
         this.dpm = dpm;
+        this.setTitle("Employee Entry");
         guestLabel.setVisible(false);
     }
     
@@ -165,7 +167,6 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
         emailLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Customer Entry");
 
         loginSignupDescrLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         loginSignupDescrLabel.setText("Log In");

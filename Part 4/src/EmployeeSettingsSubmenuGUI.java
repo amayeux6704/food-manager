@@ -7,26 +7,26 @@
  *
  * @author Alexander
  */
-public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
+public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CustomerSettingsSubmenuGUI.class.getName());
-    
-    private CustomerManager cm;
-    private Customer customer;
-    private int customerId;
+ 
+    private DeliveryPersonManager dpm;
+    private DeliveryPerson deliveryPerson;
+    private int employeeId;
     
     /**
      * Creates new form CustomerSettingsSubmenuGUI
      */
-    public CustomerSettingsSubmenuGUI() {
+    public EmployeeSettingsSubmenuGUI() {
         initComponents();
     }
     
-    public CustomerSettingsSubmenuGUI(CustomerManager cm, int id){
+    public EmployeeSettingsSubmenuGUI(DeliveryPersonManager dpm, int id){
         this();
-        this.cm = cm;
-        customerId = id;
-        customer = cm.searchCustomer(id);
+        this.dpm = dpm;
+        employeeId = id;
+        deliveryPerson = dpm.searchDeliveryPerson(id);
         
         refreshInformation();
     }
@@ -40,18 +40,15 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         customerInfoPanel = new javax.swing.JPanel();
-        customerInfoLabel = new javax.swing.JLabel();
+        employeeInfoLabel = new javax.swing.JLabel();
         editInfoButton = new javax.swing.JButton();
         settingsDescrLabel = new javax.swing.JLabel();
         contactInfoPanel = new javax.swing.JPanel();
-        primaryAddressPanel = new javax.swing.JPanel();
-        primaryAddressLabel = new javax.swing.JLabel();
-        manageAddressButton = new javax.swing.JButton();
         phoneNumberPanel = new javax.swing.JPanel();
         managePhoneButton = new javax.swing.JButton();
-        payInfoPanel = new javax.swing.JPanel();
-        payMethodLabel = new javax.swing.JLabel();
-        managePaymentButton = new javax.swing.JButton();
+        vehicleInfoPanel = new javax.swing.JPanel();
+        vehicleLabel = new javax.swing.JLabel();
+        manageVehicletButton = new javax.swing.JButton();
         exitSaveButton = new javax.swing.JButton();
         exitWOSaveButton = new javax.swing.JButton();
         revertButton = new javax.swing.JButton();
@@ -68,10 +65,10 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
             }
         });
 
-        customerInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Customer Information"));
-        customerInfoPanel.setToolTipText("Customer Information");
+        customerInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Employee Information"));
+        customerInfoPanel.setToolTipText("Employee Information");
 
-        customerInfoLabel.setText("<html>Customer name: name<br>Customer ID: 000<br>Email Address: emailaddress12345@email.com<br>");
+        employeeInfoLabel.setText("<html>Employee name: name<br>Employee ID: 000<br>Email Address: emailaddress12345@email.com<br>");
 
         editInfoButton.setText("Edit Information");
         editInfoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -87,14 +84,14 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
             .addGroup(customerInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(customerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editInfoButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         customerInfoPanelLayout.setVerticalGroup(
             customerInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerInfoPanelLayout.createSequentialGroup()
-                .addComponent(customerInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(employeeInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editInfoButton)
                 .addContainerGap())
@@ -104,38 +101,6 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
         settingsDescrLabel.setText("Profile Settings");
 
         contactInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Contact Information"));
-
-        primaryAddressPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Primary Address"));
-
-        primaryAddressLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        primaryAddressLabel.setText("<html>address line 1<br>address line 2<br>city, state, 00000");
-
-        manageAddressButton.setText("Manage Addresses");
-        manageAddressButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageAddressButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout primaryAddressPanelLayout = new javax.swing.GroupLayout(primaryAddressPanel);
-        primaryAddressPanel.setLayout(primaryAddressPanelLayout);
-        primaryAddressPanelLayout.setHorizontalGroup(
-            primaryAddressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(primaryAddressPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(primaryAddressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(primaryAddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageAddressButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        primaryAddressPanelLayout.setVerticalGroup(
-            primaryAddressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(primaryAddressPanelLayout.createSequentialGroup()
-                .addComponent(primaryAddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(manageAddressButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         phoneNumberPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Phone Numbers"));
 
@@ -153,7 +118,7 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
             .addGroup(phoneNumberPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(managePhoneButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         phoneNumberPanelLayout.setVerticalGroup(
             phoneNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,49 +134,46 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
             contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contactInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(primaryAddressPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(phoneNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(phoneNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         contactInfoPanelLayout.setVerticalGroup(
             contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contactInfoPanelLayout.createSequentialGroup()
-                .addComponent(primaryAddressPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(phoneNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        payInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Payment Information"));
+        vehicleInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Delivery Vehicle Information"));
 
-        payMethodLabel.setText("Current Pay Method: pay method");
+        vehicleLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        vehicleLabel.setText("<html>Vehicle: 0000 Make Model<br>Color: color<br>Body Style: body style<br>License plate: AAA000");
 
-        managePaymentButton.setText("Manage Payment Information");
-        managePaymentButton.addActionListener(new java.awt.event.ActionListener() {
+        manageVehicletButton.setText("Manage Vehicle Information");
+        manageVehicletButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                managePaymentButtonActionPerformed(evt);
+                manageVehicletButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout payInfoPanelLayout = new javax.swing.GroupLayout(payInfoPanel);
-        payInfoPanel.setLayout(payInfoPanelLayout);
-        payInfoPanelLayout.setHorizontalGroup(
-            payInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(payInfoPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout vehicleInfoPanelLayout = new javax.swing.GroupLayout(vehicleInfoPanel);
+        vehicleInfoPanel.setLayout(vehicleInfoPanelLayout);
+        vehicleInfoPanelLayout.setHorizontalGroup(
+            vehicleInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vehicleInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(payInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(payMethodLabel)
-                    .addComponent(managePaymentButton))
+                .addGroup(vehicleInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vehicleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageVehicletButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        payInfoPanelLayout.setVerticalGroup(
-            payInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(payInfoPanelLayout.createSequentialGroup()
+        vehicleInfoPanelLayout.setVerticalGroup(
+            vehicleInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vehicleInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(payMethodLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(managePaymentButton)
+                .addComponent(vehicleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(manageVehicletButton)
                 .addContainerGap())
         );
 
@@ -235,7 +197,7 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(customerInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(contactInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(payInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vehicleInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(settingsDescrLabel)
@@ -251,7 +213,7 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
                                         .addComponent(exitWOSaveButton)))
                                 .addGap(10, 10, 10)
                                 .addComponent(revertButton)))
-                        .addGap(0, 107, Short.MAX_VALUE)))
+                        .addGap(0, 104, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -262,9 +224,9 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(customerInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vehicleInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(contactInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(payInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitSaveButton)
@@ -277,20 +239,13 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(514, 555));
+        setSize(new java.awt.Dimension(514, 489));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void manageAddressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAddressButtonActionPerformed
-        // TODO add your handling code here:
-        AddressesSubmenuGUI asGUI = new AddressesSubmenuGUI(customer);
-        asGUI.setVisible(true);
-        
-    }//GEN-LAST:event_manageAddressButtonActionPerformed
-
     private void editInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editInfoButtonActionPerformed
         // TODO add your handling code here:
-        UserInfoGUI uiGUI = new UserInfoGUI(customer);
+        UserInfoGUI uiGUI = new UserInfoGUI(deliveryPerson);
         uiGUI.setVisible(true);
     }//GEN-LAST:event_editInfoButtonActionPerformed
 
@@ -301,42 +256,23 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
 
     private void managePhoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePhoneButtonActionPerformed
         // TODO add your handling code here:
-        PhoneSubmenuGUI psGUI = new PhoneSubmenuGUI(customer);
+        PhoneSubmenuGUI psGUI = new PhoneSubmenuGUI(deliveryPerson);
         psGUI.setVisible(true);
     }//GEN-LAST:event_managePhoneButtonActionPerformed
 
-    private void managePaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePaymentButtonActionPerformed
+    private void manageVehicletButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageVehicletButtonActionPerformed
         // TODO add your handling code here:
-        PaymentManagementMenuGUI pmmGUI = new PaymentManagementMenuGUI();
-        pmmGUI.setVisible(true);
-    }//GEN-LAST:event_managePaymentButtonActionPerformed
+        
+    }//GEN-LAST:event_manageVehicletButtonActionPerformed
     
     private void refreshInformation(){
-        displayCustomerInfo();
-        displayAddress();
-        displayPayMethod();
+        displayDeliveryPersonInfo();
     }
     
-    private void displayCustomerInfo(){
-        customerInfoLabel.setText(customer.toString());
+    private void displayDeliveryPersonInfo(){
+        employeeInfoLabel.setText(deliveryPerson.toString());
     }
-    
-    private void displayAddress(){
-        int id = customer.getAddressManager().getPrimaryAddressID();
-        Address addr = customer.getAddressManager().searchAddress(id);
-        if(addr != null)
-            primaryAddressLabel.setText(addr.toString());
-        else
-            primaryAddressLabel.setText("Primary Address has not been set.");
-    }
-    
-    private void displayPayMethod(){
-        String payMethod = customer.getPayment().getCurrentPayMethod();
-        if(!payMethod.isEmpty())
-            payMethodLabel.setText("Current Pay Method: " + payMethod);
-        else
-            payMethodLabel.setText("Current Pay Method: none");
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -364,22 +300,19 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contactInfoPanel;
-    private javax.swing.JLabel customerInfoLabel;
     private javax.swing.JPanel customerInfoPanel;
     private javax.swing.JLabel deleteAccountLabel;
     private javax.swing.JLabel deleteAcctDescrLabel;
     private javax.swing.JButton editInfoButton;
+    private javax.swing.JLabel employeeInfoLabel;
     private javax.swing.JButton exitSaveButton;
     private javax.swing.JButton exitWOSaveButton;
-    private javax.swing.JButton manageAddressButton;
-    private javax.swing.JButton managePaymentButton;
     private javax.swing.JButton managePhoneButton;
-    private javax.swing.JPanel payInfoPanel;
-    private javax.swing.JLabel payMethodLabel;
+    private javax.swing.JButton manageVehicletButton;
     private javax.swing.JPanel phoneNumberPanel;
-    private javax.swing.JLabel primaryAddressLabel;
-    private javax.swing.JPanel primaryAddressPanel;
     private javax.swing.JButton revertButton;
     private javax.swing.JLabel settingsDescrLabel;
+    private javax.swing.JPanel vehicleInfoPanel;
+    private javax.swing.JLabel vehicleLabel;
     // End of variables declaration//GEN-END:variables
 }

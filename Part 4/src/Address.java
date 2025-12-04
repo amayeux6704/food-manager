@@ -58,6 +58,19 @@ class Address {
         
     }
     
+    public String stringAddressInformation(){
+        
+        String primary = "";
+        
+        if(isPrimary()){primary = "(Primary)";}
+        String str =  "<html>Address " + getAddressID() + primary + ":<br>" +
+                            "______________________________________________<br>"+
+                            getCustomer().getName() + "<br>" +
+                            toString();
+        
+        return str;    
+    }
+    
     public String toString(){
         
         String str = "<html>" + getLine1() + "<br>";
