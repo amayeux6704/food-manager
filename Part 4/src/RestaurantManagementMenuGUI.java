@@ -39,7 +39,6 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurant Management Menu");
-        setPreferredSize(new java.awt.Dimension(402, 271));
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -58,6 +57,7 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
 
         jButton3.setText("3. Manage Emails");
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setText("4. Manage Opening Hours");
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -69,6 +69,7 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
 
         jButton6.setText("6. Change Restaurant Name");
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.addActionListener(this::jButton6ActionPerformed);
 
         javax.swing.GroupLayout entryBtnPanelLayout = new javax.swing.GroupLayout(entryBtnPanel);
         entryBtnPanel.setLayout(entryBtnPanelLayout);
@@ -123,14 +124,15 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(welcomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entryBtnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(11, 11, 11))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton7)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(welcomeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(entryBtnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addContainerGap())))
         );
 
         pack();
@@ -138,23 +140,50 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI();
+        lmmGUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        PhoneNumberManagementMenuGUI pnmmGUI = new PhoneNumberManagementMenuGUI();
+        pnmmGUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        OpenHourManagementMenuGUI ohmmGUI = new OpenHourManagementMenuGUI();
+        ohmmGUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        RestaurantNameGUI rnGUI = new RestaurantNameGUI();
+        rnGUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        EmailManagementMenuGUI emmGUI = new EmailManagementMenuGUI();
+        emmGUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        RestaurantNameEditorGUI rneGUI = new RestaurantNameEditorGUI();
+        rneGUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,5 +1,3 @@
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,20 +7,15 @@
  *
  * @author Shades
  */
-
-public class RestaurantNameGUI extends javax.swing.JFrame {
+public class ViewLocationsGUI extends javax.swing.JFrame {
     
-    private Restaurant r;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RestaurantNameGUI.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewLocationsGUI.class.getName());
 
     /**
-     * Creates new form RestaurantNameGUI
+     * Creates new form ViewLocationsGUI
      */
-    public RestaurantNameGUI() {
+    public ViewLocationsGUI() {
         initComponents();
-        r = new Restaurant("");
-        String name = r.getName();
-        jLabel1.setText(name);
     }
 
     /**
@@ -34,13 +27,10 @@ public class RestaurantNameGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Restaurant Name");
-
-        jLabel1.setText("\"Restaurant Name\"");
+        setTitle("View Locations");
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -49,21 +39,15 @@ public class RestaurantNameGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jLabel1)
-                .addGap(150, 150, 150))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jLabel1)
-                .addGap(89, 89, 89)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(233, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addContainerGap())
         );
@@ -73,8 +57,8 @@ public class RestaurantNameGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        RestaurantManagementMenuGUI rmmGUI = new RestaurantManagementMenuGUI();
-        rmmGUI.setVisible(true);
+        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI();
+        lmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -89,7 +73,7 @@ public class RestaurantNameGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -100,11 +84,10 @@ public class RestaurantNameGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RestaurantNameGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ViewLocationsGUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,10 @@ Added Classes:
  Added RestaurantNameGUI
  Added SetTaxRateGUI
  Added TaxRateDisplayGUI
+ Added AddLocationGUI
+ Added UpdateLocationGUI
+ Added RemoveLocationGUI
+ Added ViewLocationsGUI 
 
 Key:
 
@@ -19,7 +23,10 @@ Key:
 	-: Not Started
 
 GUI Display Template Completion:
-
+~ ViewLocationsGUI 
++ RemoveLocationGUI
++ UpdateLocationGUI
++ AddLocationGUI
 + CostCalculationMenu
 ~ DishManagementMenu
 ~ SideManagementMenu
@@ -44,25 +51,28 @@ GUI Display Template Completion:
 
 GUI Functionality Completion:
 
+- ViewLocationsGUI 
+~ RemoveLocationGUI
+~ UpdateLocationGUI
+~ AddLocationGUI
 - CostCalculationMenu
 - DishManagementMenu
 - SideManagementMenu
 - EmailManagementMenu
 - IngredientManagementMenu
 - InventoryManagementMenu
-- LocationManagementMenu
++ LocationManagementMenu
 - MenuManagementMenu
 - OpenHourManagementMenu
 - PaymentManagementMenu
 - PhoneNumberManagementMenu
-- RestaurantManagementMenu
++ RestaurantManagementMenu
 - FindItemByNameGUI
 - InventoryDisplayGUI
 - ItemAddQuantityGUI
 - ItemDecreaseQuantityGUI
 - MenuDisplayGUI
-- RestaurantNameEditorGUI
+~ RestaurantNameEditorGUI
 ~ RestaurantNameGUI
 - SetTaxRateGUI
-
 - TaxRateDisplayGUI
