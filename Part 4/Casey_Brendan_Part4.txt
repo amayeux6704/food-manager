@@ -1,5 +1,5 @@
 Added Casey_Brendan_Part4 txt file for keeping record of tasks
-Need to add documentation to previous classes
+Added documentation to previous classes
 
 Added Classes:
  Added FindItemByNameGUI
@@ -64,4 +64,5 @@ GUI Functionality Completion:
 - RestaurantNameEditorGUI
 ~ RestaurantNameGUI
 - SetTaxRateGUI
+
 - TaxRateDisplayGUI
