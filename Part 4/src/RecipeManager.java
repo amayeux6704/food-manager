@@ -1,3 +1,6 @@
+/** Manages the recipes
+ * @author Brendan Casey
+*/
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +20,11 @@ public class RecipeManager {
         return null;
     }
 
+/**
+ * Adds a ingredient to a recipe
+ * @param name A string representing a ingredients name
+ * @param quantity A integer representing a ingredients quantity
+ */
     public void addIngredient(String name, int quantity) {
         IngredientManager existingIngredient = findIngredient(name);
         if(existingIngredient != null){
@@ -26,10 +34,18 @@ public class RecipeManager {
         }
     }
 
+/**
+ * Gets the set of ingredients
+ * @return The set of ingredients
+ */
     public Set<IngredientManager> getIngredients(){
         return new HashSet<>(ingredients);
     }
 
+/**
+ * Removes an ingredient from the recipe 
+ * @param ingredient A string representing an ingredient
+ */
     public void removeIngredient(String ingredient){
         IngredientManager ingredientForRemoval = findIngredient(ingredient);
         if(ingredientForRemoval != null){
@@ -40,7 +56,13 @@ public class RecipeManager {
         }
     }
 
-    public void updateIngredient(String oldIngredient, String newIngredient, int  quantity){
+/**
+ * Updates an ingredient in a recipe
+ * @param oldIngredient A string representing the old ingredient
+ * @param newIngredient A string representing the new ingredient
+ * @param quantity A integer representing the quantity of a ingredient
+ */
+    public void updateIngredient(String oldIngredient, String newIngredient, int quantity){
         IngredientManager old = findIngredient(oldIngredient);
         if(old != null){
             this.ingredients.remove(old);
@@ -51,6 +73,8 @@ public class RecipeManager {
         }
     }
 
+/** Sets the format for displaying the list of ingredients
+ */
     @Override
     public String toString(){
         String ingredientList = "";

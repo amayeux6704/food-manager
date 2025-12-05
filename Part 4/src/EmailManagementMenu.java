@@ -1,3 +1,6 @@
+/** The menu for navigating email management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 import java.util.Set;
 
@@ -10,6 +13,8 @@ public class EmailManagementMenu {
         this.restaurant = restaurant;
     }
 
+/** Shows a menu for navigating email management tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Email Management Menu ---");

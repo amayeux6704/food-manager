@@ -1,3 +1,6 @@
+/** The menu for navigating inventory management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class InventoryManagementMenu {
@@ -9,6 +12,8 @@ public class InventoryManagementMenu {
         this.inventory = inventory;
     }
 
+/** Shows a menu for navigating inventory management tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Inventory Management Menu ---");

@@ -1,3 +1,6 @@
+/** The menu for navigating location management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 import java.util.Set;
 
@@ -10,6 +13,8 @@ public class LocationManagementMenu {
         this.restaurant = restaurant;
     }
 
+/** Shows a menu for navigating location management tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Location Management Menu ---");

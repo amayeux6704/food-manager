@@ -1,3 +1,6 @@
+/** The menu for navigating phone number management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 import java.util.Set;
 
@@ -10,6 +13,8 @@ public class PhoneNumberManagementMenu {
         this.restaurant = restaurant;
     }
 
+/**Displays the menu for managing phone numbers
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Phone Number Management Menu ---");

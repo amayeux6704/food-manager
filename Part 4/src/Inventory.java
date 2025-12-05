@@ -1,3 +1,6 @@
+/** Manages the inventory
+ * @author Brendan Casey
+*/
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,6 +11,11 @@ public class Inventory {
         this.inventory = new HashSet<>();
     }
 
+/**
+ * Adds to update the quantity of a already existing item
+ * @param name A string representing the name of an item
+ * @param quantity A integer representing the quantity of a item
+ */
     public void addOrUpdateItem(String name, int quantity){
         InventoryItem existingItem = findItem(name);
         if(existingItem != null){
@@ -28,6 +36,11 @@ public class Inventory {
         return null;
     }
 
+/**
+ * Decreases the quantity of a item in inventory
+ * @param itemName A string representing the name of an item
+ * @param quantity A integer representing the quantity of a item
+ */
     public void decreaseInventory(String itemName, int quantity){
         InventoryItem item = findItem(itemName);
         if (item != null) {
@@ -43,6 +56,8 @@ public class Inventory {
         }
     }
 
+/** Displays the inventory 
+ */
     public void displayInventory(){
         if(inventory.isEmpty()){
             System.out.println("There is nothing in inventory");

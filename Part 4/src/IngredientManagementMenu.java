@@ -1,3 +1,6 @@
+/** The menu for navigating ingredient management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class IngredientManagementMenu {
@@ -9,6 +12,8 @@ public class IngredientManagementMenu {
         this.scanner = scanner;
     }
 
+/** Shows a menu for navigating ingredient management tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Ingredient Management Menu ---");

@@ -1,3 +1,6 @@
+/** The menu for navigating open hour management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class OpenHourManagementMenu {
@@ -9,6 +12,8 @@ public class OpenHourManagementMenu {
         this.restaurant = restaurant;
     }
 
+/** Shows a menu for navigating open hour management tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Open Hour Management Menu ---");

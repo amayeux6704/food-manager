@@ -1,3 +1,6 @@
+/** The menu for navigating menu management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class MenuManagementMenu {
@@ -8,7 +11,8 @@ public class MenuManagementMenu {
         this.menu = menu;
         this.scanner = scanner;
     }
-
+/** Shows a menu for navigating menu management tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Menu Management Menu ---");

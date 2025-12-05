@@ -1,3 +1,6 @@
+/** The menu for navigating side management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class SideManagementMenu {
@@ -9,6 +12,8 @@ public class SideManagementMenu {
         this.scanner = scanner;
     }
 
+/**Displays the menu for managing sides
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Side Management Menu ---");

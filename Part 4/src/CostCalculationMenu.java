@@ -1,3 +1,6 @@
+/** The menu to navigate cost calculation tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class CostCalculationMenu {
@@ -8,6 +11,9 @@ public class CostCalculationMenu {
         this.scanner = scanner;
         this.costCalculation = costCalculation;
     }
+
+/** Shows a menu for navigating cost calculation tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Cost Management Menu ---");

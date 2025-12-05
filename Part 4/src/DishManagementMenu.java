@@ -1,3 +1,6 @@
+/** The menu for navigating dish management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class DishManagementMenu {
@@ -9,6 +12,8 @@ public class DishManagementMenu {
         this.scanner = scanner;
     }
 
+/** Shows a menu for navigating dish management tasks
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Dish Management Menu ---");

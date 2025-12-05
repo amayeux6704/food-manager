@@ -1,3 +1,6 @@
+/** The menu for navigating payment method management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 
 public class PaymentManagementMenu {
@@ -8,6 +11,9 @@ public class PaymentManagementMenu {
         this.scanner = scanner;
         this.payment = payment;
     }
+
+/** Displays the menu for managing payment methods
+ */
     public void showMenu(){
         while (true){
             System.out.println("\n--- Payment Management Menu ---");

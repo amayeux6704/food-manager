@@ -1,3 +1,6 @@
+/** Manages dishes
+ * @author Brendan Casey
+*/
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,10 +14,19 @@ public class DishManager {
         this.nextDishID = 1;
     }
 
+/**
+ * Gets the set of dishes
+ * @return The dishes in the set
+ */
     public Set<Dish> getDishes(){
         return dishes;
     }
 
+/**
+ * Adds a recipe for a dish
+ * @param dishID A integer for representing a dish's id
+ * @param recipe A Recipe for a dish
+ */
     public void addDishRecipe(int dishID, RecipeManager recipe){
         Dish dish = findDish(dishID);
         if (dish != null){
@@ -25,6 +37,11 @@ public class DishManager {
         }
     }
 
+/**
+ * Finds a dish using its id
+ * @param dishID A integer for representing a dish's id
+ * @return The dish information when found or null if not found
+ */
     public Dish findDish(int dishID){
         for(Dish dish : dishes) {
             if(dish.getDishID() == dishID){
@@ -34,6 +51,11 @@ public class DishManager {
         return null;
     }
 
+/**
+ * Gets the price of a dish
+ * @param dishID A integer for representing the dish's id
+ * @return The price of a dish if it exists
+ */
     public double getDishPrice(int dishID){
         Dish dish = findDish(dishID);
         if(dish != null){
@@ -44,6 +66,11 @@ public class DishManager {
         }
     }
 
+/**
+ * Adds a dish to the set of dishes
+ * @param dishName A string representing the name of a dish
+ * @param price A double representing the price of a dish
+ */
     public void addDish(String dishName, double price){
         boolean exists = false;
         for(Dish dish : dishes){
@@ -62,6 +89,10 @@ public class DishManager {
         }
     }
 
+/**
+ * Removes a dish from the set of dishes
+ * @param dishID A integer for representing the id of a dish
+ */
     public void removeDish(int dishID){
         Dish dishForRemoval = findDish(dishID);
         if (dishForRemoval != null){
@@ -72,6 +103,11 @@ public class DishManager {
         }
     }
 
+/**
+ * Updates the name of a dish
+ * @param dishID A integer for representing the id of a dish
+ * @param newName A string for representing the new name for a dish
+ */
     public void updateDishName(int dishID, String newName){
         Dish dish = findDish(dishID);
         if (dish != null){
@@ -82,6 +118,11 @@ public class DishManager {
         }
     }
 
+/**
+ * Updates the price of a dish
+ * @param dishID A integer for representing the id of a dish
+ * @param newPrice A double for representing the new price for a dish
+ */
     public void updateDishPrice(int dishID, double newPrice){
         Dish dish = findDish(dishID);
         if (dish != null){

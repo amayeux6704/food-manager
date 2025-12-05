@@ -1,3 +1,6 @@
+/** Manages phone numbers
+ * @author Brendan Casey
+*/
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,10 +12,19 @@ public class PhoneNumberManager {
         this.phoneNumbers = new HashSet<>();
     }
 
+/**
+ * Adds a phone number to the list of phone numbers
+ * @param phoneNumber A string for representing a phone number
+ */
     public void addPhoneNumber(String phoneNumber){
         this.phoneNumbers.add(phoneNumber);
     }
 
+/**
+ * Updates a phone number
+ * @param oldPhoneNumber A string representing a old phone number
+ * @param newPhoneNumber A string representing a new phone number
+ */
     public void updatePhoneNumber(String oldPhoneNumber, String newPhoneNumber){
         if(phoneNumbers.contains(oldPhoneNumber)){
             this.phoneNumbers.remove(oldPhoneNumber);
@@ -23,6 +35,10 @@ public class PhoneNumberManager {
         }
     }
 
+/**
+ * Removes a phone number from the set of phone numbers
+ * @param phoneNumber A string representing a phone number
+ */
     public void removePhoneNumber(String phoneNumber){
         if(phoneNumbers.contains(phoneNumber)){
             this.phoneNumbers.remove(phoneNumber);
@@ -32,6 +48,10 @@ public class PhoneNumberManager {
         }
     }
 
+/**
+ * Gets the set of phone numbers
+ * @return The set of phone numbers
+ */
     public Set<String> getPhoneNumbers(){
         return new HashSet<>(phoneNumbers);
     }

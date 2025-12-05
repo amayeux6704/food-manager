@@ -1,3 +1,6 @@
+/** The menu for navigating restaurant management tasks
+ * @author Brendan Casey
+*/
 import java.util.Scanner;
 import java.util.Set;
 
@@ -10,6 +13,8 @@ public class RestaurantManagementMenu {
         this.restaurant = restaurant;
     }
     
+/**Displays the menu for managing the restaurant
+ */
     public void showMenu(){
         LocationManagementMenu locationManagementMenu = new LocationManagementMenu(scanner, restaurant);
         PhoneNumberManagementMenu phoneNumberManagementMenu = new PhoneNumberManagementMenu(scanner, restaurant);
