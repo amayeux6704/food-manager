@@ -7,15 +7,15 @@
  *
  * @author Shades
  */
-public class RemoveLocationGUI extends javax.swing.JFrame {
+public class SetOpeningHoursGUI extends javax.swing.JFrame {
     
     private Restaurant r;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RemoveLocationGUI.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SetOpeningHoursGUI.class.getName());
 
     /**
-     * Creates new form RemoveLocationGUI
+     * Creates new form SetOpeningHoursGUI
      */
-    public RemoveLocationGUI() {
+    public SetOpeningHoursGUI() {
         r = new Restaurant("");
         initComponents();
     }
@@ -29,16 +29,22 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton7 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Remove Location");
+        setTitle("Set Open Hours");
 
-        jLabel1.setText("Please Enter The Location To Remove:");
+        jButton7.setText("Back");
+        jButton7.addActionListener(this::jButton7ActionPerformed);
+
+        jButton1.setText("Confirm");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        jLabel1.setText("Enter Open Hours:");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -62,12 +68,6 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton7.setText("Back");
-        jButton7.addActionListener(this::jButton7ActionPerformed);
-
-        jButton1.setText("Confirm");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,19 +75,18 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton7))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(149, 149, 149)
+                        .addComponent(jLabel1)))
                 .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,23 +105,23 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI();
-        lmmGUI.setVisible(true);
+        OpenHourManagementMenuGUI ohmmGUI = new OpenHourManagementMenuGUI();
+        ohmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String l = jTextField1.getText();
-        r.removeLocation(l);
+        String oH = jTextField1.getText();
+        r.setOpenHours(oH);
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +145,7 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RemoveLocationGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new SetOpeningHoursGUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

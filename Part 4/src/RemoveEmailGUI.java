@@ -7,15 +7,15 @@
  *
  * @author Shades
  */
-public class RemoveLocationGUI extends javax.swing.JFrame {
+public class RemoveEmailGUI extends javax.swing.JFrame {
     
     private Restaurant r;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RemoveLocationGUI.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RemoveEmailGUI.class.getName());
 
     /**
-     * Creates new form RemoveLocationGUI
+     * Creates new form RemoveEmailGUI
      */
-    public RemoveLocationGUI() {
+    public RemoveEmailGUI() {
         r = new Restaurant("");
         initComponents();
     }
@@ -36,9 +36,9 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Remove Location");
+        setTitle("Remove Email");
 
-        jLabel1.setText("Please Enter The Location To Remove:");
+        jLabel1.setText("Please Enter The Email To Remove:");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -82,19 +82,17 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(81, 81, 81)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -112,15 +110,15 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI();
-        lmmGUI.setVisible(true);
+        EmailManagementMenuGUI emmGUI = new EmailManagementMenuGUI();
+        emmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String l = jTextField1.getText();
-        r.removeLocation(l);
+        String e = jTextField1.getText();
+        r.removeEmail(e);
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -146,7 +144,7 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RemoveLocationGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new RemoveEmailGUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

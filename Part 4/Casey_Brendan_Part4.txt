@@ -2,6 +2,7 @@ Added Casey_Brendan_Part4 txt file for keeping record of tasks
 Added documentation to previous classes
 
 Added Classes:
+
  Added FindItemByNameGUI
  Added InventoryDisplayGUI
  Added ItemAddQuantityGUI
@@ -15,6 +16,27 @@ Added Classes:
  Added UpdateLocationGUI
  Added RemoveLocationGUI
  Added ViewLocationsGUI 
+ Added AddPhoneNumberGUI
+ Added UpdatePhoneNumberGUI
+ Added RemovePhoneNumberGUI
+ Added ViewPhoneNumbersGUI 
+ Added AddEmailGUI
+ Added UpdateEmailGUI
+ Added RemoveEmailGUI
+ Added ViewEmailsGUI
+ Added SetOpeningHoursGUI
+ Added ViewOpenHoursGUI
+ Added AddDishGUI
+ Added RemoveDishGUI
+ Added UpdateDishNameGUI
+ Added UpdateDishPriceGUI
+ Added ManageDishRecipeGUI
+ Added ViewDishListGUI
+ Added AddSideGUI
+ Added RemoveSideGUI
+ Added UpdateSideNameGUI
+ Added ManageSideRecipeGUI
+ Added ViewSidesListGUI
 
 Key:
 
@@ -23,6 +45,28 @@ Key:
 	-: Not Started
 
 GUI Display Template Completion:
+
++ AddSideGUI
++ RemoveSideGUI
++ UpdateSideNameGUI
+~ ManageSideRecipeGUI
+~ ViewSidesListGUI
++ AddDishGUI
++ RemoveDishGUI
++ UpdateDishNameGUI
++ UpdateDishPriceGUI
+~ ManageDishRecipeGUI
+~ ViewDishListGUI
++ SetOpeningHoursGUI
+~ ViewOpenHoursGUI
++ AddEmailGUI
++ UpdateEmailGUI
++ RemoveEmailGUI
+~ ViewEmailsGUI
++ AddPhoneNumberGUI
++ UpdatePhoneNumberGUI
++ RemovePhoneNumberGUI
+~ ViewPhoneNumbersGUI 
 ~ ViewLocationsGUI 
 + RemoveLocationGUI
 + UpdateLocationGUI
@@ -51,21 +95,42 @@ GUI Display Template Completion:
 
 GUI Functionality Completion:
 
+~ AddSideGUI
+~ RemoveSideGUI
+~ UpdateSideNameGUI
+- ManageSideRecipeGUI
+- ViewSidesListGUI
+~ AddDishGUI
+~ RemoveDishGUI
+~ UpdateDishNameGUI
+~ UpdateDishPriceGUI
+- ManageDishRecipeGUI
+- ViewDishListGUI
+~ SetOpeningHoursGUI
+- ViewOpenHoursGUI
+~ AddEmailGUI
+~ UpdateEmailGUI
+~ RemoveEmailGUI
+- ViewEmailsGUI
+~ AddPhoneNumberGUI
+~ UpdatePhoneNumberGUI
+~ RemovePhoneNumberGUI
+- ViewPhoneNumbersGUI 
 - ViewLocationsGUI 
 ~ RemoveLocationGUI
 ~ UpdateLocationGUI
 ~ AddLocationGUI
 - CostCalculationMenu
-- DishManagementMenu
-- SideManagementMenu
-- EmailManagementMenu
++ DishManagementMenu
++ SideManagementMenu
++ EmailManagementMenu
 - IngredientManagementMenu
 - InventoryManagementMenu
 + LocationManagementMenu
 - MenuManagementMenu
-- OpenHourManagementMenu
++ OpenHourManagementMenu
 - PaymentManagementMenu
-- PhoneNumberManagementMenu
++ PhoneNumberManagementMenu
 + RestaurantManagementMenu
 - FindItemByNameGUI
 - InventoryDisplayGUI

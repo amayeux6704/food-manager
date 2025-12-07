@@ -7,15 +7,15 @@
  *
  * @author Shades
  */
-public class RemoveLocationGUI extends javax.swing.JFrame {
+public class RemovePhoneNumberGUI extends javax.swing.JFrame {
     
     private Restaurant r;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RemoveLocationGUI.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RemovePhoneNumberGUI.class.getName());
 
     /**
-     * Creates new form RemoveLocationGUI
+     * Creates new form RemovePhoneNumberGUI
      */
-    public RemoveLocationGUI() {
+    public RemovePhoneNumberGUI() {
         r = new Restaurant("");
         initComponents();
     }
@@ -36,9 +36,9 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Remove Location");
+        setTitle("Remove Phone Number");
 
-        jLabel1.setText("Please Enter The Location To Remove:");
+        jLabel1.setText("Please Enter The Phone Number To Remove:");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -83,11 +83,11 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 87, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,15 +112,15 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI();
-        lmmGUI.setVisible(true);
+        PhoneNumberManagementMenuGUI pnmmGUI = new PhoneNumberManagementMenuGUI();
+        pnmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String l = jTextField1.getText();
-        r.removeLocation(l);
+        String p = jTextField1.getText();
+        r.removePhoneNumber(p);
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -146,7 +146,7 @@ public class RemoveLocationGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RemoveLocationGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new RemovePhoneNumberGUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
