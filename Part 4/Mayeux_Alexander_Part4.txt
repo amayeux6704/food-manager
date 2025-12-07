@@ -9,7 +9,7 @@ Key:
 • Write the code for the following classes:
 	AccountManager (Needs Documentation)
 	Address (Needs Documentation) (Added new Method)
-	AddressManager (Needs Documentation) (Added new Method)
+	AddressManager (Needs Documentation)
 	-AddressesSubmenu
 	AddressesSubmenuManager (Needs Documentation)
 	Customer (Needs Documentation)
@@ -49,7 +49,7 @@ Key:
 	VehicleSubmenuManager (Needs Documentation)
 
 • Create GUI Frames for the following Menus:
-	+AddressesSubmenuGUI (Needs Documentation
+	+AddressesSubmenuGUI (Needs Documentation)
 	+CustomerMenuGUI (Needs Documentation)
 	+CustomerSettingsSubmenuGUI (Needs Documentation)
 	+EditAddressSubmenuGUI (Needs Documentation)
@@ -59,6 +59,7 @@ Key:
 	+MainMenuGUI
 	+PhoneSubmenuGUI (Needs Documentation)
 	~PlaceOrderMenuGUI
+	+SystemSettingsSubmenuGUI (Needs Documentation)
 	+UpdateAddPhoneSubmenuGUI (Needs Documentation)
 	+UserEntryMenuGUI
 	+UserInfoGUI (Needs Documentation)

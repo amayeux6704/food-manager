@@ -49,7 +49,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         welcomeLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        systemSettingsBttn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -70,11 +70,11 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
 
         jButton2.setText("View Order History");
 
-        jButton4.setText(" System Settings");
-        jButton4.setToolTipText("");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        systemSettingsBttn.setText(" System Settings");
+        systemSettingsBttn.setToolTipText("");
+        systemSettingsBttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                systemSettingsBttnActionPerformed(evt);
             }
         });
 
@@ -105,7 +105,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(systemSettingsBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(welcomeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -128,7 +128,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
                         .addGap(71, 71, 71)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addComponent(systemSettingsBttn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel3)
@@ -178,9 +178,10 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void systemSettingsBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemSettingsBttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        new SystemSettingsSubmenuGUI().setVisible(true);
+    }//GEN-LAST:event_systemSettingsBttnActionPerformed
 
     private void profileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileMenuItemActionPerformed
         // TODO add your handling code here:
@@ -225,7 +226,6 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu employeeSubmenu;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -237,6 +237,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem logoutMenuItem;
     private javax.swing.JMenuItem profileMenuItem;
+    private javax.swing.JButton systemSettingsBttn;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
