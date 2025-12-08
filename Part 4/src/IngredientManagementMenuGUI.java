@@ -9,12 +9,16 @@
  */
 public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     
+    private boolean accessingFrameCheck1;
+    private boolean accessingFrameCheck2;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(IngredientManagementMenuGUI.class.getName());
 
     /**
      * Creates new form IngredientManagementMenuGUI
      */
-    public IngredientManagementMenuGUI() {
+    public IngredientManagementMenuGUI(boolean accessingFrameCheck1, boolean accessingFrameCheck2) {
+        this.accessingFrameCheck1 = accessingFrameCheck1;
+        this.accessingFrameCheck2 = accessingFrameCheck2;
         initComponents();
     }
 
@@ -58,6 +62,7 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
 
         jButton3.setText("3. Update Ingredient");
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setText("4. View Ingredients");
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -68,12 +73,12 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
         entryBtnPanelLayout.setHorizontalGroup(
             entryBtnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, entryBtnPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addGroup(entryBtnPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
         entryBtnPanelLayout.setVerticalGroup(
@@ -99,7 +104,7 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
                 .addComponent(jButton7)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(entryBtnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(102, 102, 102))
         );
@@ -107,14 +112,15 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(welcomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entryBtnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(11, 11, 11))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton7)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(welcomeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(entryBtnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addContainerGap())))
         );
 
         pack();
@@ -122,19 +128,68 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        if(accessingFrameCheck1 != false){
+            DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI();
+            dmmGUI.setVisible(true);
+        } 
+        if(accessingFrameCheck2 != false){
+            SideManagementMenuGUI smmGUI = new SideManagementMenuGUI();
+            smmGUI.setVisible(true);
+        }
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(accessingFrameCheck1 != false){
+            AddDishIngredientGUI adiGUI = new AddDishIngredientGUI();
+            adiGUI.setVisible(true);
+        } 
+        if(accessingFrameCheck2 != false){
+            AddSideIngredientGUI asiGUI = new AddSideIngredientGUI();
+            asiGUI.setVisible(true);
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(accessingFrameCheck1 != false){
+            RemoveDishIngredientGUI rdiGUI = new RemoveDishIngredientGUI();
+            rdiGUI.setVisible(true);
+        } 
+        if(accessingFrameCheck2 != false){
+            RemoveSideIngredientGUI rsiGUI = new RemoveSideIngredientGUI();
+            rsiGUI.setVisible(true);
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        if(accessingFrameCheck1 != false){
+            ViewDishIngredientsGUI vdiGUI = new ViewDishIngredientsGUI();
+            vdiGUI.setVisible(true);
+        } 
+        if(accessingFrameCheck2 != false){
+            ViewSideIngredientsGUI vsiGUI = new ViewSideIngredientsGUI();
+            vsiGUI.setVisible(true);
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(accessingFrameCheck1 != false){
+            UpdateDishIngredientGUI udiGUI = new UpdateDishIngredientGUI();
+            udiGUI.setVisible(true);
+        } 
+        if(accessingFrameCheck2 != false){
+            UpdateSideIngredientGUI usiGUI = new UpdateSideIngredientGUI();
+            usiGUI.setVisible(true);
+        }
+        this.setVisible(false);  
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,7 +213,7 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new IngredientManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new IngredientManagementMenuGUI(false,false).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,14 +7,14 @@
  *
  * @author Shades
  */
-public class ManageDishRecipeGUI extends javax.swing.JFrame {
+public class ViewSideIngredientsGUI extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageDishRecipeGUI.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewSideIngredientsGUI.class.getName());
 
     /**
-     * Creates new form ManageDishRecipeGUI
+     * Creates new form ViewSideIngredientsGUI
      */
-    public ManageDishRecipeGUI() {
+    public ViewSideIngredientsGUI() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class ManageDishRecipeGUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Manage Dish Recipe");
+        setTitle("View Side Ingredients");
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -42,12 +42,12 @@ public class ManageDishRecipeGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton7)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(262, Short.MAX_VALUE)
+                .addContainerGap(233, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addContainerGap())
         );
@@ -57,8 +57,8 @@ public class ManageDishRecipeGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI();
-        dmmGUI.setVisible(true);
+        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(false,true);
+        immGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -84,7 +84,7 @@ public class ManageDishRecipeGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ManageDishRecipeGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ViewSideIngredientsGUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

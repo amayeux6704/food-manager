@@ -7,14 +7,14 @@
  *
  * @author Shades
  */
-public class ManageSideRecipeGUI extends javax.swing.JFrame {
+public class ViewPayMethodsGUI extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageSideRecipeGUI.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewPayMethodsGUI.class.getName());
 
     /**
-     * Creates new form ManageSideRecipeGUI
+     * Creates new form ViewPayMethodsGUI
      */
-    public ManageSideRecipeGUI() {
+    public ViewPayMethodsGUI() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class ManageSideRecipeGUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Manage Side Recipe");
+        setTitle("View Payment Methods");
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -57,8 +57,8 @@ public class ManageSideRecipeGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        SideManagementMenuGUI smmGUI = new SideManagementMenuGUI();
-        smmGUI.setVisible(true);
+        PaymentManagementMenuGUI pmmGUI = new PaymentManagementMenuGUI();
+        pmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -84,7 +84,7 @@ public class ManageSideRecipeGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ManageSideRecipeGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ViewPayMethodsGUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

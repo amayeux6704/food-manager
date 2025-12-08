@@ -3,15 +3,12 @@ Added documentation to previous classes
 
 Added Classes:
 
- Added FindItemByNameGUI
- Added InventoryDisplayGUI
  Added ItemAddQuantityGUI
  Added ItemDecreaseQuantityGUI
  Added MenuDisplayGUI
  Added RestaurantNameEditorGUI
  Added RestaurantNameGUI
  Added SetTaxRateGUI
- Added TaxRateDisplayGUI
  Added AddLocationGUI
  Added UpdateLocationGUI
  Added RemoveLocationGUI
@@ -37,6 +34,20 @@ Added Classes:
  Added UpdateSideNameGUI
  Added ManageSideRecipeGUI
  Added ViewSidesListGUI
+ Added ViewInventoryGUI
+ Added ViewTaxRateGUI
+ Added AddSideIngredientGUI
+ Added AddDishIngredientGUI
+ Added RemoveSideIngredientGUI
+ Added RemoveDishIngredientGUI
+ Added UpdateSideIngredientGUI
+ Added UpdateDishIngredientGUI
+ Added ViewSideIngredientsGUI
+ Added ViewDishIngredientsGUI
+ Added AddPayMethodGUI
+ Added RemovePayMethodGUI
+ Added SetPayMethodGUI
+ Added ViewPayMethodsGUI
 
 Key:
 
@@ -46,16 +57,28 @@ Key:
 
 GUI Display Template Completion:
 
++ AddPayMethodGUI
++ RemovePayMethodGUI
++ SetPayMethodGUI
+~ ViewPayMethodsGUI
++ AddSideIngredientGUI
++ AddDishIngredientGUI
++ RemoveSideIngredientGUI
++ RemoveDishIngredientGUI
++ UpdateSideIngredientGUI
++ UpdateDishIngredientGUI
+~ ViewSideIngredientsGUI
+~ ViewDishIngredientsGUI
++ ViewTaxRateGUI
++ ViewInventoryGUI
 + AddSideGUI
 + RemoveSideGUI
 + UpdateSideNameGUI
-~ ManageSideRecipeGUI
 ~ ViewSidesListGUI
 + AddDishGUI
 + RemoveDishGUI
 + UpdateDishNameGUI
 + UpdateDishPriceGUI
-~ ManageDishRecipeGUI
 ~ ViewDishListGUI
 + SetOpeningHoursGUI
 ~ ViewOpenHoursGUI
@@ -83,28 +106,36 @@ GUI Display Template Completion:
 ~ PaymentManagementMenu
 ~ PhoneNumberManagementMenu
 + RestaurantManagementMenu
-+ FindItemByNameGUI
-+ InventoryDisplayGUI
 + ItemAddQuantityGUI
 + ItemDecreaseQuantityGUI
 + MenuDisplayGUI
 + RestaurantNameEditorGUI
 + RestaurantNameGUI
 + SetTaxRateGUI
-+ TaxRateDisplayGUI
 
 GUI Functionality Completion:
 
+~ AddPayMethodGUI
+~ RemovePayMethodGUI
+~ SetPayMethodGUI
+- ViewPayMethodsGUI
+~ AddSideIngredientGUI
+~ AddDishIngredientGUI
+~ RemoveSideIngredientGUI
+~ RemoveDishIngredientGUI
+~ UpdateSideIngredientGUI
+~ UpdateDishIngredientGUI
+- ViewSideIngredientsGUI
+- ViewDishIngredientsGUI
+- ViewInventoryGUI
 ~ AddSideGUI
 ~ RemoveSideGUI
 ~ UpdateSideNameGUI
-- ManageSideRecipeGUI
 - ViewSidesListGUI
 ~ AddDishGUI
 ~ RemoveDishGUI
 ~ UpdateDishNameGUI
 ~ UpdateDishPriceGUI
-- ManageDishRecipeGUI
 - ViewDishListGUI
 ~ SetOpeningHoursGUI
 - ViewOpenHoursGUI
@@ -120,24 +151,29 @@ GUI Functionality Completion:
 ~ RemoveLocationGUI
 ~ UpdateLocationGUI
 ~ AddLocationGUI
-- CostCalculationMenu
++ CostCalculationMenu
 + DishManagementMenu
 + SideManagementMenu
 + EmailManagementMenu
-- IngredientManagementMenu
-- InventoryManagementMenu
++ IngredientManagementMenu
++ InventoryManagementMenu
 + LocationManagementMenu
-- MenuManagementMenu
++ MenuManagementMenu
 + OpenHourManagementMenu
-- PaymentManagementMenu
++ PaymentManagementMenu
 + PhoneNumberManagementMenu
 + RestaurantManagementMenu
-- FindItemByNameGUI
-- InventoryDisplayGUI
-- ItemAddQuantityGUI
-- ItemDecreaseQuantityGUI
+~ ItemAddQuantityGUI
+~ ItemDecreaseQuantityGUI
 - MenuDisplayGUI
 ~ RestaurantNameEditorGUI
 ~ RestaurantNameGUI
-- SetTaxRateGUI
-- TaxRateDisplayGUI
+~ SetTaxRateGUI
+- ViewTaxRateGUI
+
+Removed:
+ FindItemByNameGUI
+ InventoryDisplayGUI
+ TaxRateDisplayGUI
+ ManageSideRecipeGUI
+ ManageDishRecipeGUI

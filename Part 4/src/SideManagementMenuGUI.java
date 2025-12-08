@@ -8,7 +8,7 @@
  * @author Shades
  */
 public class SideManagementMenuGUI extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SideManagementMenuGUI.class.getName());
 
     /**
@@ -159,9 +159,9 @@ public class SideManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ManageSideRecipeGUI msrGUI = new ManageSideRecipeGUI();
-        msrGUI.setVisible(true);
-        this.dispose();
+        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(false,true);
+        immGUI.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
