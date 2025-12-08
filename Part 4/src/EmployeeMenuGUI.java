@@ -1,4 +1,6 @@
 
+import java.util.Map;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /*
@@ -13,10 +15,14 @@ import javax.swing.JOptionPane;
 public class EmployeeMenuGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EmployeeMenuGUI.class.getName());
-    private EmployeeSubmenuManager esubm;
+    private OrderManager gom;
     private DeliveryPersonManager dpm;
     private DeliveryPerson deliveryPerson;
     private int employeeId;
+    private DefaultListModel availableOrdersModel;
+    private Map<Integer, Order> availableOrders;
+    private DefaultListModel unfulfilledOrdersModel;
+    private Map<Integer, Order> unfulfilledOrders;
 
     /**
      * Creates new form EmployeeMenuGUI
@@ -31,9 +37,12 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         this.dpm = dpm;
         employeeId = id;
         deliveryPerson = dpm.searchDeliveryPerson(employeeId);
-        esubm = new EmployeeSubmenuManager(dpm, deliveryPerson, gom, menu, restaurant, inventory, cc);
+        this.gom = gom;
         
-        welcomeLabel.setText("Welcome, " + deliveryPerson.getName() + "!");
+        viewAvailOrderInfoBttn.setEnabled(false);
+        viewUnfllOrderInfoBttn.setEnabled(false);
+        
+        refreshInfo();
     }
 
     /**
@@ -48,27 +57,39 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         welcomeLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        takeOnOrderBttn = new javax.swing.JButton();
         systemSettingsBttn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        availableOrdersLst = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        unfulfillOrdersLst = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        viewUnfllOrderInfoBttn = new javax.swing.JButton();
+        viewAvailOrderInfoBttn = new javax.swing.JButton();
+        fulfillOrderBttn = new javax.swing.JButton();
+        employeeMenuMenuBar = new javax.swing.JMenuBar();
         employeeSubmenu = new javax.swing.JMenu();
         profileMenuItem = new javax.swing.JMenuItem();
         logoutMenuItem = new javax.swing.JMenuItem();
+        ordersSubmenu = new javax.swing.JMenu();
+        orderHistMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         welcomeLabel.setText("Welcome, Employee!");
 
         jLabel2.setText("What would you like to do today?");
 
-        jButton2.setText("View Order History");
+        takeOnOrderBttn.setText("Take On An Order");
 
         systemSettingsBttn.setText(" System Settings");
         systemSettingsBttn.setToolTipText("");
@@ -78,23 +99,39 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        availableOrdersLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                availableOrdersLstValueChanged(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(availableOrdersLst);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        unfulfillOrdersLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                unfulfillOrdersLstValueChanged(evt);
+            }
         });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(unfulfillOrdersLst);
 
         jLabel3.setText("Available orders for Delivery: ");
 
         jLabel4.setText("Your unfulfilled orders:");
+
+        viewUnfllOrderInfoBttn.setText("View Order info");
+        viewUnfllOrderInfoBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUnfllOrderInfoBttnActionPerformed(evt);
+            }
+        });
+
+        viewAvailOrderInfoBttn.setText("View Order info");
+        viewAvailOrderInfoBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAvailOrderInfoBttnActionPerformed(evt);
+            }
+        });
+
+        fulfillOrderBttn.setText("Fulfill An Order");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,16 +141,19 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
+                    .addComponent(welcomeLabel)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(fulfillOrderBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(systemSettingsBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(welcomeLabel))
+                        .addComponent(takeOnOrderBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(viewUnfllOrderInfoBttn)
+                    .addComponent(viewAvailOrderInfoBttn))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,24 +161,30 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(welcomeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(71, 71, 71)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(systemSettingsBttn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(viewAvailOrderInfoBttn)
+                        .addGap(6, 6, 6)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(viewUnfllOrderInfoBttn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(welcomeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(80, 80, 80)
+                        .addComponent(takeOnOrderBttn)
+                        .addGap(18, 18, 18)
+                        .addComponent(fulfillOrderBttn)
+                        .addGap(18, 18, 18)
+                        .addComponent(systemSettingsBttn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         employeeSubmenu.setText("Employee");
@@ -159,9 +205,21 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         });
         employeeSubmenu.add(logoutMenuItem);
 
-        jMenuBar1.add(employeeSubmenu);
+        employeeMenuMenuBar.add(employeeSubmenu);
 
-        setJMenuBar(jMenuBar1);
+        ordersSubmenu.setText("Orders");
+
+        orderHistMenuItem.setText("Order History");
+        orderHistMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderHistMenuItemActionPerformed(evt);
+            }
+        });
+        ordersSubmenu.add(orderHistMenuItem);
+
+        employeeMenuMenuBar.add(ordersSubmenu);
+
+        setJMenuBar(employeeMenuMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,7 +229,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -198,6 +256,85 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutMenuItemActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        refreshInfo();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void availableOrdersLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_availableOrdersLstValueChanged
+        // TODO add your handling code here:
+        viewAvailOrderInfoBttn.setEnabled(availableOrdersLst.getSelectedIndex() > -1);
+    }//GEN-LAST:event_availableOrdersLstValueChanged
+
+    private void unfulfillOrdersLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_unfulfillOrdersLstValueChanged
+        // TODO add your handling code here:
+        viewUnfllOrderInfoBttn.setEnabled(unfulfillOrdersLst.getSelectedIndex() > -1);
+    }//GEN-LAST:event_unfulfillOrdersLstValueChanged
+
+    private void viewAvailOrderInfoBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAvailOrderInfoBttnActionPerformed
+        // TODO add your handling code here:
+        String selectedOrder = availableOrdersLst.getSelectedValue();
+        int id = retrieveOrderID(selectedOrder);
+        Order order = availableOrders.get(id);
+        new ViewOrderInfoGUI(order).setVisible(true);
+    }//GEN-LAST:event_viewAvailOrderInfoBttnActionPerformed
+
+    private void viewUnfllOrderInfoBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUnfllOrderInfoBttnActionPerformed
+        // TODO add your handling code here:
+        String selectedOrder = unfulfillOrdersLst.getSelectedValue();
+        int id = retrieveOrderID(selectedOrder);
+        Order order = unfulfilledOrders.get(id);
+        new ViewOrderInfoGUI(order).setVisible(true);
+    }//GEN-LAST:event_viewUnfllOrderInfoBttnActionPerformed
+
+    private void orderHistMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderHistMenuItemActionPerformed
+        // TODO add your handling code here:
+        new OrderHistoryGUI(deliveryPerson).setVisible(true);
+    }//GEN-LAST:event_orderHistMenuItemActionPerformed
+
+    private void refreshInfo(){
+        welcomeLabel.setText("Welcome, " + deliveryPerson.getName() + "!");
+        showUnfulfilledOrders();
+        showAvailableOrders();
+    }
+    
+    private void showUnfulfilledOrders(){
+        unfulfilledOrders = deliveryPerson.getOrderHistory().getUnfulfilledOrders();
+        
+        
+        unfulfilledOrdersModel = new DefaultListModel();
+        
+        if(!unfulfilledOrders.isEmpty()){
+            for(int id: unfulfilledOrders.keySet()){
+                Order order =  unfulfilledOrders.get(id);
+                unfulfilledOrdersModel.addElement("Order #" + order.getOrderId());
+            }
+        }
+        unfulfillOrdersLst.setModel(unfulfilledOrdersModel);
+        unfulfillOrdersLst.updateUI();
+    }
+    
+    private void showAvailableOrders(){
+        availableOrders = gom.getAvailableOrders();
+        
+        
+        availableOrdersModel = new DefaultListModel();
+        
+        if(!availableOrders.isEmpty()){
+            for(int id: availableOrders.keySet()){
+                Order order =  availableOrders.get(id);
+                availableOrdersModel.addElement("Order #" + order.getOrderId());
+            }
+        }
+        availableOrdersLst.setModel(availableOrdersModel);
+        availableOrdersLst.updateUI();
+    }
+    
+    private int retrieveOrderID(String str){
+        String orderIDStr = str.replace("Order #", "");
+        int id = Integer.parseInt(orderIDStr);
+        return id;
+    }
     /**
      * @param args the command line arguments
      */
@@ -224,20 +361,25 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> availableOrdersLst;
+    private javax.swing.JMenuBar employeeMenuMenuBar;
     private javax.swing.JMenu employeeSubmenu;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton fulfillOrderBttn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem logoutMenuItem;
+    private javax.swing.JMenuItem orderHistMenuItem;
+    private javax.swing.JMenu ordersSubmenu;
     private javax.swing.JMenuItem profileMenuItem;
     private javax.swing.JButton systemSettingsBttn;
+    private javax.swing.JButton takeOnOrderBttn;
+    private javax.swing.JList<String> unfulfillOrdersLst;
+    private javax.swing.JButton viewAvailOrderInfoBttn;
+    private javax.swing.JButton viewUnfllOrderInfoBttn;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,6 @@
 
+import java.util.Map;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,12 +20,16 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     private CustomerManager cm;
     private Customer customer;
     private int customerId;
+    private DefaultListModel unfulfilledOrdersModel;
+    private Map<Integer, Order> unfulfilledOrders;
 
     /**
      * Creates new form CustomerMenuGUI
      */
     public CustomerMenuGUI() {
+        unfulfilledOrdersModel = new DefaultListModel();
         initComponents();
+        viewOrderInfoBttn.setEnabled(false);
     }
     
     public CustomerMenuGUI(CustomerManager cm, int id, OrderManager gom, Menu menu, 
@@ -49,18 +55,19 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         jSlider1 = new javax.swing.JSlider();
         jPanel1 = new javax.swing.JPanel();
         welcomeLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        whatDoLabel = new javax.swing.JLabel();
         placeOrderBttn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        inProgOrdersLst = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         viewMenuBttn = new javax.swing.JButton();
+        viewOrderInfoBttn = new javax.swing.JButton();
         customerMenuMenuBar = new javax.swing.JMenuBar();
         customerSubmenu = new javax.swing.JMenu();
         profileMenuItem = new javax.swing.JMenuItem();
         logoutMenuItem = new javax.swing.JMenuItem();
         OrdersSubmenu = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        orderHistMenuItem = new javax.swing.JMenuItem();
 
         jButton4.setText("jButton4");
 
@@ -77,7 +84,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         welcomeLabel.setText("Welcome, Customer!");
 
-        jLabel2.setText("What would you like to do today?");
+        whatDoLabel.setText("What would you like to do today?");
 
         placeOrderBttn.setText("Place an Order");
         placeOrderBttn.addActionListener(new java.awt.event.ActionListener() {
@@ -86,16 +93,29 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        inProgOrdersLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        inProgOrdersLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                inProgOrdersLstValueChanged(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(inProgOrdersLst);
 
         jLabel3.setText("Orders in Progress");
 
         viewMenuBttn.setText("View Menu");
+        viewMenuBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewMenuBttnActionPerformed(evt);
+            }
+        });
+
+        viewOrderInfoBttn.setText("View Order Information");
+        viewOrderInfoBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewOrderInfoBttnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,7 +127,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(welcomeLabel)
-                            .addComponent(jLabel2))
+                            .addComponent(whatDoLabel))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -116,7 +136,8 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewOrderInfoBttn))
                         .addGap(24, 24, 24))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +146,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(welcomeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(whatDoLabel)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -137,7 +158,9 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewOrderInfoBttn)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         customerSubmenu.setText("Customer");
@@ -162,8 +185,13 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
 
         OrdersSubmenu.setText("Orders");
 
-        jMenuItem3.setText("Order History");
-        OrdersSubmenu.add(jMenuItem3);
+        orderHistMenuItem.setText("Order History");
+        orderHistMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderHistMenuItemActionPerformed(evt);
+            }
+        });
+        OrdersSubmenu.add(orderHistMenuItem);
 
         customerMenuMenuBar.add(OrdersSubmenu);
 
@@ -214,9 +242,56 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         refreshInfo();
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void viewOrderInfoBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOrderInfoBttnActionPerformed
+        // TODO add your handling code here:
+
+        String selectedOrder = inProgOrdersLst.getSelectedValue();
+        int id = retrieveOrderID(selectedOrder);
+        Order order = unfulfilledOrders.get(id);
+        new ViewOrderInfoGUI(order).setVisible(true);
+    }//GEN-LAST:event_viewOrderInfoBttnActionPerformed
+
+    private void inProgOrdersLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_inProgOrdersLstValueChanged
+        // TODO add your handling code here:
+        viewOrderInfoBttn.setEnabled(inProgOrdersLst.getSelectedIndex() > -1);
+    }//GEN-LAST:event_inProgOrdersLstValueChanged
+
+    private void orderHistMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderHistMenuItemActionPerformed
+        // TODO add your handling code here:
+        new OrderHistoryGUI(customer).setVisible(true);
+    }//GEN-LAST:event_orderHistMenuItemActionPerformed
+
+    private void viewMenuBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMenuBttnActionPerformed
+        // TODO add your handling code here:
+        new MenuDisplayGUI().setVisible(true);
+    }//GEN-LAST:event_viewMenuBttnActionPerformed
     
     private void refreshInfo(){
         welcomeLabel.setText("Welcome, " + customer.getName() + "!");
+        showUnfulfilledOrders();
+    }
+    
+    private void showUnfulfilledOrders(){
+        unfulfilledOrders = customer.getOrderHistory().getUnfulfilledOrders();
+        
+        
+        unfulfilledOrdersModel = new DefaultListModel();
+        
+        if(!unfulfilledOrders.isEmpty()){
+            for(int id: unfulfilledOrders.keySet()){
+                Order order =  unfulfilledOrders.get(id);
+                unfulfilledOrdersModel.addElement("Order #" + order.getOrderId());
+            }
+        }
+        inProgOrdersLst.setModel(unfulfilledOrdersModel);
+        inProgOrdersLst.updateUI();
+    }
+    
+    private int retrieveOrderID(String str){
+        String orderIDStr = str.replace("Order #", "");
+        int id = Integer.parseInt(orderIDStr);
+        return id;
     }
     
     /**
@@ -248,18 +323,19 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     private javax.swing.JMenu OrdersSubmenu;
     private javax.swing.JMenuBar customerMenuMenuBar;
     private javax.swing.JMenu customerSubmenu;
+    private javax.swing.JList<String> inProgOrdersLst;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JMenuItem logoutMenuItem;
+    private javax.swing.JMenuItem orderHistMenuItem;
     private javax.swing.JButton placeOrderBttn;
     private javax.swing.JMenuItem profileMenuItem;
     private javax.swing.JButton viewMenuBttn;
+    private javax.swing.JButton viewOrderInfoBttn;
     private javax.swing.JLabel welcomeLabel;
+    private javax.swing.JLabel whatDoLabel;
     // End of variables declaration//GEN-END:variables
 }

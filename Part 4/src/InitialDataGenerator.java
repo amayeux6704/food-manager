@@ -30,12 +30,12 @@ public class InitialDataGenerator {
     
     public void generateDummyData(){
         System.out.println("Initializing Data...");
-        generateDummyCustomers();
-        generateDummyDeliveryPeople();
+        initializeCostCalculation();
         generateDummyMenu();
         generateDummyInventory();
         generateDummyRestaurant();
-        initializeCostCalculation();
+        generateDummyCustomers();
+        generateDummyDeliveryPeople();
         System.out.println("");
     }
 
@@ -133,6 +133,15 @@ public class InitialDataGenerator {
         c1.getAddressManager().setPrimaryAddress(addrId1);
         
         cm.addCustomer(c1);
+        
+        OrderPlacer op = new OrderPlacer(c1, gom, menu, costCalculation, inventory);
+        op.initializeOrder(menu);
+        op.addDish(1, 3);
+        op.calculateCost();
+        op.setAddress(addrId1);
+        op.setPayment(c1Payment);
+        op.placeOrder();
+        
         
         int id2 = idGen.generateId(cm, false);
         

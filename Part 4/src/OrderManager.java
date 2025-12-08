@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -50,6 +51,10 @@ public class OrderManager {
         }
     }
     
+    public Map<Integer, Order> getAllOrders(){
+        return orders;
+    }
+    
     public boolean showAvaliableOrders(){
         boolean noneAvailable = true;
         
@@ -67,6 +72,21 @@ public class OrderManager {
         if(noneAvailable){noOrdersHerePrompt();}
         
         return !noneAvailable;
+    }
+    
+    public Map<Integer, Order> getAvailableOrders(){
+        Map<Integer, Order> availableOrders = new HashMap<>();
+        
+        if(!orders.isEmpty()){
+            for(int id: orders.keySet()){
+                Order order = searchOrder(id);
+                    if(order.getDeliveryPerson() == null){
+                        availableOrders.put(id, order);
+                }
+            }
+        }
+        
+        return availableOrders;
     }
     
     public boolean showUnfulfilledOrders(){
@@ -87,6 +107,21 @@ public class OrderManager {
         
         return !allFulfilled;
     }
+    
+    public Map<Integer, Order> getUnfulfilledOrders(){
+        Map<Integer, Order> unfulfilledOrders = new HashMap<>();
+        
+        if(!orders.isEmpty()){
+            for(int id: orders.keySet()){
+                Order order = searchOrder(id);
+                    if(!order.isFulfilled()){
+                        unfulfilledOrders.put(id, order);
+                }
+            }
+        }
+        
+        return unfulfilledOrders;
+    } 
     
     public void noOrdersHerePrompt(){System.out.println("There are no orders here yet!\n");}
     

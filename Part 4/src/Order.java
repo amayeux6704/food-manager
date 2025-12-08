@@ -165,28 +165,28 @@ class Order {
         if(getDeliveryPerson() != null){dp = getDeliveryPerson().getName();}
         else{dp = "Not Yet Assigned";}
         
-        str = "Order for: " + customer.getName() + " (" + fulfillment + ")\n"+
-              "Customer #" + customer.getID() + "\n" +
-              "______________________________________________\n"+
-              "Order #" + getOrderId() + "\n" +
-              "______________________________________________\n"+
-              "Dishes:\n"+
-              "----------------------------------------------\n";
+        str = "<html>Order for: " + customer.getName() + " (" + fulfillment + ")<br>"+
+              "Customer #" + customer.getID() + "<br>" +
+              "______________________________________________<br>"+
+              "Order #" + getOrderId() + "<br>" +
+              "______________________________________________<br>"+
+              "Dishes:<br>"+
+              "----------------------------------------------<br>";
         for(Dish dish: dishes){
-            str += dish.getName() + ": " + dish.getPrice()+ "\n";
+            str += dish.getName() + ": " + dish.getPrice()+ "<br>";
         }
-        str += "\nSides:\n"+
-               "----------------------------------------------\n";
+        str += "\nSides:<br>"+
+               "----------------------------------------------<br>";
         for(Side side: sides){
-            str += side.getName() + "\n";
+            str += side.getName() + "<br>";
         }
-        str += "______________________________________________\n"+
-               "Tax:   $" + getTaxCost() + "\n" +
-               "Total: $" + getTotalCost() + "\n" +
-               "Paid with: " + getPayMethod() + "\n"+
-               "----------------------------------------------\n"+
-               "Delivery Driver: " + dp + "\n" +
-               "Deliver to:\n" + 
+        str += "______________________________________________<br>"+
+               "Tax:   $" + getTaxCost() + "<br>" +
+               "Total: $" + getTotalCost() + "<br>" +
+               "Paid with: " + getPayMethod() + "<br>"+
+               "----------------------------------------------<br>"+
+               "Delivery Driver: " + dp + "<br>" +
+               "Deliver to:<br>" + 
                address.toString();
         
         return str;
