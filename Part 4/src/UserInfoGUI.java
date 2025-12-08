@@ -180,7 +180,7 @@ public class UserInfoGUI extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(442, 281));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

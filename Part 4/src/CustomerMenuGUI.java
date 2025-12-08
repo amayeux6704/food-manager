@@ -50,11 +50,11 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         welcomeLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        placeOrderBttn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        viewMenuBttn = new javax.swing.JButton();
         customerMenuMenuBar = new javax.swing.JMenuBar();
         customerSubmenu = new javax.swing.JMenu();
         profileMenuItem = new javax.swing.JMenuItem();
@@ -79,10 +79,10 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
 
         jLabel2.setText("What would you like to do today?");
 
-        jButton1.setText("Place an Order");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        placeOrderBttn.setText("Place an Order");
+        placeOrderBttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                placeOrderBttnActionPerformed(evt);
             }
         });
 
@@ -95,7 +95,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Orders in Progress");
 
-        jButton5.setText("View Menu");
+        viewMenuBttn.setText("View Menu");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,8 +111,8 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(placeOrderBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(viewMenuBttn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -129,9 +129,9 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jButton1)
+                        .addComponent(placeOrderBttn)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5))
+                        .addComponent(viewMenuBttn))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel3)
@@ -182,13 +182,13 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(533, 308));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void placeOrderBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBttnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_placeOrderBttnActionPerformed
 
     private void profileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileMenuItemActionPerformed
         // TODO add your handling code here:
@@ -248,9 +248,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     private javax.swing.JMenu OrdersSubmenu;
     private javax.swing.JMenuBar customerMenuMenuBar;
     private javax.swing.JMenu customerSubmenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
@@ -259,7 +257,9 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JMenuItem logoutMenuItem;
+    private javax.swing.JButton placeOrderBttn;
     private javax.swing.JMenuItem profileMenuItem;
+    private javax.swing.JButton viewMenuBttn;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

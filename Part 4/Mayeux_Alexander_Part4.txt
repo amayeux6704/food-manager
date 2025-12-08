@@ -53,7 +53,7 @@ Key:
 	+CustomerMenuGUI (Needs Documentation)
 	+CustomerSettingsSubmenuGUI (Needs Documentation)
 	+EditAddressSubmenuGUI (Needs Documentation)
-	~EditVehicleSubmenuGUI
+	~EditVehicleSubmenuGUI (Needs Documentation)
 	+EmployeeMenuGUI (Needs Documentation)
 	+EmployeeSettingsSubmenuGUI (Needs Documentation)
 	+MainMenuGUI
@@ -63,7 +63,6 @@ Key:
 	+UpdateAddPhoneSubmenuGUI (Needs Documentation)
 	+UserEntryMenuGUI
 	+UserInfoGUI (Needs Documentation)
-	~VehicleSubmenuGUI
 
 • Write the intsructions PDF for the program	
 • Added readme.txt with instructions to compile the program.

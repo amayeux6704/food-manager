@@ -239,7 +239,7 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(514, 489));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,17 +262,27 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
 
     private void manageVehicletButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageVehicletButtonActionPerformed
         // TODO add your handling code here:
-        
+        new EditVehicleSubmenuGUI(deliveryPerson.getDeliveryVehicle()).setVisible(true);
     }//GEN-LAST:event_manageVehicletButtonActionPerformed
     
     private void refreshInformation(){
         displayDeliveryPersonInfo();
+        displayVehicle();
     }
     
     private void displayDeliveryPersonInfo(){
         employeeInfoLabel.setText(deliveryPerson.toString());
     }
 
+    private void displayVehicle(){
+        Vehicle vehicle = deliveryPerson.getDeliveryVehicle();
+        if(vehicle != null){
+            vehicleLabel.setText(vehicle.toString());
+        }
+        else{
+            vehicleLabel.setText("Delivery Vehicle has not been set.");
+        }
+    }
     /**
      * @param args the command line arguments
      */
