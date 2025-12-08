@@ -53,16 +53,18 @@ Key:
 	+CustomerMenuGUI (Needs Documentation)
 	+CustomerSettingsSubmenuGUI (Needs Documentation)
 	+EditAddressSubmenuGUI (Needs Documentation)
-	~EditVehicleSubmenuGUI (Needs Documentation)
+	+EditVehicleSubmenuGUI (Needs Documentation)
 	+EmployeeMenuGUI (Needs Documentation)
 	+EmployeeSettingsSubmenuGUI (Needs Documentation)
 	+MainMenuGUI
+	+OrderHistoryGUI (Needs Documentation)
 	+PhoneSubmenuGUI (Needs Documentation)
 	~PlaceOrderMenuGUI
 	+SystemSettingsSubmenuGUI (Needs Documentation)
 	+UpdateAddPhoneSubmenuGUI (Needs Documentation)
 	+UserEntryMenuGUI
 	+UserInfoGUI (Needs Documentation)
+	+ViewOrderInfoGUI (Needs Documentation)
 
 • Write the intsructions PDF for the program	
 • Added readme.txt with instructions to compile the program.
