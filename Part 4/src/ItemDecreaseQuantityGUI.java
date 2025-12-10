@@ -1,3 +1,9 @@
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,8 +21,8 @@ public class ItemDecreaseQuantityGUI extends javax.swing.JFrame {
     /**
      * Creates new form ItemDecreaseQuantityGUI
      */
-    public ItemDecreaseQuantityGUI() {
-        i = new Inventory();
+    public ItemDecreaseQuantityGUI(Inventory i) {
+        this.i = i;
         initComponents();
     }
 
@@ -40,6 +46,11 @@ public class ItemDecreaseQuantityGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Decrease Item Quantity");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -149,7 +160,7 @@ public class ItemDecreaseQuantityGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        InventoryManagementMenuGUI immGUI = new InventoryManagementMenuGUI();
+        InventoryManagementMenuGUI immGUI = new InventoryManagementMenuGUI(i);
         immGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -159,6 +170,13 @@ public class ItemDecreaseQuantityGUI extends javax.swing.JFrame {
         String name = jTextField1.getText();
         int quantity = Integer.parseInt(jTextField2.getText());
         i.decreaseInventory(name, quantity);
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("inventoryData.txt"))){
+            for (InventoryItem inventoryItem : i.getInventoryItems()){
+                writer.write(inventoryItem.getName() + "," + inventoryItem.getQuantity() + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -169,6 +187,23 @@ public class ItemDecreaseQuantityGUI extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try (BufferedReader reader = new BufferedReader(new FileReader("inventoryData.txt"))){
+            String data;
+            while ((data = reader.readLine()) != null){
+                String[] txtData = data.split(",");
+                if (txtData.length == 2){
+                    String name = txtData[0];
+                    int quantity = Integer.parseInt(txtData[1]);
+                    i.addItem(name, quantity);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -181,7 +216,7 @@ public class ItemDecreaseQuantityGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -192,7 +227,10 @@ public class ItemDecreaseQuantityGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ItemDecreaseQuantityGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Inventory iInstance = new Inventory();
+            new ItemDecreaseQuantityGUI(iInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

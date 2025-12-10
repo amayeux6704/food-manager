@@ -85,6 +85,14 @@ public class Menu {
     }
 
 /**
+ * Gets the manager for dishes
+ * @return The manager for dishes
+ */
+    public DishManager getDishManager(){
+        return dishManager;
+    }
+    
+/**
  * Gets the manager for sides
  * @return The manager for sides
  */

@@ -9,12 +9,14 @@
  */
 public class PhoneNumberManagementMenuGUI extends javax.swing.JFrame {
     
+    private Restaurant r;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PhoneNumberManagementMenuGUI.class.getName());
 
     /**
      * Creates new form PhoneNumberManagementMenuGUI
      */
-    public PhoneNumberManagementMenuGUI() {
+    public PhoneNumberManagementMenuGUI(Restaurant r) {
+        this.r = r;
         initComponents();
     }
 
@@ -127,35 +129,35 @@ public class PhoneNumberManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        RestaurantManagementMenuGUI rmmGUI = new RestaurantManagementMenuGUI();
+        RestaurantManagementMenuGUI rmmGUI = new RestaurantManagementMenuGUI(r);
         rmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AddPhoneNumberGUI apnGUI = new AddPhoneNumberGUI();
+        AddPhoneNumberGUI apnGUI = new AddPhoneNumberGUI(r);
         apnGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        UpdatePhoneNumberGUI upnGUI = new UpdatePhoneNumberGUI();
+        UpdatePhoneNumberGUI upnGUI = new UpdatePhoneNumberGUI(r);
         upnGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ViewPhoneNumbersGUI vpnGUI = new ViewPhoneNumbersGUI();
+        ViewPhoneNumbersGUI vpnGUI = new ViewPhoneNumbersGUI(r);
         vpnGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        RemovePhoneNumberGUI rpnGUI = new RemovePhoneNumberGUI();
+        RemovePhoneNumberGUI rpnGUI = new RemovePhoneNumberGUI(r);
         rpnGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -171,7 +173,7 @@ public class PhoneNumberManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -182,7 +184,10 @@ public class PhoneNumberManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PhoneNumberManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Restaurant rInstance = new Restaurant("");
+            new PhoneNumberManagementMenuGUI(rInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

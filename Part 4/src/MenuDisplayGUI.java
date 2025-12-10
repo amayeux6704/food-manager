@@ -9,12 +9,16 @@
  */
 public class MenuDisplayGUI extends javax.swing.JFrame {
     
+    private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuDisplayGUI.class.getName());
 
     /**
      * Creates new form MenuDisplayGUI
      */
-    public MenuDisplayGUI() {
+    public MenuDisplayGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
 
@@ -47,9 +51,16 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
                 "Dish", "Id#", "Price", "Recipe"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, true
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -58,6 +69,9 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
 
@@ -69,12 +83,19 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Side", "Price"
+                "Side", "Recipe"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -82,6 +103,10 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         });
         jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -120,7 +145,7 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        MenuManagementMenuGUI mmmGUI = new MenuManagementMenuGUI();
+        MenuManagementMenuGUI mmmGUI = new MenuManagementMenuGUI(m,rM);
         mmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -136,7 +161,7 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -147,7 +172,11 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new MenuDisplayGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new MenuDisplayGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

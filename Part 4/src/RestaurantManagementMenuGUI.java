@@ -8,13 +8,15 @@
  * @author Shades
  */
 public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
-    
+
+    private Restaurant r;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RestaurantManagementMenuGUI.class.getName());
 
     /**
      * Creates new form RestaurantManagementMenuGUI
      */
-    public RestaurantManagementMenuGUI() {
+    public RestaurantManagementMenuGUI(Restaurant r) {
+        this.r = r;
         initComponents();
     }
 
@@ -140,21 +142,21 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI();
+        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI(r);
         lmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        PhoneNumberManagementMenuGUI pnmmGUI = new PhoneNumberManagementMenuGUI();
+        PhoneNumberManagementMenuGUI pnmmGUI = new PhoneNumberManagementMenuGUI(r);
         pnmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        OpenHourManagementMenuGUI ohmmGUI = new OpenHourManagementMenuGUI();
+        OpenHourManagementMenuGUI ohmmGUI = new OpenHourManagementMenuGUI(r);
         ohmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -168,21 +170,21 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        RestaurantNameGUI rnGUI = new RestaurantNameGUI();
+        RestaurantNameGUI rnGUI = new RestaurantNameGUI(r);
         rnGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        EmailManagementMenuGUI emmGUI = new EmailManagementMenuGUI();
+        EmailManagementMenuGUI emmGUI = new EmailManagementMenuGUI(r);
         emmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        RestaurantNameEditorGUI rneGUI = new RestaurantNameEditorGUI();
+        RestaurantNameEditorGUI rneGUI = new RestaurantNameEditorGUI(r);
         rneGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -209,7 +211,10 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RestaurantManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Restaurant rInstance = new Restaurant("");
+            new RestaurantManagementMenuGUI(rInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

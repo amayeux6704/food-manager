@@ -9,14 +9,16 @@
  */
 public class UpdateSideIngredientGUI extends javax.swing.JFrame {
     
-    private RecipeManager r;
+    private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UpdateSideIngredientGUI.class.getName());
 
     /**
      * Creates new form UpdateSideIngredientGUI
      */
-    public UpdateSideIngredientGUI() {
-        r = new RecipeManager();
+    public UpdateSideIngredientGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
 
@@ -174,7 +176,7 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(false,true);
+        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(m,rM,false,true);
         immGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -188,7 +190,7 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
         String oN = jTextField9.getText();
         String nN = jTextField7.getText();
         int nQ = Integer.parseInt(jTextField8.getText());
-        r.updateIngredient(oN,nN,nQ);
+        rM.updateIngredient(oN,nN,nQ);
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -211,7 +213,7 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -222,7 +224,11 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new UpdateSideIngredientGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new UpdateSideIngredientGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

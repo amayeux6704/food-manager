@@ -1,3 +1,9 @@
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,16 +16,17 @@
 public class UpdateDishPriceGUI extends javax.swing.JFrame {
     
     private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UpdateDishPriceGUI.class.getName());
 
     /**
      * Creates new form UpdateDishPriceGUI
      */
-    public UpdateDishPriceGUI() {
-        m = new Menu();
+    public UpdateDishPriceGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
-    }
-
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +47,11 @@ public class UpdateDishPriceGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Update Dish Price");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -146,7 +158,7 @@ public class UpdateDishPriceGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI();
+        DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI(m,rM);
         dmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -164,8 +176,32 @@ public class UpdateDishPriceGUI extends javax.swing.JFrame {
         int id = Integer.parseInt(jTextField1.getText());
         double price = Double.parseDouble(jTextField2.getText());
         m.updateDishPrice(id,price);
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("dishData.txt"))){
+            for (Dish dish : m.getDishManager().getDishes()){
+                writer.write(dish.getName() + "," + dish.getDishID() + "," + dish.getPrice() + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try (BufferedReader reader = new BufferedReader(new FileReader("dishData.txt"))){
+            String data;
+            while ((data = reader.readLine()) != null){
+                String[] txtData = data.split(",");
+                if (txtData.length == 3){
+                    int id = Integer.parseInt(txtData[1]);
+                    double price = Double.parseDouble(txtData[2]);
+                    m.updateDishPrice(id, price);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -178,7 +214,7 @@ public class UpdateDishPriceGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -189,7 +225,11 @@ public class UpdateDishPriceGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new UpdateDishPriceGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new UpdateDishPriceGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

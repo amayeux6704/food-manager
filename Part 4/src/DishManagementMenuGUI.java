@@ -9,12 +9,16 @@
  */
 public class DishManagementMenuGUI extends javax.swing.JFrame {
     
+    private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DishManagementMenuGUI.class.getName());
 
     /**
      * Creates new form DishManagementMenuGUI
      */
-    public DishManagementMenuGUI() {
+    public DishManagementMenuGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
 
@@ -140,49 +144,49 @@ public class DishManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AddDishGUI adGUI = new AddDishGUI();
+        AddDishGUI adGUI = new AddDishGUI(m,rM);
         adGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        RemoveDishGUI rdGUI = new RemoveDishGUI();
+        RemoveDishGUI rdGUI = new RemoveDishGUI(m,rM);
         rdGUI.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        UpdateDishPriceGUI udpGUI = new UpdateDishPriceGUI();
+        UpdateDishPriceGUI udpGUI = new UpdateDishPriceGUI(m,rM);
         udpGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(true,false);
+        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(m,rM,true,false);
         immGUI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        MenuManagementMenuGUI mmmGUI = new MenuManagementMenuGUI();
+        MenuManagementMenuGUI mmmGUI = new MenuManagementMenuGUI(m,rM);
         mmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        UpdateDishNameGUI udnGUI = new UpdateDishNameGUI();
+        UpdateDishNameGUI udnGUI = new UpdateDishNameGUI(m,rM);
         udnGUI.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        ViewDishListGUI vdlGUI = new ViewDishListGUI();
+        ViewDishListGUI vdlGUI = new ViewDishListGUI(m,rM);
         vdlGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -198,7 +202,7 @@ public class DishManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -209,7 +213,11 @@ public class DishManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new DishManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new DishManagementMenuGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

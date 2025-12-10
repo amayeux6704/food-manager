@@ -9,6 +9,8 @@
  */
 public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     
+    private Menu m;
+    private RecipeManager rM;
     private boolean accessingFrameCheck1;
     private boolean accessingFrameCheck2;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(IngredientManagementMenuGUI.class.getName());
@@ -16,7 +18,9 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     /**
      * Creates new form IngredientManagementMenuGUI
      */
-    public IngredientManagementMenuGUI(boolean accessingFrameCheck1, boolean accessingFrameCheck2) {
+    public IngredientManagementMenuGUI(Menu m, RecipeManager rM, boolean accessingFrameCheck1, boolean accessingFrameCheck2) {
+        this.m = m;
+        this.rM = rM;
         this.accessingFrameCheck1 = accessingFrameCheck1;
         this.accessingFrameCheck2 = accessingFrameCheck2;
         initComponents();
@@ -129,11 +133,11 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         if(accessingFrameCheck1 != false){
-            DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI();
+            DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI(m,rM);
             dmmGUI.setVisible(true);
         } 
         if(accessingFrameCheck2 != false){
-            SideManagementMenuGUI smmGUI = new SideManagementMenuGUI();
+            SideManagementMenuGUI smmGUI = new SideManagementMenuGUI(m,rM);
             smmGUI.setVisible(true);
         }
         this.dispose();
@@ -142,11 +146,11 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(accessingFrameCheck1 != false){
-            AddDishIngredientGUI adiGUI = new AddDishIngredientGUI();
+            AddDishIngredientGUI adiGUI = new AddDishIngredientGUI(m,rM);
             adiGUI.setVisible(true);
         } 
         if(accessingFrameCheck2 != false){
-            AddSideIngredientGUI asiGUI = new AddSideIngredientGUI();
+            AddSideIngredientGUI asiGUI = new AddSideIngredientGUI(m,rM);
             asiGUI.setVisible(true);
         }
         this.setVisible(false);
@@ -155,11 +159,11 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if(accessingFrameCheck1 != false){
-            RemoveDishIngredientGUI rdiGUI = new RemoveDishIngredientGUI();
+            RemoveDishIngredientGUI rdiGUI = new RemoveDishIngredientGUI(m,rM);
             rdiGUI.setVisible(true);
         } 
         if(accessingFrameCheck2 != false){
-            RemoveSideIngredientGUI rsiGUI = new RemoveSideIngredientGUI();
+            RemoveSideIngredientGUI rsiGUI = new RemoveSideIngredientGUI(m,rM);
             rsiGUI.setVisible(true);
         }
         this.setVisible(false);
@@ -168,11 +172,11 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         if(accessingFrameCheck1 != false){
-            ViewDishIngredientsGUI vdiGUI = new ViewDishIngredientsGUI();
+            ViewDishIngredientsGUI vdiGUI = new ViewDishIngredientsGUI(m,rM);
             vdiGUI.setVisible(true);
         } 
         if(accessingFrameCheck2 != false){
-            ViewSideIngredientsGUI vsiGUI = new ViewSideIngredientsGUI();
+            ViewSideIngredientsGUI vsiGUI = new ViewSideIngredientsGUI(m,rM);
             vsiGUI.setVisible(true);
         }
         this.setVisible(false);
@@ -181,11 +185,11 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if(accessingFrameCheck1 != false){
-            UpdateDishIngredientGUI udiGUI = new UpdateDishIngredientGUI();
+            UpdateDishIngredientGUI udiGUI = new UpdateDishIngredientGUI(m,rM);
             udiGUI.setVisible(true);
         } 
         if(accessingFrameCheck2 != false){
-            UpdateSideIngredientGUI usiGUI = new UpdateSideIngredientGUI();
+            UpdateSideIngredientGUI usiGUI = new UpdateSideIngredientGUI(m,rM);
             usiGUI.setVisible(true);
         }
         this.setVisible(false);  
@@ -202,7 +206,7 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -213,7 +217,11 @@ public class IngredientManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new IngredientManagementMenuGUI(false,false).setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new IngredientManagementMenuGUI(mInstance, rMInstance, false, false).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

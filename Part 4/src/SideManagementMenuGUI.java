@@ -9,12 +9,16 @@
  */
 public class SideManagementMenuGUI extends javax.swing.JFrame {
 
+    private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SideManagementMenuGUI.class.getName());
 
     /**
      * Creates new form SideManagementMenuGUI
      */
-    public SideManagementMenuGUI() {
+    public SideManagementMenuGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
 
@@ -131,42 +135,42 @@ public class SideManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        MenuManagementMenuGUI mmmGUI = new MenuManagementMenuGUI();
+        MenuManagementMenuGUI mmmGUI = new MenuManagementMenuGUI(m,rM);
         mmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AddSideGUI asGUI = new AddSideGUI();
+        AddSideGUI asGUI = new AddSideGUI(m,rM);
         asGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        RemoveSideGUI rsGUI = new RemoveSideGUI();
+        RemoveSideGUI rsGUI = new RemoveSideGUI(m,rM);
         rsGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        UpdateSideNameGUI usnGUI = new UpdateSideNameGUI();
+        UpdateSideNameGUI usnGUI = new UpdateSideNameGUI(m,rM);
         usnGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(false,true);
+        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(m,rM,false,true);
         immGUI.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        ViewSidesListGUI vslGUI = new ViewSidesListGUI();
+        ViewSidesListGUI vslGUI = new ViewSidesListGUI(m,rM);
         vslGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -182,7 +186,7 @@ public class SideManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -193,7 +197,11 @@ public class SideManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new SideManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new SideManagementMenuGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

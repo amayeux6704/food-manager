@@ -1,3 +1,9 @@
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,8 +21,8 @@ public class SetOpeningHoursGUI extends javax.swing.JFrame {
     /**
      * Creates new form SetOpeningHoursGUI
      */
-    public SetOpeningHoursGUI() {
-        r = new Restaurant("");
+    public SetOpeningHoursGUI(Restaurant r) {
+        this.r = r;
         initComponents();
     }
 
@@ -37,6 +43,11 @@ public class SetOpeningHoursGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Set Open Hours");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -107,7 +118,7 @@ public class SetOpeningHoursGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        OpenHourManagementMenuGUI ohmmGUI = new OpenHourManagementMenuGUI();
+        OpenHourManagementMenuGUI ohmmGUI = new OpenHourManagementMenuGUI(r);
         ohmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -116,12 +127,33 @@ public class SetOpeningHoursGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String oH = jTextField1.getText();
         r.setOpenHours(oH);
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("openHourData.txt"))){
+            writer.write(oH + "," + "\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try (BufferedReader reader = new BufferedReader(new FileReader("openHourData.txt"))){
+            String data;
+            while ((data = reader.readLine()) != null){
+                String[] txtData = data.split(",");
+                if (txtData.length == 1){
+                    String hours = txtData[0];
+                    r.setOpenHours(hours);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -134,7 +166,7 @@ public class SetOpeningHoursGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -145,7 +177,10 @@ public class SetOpeningHoursGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new SetOpeningHoursGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Restaurant rInstance = new Restaurant("");
+            new SetOpeningHoursGUI(rInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

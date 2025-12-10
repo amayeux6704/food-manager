@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 /**
  *
  * @author Shades
@@ -10,16 +15,17 @@
 public class AddDishGUI extends javax.swing.JFrame {
     
     private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddDishGUI.class.getName());
 
     /**
      * Creates new form AddDishGUI
      */
-    public AddDishGUI() {
-        m = new Menu();
+    public AddDishGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +46,11 @@ public class AddDishGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Dish");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton7.setText("Back");
         jButton7.addActionListener(this::jButton7ActionPerformed);
@@ -143,7 +154,7 @@ public class AddDishGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI();
+        DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI(m,rM);
         dmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -160,9 +171,35 @@ public class AddDishGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = jTextField1.getText();
         double price = Double.parseDouble(jTextField2.getText());
-        m.addDish(name,price);
+        int id = m.getDishManager().getNextDishID();
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("dishData.txt"))){
+            for (Dish dish : m.getDishManager().getDishes()){
+                writer.write(dish.getName() + "," + dish.getDishID() + "," + dish.getPrice() + "\n");
+            }
+            m.addDish(name,price);
+            writer.write(name + "," + id + "," + price + "\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try (BufferedReader reader = new BufferedReader(new FileReader("dishData.txt"))){
+            String data;
+            while ((data = reader.readLine()) != null){
+                String[] txtData = data.split(",");
+                if (txtData.length == 3){
+                    String name = txtData[0];
+                    double price = Double.parseDouble(txtData[2]);
+                    m.addDish(name, price);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -175,7 +212,7 @@ public class AddDishGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -186,7 +223,11 @@ public class AddDishGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AddDishGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new AddDishGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

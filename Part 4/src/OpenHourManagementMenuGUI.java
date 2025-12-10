@@ -9,12 +9,14 @@
  */
 public class OpenHourManagementMenuGUI extends javax.swing.JFrame {
     
+    private Restaurant r;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(OpenHourManagementMenuGUI.class.getName());
 
     /**
      * Creates new form OpenHourManagementMenuGUI
      */
-    public OpenHourManagementMenuGUI() {
+    public OpenHourManagementMenuGUI(Restaurant r) {
+        this.r = r;
         initComponents();
     }
 
@@ -108,21 +110,21 @@ public class OpenHourManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        RestaurantManagementMenuGUI rmmGUI = new RestaurantManagementMenuGUI();
+        RestaurantManagementMenuGUI rmmGUI = new RestaurantManagementMenuGUI(r);
         rmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        SetOpeningHoursGUI sohGUI = new SetOpeningHoursGUI();
+        SetOpeningHoursGUI sohGUI = new SetOpeningHoursGUI(r);
         sohGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ViewOpenHoursGUI vohGUI = new ViewOpenHoursGUI();
+        ViewOpenHoursGUI vohGUI = new ViewOpenHoursGUI(r);
         vohGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -138,7 +140,7 @@ public class OpenHourManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -149,7 +151,10 @@ public class OpenHourManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new OpenHourManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Restaurant rInstance = new Restaurant("");
+            new OpenHourManagementMenuGUI(rInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

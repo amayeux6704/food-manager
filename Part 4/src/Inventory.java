@@ -10,7 +10,26 @@ public class Inventory {
     public Inventory(){
         this.inventory = new HashSet<>();
     }
-
+    
+/**
+ * Gets the set of inventory items
+ * @return The inventory items in the set
+ */
+    public Set<InventoryItem> getInventoryItems(){
+        return inventory;
+    }
+    
+/**
+ * Adds a item to the inventory items
+ * @param name A String representing a items name
+ * @param quantity A Integer representing a items quantity
+ */
+    public void addItem(String name, int quantity){
+        if(findItem(name) == null){
+            inventory.add(new InventoryItem(name, quantity));
+        } 
+    }
+    
 /**
  * Adds to update the quantity of a already existing item
  * @param name A string representing the name of an item
@@ -27,6 +46,11 @@ public class Inventory {
         }
     }
 
+/**
+ * Finds a items information by name
+ * @param name A string representing a items name
+ * @return The items information
+ */
     public InventoryItem findItem(String name){
         for(InventoryItem item : inventory) {
             if(item.getName().equalsIgnoreCase(name)) {

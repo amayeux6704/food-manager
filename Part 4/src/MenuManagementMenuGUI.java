@@ -9,12 +9,16 @@
  */
 public class MenuManagementMenuGUI extends javax.swing.JFrame {
     
+    private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuManagementMenuGUI.class.getName());
 
     /**
      * Creates new form MenuManagementMenuGUI
      */
-    public MenuManagementMenuGUI() {
+    public MenuManagementMenuGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
 
@@ -117,14 +121,14 @@ public class MenuManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI();
+        DishManagementMenuGUI dmmGUI = new DishManagementMenuGUI(m,rM);
         dmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        SideManagementMenuGUI smmGUI = new SideManagementMenuGUI();
+        SideManagementMenuGUI smmGUI = new SideManagementMenuGUI(m,rM);
         smmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -138,7 +142,7 @@ public class MenuManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        MenuDisplayGUI mdGUI = new MenuDisplayGUI();
+        MenuDisplayGUI mdGUI = new MenuDisplayGUI(m,rM);
         mdGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -154,7 +158,7 @@ public class MenuManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -165,7 +169,11 @@ public class MenuManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new MenuManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new MenuManagementMenuGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

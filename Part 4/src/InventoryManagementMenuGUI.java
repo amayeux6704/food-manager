@@ -9,12 +9,14 @@
  */
 public class InventoryManagementMenuGUI extends javax.swing.JFrame {
     
+    private Inventory i;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InventoryManagementMenuGUI.class.getName());
 
     /**
      * Creates new form InventoryManagementMenuGUI
      */
-    public InventoryManagementMenuGUI() {
+    public InventoryManagementMenuGUI(Inventory i) {
+        this.i = i;
         initComponents();
     }
 
@@ -124,21 +126,21 @@ public class InventoryManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ItemAddQuantityGUI iaqGUI = new ItemAddQuantityGUI();
+        ItemAddQuantityGUI iaqGUI = new ItemAddQuantityGUI(i);
         iaqGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ItemDecreaseQuantityGUI idqGUI = new ItemDecreaseQuantityGUI();
+        ItemDecreaseQuantityGUI idqGUI = new ItemDecreaseQuantityGUI(i);
         idqGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        ViewInventoryGUI viGUI = new ViewInventoryGUI();
+        ViewInventoryGUI viGUI = new ViewInventoryGUI(i);
         viGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -154,7 +156,7 @@ public class InventoryManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -165,7 +167,10 @@ public class InventoryManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new InventoryManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Inventory iInstance = new Inventory();
+            new InventoryManagementMenuGUI(iInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

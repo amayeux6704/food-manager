@@ -1,3 +1,9 @@
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,8 +21,8 @@ public class RemoveEmailGUI extends javax.swing.JFrame {
     /**
      * Creates new form RemoveEmailGUI
      */
-    public RemoveEmailGUI() {
-        r = new Restaurant("");
+    public RemoveEmailGUI(Restaurant r) {
+        this.r = r;
         initComponents();
     }
 
@@ -37,6 +43,11 @@ public class RemoveEmailGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Remove Email");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Please Enter The Email To Remove:");
 
@@ -110,17 +121,39 @@ public class RemoveEmailGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        EmailManagementMenuGUI emmGUI = new EmailManagementMenuGUI();
+        EmailManagementMenuGUI emmGUI = new EmailManagementMenuGUI(r);
         emmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String e = jTextField1.getText();
-        r.removeEmail(e);
+        String rE = jTextField1.getText();
+        r.removeEmail(rE);
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("emailData.txt"))){
+            for (String email : r.getEmails()){
+                writer.write(email + "," + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try (BufferedReader reader = new BufferedReader(new FileReader("emailData.txt"))){
+            String data;
+            while ((data = reader.readLine()) != null){
+                String[] txtData = data.split(",");
+                if (txtData.length == 1){
+                    String nE = txtData[0];
+                    r.addPhoneNumber(nE);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -133,7 +166,7 @@ public class RemoveEmailGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -144,7 +177,10 @@ public class RemoveEmailGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RemoveEmailGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Restaurant rInstance = new Restaurant("");
+            new RemoveEmailGUI(rInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

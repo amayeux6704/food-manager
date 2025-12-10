@@ -9,12 +9,14 @@
  */
 public class LocationManagementMenuGUI extends javax.swing.JFrame {
     
+    private Restaurant r;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LocationManagementMenuGUI.class.getName());
 
     /**
      * Creates new form LocationManagementMenuGUI
      */
-    public LocationManagementMenuGUI() {
+    public LocationManagementMenuGUI(Restaurant r) {
+        this.r = r;
         initComponents();
     }
 
@@ -124,35 +126,35 @@ public class LocationManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AddLocationGUI alGUI = new AddLocationGUI();
+        AddLocationGUI alGUI = new AddLocationGUI(r);
         alGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        UpdateLocationGUI ulGUI = new UpdateLocationGUI();
+        UpdateLocationGUI ulGUI = new UpdateLocationGUI(r);
         ulGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ViewLocationsGUI vlGUI = new ViewLocationsGUI();
+        ViewLocationsGUI vlGUI = new ViewLocationsGUI(r);
         vlGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        RestaurantManagementMenuGUI rmmGUI = new RestaurantManagementMenuGUI();
+        RestaurantManagementMenuGUI rmmGUI = new RestaurantManagementMenuGUI(r);
         rmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        RemoveLocationGUI rlGUI = new RemoveLocationGUI();
+        RemoveLocationGUI rlGUI = new RemoveLocationGUI(r);
         rlGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -168,7 +170,7 @@ public class LocationManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -179,7 +181,10 @@ public class LocationManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new LocationManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Restaurant rInstance = new Restaurant("");
+            new LocationManagementMenuGUI(rInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -9,14 +9,16 @@
  */
 public class RemoveSideIngredientGUI extends javax.swing.JFrame {
     
-    private RecipeManager r;
+    private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RemoveSideIngredientGUI.class.getName());
 
     /**
      * Creates new form RemoveSideIngredientGUI
      */
-    public RemoveSideIngredientGUI() {
-        r = new RecipeManager();
+    public RemoveSideIngredientGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
 
@@ -113,7 +115,7 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(false,true);
+        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(m,rM,false,true);
         immGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -125,7 +127,7 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String name = jTextField1.getText();
-        r.removeIngredient(name);
+        rM.removeIngredient(name);
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -140,7 +142,7 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -151,7 +153,11 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RemoveSideIngredientGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager(); 
+            new RemoveSideIngredientGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

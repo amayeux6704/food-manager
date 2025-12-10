@@ -9,14 +9,16 @@
  */
 public class AddSideIngredientGUI extends javax.swing.JFrame {
     
-    private RecipeManager r;
+    private Menu m;
+    private RecipeManager rM;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddSideIngredientGUI.class.getName());
 
     /**
      * Creates new form AddSideIngredientGUI
      */
-    public AddSideIngredientGUI() {
-        r = new RecipeManager();
+    public AddSideIngredientGUI(Menu m, RecipeManager rM) {
+        this.m = m;
+        this.rM = rM;
         initComponents();
     }
 
@@ -142,7 +144,7 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(false,true);
+        IngredientManagementMenuGUI immGUI = new IngredientManagementMenuGUI(m,rM,false,true);
         immGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -159,7 +161,7 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = jTextField1.getText();
         int quantity = Integer.parseInt(jTextField2.getText());
-        r.addIngredient(name,quantity);
+        rM.addIngredient(name,quantity);
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -174,7 +176,7 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -185,7 +187,11 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AddSideIngredientGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Menu mInstance = new Menu();
+            RecipeManager rMInstance = new RecipeManager();
+            new AddSideIngredientGUI(mInstance, rMInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

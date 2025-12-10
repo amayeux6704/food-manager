@@ -1,4 +1,4 @@
-/** Manages dishes
+/** 
  * @author Brendan Casey
 */
 import java.util.HashSet;
@@ -13,13 +13,20 @@ public class DishManager {
         this.dishes = new HashSet<>();
         this.nextDishID = 1;
     }
-
 /**
  * Gets the set of dishes
  * @return The dishes in the set
  */
     public Set<Dish> getDishes(){
         return dishes;
+    }
+
+/**
+ * Gets the next dish id
+ * @return The next dish's id
+ */    
+    public int getNextDishID(){
+        return nextDishID;
     }
 
 /**

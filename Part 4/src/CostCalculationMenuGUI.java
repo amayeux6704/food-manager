@@ -9,12 +9,14 @@
  */
 public class CostCalculationMenuGUI extends javax.swing.JFrame {
     
+    private CostCalculation c;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CostCalculationMenuGUI.class.getName());
 
     /**
      * Creates new form CostCalculationMenuGUI
      */
-    public CostCalculationMenuGUI() {
+    public CostCalculationMenuGUI(CostCalculation c) {
+        this.c = c;
         initComponents();
     }
 
@@ -107,14 +109,14 @@ public class CostCalculationMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        SetTaxRateGUI strGUI = new SetTaxRateGUI();
+        SetTaxRateGUI strGUI = new SetTaxRateGUI(c);
         strGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ViewTaxRateGUI vtrGUI = new ViewTaxRateGUI();
+        ViewTaxRateGUI vtrGUI = new ViewTaxRateGUI(c);
         vtrGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -137,7 +139,7 @@ public class CostCalculationMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -148,7 +150,10 @@ public class CostCalculationMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CostCalculationMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            CostCalculation cInstance = new CostCalculation();
+            new CostCalculationMenuGUI(cInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

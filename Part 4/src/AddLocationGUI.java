@@ -1,3 +1,9 @@
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,8 +21,8 @@ public class AddLocationGUI extends javax.swing.JFrame {
     /**
      * Creates new form AddLocationGUI
      */
-    public AddLocationGUI() {
-        r = new Restaurant("");
+    public AddLocationGUI(Restaurant r) {
+        this.r = r;
         initComponents();
     }
 
@@ -37,6 +43,11 @@ public class AddLocationGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Location");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton1.setText("Confirm");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -112,7 +123,7 @@ public class AddLocationGUI extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI();
+        LocationManagementMenuGUI lmmGUI = new LocationManagementMenuGUI(r);
         lmmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -120,9 +131,33 @@ public class AddLocationGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String nL = jTextField1.getText();
-        r.addLocation(nL);
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("locationData.txt"))){
+            for (String location : r.getLocations()){
+                writer.write(location + "," + "\n");
+            }
+            r.addLocation(nL);
+            writer.write(nL + "\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         jButton7ActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try (BufferedReader reader = new BufferedReader(new FileReader("locationData.txt"))){
+            String data;
+            while ((data = reader.readLine()) != null){
+                String[] txtData = data.split(",");
+                if (txtData.length == 1){
+                    String location = txtData[0];
+                    r.addLocation(location);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -135,7 +170,7 @@ public class AddLocationGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -146,7 +181,10 @@ public class AddLocationGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AddLocationGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() ->{
+            Restaurant rInstance = new Restaurant("");
+            new AddLocationGUI(rInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

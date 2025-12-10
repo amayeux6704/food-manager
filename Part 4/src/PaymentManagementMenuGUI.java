@@ -9,12 +9,14 @@
  */
 public class PaymentManagementMenuGUI extends javax.swing.JFrame {
     
+    private Payment p;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PaymentManagementMenuGUI.class.getName());
 
     /**
      * Creates new form PaymentManagementMenuGUI
      */
-    public PaymentManagementMenuGUI() {
+    public PaymentManagementMenuGUI(Payment p) {
+        this.p = p;
         initComponents();
     }
 
@@ -129,28 +131,28 @@ public class PaymentManagementMenuGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AddPayMethodGUI apmGUI = new AddPayMethodGUI();
+        AddPayMethodGUI apmGUI = new AddPayMethodGUI(p);
         apmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        RemovePayMethodGUI rpmGUI = new RemovePayMethodGUI();
+        RemovePayMethodGUI rpmGUI = new RemovePayMethodGUI(p);
         rpmGUI.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ViewPayMethodsGUI vpmGUI = new ViewPayMethodsGUI();
+        ViewPayMethodsGUI vpmGUI = new ViewPayMethodsGUI(p);
         vpmGUI.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SetPayMethodGUI spmGUI = new SetPayMethodGUI();
+        SetPayMethodGUI spmGUI = new SetPayMethodGUI(p);
         spmGUI.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -166,7 +168,7 @@ public class PaymentManagementMenuGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -177,7 +179,10 @@ public class PaymentManagementMenuGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PaymentManagementMenuGUI().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+            Payment pInstance = new Payment("");
+            new PaymentManagementMenuGUI(pInstance).setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
