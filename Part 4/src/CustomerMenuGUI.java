@@ -19,9 +19,13 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     private CustomerSubmenuManager csubm;
     private CustomerManager cm;
     private Customer customer;
+    private OrderManager gom;
+    private Menu menu;
+    private Inventory inventory;
     private int customerId;
     private DefaultListModel unfulfilledOrdersModel;
     private Map<Integer, Order> unfulfilledOrders;
+    private PlaceOrderMenuGUI pomGUI;
 
     /**
      * Creates new form CustomerMenuGUI
@@ -38,7 +42,10 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         this.cm = cm;
         customerId = id;
         customer = this.cm.searchCustomer(customerId);
-        csubm = new CustomerSubmenuManager(this.cm, customer, gom, menu, restaurant, inventory, cc);
+        this.gom = gom;
+        this.menu = menu;
+        this.inventory = inventory;
+
         refreshInfo();
     }
 
@@ -216,6 +223,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
 
     private void placeOrderBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBttnActionPerformed
         // TODO add your handling code here:
+        new PlaceOrderMenuGUI(customer, gom, menu, inventory).setVisible(true);
     }//GEN-LAST:event_placeOrderBttnActionPerformed
 
     private void profileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileMenuItemActionPerformed

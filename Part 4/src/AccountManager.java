@@ -13,6 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class AccountManager {
     
+    /**
+     * This method prompts the user to enter their credentials. It then adds
+     * these credentials to the credentials Queue parameter to be used to
+     * log the user in.
+     * 
+     * @param credentials A queue that temporarily stores the user's credentials.
+     */
     public void getCredentials(Queue<String> credentials){
         Scanner input = new Scanner(System.in);
         
@@ -23,6 +30,11 @@ public class AccountManager {
         credentials.add(input.next());
     }
     
+    /**
+     * This method 
+     * @param cm
+     * @return 
+     */
     public Customer logIn(CustomerManager cm){
         Scanner input = new Scanner(System.in);
         System.out.println("Account Login\n"+

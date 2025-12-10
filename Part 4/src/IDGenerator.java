@@ -1,5 +1,4 @@
-/**
- *
+/** 
  * @author Alexander
  */
 public class IDGenerator {

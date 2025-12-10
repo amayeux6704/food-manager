@@ -41,6 +41,8 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         
         viewAvailOrderInfoBttn.setEnabled(false);
         viewUnfllOrderInfoBttn.setEnabled(false);
+        takeOnOrderBttn.setEnabled(false);
+        fulfillOrderBttn.setEnabled(false);
         
         refreshInfo();
     }
@@ -54,11 +56,8 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        welcomeLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        ordersPanel = new javax.swing.JPanel();
         takeOnOrderBttn = new javax.swing.JButton();
-        systemSettingsBttn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         availableOrdersLst = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -68,6 +67,9 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         viewUnfllOrderInfoBttn = new javax.swing.JButton();
         viewAvailOrderInfoBttn = new javax.swing.JButton();
         fulfillOrderBttn = new javax.swing.JButton();
+        welcomeLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        systemSettingsBttn = new javax.swing.JButton();
         employeeMenuMenuBar = new javax.swing.JMenuBar();
         employeeSubmenu = new javax.swing.JMenu();
         profileMenuItem = new javax.swing.JMenuItem();
@@ -84,18 +86,12 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
             }
         });
 
-        welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        welcomeLabel.setText("Welcome, Employee!");
+        ordersPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Current Orders"));
 
-        jLabel2.setText("What would you like to do today?");
-
-        takeOnOrderBttn.setText("Take On An Order");
-
-        systemSettingsBttn.setText(" System Settings");
-        systemSettingsBttn.setToolTipText("");
-        systemSettingsBttn.addActionListener(new java.awt.event.ActionListener() {
+        takeOnOrderBttn.setText("Take On Selected Order");
+        takeOnOrderBttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                systemSettingsBttnActionPerformed(evt);
+                takeOnOrderBttnActionPerformed(evt);
             }
         });
 
@@ -131,61 +127,71 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
             }
         });
 
-        fulfillOrderBttn.setText("Fulfill An Order");
+        fulfillOrderBttn.setText("Fulfill Selected Order");
+        fulfillOrderBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fulfillOrderBttnActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout ordersPanelLayout = new javax.swing.GroupLayout(ordersPanel);
+        ordersPanel.setLayout(ordersPanelLayout);
+        ordersPanelLayout.setHorizontalGroup(
+            ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ordersPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(welcomeLabel)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(fulfillOrderBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(systemSettingsBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(takeOnOrderBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(viewUnfllOrderInfoBttn)
-                    .addComponent(viewAvailOrderInfoBttn))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ordersPanelLayout.createSequentialGroup()
+                        .addComponent(viewUnfllOrderInfoBttn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fulfillOrderBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ordersPanelLayout.createSequentialGroup()
+                        .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(ordersPanelLayout.createSequentialGroup()
+                        .addComponent(viewAvailOrderInfoBttn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(takeOnOrderBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewAvailOrderInfoBttn)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewUnfllOrderInfoBttn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(welcomeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(80, 80, 80)
-                        .addComponent(takeOnOrderBttn)
-                        .addGap(18, 18, 18)
-                        .addComponent(fulfillOrderBttn)
-                        .addGap(18, 18, 18)
-                        .addComponent(systemSettingsBttn)))
+        ordersPanelLayout.setVerticalGroup(
+            ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ordersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(takeOnOrderBttn)
+                    .addComponent(viewAvailOrderInfoBttn))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fulfillOrderBttn)
+                    .addComponent(viewUnfllOrderInfoBttn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        welcomeLabel.setText("Welcome, Employee!");
+
+        jLabel2.setText("What would you like to do today?");
+
+        systemSettingsBttn.setText(" Go to System Settings");
+        systemSettingsBttn.setToolTipText("");
+        systemSettingsBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                systemSettingsBttnActionPerformed(evt);
+            }
+        });
 
         employeeSubmenu.setText("Employee");
 
@@ -225,11 +231,30 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ordersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(welcomeLabel)
+                            .addComponent(jLabel2)
+                            .addComponent(systemSettingsBttn))
+                        .addGap(0, 249, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(welcomeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ordersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(systemSettingsBttn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -263,12 +288,17 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
 
     private void availableOrdersLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_availableOrdersLstValueChanged
         // TODO add your handling code here:
-        viewAvailOrderInfoBttn.setEnabled(availableOrdersLst.getSelectedIndex() > -1);
+        boolean itemSelected = availableOrdersLst.getSelectedIndex() > -1;
+        viewAvailOrderInfoBttn.setEnabled(itemSelected);
+        takeOnOrderBttn.setEnabled(itemSelected);
+        
     }//GEN-LAST:event_availableOrdersLstValueChanged
 
     private void unfulfillOrdersLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_unfulfillOrdersLstValueChanged
         // TODO add your handling code here:
-        viewUnfllOrderInfoBttn.setEnabled(unfulfillOrdersLst.getSelectedIndex() > -1);
+        boolean itemSelected = unfulfillOrdersLst.getSelectedIndex() > -1;
+        viewUnfllOrderInfoBttn.setEnabled(itemSelected);
+        fulfillOrderBttn.setEnabled(itemSelected);
     }//GEN-LAST:event_unfulfillOrdersLstValueChanged
 
     private void viewAvailOrderInfoBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAvailOrderInfoBttnActionPerformed
@@ -291,6 +321,47 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new OrderHistoryGUI(deliveryPerson).setVisible(true);
     }//GEN-LAST:event_orderHistMenuItemActionPerformed
+
+    private void takeOnOrderBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeOnOrderBttnActionPerformed
+        // TODO add your handling code here:
+        
+        String selectedOrder = availableOrdersLst.getSelectedValue();
+        String message = "<html>Are you sure you want to take on " + selectedOrder + "?" +
+                         "<br>(If you have not done so already, please check the order information" +
+                         "<br>before taking on the order.)";
+        
+        int result = JOptionPane.showConfirmDialog(this, message , "Take on Order", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            int id = retrieveOrderID(selectedOrder);
+            assignOrder(id);
+            
+            String confirmMessage = "You have been assigned " + selectedOrder;
+            
+            JOptionPane.showMessageDialog(this, confirmMessage);
+            refreshInfo();
+        }
+    }//GEN-LAST:event_takeOnOrderBttnActionPerformed
+
+    private void fulfillOrderBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fulfillOrderBttnActionPerformed
+        // TODO add your handling code here:
+        String selectedOrder = unfulfillOrdersLst.getSelectedValue();
+        String message = "<html>Are you sure you have fulfilled " + selectedOrder + "?" +
+                         "<br>(If you have not done so already, please check the order information" +
+                         "<br>to ensure you are fulfilling the correct order.)";
+        
+        int result = JOptionPane.showConfirmDialog(this, message , "Fulfill Order", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            int id = retrieveOrderID(selectedOrder);
+            fulfillOrder(id);
+            
+            String confirmMessage = selectedOrder + "has been fulfilled!";
+            
+            JOptionPane.showMessageDialog(this, confirmMessage);
+            refreshInfo();
+        }
+    }//GEN-LAST:event_fulfillOrderBttnActionPerformed
 
     private void refreshInfo(){
         welcomeLabel.setText("Welcome, " + deliveryPerson.getName() + "!");
@@ -335,6 +406,18 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         int id = Integer.parseInt(orderIDStr);
         return id;
     }
+    
+    private void assignOrder(int id){
+        Order order = gom.searchOrder(id);
+        order.setDeliveryPerson(deliveryPerson);
+        deliveryPerson.getOrderHistory().addOrder(order);
+    }
+    
+    private void fulfillOrder(int id){
+        Order order = gom.searchOrder(id);
+        order.setFulfillment(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -368,11 +451,11 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem logoutMenuItem;
     private javax.swing.JMenuItem orderHistMenuItem;
+    private javax.swing.JPanel ordersPanel;
     private javax.swing.JMenu ordersSubmenu;
     private javax.swing.JMenuItem profileMenuItem;
     private javax.swing.JButton systemSettingsBttn;
