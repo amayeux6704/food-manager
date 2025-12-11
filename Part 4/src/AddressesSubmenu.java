@@ -2,19 +2,33 @@
 import java.util.Scanner;
 
 /**
- *
+ * This class provides a command line interface menu for a customer user to 
+ * manage the information about the delivery addresses that they have stored
+ * on their profile.
  * @author Alexander
  */
 public class AddressesSubmenu implements ProgramMenu{
     
-    private Customer customer;
+    /**
+     * The instance of the addresses sub menu manager that manages all of the 
+     * functionality of this sub menu. 
+     */
     private AddressesSubmenuManager asm;
     
+    /**
+     * Class constructor that initializes the asm variable to a new 
+     * AddressesSubmenuManager object, passing the customer as the argument to
+     * the constructor.
+     * 
+     * @param customer  The customer who is logged in to the system.
+     */
     public AddressesSubmenu(Customer customer){
-        this.customer = customer;
         asm = new AddressesSubmenuManager(customer);
     }
     
+    /**
+     * This method displays the manage addresses sub menu to the user.
+     */
     @Override
     public void showMenu(){
         byte choice = 0;

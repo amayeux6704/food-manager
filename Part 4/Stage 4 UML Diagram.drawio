@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="29.2.3">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.3">
   <diagram name="Page-1" id="Y5r_HD8HeklmsqbLGCz2">
-    <mxGraphModel dx="3126" dy="2951" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3062" dy="2914" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -17,19 +17,19 @@
           <mxGeometry height="242" width="200" y="168" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-5" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Address" vertex="1">
-          <mxGeometry height="450" width="190" x="-620" y="366" as="geometry" />
+          <mxGeometry height="460" width="200" x="-620" y="366" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-6" parent="vZFMf9-pkc4FlnlLqLSX-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- id: int&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- line1: String&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- line2: String&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- city: String&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- state: String&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- zipCode: String&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- customer: Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- primary: boolean&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="134" width="190" y="26" as="geometry" />
+          <mxGeometry height="134" width="200" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-7" parent="vZFMf9-pkc4FlnlLqLSX-5" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="190" y="160" as="geometry" />
+          <mxGeometry height="8" width="200" y="160" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-8" parent="vZFMf9-pkc4FlnlLqLSX-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Address(int):&lt;div&gt;+ getAddressID(): int&lt;br&gt;&lt;div&gt;+ getLine1(): String&lt;/div&gt;&lt;div&gt;+ getLine2(): String&lt;/div&gt;&lt;div&gt;+ getCity(): String&lt;/div&gt;&lt;div&gt;+ getState(): String&lt;/div&gt;&lt;div&gt;+ getZipCode(): String&lt;/div&gt;&lt;div&gt;+ getCustomer(): Customer&lt;/div&gt;&lt;div&gt;+ isPrimary():&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;boolean&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ setLine1(String): void&lt;/div&gt;&lt;div&gt;+ setLine2String): void&lt;/div&gt;&lt;div&gt;+ setCity(String): void&lt;/div&gt;&lt;div&gt;+ setState(String): void&lt;/div&gt;&lt;div&gt;+ setZipCode(String): void&lt;/div&gt;&lt;div&gt;+ setCustomer(String): void&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ setPrimary(boolean): void&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ showAddressInformation(): void&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ toString(): String&lt;/div&gt;" vertex="1">
-          <mxGeometry height="282" width="190" y="168" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-8" parent="vZFMf9-pkc4FlnlLqLSX-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Address(int):&lt;div&gt;+ getAddressID(): int&lt;br&gt;&lt;div&gt;+ getLine1(): String&lt;/div&gt;&lt;div&gt;+ getLine2(): String&lt;/div&gt;&lt;div&gt;+ getCity(): String&lt;/div&gt;&lt;div&gt;+ getState(): String&lt;/div&gt;&lt;div&gt;+ getZipCode(): String&lt;/div&gt;&lt;div&gt;+ getCustomer(): Customer&lt;/div&gt;&lt;div&gt;+ isPrimary():&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;boolean&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ setLine1(String): void&lt;/div&gt;&lt;div&gt;+ setLine2String): void&lt;/div&gt;&lt;div&gt;+ setCity(String): void&lt;/div&gt;&lt;div&gt;+ setState(String): void&lt;/div&gt;&lt;div&gt;+ setZipCode(String): void&lt;/div&gt;&lt;div&gt;+ setCustomer(String): void&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ setPrimary(boolean): void&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ showAddressInformation(): void&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ stringAddressInformation(): String&lt;/div&gt;&lt;div&gt;+ toString(): String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="292" width="200" y="168" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-9" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Order" vertex="1">
-          <mxGeometry height="690" width="250" x="-360" y="320" as="geometry" />
+          <mxGeometry height="700" width="250" x="-360" y="320" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-10" parent="vZFMf9-pkc4FlnlLqLSX-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- orderID: int&lt;/div&gt;&lt;div&gt;- dishes: ArrayList&amp;lt;Dish&amp;gt;&lt;/div&gt;&lt;div&gt;- sides: ArrayList&amp;lt;Sides&amp;gt;&lt;/div&gt;&lt;div&gt;- time: String&lt;/div&gt;&lt;div&gt;- date: String&lt;/div&gt;&lt;div&gt;- customer: Customer&lt;/div&gt;&lt;div&gt;- address: Address&lt;/div&gt;&lt;div&gt;- deliveryPerson: DeliveryPerson&lt;/div&gt;&lt;div&gt;- menu: Menu&lt;/div&gt;&lt;div&gt;- payment: Payment&lt;/div&gt;&lt;div&gt;- fulfilled: boolean&lt;/div&gt;&lt;div&gt;- costCalculation: CostCalculation&lt;/div&gt;&lt;div&gt;- taxRate: float&lt;/div&gt;" vertex="1">
           <mxGeometry height="194" width="250" y="26" as="geometry" />
@@ -37,8 +37,8 @@
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-11" parent="vZFMf9-pkc4FlnlLqLSX-9" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="250" y="220" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-12" parent="vZFMf9-pkc4FlnlLqLSX-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Order(int, Menu, CostCalculation)&lt;div&gt;&lt;div&gt;&lt;div&gt;+ getOrderID(): int&lt;/div&gt;&lt;div&gt;+ getTime(): String&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ getDate(): String&lt;/div&gt;&lt;div&gt;+ getCustomer(): Customer&lt;/div&gt;&lt;div&gt;+ getAddress(): Address&lt;/div&gt;&lt;div&gt;+ getDeliveryPerson(): DeliveryPerson&lt;/div&gt;&lt;div&gt;+ getDishes(): ArrayList&amp;lt;Dish&amp;gt;&lt;/div&gt;&lt;div&gt;+ getSides(): ArrayList&amp;lt;Side&amp;gt;&lt;/div&gt;&lt;div&gt;+ getNumDishes(): int&lt;/div&gt;&lt;div&gt;+ getNumSides(): int&lt;/div&gt;&lt;div&gt;+ getPayMethod: String&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;+ setTime(String): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ setDate(String): void&lt;/div&gt;&lt;div&gt;+ setCustomer(Customer): void&lt;/div&gt;&lt;div&gt;+ setAddress(Address): void&lt;/div&gt;&lt;div&gt;+ setDeliveryPerson(DeliveryPerson): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ setPayMethod(String): void&lt;/div&gt;&lt;div&gt;+ addDish(int): void&lt;/div&gt;&lt;div&gt;+ removeDish(int): void&lt;/div&gt;&lt;div&gt;&lt;div&gt;+ addSide(Side): void&lt;/div&gt;&lt;div&gt;+ removeSide(Side): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ displayDishes(): void&lt;/div&gt;&lt;div&gt;+ displaySides(): void&lt;/div&gt;&lt;div&gt;+ calculateTotalCost(): void&lt;/div&gt;&lt;div&gt;+ getTaxCost(): double&lt;/div&gt;&lt;div&gt;+ getTotalCost(): double&lt;/div&gt;&lt;div&gt;+ displayTotalCost(): void&lt;/div&gt;&lt;div&gt;+ setFulfillment(boolean): void&lt;/div&gt;&lt;div&gt;+ isFulfilled(): boolean&lt;/div&gt;&lt;div&gt;+ toString(): String&lt;/div&gt;" vertex="1">
-          <mxGeometry height="462" width="250" y="228" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-12" parent="vZFMf9-pkc4FlnlLqLSX-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ Order(int, Menu, CostCalculation)&lt;div&gt;&lt;div&gt;&lt;div&gt;+ getOrderID(): int&lt;/div&gt;&lt;div&gt;+ getTime(): String&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ getDate(): String&lt;/div&gt;&lt;div&gt;+ getCustomer(): Customer&lt;/div&gt;&lt;div&gt;+ getAddress(): Address&lt;/div&gt;&lt;div&gt;+ getDeliveryPerson(): DeliveryPerson&lt;/div&gt;&lt;div&gt;+ getDishes(): ArrayList&amp;lt;Dish&amp;gt;&lt;/div&gt;&lt;div&gt;+ getSides(): ArrayList&amp;lt;Side&amp;gt;&lt;/div&gt;&lt;div&gt;+ getNumDishes(): int&lt;/div&gt;&lt;div&gt;+ getNumSides(): int&lt;/div&gt;&lt;div&gt;+ getPayMethod: String&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;+ setTime(String): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ setDate(String): void&lt;/div&gt;&lt;div&gt;+ setCustomer(Customer): void&lt;/div&gt;&lt;div&gt;+ setAddress(Address): void&lt;/div&gt;&lt;div&gt;+ setDeliveryPerson(DeliveryPerson): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ setPayMethod(String): void&lt;/div&gt;&lt;div&gt;+ addDish(int): void&lt;/div&gt;&lt;div&gt;+ removeDish(int): void&lt;/div&gt;&lt;div&gt;&lt;div&gt;+ addSide(Side): void&lt;/div&gt;&lt;div&gt;+ removeSide(Side): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ displayDishes(): void&lt;/div&gt;&lt;div&gt;+ displaySides(): void&lt;/div&gt;&lt;div&gt;+ calculateTotalCost(): void&lt;/div&gt;&lt;div&gt;+ getTaxRate(): double&lt;/div&gt;&lt;div&gt;+ getTaxCost(): double&lt;/div&gt;&lt;div&gt;+ getTotalCost(): double&lt;/div&gt;&lt;div&gt;+ displayTotalCost(): void&lt;/div&gt;&lt;div&gt;+ setFulfillment(boolean): void&lt;/div&gt;&lt;div&gt;+ isFulfilled(): boolean&lt;/div&gt;&lt;div&gt;+ toString(): String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="472" width="250" y="228" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-13" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Person" vertex="1">
           <mxGeometry height="300" width="280" x="-440" y="-280" as="geometry" />
@@ -261,7 +261,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-71" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="LocationManager" vertex="1">
-          <mxGeometry height="130" width="270" x="-840" y="940" as="geometry" />
+          <mxGeometry height="130" width="270" x="-840" y="980" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-72" parent="vZFMf9-pkc4FlnlLqLSX-71" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- locations:&amp;nbsp;Set&amp;lt;String&amp;gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="24" width="270" y="26" as="geometry" />
@@ -370,28 +370,28 @@
           <mxGeometry height="26" width="240" y="60" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-109" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="MainMenu" vertex="1">
-          <mxGeometry height="170" width="330" x="220" y="-630" as="geometry" />
+          <mxGeometry height="150" width="330" x="220" y="-630" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-110" parent="vZFMf9-pkc4FlnlLqLSX-109" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- ces: CustomerEntrySubmenu&lt;div&gt;- cm: CustomerManager&lt;/div&gt;&lt;div&gt;- dpm: DeliveryPersonManager&lt;/div&gt;&lt;div&gt;- ees: EmployeeEntrySubmenu&lt;/div&gt;" vertex="1">
-          <mxGeometry height="64" width="330" y="26" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-110" parent="vZFMf9-pkc4FlnlLqLSX-109" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- dpm: DeliveryPersonManager&lt;/div&gt;&lt;div&gt;- ees: EmployeeEntrySubmenu&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="330" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-111" parent="vZFMf9-pkc4FlnlLqLSX-109" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="330" y="90" as="geometry" />
+          <mxGeometry height="8" width="330" y="70" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-112" parent="vZFMf9-pkc4FlnlLqLSX-109" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ MainMenu(CustomerManager, DeliveryPersonManager, OrderManager, Menu, Restaurant, Inventory, CostCalculation)&lt;/div&gt;+ showMenu(): void" vertex="1">
-          <mxGeometry height="72" width="330" y="98" as="geometry" />
+          <mxGeometry height="72" width="330" y="78" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-113" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="CustomerSubmenu" vertex="1">
-          <mxGeometry height="190" width="310" x="-380" y="-820" as="geometry" />
+          <mxGeometry height="180" width="310" x="-380" y="-820" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-114" parent="vZFMf9-pkc4FlnlLqLSX-113" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- css: CustomerSettingsSubmenu&lt;div&gt;- csubm: CustomerSubmenuManager&lt;br&gt;&lt;div&gt;- cm: CustomerManager&lt;/div&gt;&lt;div&gt;- customer: Customer&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- int: customerId&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="84" width="310" y="26" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-114" parent="vZFMf9-pkc4FlnlLqLSX-113" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- csubm: CustomerSubmenuManager&lt;br&gt;&lt;div&gt;- cm: CustomerManager&lt;/div&gt;&lt;div&gt;- customer: Customer&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- int: customerId&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="64" width="310" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-115" parent="vZFMf9-pkc4FlnlLqLSX-113" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="310" y="110" as="geometry" />
+          <mxGeometry height="8" width="310" y="90" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-116" parent="vZFMf9-pkc4FlnlLqLSX-113" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ CustomerSubmenu(CustomerManager, int, OrderManager, Menu, Restaurant, Inventory, CostCalculation ):&lt;/div&gt;+ showMenu(): void" vertex="1">
-          <mxGeometry height="72" width="310" y="118" as="geometry" />
+          <mxGeometry height="82" width="310" y="98" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-117" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="EmployeeSubmenu" vertex="1">
           <mxGeometry height="170" width="280" x="570" y="-390" as="geometry" />
@@ -475,7 +475,7 @@
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-133" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="CustomerEntrySubmenu" vertex="1">
           <mxGeometry height="240" width="250" x="-50" y="-768" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-134" parent="vZFMf9-pkc4FlnlLqLSX-133" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- cm: CustomerManager&lt;/div&gt;- cs: CustomerSubmenu&lt;div&gt;- gs: GuestSubmenu&lt;/div&gt;&lt;div&gt;- as: AccountScreen&lt;/div&gt;&lt;div&gt;- gom: OrderManager&lt;/div&gt;&lt;div&gt;- menu: Menu&lt;/div&gt;&lt;div&gt;- restaurant: Restaurant&lt;/div&gt;&lt;div&gt;- inventory: Inventory&lt;/div&gt;&lt;div&gt;- cc: CostCalculation&lt;/div&gt;" vertex="1">
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-134" parent="vZFMf9-pkc4FlnlLqLSX-133" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- cm: CustomerManager&lt;/div&gt;- cs: CustomerSubmenu&lt;div&gt;- gs: GuestSubmenu&lt;/div&gt;&lt;div&gt;- am: AccountManager&lt;/div&gt;&lt;div&gt;- gom: OrderManager&lt;/div&gt;&lt;div&gt;- menu: Menu&lt;/div&gt;&lt;div&gt;- restaurant: Restaurant&lt;/div&gt;&lt;div&gt;- inventory: Inventory&lt;/div&gt;&lt;div&gt;- cc: CostCalculation&lt;/div&gt;" vertex="1">
           <mxGeometry height="134" width="250" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-135" parent="vZFMf9-pkc4FlnlLqLSX-133" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
@@ -640,16 +640,16 @@
           <mxGeometry height="42" width="210" y="78" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-169" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="AddressesSubmenuManager" vertex="1">
-          <mxGeometry height="230" width="250" x="-1295" y="-35" as="geometry" />
+          <mxGeometry height="210" width="250" x="-1295" y="-35" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-170" parent="vZFMf9-pkc4FlnlLqLSX-169" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- customer: Customer&lt;div&gt;- am: AddressManager&lt;/div&gt;" vertex="1">
-          <mxGeometry height="44" width="250" y="26" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-170" parent="vZFMf9-pkc4FlnlLqLSX-169" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- am: AddressManager&lt;/div&gt;" vertex="1">
+          <mxGeometry height="24" width="250" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-171" parent="vZFMf9-pkc4FlnlLqLSX-169" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="250" y="70" as="geometry" />
+          <mxGeometry height="8" width="250" y="50" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-172" parent="vZFMf9-pkc4FlnlLqLSX-169" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ AddressesSubmenuManager(Customer)&lt;div&gt;+ showAllAddresses(): void&lt;/div&gt;&lt;div&gt;+ changePrimary(): void&lt;/div&gt;&lt;div&gt;+ changePrimaryPrompt(int): void&lt;/div&gt;&lt;div&gt;+ setPrimary(int): void&lt;/div&gt;&lt;div&gt;+ addNewAddress(): void&lt;/div&gt;&lt;div&gt;+ updateAddress(): void&lt;/div&gt;&lt;div&gt;+ inputAddress(Address): void&lt;/div&gt;&lt;div&gt;+ removeAddress(): void&lt;/div&gt;" vertex="1">
-          <mxGeometry height="152" width="250" y="78" as="geometry" />
+          <mxGeometry height="152" width="250" y="58" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-173" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-172" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-162">
           <mxGeometry relative="1" as="geometry">
@@ -706,16 +706,16 @@
           <mxGeometry height="42" width="310" y="68" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-182" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="PhoneSubmenuManager" vertex="1">
-          <mxGeometry height="150" width="310" x="-840" y="-350" as="geometry" />
+          <mxGeometry height="140" width="310" x="-840" y="-350" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-183" parent="vZFMf9-pkc4FlnlLqLSX-182" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- pm: PhoneNumberManager&lt;br&gt;&lt;div&gt;- person: Person&lt;/div&gt;" vertex="1">
-          <mxGeometry height="34" width="310" y="26" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-183" parent="vZFMf9-pkc4FlnlLqLSX-182" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- pm: PhoneNumberManager" vertex="1">
+          <mxGeometry height="24" width="310" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-184" parent="vZFMf9-pkc4FlnlLqLSX-182" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="310" y="60" as="geometry" />
+          <mxGeometry height="8" width="310" y="50" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-185" parent="vZFMf9-pkc4FlnlLqLSX-182" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ PhoneSubmenuManager(Person):&lt;/div&gt;&lt;div&gt;+ showAllPhoneNumbers(): void&lt;/div&gt;&lt;div&gt;+ addPhoneNumber(): void&lt;/div&gt;&lt;div&gt;+ updatePhoneNumber(): void&lt;/div&gt;&lt;div&gt;+ removePhoneNumber(): void&lt;/div&gt;" vertex="1">
-          <mxGeometry height="82" width="310" y="68" as="geometry" />
+          <mxGeometry height="82" width="310" y="58" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-186" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-150" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="vZFMf9-pkc4FlnlLqLSX-24">
           <mxGeometry relative="1" as="geometry">
@@ -751,8 +751,8 @@
               <mxPoint x="-990" y="-65" />
               <mxPoint x="-990" y="110" />
               <mxPoint x="-1010" y="110" />
-              <mxPoint x="-1010" y="530" />
-              <mxPoint x="-860" y="530" />
+              <mxPoint x="-1010" y="610" />
+              <mxPoint x="-860" y="610" />
             </Array>
             <mxPoint x="-860" y="1410" as="targetPoint" />
           </mxGeometry>
@@ -964,7 +964,7 @@
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-225" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="EmployeeEntrySubmenu" vertex="1">
           <mxGeometry height="230" width="280" x="570" y="-640" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-226" parent="vZFMf9-pkc4FlnlLqLSX-225" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- dpm: DeliveryPersonManager&lt;/div&gt;- es: EmployeeSubmenu&lt;div&gt;- as: AccountScreen&lt;/div&gt;&lt;div&gt;- gom: OrderManager&lt;/div&gt;&lt;div&gt;- menu: Menu&lt;/div&gt;&lt;div&gt;- restaurant: Restaurant&lt;/div&gt;&lt;div&gt;- inventory: Inventory&lt;/div&gt;&lt;div&gt;- cc: CostCalculation&lt;/div&gt;" vertex="1">
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-226" parent="vZFMf9-pkc4FlnlLqLSX-225" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;- dpm: DeliveryPersonManager&lt;/div&gt;- es: EmployeeSubmenu&lt;div&gt;- am: AccountManager&lt;/div&gt;&lt;div&gt;- gom: OrderManager&lt;/div&gt;&lt;div&gt;- menu: Menu&lt;/div&gt;&lt;div&gt;- restaurant: Restaurant&lt;/div&gt;&lt;div&gt;- inventory: Inventory&lt;/div&gt;&lt;div&gt;- cc: CostCalculation&lt;/div&gt;" vertex="1">
           <mxGeometry height="124" width="280" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-227" parent="vZFMf9-pkc4FlnlLqLSX-225" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
@@ -1055,13 +1055,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-244" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="OrderManager" vertex="1">
-          <mxGeometry height="210" width="230" x="-930" y="276" as="geometry" />
+          <mxGeometry height="270" width="260" x="-960" y="280" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-245" parent="vZFMf9-pkc4FlnlLqLSX-244" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- orders: Map&amp;lt;Integer, Order&amp;gt;&lt;div&gt;- person: Person&lt;/div&gt;" vertex="1">
-          <mxGeometry height="44" width="230" y="26" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-245" parent="vZFMf9-pkc4FlnlLqLSX-244" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- orders: Map&amp;lt;Integer, Order&amp;gt;" vertex="1">
+          <mxGeometry height="34" width="260" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-246" parent="vZFMf9-pkc4FlnlLqLSX-244" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ OrderManager(Person)&lt;/div&gt;&lt;div&gt;+ addOrder(Order): void&lt;/div&gt;&lt;div&gt;+ searchOrder(int): Order&lt;/div&gt;&lt;div&gt;+ removeOrder(int): void&lt;/div&gt;&lt;div&gt;+ showOrderHistory(): void&lt;/div&gt;&lt;div&gt;+ showAvailableOrders(): boolean&lt;/div&gt;&lt;div&gt;+ showUnfulfilledOrders():&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;boolean&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ noOrdersHerePrompt(): void&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ displayOrder(Order): void&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="140" width="230" y="70" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-246" parent="vZFMf9-pkc4FlnlLqLSX-244" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;+ OrderManager()&lt;/div&gt;&lt;div&gt;+ addOrder(Order): void&lt;/div&gt;&lt;div&gt;+ searchOrder(int): Order&lt;/div&gt;&lt;div&gt;+ removeOrder(int): void&lt;/div&gt;&lt;div&gt;+ showOrderHistory(): void&lt;/div&gt;&lt;div&gt;+ getAllOrders: Map&amp;lt;Integer, Order&amp;gt;&lt;/div&gt;&lt;div&gt;+ showAvailableOrders(): boolean&lt;/div&gt;&lt;div&gt;+ getAvailableOrders(): Map&amp;lt;Integer, Order&amp;gt;&lt;/div&gt;&lt;div&gt;+ showUnfulfilledOrders():&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;boolean&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ getUnfulfilledOrders(): Map&amp;lt;Integer, Order&amp;gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ noOrdersHerePrompt(): void&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ displayOrder(Order): void&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="210" width="260" y="60" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-247" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="VehicleSubmenuManager" vertex="1">
           <mxGeometry height="150" width="280" x="250" y="-40" as="geometry" />
@@ -1134,16 +1134,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-263" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="PlaceOrderMenu" vertex="1">
-          <mxGeometry height="170" width="320" x="320" y="150" as="geometry" />
+          <mxGeometry height="130" width="320" x="320" y="150" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-264" parent="vZFMf9-pkc4FlnlLqLSX-263" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- customer:Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;- gom: OrderManager&lt;/div&gt;&lt;div&gt;- menu: Menu&lt;/div&gt;&lt;div&gt;- pomm: PlaceOrderMenuManager&lt;/div&gt;&lt;div&gt;- finishOrder: boolean&lt;/div&gt;" vertex="1">
-          <mxGeometry height="84" width="320" y="26" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-264" parent="vZFMf9-pkc4FlnlLqLSX-263" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- pomm: PlaceOrderMenuManager&lt;/span&gt;&lt;/div&gt;&lt;div&gt;- finishOrder: boolean&lt;/div&gt;" vertex="1">
+          <mxGeometry height="44" width="320" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-265" parent="vZFMf9-pkc4FlnlLqLSX-263" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="320" y="110" as="geometry" />
+          <mxGeometry height="8" width="320" y="70" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-266" parent="vZFMf9-pkc4FlnlLqLSX-263" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ PlaceOrderMenu(Customer: OrderManager, Menu,&lt;div&gt;CostCalculation, Inventory)&lt;div&gt;+ showMenu()&lt;/div&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="52" width="320" y="118" as="geometry" />
+          <mxGeometry height="52" width="320" y="78" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-267" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-266" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-261">
           <mxGeometry relative="1" as="geometry">
@@ -1156,7 +1156,7 @@
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-268" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-266" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-24">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="290" y="280" />
+              <mxPoint x="290" y="260" />
               <mxPoint x="290" y="500" />
               <mxPoint x="-47" y="500" />
               <mxPoint x="-47" y="300" />
@@ -1201,8 +1201,8 @@
               <mxPoint x="-60" y="810" />
               <mxPoint x="-60" y="1050" />
               <mxPoint x="-400" y="1050" />
-              <mxPoint x="-400" y="820" />
-              <mxPoint x="-670" y="820" />
+              <mxPoint x="-400" y="840" />
+              <mxPoint x="-670" y="840" />
               <mxPoint x="-670" y="430" />
             </Array>
           </mxGeometry>
@@ -1215,22 +1215,22 @@
               <mxPoint x="-50" y="510" />
               <mxPoint x="-50" y="1040" />
               <mxPoint x="-410" y="1040" />
-              <mxPoint x="-410" y="830" />
-              <mxPoint x="-815" y="830" />
+              <mxPoint x="-410" y="850" />
+              <mxPoint x="-815" y="850" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-274" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="RecieptGenerator" vertex="1">
-          <mxGeometry height="86" width="160" x="-575" y="834" as="geometry" />
+          <mxGeometry height="110" width="180" x="-605" y="860" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-275" parent="vZFMf9-pkc4FlnlLqLSX-274" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&amp;nbsp;" vertex="1">
-          <mxGeometry height="26" width="160" y="26" as="geometry" />
+          <mxGeometry height="26" width="180" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-276" parent="vZFMf9-pkc4FlnlLqLSX-274" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="160" y="52" as="geometry" />
+          <mxGeometry height="8" width="180" y="52" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-277" parent="vZFMf9-pkc4FlnlLqLSX-274" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ showReceipt(Order)" vertex="1">
-          <mxGeometry height="26" width="160" y="60" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-277" parent="vZFMf9-pkc4FlnlLqLSX-274" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ showReceipt(Order): void&lt;div&gt;+ createReciept(Order): String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="180" y="60" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-278" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-275" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-12">
           <mxGeometry relative="1" as="geometry" />
@@ -1309,7 +1309,9 @@
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-301" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-39">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-470" y="1016" />
+              <mxPoint x="-540" y="1070" />
+              <mxPoint x="-540" y="1060" />
+              <mxPoint x="-470" y="1060" />
               <mxPoint x="-470" y="1230" />
             </Array>
           </mxGeometry>
@@ -1479,8 +1481,7 @@
         <mxCell id="fB2fqXfIeM24ojS2yHUL-8" edge="1" parent="1" source="fB2fqXfIeM24ojS2yHUL-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.008;entryY=0.805;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-73">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-880" y="1054" />
-              <mxPoint x="-880" y="1054" />
+              <mxPoint x="-842" y="1054" />
             </Array>
           </mxGeometry>
         </mxCell>

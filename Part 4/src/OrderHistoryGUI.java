@@ -1,7 +1,6 @@
 
 import java.util.Map;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -9,27 +8,47 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
+ * This class provides a GUI for the user to view their order history.
  * @author Alexander
  */
 public class OrderHistoryGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddressesSubmenuGUI.class.getName());
-    private Person person;
-    private OrderManager om;
-    private DefaultListModel orderModel;
     /**
-     * Creates new form AddressesSubmenuGUI
+     * The person whose order history is being displayed.
+     */
+    
+    private OrderManager om;
+    
+    /**
+     * A DefaultListModel to be used to store all of the orders in the orderList
+     * on the GUI form.
+     */
+    private DefaultListModel orderModel;
+    
+    /**
+     * Creates new form AddressesSubmenuGUI. It also initializes the orderModel
+     * to a new DefaultListModel() object. It also disables the 
+     * viewOrderInfoBttn since no order will be selected when the form is first
+     * created.
      */
     public OrderHistoryGUI() {
         orderModel = new DefaultListModel();
         initComponents();
         viewOrderInfoBttn.setEnabled(false);
     }
-    
+    /**
+     * Creates new form AddressesSubmenuGUI by calling the no argument
+     * constructor. It also sets the om variable to the order manager associated
+     * with the input person parameter. It then calls the initializeOrders()
+     * method to initialize the orderModel to store all of the orders associated
+     * with the person. Finally, the orderHistoryDescrLabel's text is modified
+     * to show the person's name.
+     * 
+     * @param person The person whose order history is being displayed.
+     */
     public OrderHistoryGUI(Person person) {
         this();
-        this.person = person;
         om = person.getOrderHistory();
         initializeOrders();
         orderHistoryDescrLabel.setText("Order History for " + person.getName());
@@ -141,23 +160,48 @@ public class OrderHistoryGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * This method closes the form then the OK button is used.
+     * 
+     * @param evt The event that occurs when the OK button is used.
+     */
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
+    /**
+     * This method is called any time the selected item in the order list is 
+     * changed. It enables the viewOrderInfoBttn whenever an order is selected
+     * in the list.
+     * 
+     * @param evt The event that occurs when the viewOrderInfoBttn is used.
+     */
     private void orderListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_orderListValueChanged
         // TODO add your handling code here:
         viewOrderInfoBttn.setEnabled(orderList.getSelectedIndex() > -1);
     }//GEN-LAST:event_orderListValueChanged
 
+    /**
+     * This method refreshes the orders list any time the window gains focus.
+     * This is done by calling the initializeOrders() method again to reset the
+     * ordersList.
+     * 
+     * @param evt The event that occurs when the window gains focus.
+     */
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
-        
-        
+        initializeOrders();
     }//GEN-LAST:event_formWindowGainedFocus
 
+    /**
+     * This method displays the information about the order selected in the 
+     * orderList. It retrieves the id of the currently selected order and
+     * searches for that order within the order manager. It then passes the 
+     * returned order object as the argument for the ViewOrderInfoGUI.
+     * 
+     * @param evt The event that occurs when the viewOrderInfoBttn is used.
+     */
     private void viewOrderInfoBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOrderInfoBttnActionPerformed
         // TODO add your handling code here:
         String selectedOrder = orderList.getSelectedValue();
@@ -168,6 +212,14 @@ public class OrderHistoryGUI extends javax.swing.JFrame {
         new ViewOrderInfoGUI(order).setVisible(true);
     }//GEN-LAST:event_viewOrderInfoBttnActionPerformed
     
+    /**
+     * This method initializes the orderModel so the orderList on the GUI
+     * contains all of the orders within the person's order history. Each order
+     * within the order manager is added to the order model, simply displaying
+     * the order number. Once all orders have been added to the orderModel, it
+     * is set as the model for the orderList, and the updateUI() method for the
+     * orderList is called to update any changes.
+     */
     private void initializeOrders(){
         Map<Integer, Order> orders = om.getAllOrders();
         
@@ -176,9 +228,19 @@ public class OrderHistoryGUI extends javax.swing.JFrame {
             orderModel.addElement("Order #" + order.getOrderId());
         }
         
+        orderList.setModel(orderModel);
         orderList.updateUI();
     }
     
+    /**
+     * This method returns the order ID for the selected order in the orderList.
+     * the "Order #" sub string of the str parameter is removed to obtain just 
+     * the order number. This string value of the order ID is then parsed
+     * as an integer, and the value of that integer is returned.
+     * 
+     * @param str The string value of the order that is stored in the orderList.
+     * @return The parsed string ID as an integer.
+     */
     private int retrieveOrderID(String str){
         String orderIDStr = str.replace("Order #", "");
         int id = Integer.parseInt(orderIDStr);

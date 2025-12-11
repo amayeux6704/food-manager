@@ -2,17 +2,33 @@
 import java.util.Scanner;
 
 /**
- *
+ * This class provides a command line interface menu for an employee user to 
+ * edit the information about their delivery vehicle that they have stored on 
+ * their profile.
  * @author Alexander
  */
 public class EditVehicleSubmenu implements ProgramMenu{
     
+    /**
+     * The instance of the edit vehicle sub menu manager that manages all of the 
+     * functionality of this sub menu. 
+     */
     private EditVehicleSubmenuManager evsm;
     
+    /**
+     * Class constructor that initializes the evsm variable to a new 
+     * EditVehicleSubmenuManager object, passing the vehicle as the argument 
+     * to the constructor.
+     * 
+     * @param vehicle   The vehicle that is being edited by the user.
+     */
     public EditVehicleSubmenu(Vehicle vehicle){
         evsm = new EditVehicleSubmenuManager(vehicle);
     }
     
+    /**
+     * This method displays the edit delivery vehicle sub menu to the user.
+     */
     public void showMenu(){
         byte choice = 0;
         Scanner input = new Scanner(System.in);

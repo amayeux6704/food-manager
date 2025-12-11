@@ -116,7 +116,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             .addGroup(placeOrderPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(addToOrderLbl)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         placeOrderTabPane.addTab("Place your Order", placeOrderPanel);
@@ -188,7 +188,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                         .addComponent(selectedAddressPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(selectAddressCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         placeOrderTabPane.addTab("Set Address", setAddressPanel);
@@ -254,7 +254,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                 .addGroup(setPaymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(payMthdCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mngPayMthdBtn))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         placeOrderTabPane.addTab("Set Payment", setPaymentPanel);
@@ -304,7 +304,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                 .addGroup(confirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeOrderBtn)
                     .addComponent(cancelBtn))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         placeOrderTabPane.addTab("Confirm Order", confirmPanel);
@@ -317,7 +317,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(placeOrderTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 339, Short.MAX_VALUE)
+            .addComponent(placeOrderTabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
         );
 
         pack();

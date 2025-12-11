@@ -67,7 +67,6 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         inProgOrdersLst = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
-        viewMenuBttn = new javax.swing.JButton();
         viewOrderInfoBttn = new javax.swing.JButton();
         customerMenuMenuBar = new javax.swing.JMenuBar();
         customerSubmenu = new javax.swing.JMenu();
@@ -110,13 +109,6 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Orders in Progress");
 
-        viewMenuBttn.setText("View Menu");
-        viewMenuBttn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewMenuBttnActionPerformed(evt);
-            }
-        });
-
         viewOrderInfoBttn.setText("View Order Information");
         viewOrderInfoBttn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,19 +125,16 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(welcomeLabel)
-                            .addComponent(whatDoLabel))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(placeOrderBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(viewMenuBttn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewOrderInfoBttn))
-                        .addGap(24, 24, 24))))
+                            .addComponent(viewOrderInfoBttn)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 19, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(welcomeLabel)
+                            .addComponent(whatDoLabel)
+                            .addComponent(placeOrderBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,20 +143,15 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                 .addComponent(welcomeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(whatDoLabel)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(placeOrderBttn)
-                        .addGap(18, 18, 18)
-                        .addComponent(viewMenuBttn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(5, 5, 5)
+                .addComponent(placeOrderBttn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewOrderInfoBttn)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         customerSubmenu.setText("Customer");
@@ -208,13 +192,13 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         pack();
@@ -269,11 +253,6 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new OrderHistoryGUI(customer).setVisible(true);
     }//GEN-LAST:event_orderHistMenuItemActionPerformed
-
-    private void viewMenuBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMenuBttnActionPerformed
-        // TODO add your handling code here:
-        new MenuDisplayGUI().setVisible(true);
-    }//GEN-LAST:event_viewMenuBttnActionPerformed
     
     private void refreshInfo(){
         welcomeLabel.setText("Welcome, " + customer.getName() + "!");
@@ -341,7 +320,6 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem orderHistMenuItem;
     private javax.swing.JButton placeOrderBttn;
     private javax.swing.JMenuItem profileMenuItem;
-    private javax.swing.JButton viewMenuBttn;
     private javax.swing.JButton viewOrderInfoBttn;
     private javax.swing.JLabel welcomeLabel;
     private javax.swing.JLabel whatDoLabel;

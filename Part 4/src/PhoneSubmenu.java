@@ -2,19 +2,32 @@
 import java.util.Scanner;
 
 /**
- *
+ * This class provides a command line interface menu for a user to manage their 
+ * phone numbers that they have stored on their profile either as a customer or 
+ * employee.
  * @author Alexander
  */
 public class PhoneSubmenu implements ProgramMenu{
     
+    /**
+     * The instance of the phone sub menu manager that manages all of the 
+     * functionality of this sub menu. 
+     */
     private PhoneSubmenuManager psm;
-    private Person person;
     
+    /**
+     * Class constructor that initializes the psm variable to a new 
+     * PhoneSubmenuManager object, passing the person as the argument to
+     * the constructor.
+     * @param person The person user who is currently logged in.
+     */
     public PhoneSubmenu(Person person){
-        this.person = person;
-        psm = new PhoneSubmenuManager(this.person);
+        psm = new PhoneSubmenuManager(person);
     }
     
+    /**
+     * This method displays the manage phone numbers sub menu to the user.
+     */
     @Override
     public void showMenu(){
         byte choice = 0;

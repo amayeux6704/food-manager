@@ -2,25 +2,46 @@
 import java.util.Scanner;
 
 /**
- *
+ * This class provides a command line interface menu for a customer user to
+ * place an order for delivery in the system.
  * @author Alexander
  */
 public class PlaceOrderMenu implements ProgramMenu{
     
-    private Customer customer;
-    private OrderManager gom;
-    private Menu menu;
+    /**
+     * The place order menu manager that manages all of the functionality of 
+     * this sub menu.
+     */
     private PlaceOrderMenuManager pomm;
+    
+    /**
+     * A Boolean variable to be used to determine if the customer has finished
+     * placing their order.
+     */
     private boolean finishOrder;
     
+    /**
+     * Class constructor that initializes the customer, general order manager, 
+     * and menu based on the input parameters. It also initializes the pomm 
+     * variable to be a new PlaceOrderMenuManager object, passing the customer,
+     * gom, menu, cc, and inventory parameters as arguments to the constructor.
+     * @param customer  The customer placing the order.
+     * @param gom       The general order manager that stores and manages all of 
+     *                  the orders within the system.
+     * @param menu      The food menu that has all of the food items.
+     * @param cc        The cost calculation object to calculate the cost of 
+     *                  orders.
+     * @param inventory The inventory of ingredients for each dish
+     */
     public PlaceOrderMenu(Customer customer, OrderManager gom, Menu menu, CostCalculation cc,
             Inventory inventory){
-        this.customer = customer;
-        this.gom = gom;
-        this.menu = menu;
-        pomm = new PlaceOrderMenuManager(this.customer, this.gom, this.menu, cc, inventory);
+        pomm = new PlaceOrderMenuManager(customer, gom, menu, cc, inventory);
     }
     
+    /**
+     * This method displays the place order menu to the user. If the order has
+     * been complete, the menu will close and return to the customer sub menu.
+     */
     public void showMenu(){
         pomm.createNewOrder();
         this.finishOrder = false;

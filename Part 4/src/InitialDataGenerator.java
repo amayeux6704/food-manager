@@ -1,5 +1,5 @@
 /**
- *
+ * This class generates initial dummy data for the program.
  * @author Alexander
  */
 public class InitialDataGenerator {

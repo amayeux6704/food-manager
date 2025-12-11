@@ -1,10 +1,30 @@
 /**
- *
+ * This class generates order receipts for orders.
  * @author Alexander
  */
 public class ReceiptGenerator {
     
+    /**
+     * This method generates an order receipt and displays it to the command
+     * line.
+     * 
+     * @param order The order whose receipt is being generated.
+     */
     public void showReceipt(Order order){
+        
+        System.out.println(createReceipt(order));
+    }
+    
+    /**
+     * This method generates an order receipt as a string to be displayed
+     * after an order has been placed. It shows the name of  the customer who 
+     * placed the order, their ID, the order ID, the list of  dishes, the list 
+     * of sides, and all of the price information. 
+     * 
+     * @param order The order whose receipt is being generated.
+     * @return The generated receipt string (str).
+     */
+    public String createReceipt(Order order){
         String str;
         
         Customer customer = order.getCustomer();
@@ -25,10 +45,10 @@ public class ReceiptGenerator {
         for(Side side: order.getSides()){
             str += side.getName() + "\n";
         }
+        str +=  order.getTaxRate() + "\n" +
+                order.getTaxCost() + "\n" +
+                order.getTotalCost() +"\n";
         
-        System.out.println(str);
-        order.displayTaxRate();
-        order.displayTaxCost();
-        order.displayTotalCost();
+        return str;
     }
 }

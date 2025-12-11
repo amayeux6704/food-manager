@@ -4,7 +4,9 @@
  */
 
 /**
- *
+ * This class provides a GUI for the user to view the information about an
+ * order.
+ * 
  * @author Alexander
  */
 public class ViewOrderInfoGUI extends javax.swing.JFrame {
@@ -12,12 +14,19 @@ public class ViewOrderInfoGUI extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewOrderInfoGUI.class.getName());
     
     /**
-     * Creates new form ViewOrderInfoGUI
+     * Creates new form ViewOrderInfoGUI.
      */
     public ViewOrderInfoGUI() {
         initComponents();
     }
     
+    /**
+     * Creates new form ViewOrderInfoGUI by calling the no argument constructor.
+     * It also uses the order parameter as the argument for the showOrderInfo()
+     * method to display the information about the order to the user.
+     * 
+     * @param order The order whose information is to be displayed to the user.
+     */
     public ViewOrderInfoGUI(Order order){
         this();
         showOrderInfo(order);
@@ -87,11 +96,22 @@ public class ViewOrderInfoGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method closes the form then the OK button is used.
+     * 
+     * @param evt The event that occurs when the OK button is used.
+     */
     private void okBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBttnActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_okBttnActionPerformed
 
+    /**
+     * This method sets the orderInfoLbl's text value to that of the input order
+     * parameter's toString() to display the order's information on the GUI form
+     * to the user.
+     * 
+     * @param order The order to be displayed to the user.
+     */
     private void showOrderInfo(Order order){
         orderInfoLbl.setText(order.toString());
     }

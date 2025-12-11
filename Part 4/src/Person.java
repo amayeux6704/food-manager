@@ -48,7 +48,7 @@ public class Person {
      */
     public Person(String name, int id){
         phoneNumberManager = new PhoneNumberManager();
-        orderHistory = new OrderManager(this);
+        orderHistory = new OrderManager();
         this.name = name;
         this.personID = id;
     }

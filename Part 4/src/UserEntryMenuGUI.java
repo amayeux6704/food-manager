@@ -25,11 +25,11 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
      */
     private boolean logIn;
     /**
-     * The customer manager to be used throughout the entire system.
+     * The customer manager being used throughout the system.
      */
     private CustomerManager cm;
     /**
-     * The delivery person manager to be used throughout the entire system.
+     * The delivery person manager being used throughout the system.
      */
     private DeliveryPersonManager dpm;
     /**

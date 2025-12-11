@@ -307,8 +307,7 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
 
     private void managePaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePaymentButtonActionPerformed
         // TODO add your handling code here:
-        PaymentManagementMenuGUI pmmGUI = new PaymentManagementMenuGUI();
-        pmmGUI.setVisible(true);
+        new PaymentManagementMenuGUI(customer.getPayment()).setVisible(true);
     }//GEN-LAST:event_managePaymentButtonActionPerformed
     
     private void refreshInformation(){

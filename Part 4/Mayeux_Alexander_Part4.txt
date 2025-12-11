@@ -8,45 +8,46 @@ Key:
 • Added back the UML diagram for editing as needed.
 • Write the code for the following classes:
 	AccountManager (Needs Documentation)
-	Address (Added new Method)
-	AddressManager (Needs Documentation)
-	AddressesSubmenu (Needs Documentation)
+	Address
+	AddressManager
+	AddressesSubmenu
 	AddressesSubmenuManager (Needs Documentation)
 	Customer
-	CustomerEntrySubmenu (Needs Documentation)
-	CustomerManager (Needs Documentation)
+	CustomerEntrySubmenu
+	CustomerManager
 	CustomerSettingsManager (Needs Documentation)
-	CustomerSettingsSubmenu (Needs Documentation)
-	CustomerSubmenu (Needs Documentation)
+	CustomerSettingsSubmenu
+	CustomerSubmenu
 	CustomerSubmenuManager (Needs Documentation)
 	DeliveryPerson
-	DeliveryPersonManager (Needs Documentation)
-	EditVehicleSubmenu (Needs Documentation)
+	DeliveryPersonManager
+	EditVehicleSubmenu
 	EditVehicleSubmenuManager (Needs Documentation)
-	EmployeeEntrySubmenu (Needs Documentation)
+	EmployeeEntrySubmenu
 	EmployeeSettingsManager (Needs Documentation)
-	EmployeeSettingsSubmenu (Needs Documentation)
-	EmployeeSubmenu (Needs Documentation)
+	EmployeeSettingsSubmenu
+	EmployeeSubmenu
 	EmployeeSubmenuManager (Needs Documentation)
 	IDGenerator (Needs Documentation)
-	InitialDataGenerator (Needs Documentation)
+	InitialDataGenerator
 	Main
-	MainMenu (Needs Documentation)
-	Order (Needs Documentation)
+	MainMenu
+	Order
 	OrderAddressPlacer (Needs Documentation)
-	OrderInventoryChanger (Needs Documentation)
-	OrderManager (Needs Documentation)
+	OrderInventoryChanger
+	OrderManager
 	OrderPaymentPlacer (Needs Documentation)
-	OrderPlacer (Needs Documentation)
+	OrderPlacer
 	Person
-	PhoneSubmenu (Needs Documentation)
+	PhoneSubmenu
 	PhoneSubmenuManager (Needs Documentation)
-	PlaceOrderMenu (Needs Documentation)
+	PlaceOrderMenu
 	PlaceOrderMenuManager (Needs Documentation)
-	ProgramMenu (Needs Documentation)
-	ReceiptGenerator (Needs Documentation)
+	ProgramMenu
+	ReceiptGenerator
+	SystemSettingsSubmenu
 	Vehicle
-	VehicleSubmenu (Needs Documentation)
+	VehicleSubmenu
 	VehicleSubmenuManager (Needs Documentation)
 
 • Create GUI Frames for the following Menus:
@@ -58,14 +59,14 @@ Key:
 	+EmployeeMenuGUI (Needs Documentation)
 	+EmployeeSettingsSubmenuGUI (Needs Documentation)
 	+MainMenuGUI
-	+OrderHistoryGUI (Needs Documentation)
+	+OrderHistoryGUI 
 	+PhoneSubmenuGUI (Needs Documentation)
 	+PlaceOrderMenuGUI (Needs Documentation)
 	+SystemSettingsSubmenuGUI (Needs Documentation)
 	+UpdateAddPhoneSubmenuGUI (Needs Documentation)
 	+UserEntryMenuGUI
 	+UserInfoGUI (Needs Documentation)
-	+ViewOrderInfoGUI (Needs Documentation)
+	+ViewOrderInfoGUI
 
 • Write the intsructions PDF for the program	
 • Added readme.txt with instructions to compile the program.

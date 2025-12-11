@@ -43,10 +43,8 @@ public class MainMenuGUI extends javax.swing.JFrame {
      * general order manager, main menu, restaurant, inventory, and cost
      * calculation objects to their respective arguments.
      * 
-     * @param cm    The customer manager that is to be used throughout the whole
-     *              system.
-     * @param dpm   The delivery person manager that is to be used throughout 
-     *              the whole system.
+     * @param cm    The customer manager being used throughout the system.
+     * @param dpm   The delivery person manager being used throughout the system.
      * @param gom   The general order manager that stores and manages all of the
      *              orders within the system.
      * @param menu  The food menu to be used throughout the entire program.

@@ -1,16 +1,50 @@
 import java.util.Scanner;
 /**
- *
+ * This class provides a command line interface menu for an employee user to 
+ * manage the system settings
  * @author Alexander
  */
 public class SystemSettingsSubmenu implements ProgramMenu{
     
+    /**
+     * The restaurant that sells the food in the system.
+     */
     private Restaurant restaurant;
+    
+    /**
+     * The food menu that has all of the food items.
+     */
     private Menu menu;
+    
+    /**
+     * The inventory of ingredients for each dish.
+     */
     private Inventory inventory;
+    
+    /**
+     * The cost calculation object to be used to calculate the cost of orders
+     * and keep a standard tax rate.
+     */
     private CostCalculation costCalculation;
+    
+    /**
+     * A scanner to receive user input.
+     */
     private Scanner scanner;
     
+    /**
+     * Class constructor that initializes the instance variables based on their
+     * respective input parameters.
+     * 
+     * @param restaurant      The restaurant that sells the food in the system.
+     * @param menu            The food menu to be used throughout the entire 
+     *                        program.
+     * @param inventory       The inventory of ingredients for each dish
+     * @param costCalculation The cost calculation object to calculate the cost 
+     *                        of orders and keep a standard tax rate throughout
+     *                        the system.
+     * @param scanner         A scanner that receives user input.
+     */
     public SystemSettingsSubmenu(Restaurant restaurant, Menu menu, Inventory inventory,
             CostCalculation costCalculation, Scanner scanner){
         this.restaurant = restaurant;
@@ -20,6 +54,11 @@ public class SystemSettingsSubmenu implements ProgramMenu{
         this.scanner = scanner;
     }
     
+    /**
+     * This method displays the food delivery management system settings sub 
+     * menu to the user. Each instance of the sub menus are initialized when
+     * their options are selected.
+     */
     @Override
     public void showMenu(){
         byte choice = 0;
