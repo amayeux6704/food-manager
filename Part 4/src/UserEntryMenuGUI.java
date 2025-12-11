@@ -406,6 +406,7 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
             }
             else{
                 customer = am.signUp(this, cm, name, email, password);
+                new LoadSaveCustomer().saveCustomer(customer);
             }
             openCustomerMenuGUI(customer);
         }
@@ -434,6 +435,7 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
             }
             else{
                 deliveryPerson = am.signUp(this, dpm, name, email, password);
+                new LoadSaveDeliveryPerson().saveDeliveryPerson(deliveryPerson);
             }
             openEmployeeMenuGUI(deliveryPerson);
         }

@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.3">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.7">
   <diagram name="Page-1" id="Y5r_HD8HeklmsqbLGCz2">
-    <mxGraphModel dx="3062" dy="2914" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3144" dy="2951" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -514,8 +514,8 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-810" y="-1110" />
-              <mxPoint y="-1110" />
-              <mxPoint y="-820" />
+              <mxPoint x="-60" y="-1110" />
+              <mxPoint x="-60" y="-820" />
               <mxPoint x="350" y="-820" />
               <mxPoint x="350" y="-730" />
               <mxPoint x="870" y="-730" />
@@ -548,23 +548,23 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-152" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="AccountManager" vertex="1">
-          <mxGeometry height="162" width="330" x="40" y="-1006" as="geometry" />
+          <mxGeometry height="280" width="350" x="10" y="-1180" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-153" parent="vZFMf9-pkc4FlnlLqLSX-152" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&amp;nbsp;" vertex="1">
-          <mxGeometry height="24" width="330" y="26" as="geometry" />
+          <mxGeometry height="24" width="350" y="26" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-154" parent="vZFMf9-pkc4FlnlLqLSX-152" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="10" width="330" y="50" as="geometry" />
+          <mxGeometry height="10" width="350" y="50" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-155" parent="vZFMf9-pkc4FlnlLqLSX-152" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ getCredentials(Queue&amp;lt;String&amp;gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ logIn(CustomerManager): Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ logIn(DeliveryPersonManager): DeliveryPerson&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ signUp(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CustomerManager&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;): Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ signUp(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;DeliveryPersonManager&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;): DeliveryPerson&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ guest(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CustomerManager&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;): Customer&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="102" width="330" y="60" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-155" parent="vZFMf9-pkc4FlnlLqLSX-152" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ getCredentials(Queue&amp;lt;String&amp;gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ logIn(CustomerManager): Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ logIn(UserEntryMenuGUI, CustomerManager, String, String): Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ logIn(DeliveryPersonManager): DeliveryPerson&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ logIn(UserEntryMenuGUI, DeliveryPersonManager, String, String): DeliveryPerson&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ signUp(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CustomerManager&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;): Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;signUp(UserEntryMenuGUI, CustomerManager, String, String, String): Customer&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ signUp(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;DeliveryPersonManager&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;): DeliveryPerson&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;+&lt;/span&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;&amp;nbsp;signUp(UserEntryMenuGUI, DeliveryPersonManager, String, String, String): DeliveryPerson&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ guest(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CustomerManager&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;): Customer&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="350" y="60" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-156" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-136" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-155">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-60" y="-570" />
               <mxPoint x="-60" y="-790" />
-              <mxPoint x="240" y="-790" />
+              <mxPoint x="200" y="-790" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -1114,7 +1114,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-258" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="OrderPlacer" vertex="1">
-          <mxGeometry height="380" width="270" x="-30" y="540" as="geometry" />
+          <mxGeometry height="390" width="270" x="-30" y="540" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-259" parent="vZFMf9-pkc4FlnlLqLSX-258" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- customer:Customer&lt;div&gt;- gom: OrderManager&lt;/div&gt;&lt;div&gt;- order: Order&lt;/div&gt;&lt;div&gt;- cc: CostCalculation&lt;/div&gt;&lt;div&gt;- inventory: Inventory&lt;/div&gt;&lt;div&gt;- menu: Menu&lt;/div&gt;&lt;div&gt;- oic: OrderInventoryChanger&lt;/div&gt;" vertex="1">
           <mxGeometry height="104" width="270" y="26" as="geometry" />
@@ -1122,8 +1122,8 @@
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-260" parent="vZFMf9-pkc4FlnlLqLSX-258" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="270" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="vZFMf9-pkc4FlnlLqLSX-261" parent="vZFMf9-pkc4FlnlLqLSX-258" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ OrderPlacer(Customer: OrderManager, Menu,&lt;div&gt;CostCalculation, Inventory)&lt;div&gt;+ initializeOrder(Menu): void&lt;/div&gt;&lt;div&gt;+ emptyOrder(): boolean&lt;/div&gt;&lt;div&gt;+ addDish(int, int): void&lt;/div&gt;&lt;div&gt;+ addSide(Side, int)&lt;/div&gt;&lt;div&gt;+ calculateCost(): void&lt;/div&gt;&lt;div&gt;+ removeDish(int): void&lt;/div&gt;&lt;div&gt;+ removeSide(Side): void&lt;/div&gt;&lt;div&gt;+ getNumItems(): int&lt;/div&gt;&lt;div&gt;+ showOrder(): void&lt;/div&gt;&lt;div&gt;+ showReciept(): void&lt;/div&gt;&lt;div&gt;+ setPayment(): void&lt;/div&gt;&lt;div&gt;+ setAddress(): void&lt;/div&gt;&lt;div&gt;+ placeOrder(): void&lt;/div&gt;&lt;div&gt;+ displayOrder(): void&lt;/div&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="242" width="270" y="138" as="geometry" />
+        <mxCell id="vZFMf9-pkc4FlnlLqLSX-261" parent="vZFMf9-pkc4FlnlLqLSX-258" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ OrderPlacer(Customer: OrderManager, Menu,&lt;div&gt;CostCalculation, Inventory)&lt;div&gt;+ initializeOrder(Menu): void&lt;/div&gt;&lt;div&gt;+ emptyOrder(): boolean&lt;/div&gt;&lt;div&gt;+ addDish(int, int): void&lt;/div&gt;&lt;div&gt;+ addSide(Side, int)&lt;/div&gt;&lt;div&gt;+ calculateCost(): void&lt;/div&gt;&lt;div&gt;+ removeDish(int): void&lt;/div&gt;&lt;div&gt;+ removeSide(Side): void&lt;/div&gt;&lt;div&gt;+ getNumItems(): int&lt;/div&gt;&lt;div&gt;+ showOrder(): void&lt;/div&gt;&lt;div&gt;+ showReciept(): void&lt;/div&gt;&lt;div&gt;+ setPayment(): void&lt;/div&gt;&lt;div&gt;+ setAddress(): void&lt;/div&gt;&lt;div&gt;+ placeOrder(): void&lt;/div&gt;&lt;div&gt;+ getOrder(): Order&lt;/div&gt;&lt;div&gt;+ displayOrder(): void&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="252" width="270" y="138" as="geometry" />
         </mxCell>
         <mxCell id="vZFMf9-pkc4FlnlLqLSX-262" edge="1" parent="1" source="vZFMf9-pkc4FlnlLqLSX-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="vZFMf9-pkc4FlnlLqLSX-261">
           <mxGeometry relative="1" as="geometry">

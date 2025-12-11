@@ -74,6 +74,7 @@ public class CustomerManager {
         
         for(int id: customers.keySet()){
             customer = searchCustomer(id);
+            System.out.println(customer.getName());
             if(customer.getEmail().equals(email) && 
                     customer.getPassword().equals(password))
                 return customer;

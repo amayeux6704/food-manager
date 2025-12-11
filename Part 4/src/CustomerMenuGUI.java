@@ -3,11 +3,6 @@ import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  *
  * @author Alexander
@@ -15,8 +10,6 @@ import javax.swing.JOptionPane;
 public class CustomerMenuGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CustomerMenuGUI.class.getName());
-    private CustomerSettingsSubmenu css;
-    private CustomerSubmenuManager csubm;
     private CustomerManager cm;
     private Customer customer;
     private OrderManager gom;
@@ -25,7 +18,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
     private int customerId;
     private DefaultListModel unfulfilledOrdersModel;
     private Map<Integer, Order> unfulfilledOrders;
-    private PlaceOrderMenuGUI pomGUI;
+    private CostCalculation cc;
 
     /**
      * Creates new form CustomerMenuGUI
@@ -45,7 +38,8 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         this.gom = gom;
         this.menu = menu;
         this.inventory = inventory;
-
+        this.cc = cc;
+        
         refreshInfo();
     }
 
@@ -134,7 +128,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
                             .addComponent(welcomeLabel)
                             .addComponent(whatDoLabel)
                             .addComponent(placeOrderBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(280, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +201,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
 
     private void placeOrderBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBttnActionPerformed
         // TODO add your handling code here:
-        new PlaceOrderMenuGUI(customer, gom, menu, inventory).setVisible(true);
+        new PlaceOrderMenuGUI(customer, gom, menu, inventory, cc).setVisible(true);
     }//GEN-LAST:event_placeOrderBttnActionPerformed
 
     private void profileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileMenuItemActionPerformed

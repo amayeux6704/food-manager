@@ -29,7 +29,7 @@ public class ReceiptGenerator {
         
         Customer customer = order.getCustomer();
         
-        str = "Order for: " + customer.getName() +"\n"+
+        str = "<Order for: " + customer.getName() +"\n"+
               "Customer #" + customer.getID() + "\n" +
               "______________________________________________\n"+
               "Order #" + order.getOrderId() + "\n" +

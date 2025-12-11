@@ -73,7 +73,7 @@ public class Main {
         
         MainMenu mainMenu = new MainMenu(customerManager, deliveryPersonManager, generalOrderManager, menu,
                                         restaurant, inventory, costCalculation);
-//        mainMenu.showMenu();
+        //mainMenu.showMenu();
         
         //Display the main menu to the user.
         mmGUI.setVisible(true);

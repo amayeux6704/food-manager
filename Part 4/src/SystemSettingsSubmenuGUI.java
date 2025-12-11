@@ -1,21 +1,61 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
 /**
+ * This class provides a GUI menu for an employee user to manage the system 
+ * settings
  *
  * @author Alexander
  */
 public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SystemSettingsSubmenuGUI.class.getName());
-
+    
     /**
-     * Creates new form SystemSettingsSubmenuGUI
+     * The restaurant that sells the food in the system.
+     */
+    private Restaurant restaurant;
+    
+    /**
+     * The food menu that has all of the food items.
+     */
+    private Menu menu;
+    
+    /**
+     * The inventory of ingredients for each dish.
+     */
+    private Inventory inventory;
+    
+    /**
+     * The cost calculation object to be used to calculate the cost of orders
+     * and keep a standard tax rate.
+     */
+    private CostCalculation cc;
+    
+    /**
+     * Creates new form SystemSettingsSubmenuGUI.
      */
     public SystemSettingsSubmenuGUI() {
         initComponents();
+    }
+    
+    /**
+     * Creates new form SystemSettingsSubmenuGUI by calling the no argument
+     * constructor. It also initializes the instance variables based on their
+     * respective input parameters.
+     * @param restaurant      The restaurant that sells the food in the system.
+     * @param menu            The food menu to be used throughout the entire 
+     *                        program.
+     * @param inventory       The inventory of ingredients for each dish
+     * @param cc              The cost calculation object to calculate the cost 
+     *                        of orders and keep a standard tax rate throughout
+     *                        the system. 
+     */
+    public SystemSettingsSubmenuGUI(Restaurant restaurant, Menu menu, Inventory inventory,
+            CostCalculation cc) {
+        this();
+        this.restaurant = restaurant;
+        this.menu = menu;
+        this.inventory = inventory;
+        this.cc = cc;
     }
 
     /**
@@ -135,26 +175,54 @@ public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method opens the restaurant management menu GUI when the 
+     * mngRestaurantBttn is used.
+     * 
+     * @param evt The event that occurs when the mngRestaurantBttn is used.
+     */
     private void mngRestaurantBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngRestaurantBttnActionPerformed
-        // TODO add your handling code here:
-        new RestaurantManagementMenuGUI().setVisible(true);
+        new RestaurantManagementMenuGUI(restaurant).setVisible(true);
     }//GEN-LAST:event_mngRestaurantBttnActionPerformed
 
+    /**
+     * This method opens the Menu Management MenuGUI when the mngMenuBttn is
+     * used.
+     * 
+     * @param evt The event that occurs when the mngMenuBttn is used.
+     */
     private void mngMenuBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngMenuBttnActionPerformed
         // TODO add your handling code here:
-        new MenuManagementMenuGUI().setVisible(true);
+        new MenuManagementMenuGUI(menu, ).setVisible(true);
     }//GEN-LAST:event_mngMenuBttnActionPerformed
 
+    /**
+     * This method opens the Inventory Management Menu GUI when the 
+     * mngInventoryBttn is used.
+     * 
+     * @param evt The event that occurs when the mngInventoryBttn is used.
+     */
     private void mngInventoryBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngInventoryBttnActionPerformed
         // TODO add your handling code here:
-        new InventoryManagementMenuGUI().setVisible(true);
+        new InventoryManagementMenuGUI(inventory).setVisible(true);
     }//GEN-LAST:event_mngInventoryBttnActionPerformed
 
+    /**
+     * This method opens the Cost Calculation Menu GUI when the mngCostBttn is 
+     * used.
+     * 
+     * @param evt The event that occurs when the mngCostBttn is used.
+     */
     private void mngCostBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngCostBttnActionPerformed
         // TODO add your handling code here:
-        new CostCalculationMenuGUI().setVisible(true);
+        new CostCalculationMenuGUI(cc).setVisible(true);
     }//GEN-LAST:event_mngCostBttnActionPerformed
 
+    /**
+     * This method closes the window then the exitBttn is used
+     * 
+     * @param evt The event that occurs when the exitBttn is used.
+     */
     private void exitBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBttnActionPerformed
         // TODO add your handling code here:
         this.dispose();

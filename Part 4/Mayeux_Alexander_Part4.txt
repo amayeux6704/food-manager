@@ -7,7 +7,7 @@ Key:
 
 • Added back the UML diagram for editing as needed.
 • Write the code for the following classes:
-	AccountManager (Needs Documentation)
+	AccountManager
 	Address
 	AddressManager
 	AddressesSubmenu
@@ -19,6 +19,7 @@ Key:
 	CustomerSettingsSubmenu
 	CustomerSubmenu
 	CustomerSubmenuManager (Needs Documentation)
+	DataLoader (Needs Documentation)
 	DeliveryPerson
 	DeliveryPersonManager
 	EditVehicleSubmenu
@@ -30,6 +31,7 @@ Key:
 	EmployeeSubmenuManager (Needs Documentation)
 	IDGenerator (Needs Documentation)
 	InitialDataGenerator
+	LoadSaveCustomer (Needs Documentation)
 	Main
 	MainMenu
 	Order
@@ -62,7 +64,7 @@ Key:
 	+OrderHistoryGUI 
 	+PhoneSubmenuGUI (Needs Documentation)
 	+PlaceOrderMenuGUI (Needs Documentation)
-	+SystemSettingsSubmenuGUI (Needs Documentation)
+	+SystemSettingsSubmenuGUI
 	+UpdateAddPhoneSubmenuGUI (Needs Documentation)
 	+UserEntryMenuGUI
 	+UserInfoGUI (Needs Documentation)

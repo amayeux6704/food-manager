@@ -17,7 +17,7 @@ public class AddressManager {
      * An int variable that stores the ID of the primary address.
      */
     private int primaryId;
-    
+
     /**
      * Class constructor that initializes the addresses Map as a new HashMap.
      */

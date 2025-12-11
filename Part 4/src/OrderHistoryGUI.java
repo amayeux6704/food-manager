@@ -40,17 +40,14 @@ public class OrderHistoryGUI extends javax.swing.JFrame {
     /**
      * Creates new form AddressesSubmenuGUI by calling the no argument
      * constructor. It also sets the om variable to the order manager associated
-     * with the input person parameter. It then calls the initializeOrders()
-     * method to initialize the orderModel to store all of the orders associated
-     * with the person. Finally, the orderHistoryDescrLabel's text is modified
-     * to show the person's name.
+     * with the input person parameter. Finally, the orderHistoryDescrLabel's 
+     * text is modified to show the person's name.
      * 
      * @param person The person whose order history is being displayed.
      */
     public OrderHistoryGUI(Person person) {
         this();
         om = person.getOrderHistory();
-        initializeOrders();
         orderHistoryDescrLabel.setText("Order History for " + person.getName());
     }
 
@@ -221,6 +218,7 @@ public class OrderHistoryGUI extends javax.swing.JFrame {
      * orderList is called to update any changes.
      */
     private void initializeOrders(){
+        orderModel = new DefaultListModel();
         Map<Integer, Order> orders = om.getAllOrders();
         
         for(int id: orders.keySet()){

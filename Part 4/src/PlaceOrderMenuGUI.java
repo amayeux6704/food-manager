@@ -1,6 +1,8 @@
 
+import java.util.Set;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,6 +23,10 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
     private OrderAddressPlacer oap;
     private OrderPaymentPlacer opp;
     private Inventory inventory;
+    private DefaultListModel menuDishesModel;
+    private DefaultListModel menuSidesModel;
+    private DefaultListModel orderDishesModel;
+    private DefaultListModel orderSidesModel;
     private DefaultComboBoxModel addressModel;
     private DefaultComboBoxModel payMethodModel;
     
@@ -28,19 +34,35 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
      * Creates new form PlaceOrderMenuGUI
      */
     public PlaceOrderMenuGUI() {
+        menuDishesModel = new DefaultListModel();
+        menuSidesModel = new DefaultListModel();
+        orderDishesModel = new DefaultListModel();
+        orderSidesModel = new DefaultListModel();
+        
         addressModel = new DefaultComboBoxModel();
         payMethodModel = new DefaultComboBoxModel();
+        
         initComponents();
+        
+        sideInfoBttn.setEnabled(false);
+        
+        addDishBttn.setEnabled(false);
+        addSideBttn.setEnabled(false);
+        
+        rmvDishBttn.setEnabled(false);
+        rmvSideBttn.setEnabled(false);
     }
     
     public PlaceOrderMenuGUI(Customer customer, OrderManager gom, Menu menu,
-            Inventory inventory){
+            Inventory inventory, CostCalculation cc){
         this();
         this.customer = customer;
         this.gom = gom;
         this.menu = menu;
         this.inventory = inventory;
-        
+        op = new OrderPlacer(customer, gom, menu, cc, inventory);
+        createNewOrder();
+        setMenu();
     }
     
     /**
@@ -57,6 +79,29 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         placeOrderTabPane = new javax.swing.JTabbedPane();
         placeOrderPanel = new javax.swing.JPanel();
         addToOrderLbl = new javax.swing.JLabel();
+        menuScrollPane = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        menuDishesPnl = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        menuDishesLst = new javax.swing.JList<>();
+        addDishBttn = new javax.swing.JButton();
+        dishSpinner = new javax.swing.JSpinner();
+        menuSidesPnl = new javax.swing.JPanel();
+        addSideBttn = new javax.swing.JButton();
+        sideInfoBttn = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        menuSidesLst = new javax.swing.JList<>();
+        sideSpinner = new javax.swing.JSpinner();
+        orderScrollPane = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        orderDishesPnl = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        orderDishesLst = new javax.swing.JList<>();
+        rmvDishBttn = new javax.swing.JButton();
+        orderSidesPnl = new javax.swing.JPanel();
+        rmvSideBttn = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        orderSidesLst = new javax.swing.JList<>();
         setAddressPanel = new javax.swing.JPanel();
         selectAddressLbl = new javax.swing.JLabel();
         selectedAddressPanel = new javax.swing.JPanel();
@@ -102,21 +147,258 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         addToOrderLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         addToOrderLbl.setText("Add to Your Order");
 
+        menuScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Menu"));
+
+        menuDishesPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dishes"));
+
+        menuDishesLst.setModel(menuDishesModel);
+        menuDishesLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        menuDishesLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                menuDishesLstValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(menuDishesLst);
+
+        addDishBttn.setText("Add to Order");
+        addDishBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDishBttnActionPerformed(evt);
+            }
+        });
+
+        dishSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        javax.swing.GroupLayout menuDishesPnlLayout = new javax.swing.GroupLayout(menuDishesPnl);
+        menuDishesPnl.setLayout(menuDishesPnlLayout);
+        menuDishesPnlLayout.setHorizontalGroup(
+            menuDishesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuDishesPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menuDishesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(menuDishesPnlLayout.createSequentialGroup()
+                        .addComponent(addDishBttn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dishSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        menuDishesPnlLayout.setVerticalGroup(
+            menuDishesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuDishesPnlLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menuDishesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addDishBttn)
+                    .addComponent(dishSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        menuSidesPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sides"));
+
+        addSideBttn.setText("Add to Order");
+        addSideBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSideBttnActionPerformed(evt);
+            }
+        });
+
+        sideInfoBttn.setText("View Side Information");
+
+        menuSidesLst.setModel(menuSidesModel);
+        menuSidesLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        menuSidesLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                menuSidesLstValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(menuSidesLst);
+
+        sideSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        javax.swing.GroupLayout menuSidesPnlLayout = new javax.swing.GroupLayout(menuSidesPnl);
+        menuSidesPnl.setLayout(menuSidesPnlLayout);
+        menuSidesPnlLayout.setHorizontalGroup(
+            menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuSidesPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                    .addGroup(menuSidesPnlLayout.createSequentialGroup()
+                        .addGroup(menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(sideInfoBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(menuSidesPnlLayout.createSequentialGroup()
+                                .addComponent(addSideBttn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sideSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        menuSidesPnlLayout.setVerticalGroup(
+            menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuSidesPnlLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sideInfoBttn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addSideBttn)
+                    .addComponent(sideSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuDishesPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menuSidesPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(menuDishesPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuSidesPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        menuScrollPane.setViewportView(jPanel1);
+
+        orderScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Order"));
+
+        orderDishesPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dishes"));
+
+        orderDishesLst.setModel(orderDishesModel);
+        orderDishesLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        orderDishesLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                orderDishesLstValueChanged(evt);
+            }
+        });
+        jScrollPane4.setViewportView(orderDishesLst);
+
+        rmvDishBttn.setText("Remove From Order");
+        rmvDishBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmvDishBttnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout orderDishesPnlLayout = new javax.swing.GroupLayout(orderDishesPnl);
+        orderDishesPnl.setLayout(orderDishesPnlLayout);
+        orderDishesPnlLayout.setHorizontalGroup(
+            orderDishesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderDishesPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(orderDishesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                    .addGroup(orderDishesPnlLayout.createSequentialGroup()
+                        .addComponent(rmvDishBttn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        orderDishesPnlLayout.setVerticalGroup(
+            orderDishesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderDishesPnlLayout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rmvDishBttn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        orderSidesPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sides"));
+
+        rmvSideBttn.setText("Remove From Order");
+        rmvSideBttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmvSideBttnActionPerformed(evt);
+            }
+        });
+
+        orderSidesLst.setModel(orderSidesModel);
+        orderSidesLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        orderSidesLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                orderSidesLstValueChanged(evt);
+            }
+        });
+        jScrollPane5.setViewportView(orderSidesLst);
+
+        javax.swing.GroupLayout orderSidesPnlLayout = new javax.swing.GroupLayout(orderSidesPnl);
+        orderSidesPnl.setLayout(orderSidesPnlLayout);
+        orderSidesPnlLayout.setHorizontalGroup(
+            orderSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderSidesPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(orderSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                    .addGroup(orderSidesPnlLayout.createSequentialGroup()
+                        .addComponent(rmvSideBttn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        orderSidesPnlLayout.setVerticalGroup(
+            orderSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderSidesPnlLayout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rmvSideBttn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(orderDishesPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderSidesPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(orderDishesPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(orderSidesPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        orderScrollPane.setViewportView(jPanel2);
+
         javax.swing.GroupLayout placeOrderPanelLayout = new javax.swing.GroupLayout(placeOrderPanel);
         placeOrderPanel.setLayout(placeOrderPanelLayout);
         placeOrderPanelLayout.setHorizontalGroup(
             placeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(placeOrderPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addToOrderLbl)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addGroup(placeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addToOrderLbl)
+                    .addComponent(menuScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(orderScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         placeOrderPanelLayout.setVerticalGroup(
             placeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(placeOrderPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(addToOrderLbl)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(placeOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(orderScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                    .addComponent(menuScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         placeOrderTabPane.addTab("Place your Order", placeOrderPanel);
@@ -136,7 +418,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             .addGroup(selectedAddressPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(selectedAddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
         selectedAddressPanelLayout.setVerticalGroup(
             selectedAddressPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +470,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                         .addComponent(selectedAddressPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(selectAddressCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         placeOrderTabPane.addTab("Set Address", setAddressPanel);
@@ -218,6 +500,11 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         );
 
         mngPayMthdBtn.setText("Manage Payment Methods");
+        mngPayMthdBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mngPayMthdBtnActionPerformed(evt);
+            }
+        });
 
         payMthdCB.setModel(payMethodModel);
         payMthdCB.addItemListener(new java.awt.event.ItemListener() {
@@ -239,7 +526,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(setPaymentPanelLayout.createSequentialGroup()
                         .addComponent(payMthdCB, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                         .addComponent(mngPayMthdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -254,7 +541,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                 .addGroup(setPaymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(payMthdCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mngPayMthdBtn))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         placeOrderTabPane.addTab("Set Payment", setPaymentPanel);
@@ -268,6 +555,11 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         orderInfoScrlPne.setViewportView(orderInfoLbl);
 
         placeOrderBtn.setText("Place Order");
+        placeOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeOrderBtnActionPerformed(evt);
+            }
+        });
 
         cancelBtn.setText("Cancel Order");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +581,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(confirmPanelLayout.createSequentialGroup()
                         .addComponent(placeOrderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
                         .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -299,12 +591,12 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(confirmOrderLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(orderInfoScrlPne, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(orderInfoScrlPne, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(confirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeOrderBtn)
                     .addComponent(cancelBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
 
         placeOrderTabPane.addTab("Confirm Order", confirmPanel);
@@ -313,11 +605,11 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(placeOrderTabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+            .addComponent(placeOrderTabPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(placeOrderTabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addComponent(placeOrderTabPane)
         );
 
         pack();
@@ -331,19 +623,27 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
 
     private void placeOrderTabPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_placeOrderTabPaneStateChanged
         // TODO add your handling code here:
+        int selectedTab = placeOrderTabPane.getSelectedIndex();
+        switch(selectedTab){
+            case 1:
+                setAddrCB();
+                setAddress();
+                break;
+            case 2:
+                setPayMthdCB();
+                setPaymentMethod();
+                break;
+            case 3:
+                showOrderInfo();
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_placeOrderTabPaneStateChanged
 
     private void selectAddressCBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectAddressCBItemStateChanged
         // TODO add your handling code here:
-        
-        int index = selectAddressCB.getSelectedIndex();
-        
-        if(index != -1){
-            AddressManager am = customer.getAddressManager();
-            Address addr = am.searchAddress(index + 1);
-            showAddress(addr);
-        }
-        
+        setAddress(); 
     }//GEN-LAST:event_selectAddressCBItemStateChanged
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -354,15 +654,169 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
 
     private void payMthdCBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_payMthdCBItemStateChanged
         // TODO add your handling code here:
-        String payMethod = (String)payMthdCB.getSelectedItem();
-        
-        showPayMethod(payMethod);
+        setPaymentMethod();
     }//GEN-LAST:event_payMthdCBItemStateChanged
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?", "Cancel Order", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            this.dispose();
+        }
     }//GEN-LAST:event_cancelBtnActionPerformed
 
+    private void mngPayMthdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngPayMthdBtnActionPerformed
+        // TODO add your handling code here:
+         new PaymentManagementMenuGUI(customer.getPayment()).setVisible(true);
+    }//GEN-LAST:event_mngPayMthdBtnActionPerformed
+
+    private void addDishBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDishBttnActionPerformed
+        // TODO add your handling code here:
+        addDish(); 
+    }//GEN-LAST:event_addDishBttnActionPerformed
+
+    private void addSideBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSideBttnActionPerformed
+        // TODO add your handling code here:
+        addSide();
+    }//GEN-LAST:event_addSideBttnActionPerformed
+
+    private void menuDishesLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_menuDishesLstValueChanged
+        // TODO add your handling code here:
+        int selectedIndex = menuDishesLst.getSelectedIndex();
+        boolean enable = selectedIndex > -1;
+        
+        addDishBttn.setEnabled(enable);
+    }//GEN-LAST:event_menuDishesLstValueChanged
+
+    private void menuSidesLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_menuSidesLstValueChanged
+        // TODO add your handling code here:
+        int selectedIndex = menuSidesLst.getSelectedIndex();
+        boolean enable = selectedIndex > -1;
+        
+        sideInfoBttn.setEnabled(enable);
+        addSideBttn.setEnabled(enable);
+    }//GEN-LAST:event_menuSidesLstValueChanged
+
+    private void orderDishesLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_orderDishesLstValueChanged
+        // TODO add your handling code here:
+        int selectedIndex = orderDishesLst.getSelectedIndex();
+        boolean enable = selectedIndex > -1;
+        
+        rmvDishBttn.setEnabled(enable);
+    }//GEN-LAST:event_orderDishesLstValueChanged
+
+    private void orderSidesLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_orderSidesLstValueChanged
+        // TODO add your handling code here:
+        int selectedIndex = orderSidesLst.getSelectedIndex();
+        boolean enable = selectedIndex > -1;
+        
+        rmvSideBttn.setEnabled(enable);
+    }//GEN-LAST:event_orderSidesLstValueChanged
+
+    private void rmvDishBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvDishBttnActionPerformed
+        // TODO add your handling code here:
+        removeDish();
+    }//GEN-LAST:event_rmvDishBttnActionPerformed
+
+    private void rmvSideBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvSideBttnActionPerformed
+        // TODO add your handling code here:
+        removeSide();
+    }//GEN-LAST:event_rmvSideBttnActionPerformed
+
+    private void placeOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderBtnActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you are ready to place your order?", "Place Order", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            op.placeOrder();
+            
+            String message = "<html>Your order has been successfully placed!<br>"+
+                           "Please make sure to save your order number so the delivery driver<br>"+
+                           "can confirm your order.<br>"+
+                           "If you are a guest, please make sure you copy your guest ID number<br>"+
+                           "before you log out, since you won't be able to log back in to view<br>"+
+                           "your order.<br>";
+            
+            JOptionPane.showMessageDialog(this, message);
+            
+            this.dispose();
+            new ViewOrderInfoGUI(op.getOrder()).setVisible(true);
+        }
+    }//GEN-LAST:event_placeOrderBtnActionPerformed
+
+    
+    private void createNewOrder(){
+        op.initializeOrder(menu);
+    }
+    
+    private void setMenu(){
+        setMenuDishes();
+        setSidesDishes();
+    }
+    
+    private void setMenuDishes(){
+        Set<Dish> dishes = menu.getDishManager().getDishes();
+        
+        for(Dish dish: dishes){
+            int id = dish.getDishID();
+            menuDishesModel.add(id - 1, dish);
+        }
+        menuDishesLst.updateUI();
+    }
+    
+    private void setSidesDishes(){
+        Set<Side> sides = menu.getSidesManager().getSides();
+        for(Side side: sides){
+            menuSidesModel.addElement(side.getName());
+        }
+        menuDishesLst.updateUI();
+    }
+    
+    private void addDish(){
+        int id = menuDishesLst.getSelectedIndex() + 1;
+        int num = (Integer)dishSpinner.getValue();
+        op.addDish(id, num);
+        
+        Dish dish = menu.findDish(id);
+        for(int i = 1; i <= num; i++)
+            orderDishesModel.addElement(dish);
+    }
+    
+    private void addSide(){
+        String sideName = menuSidesLst.getSelectedValue();
+        int num = (Integer)sideSpinner.getValue();
+        
+        for(Side side: menu.getSides()){
+            
+            if(side.getName().equals(sideName)){
+                op.addSide(side, num);
+                for(int i = 1; i <= num; i++)
+                    orderSidesModel.addElement(sideName);
+            }
+        }
+    }
+    
+    private void removeDish(){
+        int id = menuDishesLst.getSelectedIndex() + 1;
+        op.removeDish(id);
+        
+        Dish dish = menu.findDish(id);
+        orderDishesModel.removeElement(dish);
+    }
+    
+    private void removeSide(){
+        String sideName = menuSidesLst.getSelectedValue();
+
+        for(Side side: menu.getSides()){
+            if(side.getName().equals(sideName)){
+                op.removeSide(side);
+                
+                orderSidesModel.removeElement(sideName);
+            }
+        }
+    }
+    
     private void setAddrCB(){
         addressModel = new DefaultComboBoxModel();
         AddressManager am = customer.getAddressManager();
@@ -388,6 +842,18 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         selectedAddressLabel.setText(addr.toString());
     }
     
+    private void setAddress(){
+        int index = selectAddressCB.getSelectedIndex();
+        
+        if(index != -1){
+            int id = index + 1;
+            op.setAddress(id);
+            AddressManager am = customer.getAddressManager();
+            Address addr = am.searchAddress(id);
+            showAddress(addr);
+        }
+    }
+    
     private void setPayMthdCB(){
         payMethodModel = new DefaultComboBoxModel();
         Payment payment = customer.getPayment();
@@ -405,6 +871,35 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         currPayMthdLbl.setText("Current Payment Method: " + payMethod);
     }
     
+    private void setPaymentMethod(){
+        String payMethod = (String)payMthdCB.getSelectedItem();
+        
+        if(!payMethod.isEmpty()){
+            op.setPayment(payMethod);
+        }
+   
+        showPayMethod(payMethod);
+    }
+    
+    private void showOrderInfo(){
+        if(op.emptyOrder()){
+            orderInfoLbl.setText("You have not added anything to your order yet!");
+            placeOrderBtn.setEnabled(false);
+        }
+        else if(op.getOrder().getAddress() == null){
+            orderInfoLbl.setText("You must enter a delivery address before placing your order.");
+            placeOrderBtn.setEnabled(false);
+        }
+        else if(op.getOrder().getPayMethod() == null){
+            orderInfoLbl.setText("You must enter a payment method before placing your order.");
+            placeOrderBtn.setEnabled(false);
+        }
+        else{
+            op.calculateCost();
+            orderInfoLbl.setText(op.getOrder().toString());
+            placeOrderBtn.setEnabled(true);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -431,22 +926,43 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addDishBttn;
+    private javax.swing.JButton addSideBttn;
     private javax.swing.JLabel addToOrderLbl;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JLabel confirmOrderLbl;
     private javax.swing.JPanel confirmPanel;
     private javax.swing.JLabel currPayMthdLbl;
+    private javax.swing.JSpinner dishSpinner;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JList<String> menuDishesLst;
+    private javax.swing.JPanel menuDishesPnl;
+    private javax.swing.JScrollPane menuScrollPane;
+    private javax.swing.JList<String> menuSidesLst;
+    private javax.swing.JPanel menuSidesPnl;
     private javax.swing.JButton mngAddrBtn;
     private javax.swing.JButton mngPayMthdBtn;
+    private javax.swing.JList<String> orderDishesLst;
+    private javax.swing.JPanel orderDishesPnl;
     private javax.swing.JLabel orderInfoLbl;
     private javax.swing.JScrollPane orderInfoScrlPne;
+    private javax.swing.JScrollPane orderScrollPane;
+    private javax.swing.JList<String> orderSidesLst;
+    private javax.swing.JPanel orderSidesPnl;
     private javax.swing.JComboBox<String> payMthdCB;
     private javax.swing.JPanel payMthdPanel;
     private javax.swing.JButton placeOrderBtn;
     private javax.swing.JPanel placeOrderPanel;
     private javax.swing.JTabbedPane placeOrderTabPane;
+    private javax.swing.JButton rmvDishBttn;
+    private javax.swing.JButton rmvSideBttn;
     private javax.swing.JComboBox<String> selectAddressCB;
     private javax.swing.JLabel selectAddressLbl;
     private javax.swing.JLabel selectPayMthdLbl;
@@ -454,5 +970,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
     private javax.swing.JPanel selectedAddressPanel;
     private javax.swing.JPanel setAddressPanel;
     private javax.swing.JPanel setPaymentPanel;
+    private javax.swing.JButton sideInfoBttn;
+    private javax.swing.JSpinner sideSpinner;
     // End of variables declaration//GEN-END:variables
 }

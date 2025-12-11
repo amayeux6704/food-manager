@@ -185,6 +185,17 @@ public class OrderPlacer {
     }
     
     /**
+     * This method uses a ReceiptGenerator object to generate a string for the
+     * receipt of the order. That string is then returned
+     * 
+     * @return The generated string for the receipt of the order.
+     */
+    public String getReciept(){
+        ReceiptGenerator rg = new ReceiptGenerator();
+        return rg.createReceipt(order);
+    }
+    
+    /**
      * This method sets that payment method for the order as specified by the
      * payment parameter.
      * 
@@ -231,6 +242,13 @@ public class OrderPlacer {
                            "before you log out, since you won't be able to log back in to view\n"+
                            "your order.\n");
     }
+    
+    /**
+     * This method returns the order being placed.
+     * 
+     * @return The order being placed.
+     */
+    public Order getOrder(){return order;}
     
     /**
      * This method displays the order to the command line.

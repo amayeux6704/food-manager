@@ -183,6 +183,7 @@ public class AddressesSubmenuGUI extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void addressListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_addressListValueChanged
