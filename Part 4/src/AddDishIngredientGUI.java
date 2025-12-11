@@ -182,6 +182,7 @@ public class AddDishIngredientGUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -210,6 +211,7 @@ public class AddDishIngredientGUI extends javax.swing.JFrame {
                 fName = dish.getName();
             }
         }
+        rM.getGUIIngredients().clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(fName + "RecipeData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
@@ -223,12 +225,11 @@ public class AddDishIngredientGUI extends javax.swing.JFrame {
         } catch (Exception e){
             e.printStackTrace();
         }
+        rM.addIngredient(name,quantity);
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fName + "RecipeData.txt"))){
-            for (IngredientManager ingredient : rM.getIngredients()){
+            for (IngredientManager ingredient : rM.getGUIIngredients()){
                 writer.write(ingredient.getName() + "," + ingredient.getQuantity() + "\n");
             }
-            rM.addIngredient(name,quantity);
-            writer.write(name + "," + quantity + "\n");
         } catch (Exception e) {
             e.printStackTrace();
         }

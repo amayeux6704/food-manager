@@ -1,0 +1,7 @@
+bun,250
+cheese,1000
+dough,75
+tomato,100
+potato,200
+patties,125
+noodles,50

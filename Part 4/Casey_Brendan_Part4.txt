@@ -5,7 +5,24 @@ Updated Classes:
  Menu
  DishManager
  Inventory
+ RecipeManager
  
+Added Txt Files:
+ taxData
+ sideData
+ dishData
+ restaurantNameData
+ phoneNumberData
+ payMethodData
+ openHourData
+ locationData
+ emailData
+ inventoryData
+ french friesSideRecipeData
+ breadsticksSideRecipeData
+ pastaRecipeData
+ burgerRecipeData
+ pizzaRecipeData
 
 Added Classes:
 
@@ -67,14 +84,14 @@ GUI Display Template Completion:
 + RemovePayMethodGUI
 + SetPayMethodGUI
 + ViewPayMethodsGUI
-~ AddSideIngredientGUI
++ AddSideIngredientGUI
 + AddDishIngredientGUI
-~ RemoveSideIngredientGUI
-~ RemoveDishIngredientGUI
-~ UpdateSideIngredientGUI
-~ UpdateDishIngredientGUI
-~ ViewSideIngredientsGUI
-~ ViewDishIngredientsGUI
++ RemoveSideIngredientGUI
++ RemoveDishIngredientGUI
++ UpdateSideIngredientGUI
++ UpdateDishIngredientGUI
++ ViewSideIngredientsGUI
++ ViewDishIngredientsGUI
 + ViewTaxRateGUI
 + ViewInventoryGUI
 + AddSideGUI
@@ -114,7 +131,7 @@ GUI Display Template Completion:
 + RestaurantManagementMenu
 + ItemAddQuantityGUI
 + ItemDecreaseQuantityGUI
-~ MenuDisplayGUI
++ MenuDisplayGUI
 + RestaurantNameEditorGUI
 + RestaurantNameGUI
 + SetTaxRateGUI
@@ -125,14 +142,14 @@ GUI Functionality Completion:
 + RemovePayMethodGUI
 + SetPayMethodGUI
 + ViewPayMethodsGUI
-~ AddSideIngredientGUI
++ AddSideIngredientGUI
 + AddDishIngredientGUI
-~ RemoveSideIngredientGUI
-~ RemoveDishIngredientGUI
-~ UpdateSideIngredientGUI
-~ UpdateDishIngredientGUI
-- ViewSideIngredientsGUI
-- ViewDishIngredientsGUI
++ RemoveSideIngredientGUI
++ RemoveDishIngredientGUI
++ UpdateSideIngredientGUI
++ UpdateDishIngredientGUI
++ ViewSideIngredientsGUI
++ ViewDishIngredientsGUI
 + ViewInventoryGUI
 + AddSideGUI
 + RemoveSideGUI
@@ -171,7 +188,7 @@ GUI Functionality Completion:
 + RestaurantManagementMenu
 + ItemAddQuantityGUI
 + ItemDecreaseQuantityGUI
-- MenuDisplayGUI
++ MenuDisplayGUI
 + RestaurantNameEditorGUI
 + RestaurantNameGUI
 + SetTaxRateGUI

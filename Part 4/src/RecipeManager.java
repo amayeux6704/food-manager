@@ -41,6 +41,10 @@ public class RecipeManager {
     public Set<IngredientManager> getIngredients(){
         return new HashSet<>(ingredients);
     }
+    
+    public Set<IngredientManager> getGUIIngredients(){
+        return ingredients;
+    }
 
 /**
  * Removes an ingredient from the recipe 

@@ -1,3 +1,8 @@
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -21,7 +26,6 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         this.rM = rM;
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,13 +43,15 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Dish", "Id#", "Price", "Recipe"
@@ -70,17 +76,18 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Dish");
             jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Id#");
             jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Price");
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Recipe");
         }
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Side", "Recipe"
@@ -118,22 +125,22 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 3, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addGap(0, 321, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton7)
@@ -141,6 +148,7 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -150,6 +158,84 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        DefaultTableModel dModel = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel sModel = (DefaultTableModel) jTable2.getModel();
+        jTable1.setRowHeight(60);
+        jTable2.setRowHeight(60);
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(new RecipeWrapCellRenderer());
+        jTable2.getColumnModel().getColumn(1).setCellRenderer(new RecipeWrapCellRenderer());
+        try (BufferedReader reader = new BufferedReader(new FileReader("dishData.txt"))){
+            String data;
+            while ((data = reader.readLine()) != null){
+                String[] txtData = data.split(",");
+                if (txtData.length == 3){
+                    String name = txtData[0];
+                    String id = txtData[1];
+                    String price = txtData[2];
+                    StringBuilder recipe = new StringBuilder();
+                    try (BufferedReader dRReader = new BufferedReader(new FileReader(name + "recipeData.txt"))){
+                        String rLine;
+                        while ((rLine = dRReader.readLine()) != null){
+                            String []  ingredientParts = rLine.split(",");
+                            if(ingredientParts.length  == 2){
+                                recipe.append(ingredientParts[0]).append(" (").append(ingredientParts[1]).append(") ");
+                            }
+                        }
+                    } catch (Exception e){
+                        recipe.append("No available recipe");
+                    }
+                    dModel.addRow(new Object[]{name,id,price,recipe.toString()});
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        try (BufferedReader sReader = new BufferedReader(new FileReader("sideData.txt"))){
+            String data;
+            while ((data = sReader.readLine()) != null){
+                String[] txtData = data.split(",");
+                String sName = txtData[0];
+                if (!sName.isEmpty()){
+                    StringBuilder recipe = new StringBuilder();
+                    try (BufferedReader sRReader = new BufferedReader(new FileReader(sName + "sideRecipeData.txt"))){
+                        String rLine;
+                        while ((rLine = sRReader.readLine()) != null){
+                            String []  ingredientParts = rLine.split(",");
+                            if(ingredientParts.length  == 2){
+                                recipe.append(ingredientParts[0]).append(" (").append(ingredientParts[1]).append(")");
+                            }
+                        }
+                    } catch (Exception e){
+                        recipe.append("No available recipe");
+                    }
+                    sModel.addRow(new Object[]{sName, recipe.toString()});
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
+    class  RecipeWrapCellRenderer extends javax.swing.JTextArea implements javax.swing.table.TableCellRenderer {
+        public RecipeWrapCellRenderer(){
+            setLineWrap(true);
+            setWrapStyleWord(true);
+        }
+        @Override
+        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value, boolean isSelected, boolean  hasFocus, int row, int column){
+            setText(value != null ? value.toString() : "");
+            setSize(table.getColumnModel().getColumn(column).getWidth(), getPreferredSize().height);
+            if(isSelected){
+                setBackground(table.getSelectionBackground());
+                setForeground(table.getSelectionForeground());
+            } else {
+                setBackground(table.getBackground());
+                setForeground(table.getForeground());
+            }
+            return this;
+        }
+    }
     /**
      * @param args the command line arguments
      */
