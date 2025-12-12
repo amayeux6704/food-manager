@@ -17,12 +17,15 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PlaceOrderMenuGUI.class.getName());
     private OrderPlacer op;
+    private CustomerManager cm;
     private Customer customer;
     private OrderManager gom;
+    private CostCalculation cc;
     private Menu menu;
     private OrderAddressPlacer oap;
     private OrderPaymentPlacer opp;
     private Inventory inventory;
+    private Restaurant restaurant;
     private DefaultListModel menuDishesModel;
     private DefaultListModel menuSidesModel;
     private DefaultListModel orderDishesModel;
@@ -53,12 +56,15 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         rmvSideBttn.setEnabled(false);
     }
     
-    public PlaceOrderMenuGUI(Customer customer, OrderManager gom, Menu menu,
-            Inventory inventory, CostCalculation cc){
+    public PlaceOrderMenuGUI(CustomerManager cm, Customer customer, OrderManager gom, Menu menu, 
+            Restaurant restaurant, Inventory inventory, CostCalculation cc){
         this();
+        this.cm = cm;
         this.customer = customer;
         this.gom = gom;
+        this.cc = cc;
         this.menu = menu;
+        this.restaurant = restaurant;
         this.inventory = inventory;
         op = new OrderPlacer(customer, gom, menu, cc, inventory);
         createNewOrder();
@@ -138,6 +144,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             }
         });
 
+        placeOrderTabPane.setToolTipText("");
         placeOrderTabPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 placeOrderTabPaneStateChanged(evt);
@@ -663,6 +670,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         
         if(result == JOptionPane.YES_OPTION){
             this.dispose();
+            new CustomerMenuGUI(cm, customer.getID(), gom, menu, restaurant, inventory, cc).setVisible(true);
         }
     }//GEN-LAST:event_cancelBtnActionPerformed
 
@@ -730,6 +738,9 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         
         if(result == JOptionPane.YES_OPTION){
             op.placeOrder();
+            Order order = op.getOrder();
+            new LoadSaveOrder().saveOrder(order);
+            new LoadSaveOrder().saveOrderManager(gom);
             
             String message = "<html>Your order has been successfully placed!<br>"+
                            "Please make sure to save your order number so the delivery driver<br>"+
@@ -741,7 +752,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, message);
             
             this.dispose();
-            new ViewOrderInfoGUI(op.getOrder()).setVisible(true);
+            new ViewOrderInfoGUI(order).setVisible(true);
         }
     }//GEN-LAST:event_placeOrderBtnActionPerformed
 

@@ -41,7 +41,7 @@ public class RemovePhoneNumberGUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Remove Phone Number");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -53,7 +53,6 @@ public class RemovePhoneNumberGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -133,7 +132,7 @@ public class RemovePhoneNumberGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String p = jTextField1.getText();
         r.removePhoneNumber(p);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("phoneNumberData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/phoneNumberData.txt"))){
             for (String phoneNumber : r.getPhoneNumbers()){
                 writer.write(phoneNumber + "," + "\n");
             }
@@ -145,7 +144,7 @@ public class RemovePhoneNumberGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("phoneNumberData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/phoneNumberData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

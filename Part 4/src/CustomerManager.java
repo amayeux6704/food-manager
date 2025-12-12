@@ -40,6 +40,15 @@ public class CustomerManager {
         else
             System.out.println("A customer with the provided information already exists.");
     }
+    
+    /**
+     * This method returns the customers Map.
+     * 
+     * @return the customers map.
+     */
+    public Map<Integer, Customer> getCustomers(){
+        return this.customers;
+    }
 
     /**
      * This method searches for the customer associated with the input ID 
@@ -74,7 +83,6 @@ public class CustomerManager {
         
         for(int id: customers.keySet()){
             customer = searchCustomer(id);
-            System.out.println(customer.getName());
             if(customer.getEmail().equals(email) && 
                     customer.getPassword().equals(password))
                 return customer;

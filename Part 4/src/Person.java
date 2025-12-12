@@ -111,6 +111,15 @@ public class Person {
     public PhoneNumberManager getPNM() {return this.phoneNumberManager;}
     
     /**
+     * This method sets this person's phone number manager to the input
+     * parameter.
+     * 
+     * @param phoneNumberManager The phone number manager to be assigned to the
+     *                           person.
+     */
+    public void setPNM(PhoneNumberManager phoneNumberManager){this.phoneNumberManager = phoneNumberManager;}
+    
+    /**
      * This method return's this person's order manager so their order history
      * can be accessed and managed.
      * 

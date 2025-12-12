@@ -22,6 +22,15 @@ class DeliveryPersonManager {
     }
     
     /**
+     * This method returns the deliveryPeople Map.
+     * 
+     * @return the deliveryPeople Map.
+     */
+    public Map<Integer, DeliveryPerson> getDeliveryPeople(){
+        return this.deliveryPeople;
+    }
+    
+    /**
      * /**
      * This method adds a delivery person to the deliveryPeople Map based on the 
      * input DeliveryPerson object parameter. It retrieves the delivery person's 

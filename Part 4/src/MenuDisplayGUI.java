@@ -41,7 +41,7 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Menu");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -166,7 +166,7 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         jTable2.setRowHeight(60);
         jTable1.getColumnModel().getColumn(3).setCellRenderer(new RecipeWrapCellRenderer());
         jTable2.getColumnModel().getColumn(1).setCellRenderer(new RecipeWrapCellRenderer());
-        try (BufferedReader reader = new BufferedReader(new FileReader("dishData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/dishData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -175,7 +175,7 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
                     String id = txtData[1];
                     String price = txtData[2];
                     StringBuilder recipe = new StringBuilder();
-                    try (BufferedReader dRReader = new BufferedReader(new FileReader(name + "recipeData.txt"))){
+                    try (BufferedReader dRReader = new BufferedReader(new FileReader(name + "txtDataFiles/recipeData.txt"))){
                         String rLine;
                         while ((rLine = dRReader.readLine()) != null){
                             String []  ingredientParts = rLine.split(",");
@@ -192,14 +192,14 @@ public class MenuDisplayGUI extends javax.swing.JFrame {
         } catch (Exception e){
             e.printStackTrace();
         }
-        try (BufferedReader sReader = new BufferedReader(new FileReader("sideData.txt"))){
+        try (BufferedReader sReader = new BufferedReader(new FileReader("txtDataFiles/sideData.txt"))){
             String data;
             while ((data = sReader.readLine()) != null){
                 String[] txtData = data.split(",");
                 String sName = txtData[0];
                 if (!sName.isEmpty()){
                     StringBuilder recipe = new StringBuilder();
-                    try (BufferedReader sRReader = new BufferedReader(new FileReader(sName + "sideRecipeData.txt"))){
+                    try (BufferedReader sRReader = new BufferedReader(new FileReader(sName + "txtDataFiles/sideRecipeData.txt"))){
                         String rLine;
                         while ((rLine = sRReader.readLine()) != null){
                             String []  ingredientParts = rLine.split(",");

@@ -114,7 +114,7 @@ public class ViewSidesListGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("sideData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/sideData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

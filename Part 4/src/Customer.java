@@ -46,11 +46,26 @@ public class Customer extends Person{
     public AddressManager getAddressManager(){return this.addressManager;}
     
     /**
+     * This method sets the customer's address manager based on the input
+     * parameter.
+     * 
+     * @param addressManager The address manager to be assigned to the customer.
+     */
+    public void setAddressManager(AddressManager addressManager){this.addressManager = addressManager;}
+    
+    /**
      * This method returns this customer's payment information.
      * 
      * @return This customer's payment object.
      */
     public Payment getPayment(){return this.payment;}
+    
+    /**
+     * This method sets the customer's payment based on the input parameter.
+     * 
+     * @param payment The payment object to be assigned to the customer.
+     */
+    public void setPayment(Payment payment){this.payment = payment;}
     
     /**
      * This method returns the Boolean value that determines whether the

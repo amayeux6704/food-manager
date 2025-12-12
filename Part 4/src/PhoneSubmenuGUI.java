@@ -178,6 +178,11 @@ public class PhoneSubmenuGUI extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel?", "Cancel", JOptionPane.YES_NO_OPTION);
+        
+            if(result == JOptionPane.YES_OPTION){
+                this.dispose();
+            }
         
     }//GEN-LAST:event_cancelButtonActionPerformed
 

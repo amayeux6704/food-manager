@@ -41,7 +41,7 @@ public class AddEmailGUI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Email");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -56,7 +56,6 @@ public class AddEmailGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,7 +119,7 @@ public class AddEmailGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String nE = jTextField1.getText();
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("emailData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/emailData.txt"))){
             for (String email : r.getEmails()){
                 writer.write(email + "," + "\n");
             }
@@ -145,13 +144,13 @@ public class AddEmailGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("emailData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/emailData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
                 if (txtData.length == 1){
                     String nE = txtData[0];
-                    r.addPhoneNumber(nE);
+                    r.addEmail(nE);
                 }
             }
         } catch (Exception e){

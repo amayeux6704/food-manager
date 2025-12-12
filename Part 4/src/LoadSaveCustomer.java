@@ -7,10 +7,9 @@ import java.io.*;
  */
 public class LoadSaveCustomer {
     
-    public Customer LoadCustomer(int id){
+    public Customer loadCustomer(int id){
         
         String fileName = "txtDataFiles/customerFiles/c" + id + ".txt";
-        System.out.println(fileName);
         try{
             Customer customer;
             File file = new File(fileName);
@@ -19,8 +18,6 @@ public class LoadSaveCustomer {
             
             String line = "";
             String[] tempArr;
-            
-            //Load Customer name, id, email, guest status, and password,
             
             line = br.readLine();
             
@@ -53,7 +50,6 @@ public class LoadSaveCustomer {
                 }
             }
             br.close();
-            System.out.println(customer);
             
             return customer;
         }
@@ -64,23 +60,35 @@ public class LoadSaveCustomer {
     }
     
     private void setPayMethod(Customer customer, String[] tempArr){
-        customer.getPayment().addPayMethod(tempArr[1]);
+        if(tempArr.length > 1){
+            customer.getPayment().addPayMethod(tempArr[1]);
+        }
+        if(tempArr.length > 2){
+            customer.getPayment().addPayMethod(tempArr[1]);
+            if(tempArr[2].equals("curr")){
+                customer.getPayment().setCurrentPayMethod(tempArr[1]);
+            }
+        }
+            
     }
     
     private void setAddress(Customer customer, String[] tempArr){
-        int addrId = Integer.parseInt(tempArr[1]);
-        Address address = new Address(customer, addrId);
-        address.setLine1(tempArr[2]);
-        address.setLine2(tempArr[3]);
-        address.setCity(tempArr[4]);
-        address.setState(tempArr[5]);
-        address.setZipCode(tempArr[6]);
-        customer.getAddressManager().addAddress(address);
-        if(Boolean.parseBoolean(tempArr[7]))
-            customer.getAddressManager().setPrimaryAddress(addrId);
+        if(tempArr.length > 1){
+            int addrId = Integer.parseInt(tempArr[1]);
+            Address address = new Address(customer, addrId);
+            address.setLine1(tempArr[2]);
+            address.setLine2(tempArr[3]);
+            address.setCity(tempArr[4]);
+            address.setState(tempArr[5]);
+            address.setZipCode(tempArr[6]);
+            customer.getAddressManager().addAddress(address);
+            if(Boolean.parseBoolean(tempArr[7]))
+                customer.getAddressManager().setPrimaryAddress(addrId);
+        }
     }
     private void setPhone(Customer customer, String[] tempArr){
-        customer.getPNM().addPhoneNumber(tempArr[1]);
+        if(tempArr.length > 1)
+            customer.getPNM().addPhoneNumber(tempArr[1]);
     }
     
     public void saveCustomer(Customer customer){
@@ -95,10 +103,14 @@ public class LoadSaveCustomer {
             bw.write(writeCustomer(customer));
             
             if(customer.getPayment().getPayMethods().isEmpty())
-                bw.write("~p,,\n");
+                bw.write("~p,,,\n");
             else{
                 for(String payment: customer.getPayment().getPayMethods()){
-                    bw.write("~p," + payment + ",\n");
+                    if(customer.getPayment().getCurrentPayMethod().equals(payment))
+                        bw.write("~p," + payment + ",curr,\n");
+                    else{
+                        bw.write("~p," + payment + ",,\n");
+                    }
                 }
             }
             
@@ -138,5 +150,48 @@ public class LoadSaveCustomer {
                 "," + address.getLine2() + "," + address.getCity()+ "," + 
                 address.getState()+ "," + address.getZipCode() + "," +
                 address.isPrimary() + ",\n";
+    }
+    
+    public CustomerManager loadCustomerManager(){
+        String fileName = "txtDataFiles/customerFiles/cIDList.txt";
+        try{
+            CustomerManager cm = new CustomerManager();
+            File file = new File(fileName);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            
+            String line = "";
+            
+            while((line = br.readLine()) != null){
+                Customer customer = loadCustomer(Integer.parseInt(line));
+                cm.addCustomer(customer);
+                
+            }
+            br.close();
+            
+            return cm;
+        }
+        catch(IOException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public void saveCustomerManager(CustomerManager cm){
+        String fileName = "txtDataFiles/customerFiles/cIDList.txt";
+        try{
+            File file = new File(fileName);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            
+            for(int id: cm.getCustomers().keySet()){
+                bw.write(id + "\n");
+            }
+            
+            bw.close();
+            
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
     }
 }

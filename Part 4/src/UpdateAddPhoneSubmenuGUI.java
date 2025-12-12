@@ -118,7 +118,7 @@ public class UpdateAddPhoneSubmenuGUI extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        setSize(new java.awt.Dimension(230, 226));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

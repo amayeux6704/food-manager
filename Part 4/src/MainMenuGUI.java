@@ -51,14 +51,16 @@ public class MainMenuGUI extends javax.swing.JFrame {
      * @param restaurant    The restaurant that sells the food in the system.
      * @param inventory     The inventory of ingredients for each dish
      * @param cc    The cost calculation object to calculate the cost of orders.
+     * @param rm    The recipe manager being used throughout the system.
      */
     public MainMenuGUI(CustomerManager cm, DeliveryPersonManager dpm, OrderManager gom, 
-            Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation cc){
+            Menu menu, Restaurant restaurant, Inventory inventory, CostCalculation cc,
+            RecipeManager rm){
         this();
         this.cm = cm;
         this.dpm = dpm;
         customerEntry = new UserEntryMenuGUI(this.cm, gom, menu, restaurant, inventory, cc);
-        employeeEntry = new UserEntryMenuGUI(this.dpm, gom, menu, restaurant, inventory, cc);
+        employeeEntry = new UserEntryMenuGUI(this.dpm, gom, menu, restaurant, inventory, cc, rm);
     }
 
     /**

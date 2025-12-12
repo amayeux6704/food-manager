@@ -44,7 +44,7 @@ public class AddDishGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Dish");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -59,7 +59,6 @@ public class AddDishGUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField2.setText("jTextField1");
         jTextField2.addActionListener(this::jTextField2ActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -81,7 +80,6 @@ public class AddDishGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -173,7 +171,7 @@ public class AddDishGUI extends javax.swing.JFrame {
         String name = jTextField1.getText();
         double price = Double.parseDouble(jTextField2.getText());
         int id = m.getDishManager().getNextDishID();
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("dishData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/dishData.txt"))){
             for (Dish dish : m.getDishManager().getDishes()){
                 writer.write(dish.getName() + "," + dish.getDishID() + "," + dish.getPrice() + "\n");
             }
@@ -187,7 +185,7 @@ public class AddDishGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("dishData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/dishData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

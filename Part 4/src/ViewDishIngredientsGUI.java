@@ -44,7 +44,7 @@ public class ViewDishIngredientsGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("View Dish Ingredients");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -87,7 +87,6 @@ public class ViewDishIngredientsGUI extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField3.setText("jTextField1");
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -165,7 +164,7 @@ public class ViewDishIngredientsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try (BufferedReader reader = new BufferedReader(new FileReader("dishData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/dishData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -195,7 +194,7 @@ public class ViewDishIngredientsGUI extends javax.swing.JFrame {
                 fName = dish.getName();
             }        
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(fName + "recipeData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/" + fName + "recipeData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

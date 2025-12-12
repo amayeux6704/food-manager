@@ -328,16 +328,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit and Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitSaveButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exitWOSaveButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit Without Saving"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitWOSaveButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="revertButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Revert Information"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="revertButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="deleteAcctDescrLabel">
       <Properties>
@@ -351,6 +360,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="click here"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteAccountLabelMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

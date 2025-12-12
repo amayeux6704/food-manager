@@ -52,7 +52,7 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Side Ingredient");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -67,7 +67,6 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField9.setText("jTextField1");
         jTextField9.addActionListener(this::jTextField9jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -96,7 +95,6 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField8.setText("jTextField1");
         jTextField8.addActionListener(this::jTextField8jTextField4ActionPerformed);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -118,7 +116,6 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField7.setText("jTextField1");
         jTextField7.addActionListener(this::jTextField7jTextField2ActionPerformed);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -140,7 +137,6 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField3.setText("jTextField1");
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -242,7 +238,7 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
         int nQ = Integer.parseInt(jTextField8.getText());
         String fName = jTextField3.getText();
         rM.getGUIIngredients().clear();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fName + "SideRecipeData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/" + fName + "SideRecipeData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -256,7 +252,7 @@ public class UpdateSideIngredientGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
         rM.updateIngredient(oN,nN,nQ);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fName + "SideRecipeData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/" + fName + "SideRecipeData.txt"))){
             for (IngredientManager ingredient : rM.getGUIIngredients()){
                 writer.write(ingredient.getName() + "," + ingredient.getQuantity() + "\n");
             }

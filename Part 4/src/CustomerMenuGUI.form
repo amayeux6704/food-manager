@@ -79,20 +79,73 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="whatDoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="placeOrderBttn" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="whatDoLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="placeOrderBttn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="welcomeLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="20" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Welcome, Customer!"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="whatDoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="What would you like to do today?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="placeOrderBttn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Place an Order"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeOrderBttnActionPerformed"/>
+      </Events>
+    </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Orders in Progress">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -100,39 +153,21 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="viewOrderInfoBttn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="442" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" alignment="0" pref="455" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="whatDoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="placeOrderBttn" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="280" max="32767" attributes="0"/>
+                          <Component id="viewOrderInfoBttn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="welcomeLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="whatDoLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="placeOrderBttn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="152" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="viewOrderInfoBttn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -141,27 +176,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="welcomeLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="20" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Welcome, Customer!"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="whatDoLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="What would you like to do today?"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="placeOrderBttn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Place an Order"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeOrderBttnActionPerformed"/>
-          </Events>
-        </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -182,11 +196,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Orders in Progress"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="viewOrderInfoBttn">
           <Properties>
             <Property name="text" type="java.lang.String" value="View Order Information"/>

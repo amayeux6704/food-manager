@@ -41,7 +41,7 @@ public class ViewSideIngredientsGUI extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("View Side Ingredients");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -82,7 +82,6 @@ public class ViewSideIngredientsGUI extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField3.setText("jTextField1");
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -164,7 +163,7 @@ public class ViewSideIngredientsGUI extends javax.swing.JFrame {
         String fName = jTextField3.getText();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        try (BufferedReader reader = new BufferedReader(new FileReader(fName + "SideRecipeData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader(fName + "txtDataFiles/SideRecipeData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -182,7 +181,7 @@ public class ViewSideIngredientsGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("sideData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/sideData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

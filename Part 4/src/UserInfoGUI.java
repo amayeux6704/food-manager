@@ -150,10 +150,10 @@ public class UserInfoGUI extends javax.swing.JFrame {
                             .addComponent(changePWChkBx)
                             .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(okButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancelButton)))
+                        .addGap(125, 125, 125)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -198,6 +198,12 @@ public class UserInfoGUI extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel?", "Cancel", JOptionPane.YES_NO_OPTION);
+        
+            if(result == JOptionPane.YES_OPTION){
+                this.dispose();
+            }
+        
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private boolean updateUserInfo(){
@@ -251,6 +257,7 @@ public class UserInfoGUI extends javax.swing.JFrame {
         reEnterNewPWLabel.setEnabled(enable);
         reEnterNewPWField.setEnabled(enable); 
     }
+    
     /**
      * @param args the command line arguments
      */

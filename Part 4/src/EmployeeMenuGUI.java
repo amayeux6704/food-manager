@@ -19,6 +19,11 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
     private DeliveryPersonManager dpm;
     private DeliveryPerson deliveryPerson;
     private int employeeId;
+    private Restaurant restaurant;
+    private Inventory inventory;
+    private Menu menu;
+    private CostCalculation cc;
+    private RecipeManager rm;
     private DefaultListModel availableOrdersModel;
     private Map<Integer, Order> availableOrders;
     private DefaultListModel unfulfilledOrdersModel;
@@ -32,12 +37,17 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
     }
     
     public EmployeeMenuGUI(DeliveryPersonManager dpm, int id, OrderManager gom, Menu menu,
-            Restaurant restaurant, Inventory inventory, CostCalculation cc){
+            Restaurant restaurant, Inventory inventory, CostCalculation cc, RecipeManager rm){
         this();
         this.dpm = dpm;
         employeeId = id;
         deliveryPerson = dpm.searchDeliveryPerson(employeeId);
         this.gom = gom;
+        this.restaurant = restaurant;
+        this.menu = menu;
+        this.inventory = inventory;
+        this.cc = cc;
+        this.rm = rm;
         
         viewAvailOrderInfoBttn.setEnabled(false);
         viewUnfllOrderInfoBttn.setEnabled(false);
@@ -263,13 +273,12 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
 
     private void systemSettingsBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_systemSettingsBttnActionPerformed
         // TODO add your handling code here:
-        new SystemSettingsSubmenuGUI().setVisible(true);
+        new SystemSettingsSubmenuGUI(restaurant, menu, inventory, cc, rm).setVisible(true);
     }//GEN-LAST:event_systemSettingsBttnActionPerformed
 
     private void profileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileMenuItemActionPerformed
         // TODO add your handling code here:
-        EmployeeSettingsSubmenuGUI essGUI = new EmployeeSettingsSubmenuGUI(dpm, employeeId);
-        essGUI.setVisible(true);
+        new EmployeeSettingsSubmenuGUI(dpm, employeeId).setVisible(true);
     }//GEN-LAST:event_profileMenuItemActionPerformed
 
     private void logoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
@@ -277,13 +286,16 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Log out", JOptionPane.YES_NO_OPTION);
         
         if(result == JOptionPane.YES_OPTION){
-            this.dispose();
+            returnToLogIn();
         }
     }//GEN-LAST:event_logoutMenuItemActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
         refreshInfo();
+        if(dpm.searchDeliveryPerson(employeeId) == null){
+            returnToLogIn();
+        }
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void availableOrdersLstValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_availableOrdersLstValueChanged
@@ -339,6 +351,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
             String confirmMessage = "You have been assigned " + selectedOrder;
             
             JOptionPane.showMessageDialog(this, confirmMessage);
+            
             refreshInfo();
         }
     }//GEN-LAST:event_takeOnOrderBttnActionPerformed
@@ -411,11 +424,18 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         Order order = gom.searchOrder(id);
         order.setDeliveryPerson(deliveryPerson);
         deliveryPerson.getOrderHistory().addOrder(order);
+        new LoadSaveOrder().saveOrder(order);
     }
     
     private void fulfillOrder(int id){
         Order order = gom.searchOrder(id);
         order.setFulfillment(true);
+        new LoadSaveOrder().saveOrder(order);
+    }
+    
+    private void returnToLogIn(){
+        this.dispose();
+        new UserEntryMenuGUI(dpm, gom, menu, restaurant, inventory, cc, rm).setVisible(true);
     }
     
     /**

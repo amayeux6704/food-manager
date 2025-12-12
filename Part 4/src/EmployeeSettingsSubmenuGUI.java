@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -27,7 +30,6 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
         this.dpm = dpm;
         employeeId = id;
         deliveryPerson = dpm.searchDeliveryPerson(id);
-        
         refreshInformation();
     }
     /**
@@ -56,7 +58,7 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
         deleteAccountLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Customer Profile Settings");
+        setTitle("Employee Profile Settings");
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -178,15 +180,35 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
         );
 
         exitSaveButton.setText("Exit and Save");
+        exitSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitSaveButtonActionPerformed(evt);
+            }
+        });
 
         exitWOSaveButton.setText("Exit Without Saving");
+        exitWOSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitWOSaveButtonActionPerformed(evt);
+            }
+        });
 
         revertButton.setText("Revert Information");
+        revertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                revertButtonActionPerformed(evt);
+            }
+        });
 
         deleteAcctDescrLabel.setText("If you want to delete your account,");
 
         deleteAccountLabel.setForeground(new java.awt.Color(255, 0, 0));
         deleteAccountLabel.setText("click here");
+        deleteAccountLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteAccountLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,6 +286,48 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new EditVehicleSubmenuGUI(deliveryPerson.getDeliveryVehicle()).setVisible(true);
     }//GEN-LAST:event_manageVehicletButtonActionPerformed
+
+    private void exitSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitSaveButtonActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit and save?", "Exit and Save", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            new LoadSaveDeliveryPerson().saveDeliveryPerson(deliveryPerson);
+            this.dispose();
+        }
+    }//GEN-LAST:event_exitSaveButtonActionPerformed
+
+    private void exitWOSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitWOSaveButtonActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit without saving?", "Exit Without Saving", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            revertInformation();
+            this.dispose();
+        }
+    }//GEN-LAST:event_exitWOSaveButtonActionPerformed
+
+    private void revertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revertButtonActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to revert your changes?", "Revert Changes", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            revertInformation();
+        }
+    }//GEN-LAST:event_revertButtonActionPerformed
+
+    private void deleteAccountLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAccountLabelMouseClicked
+        // TODO add your handling code here:
+        String message = "<html>Are you sure you want to delete your profile?<br>"+
+                         "WARNING!!! Once you delete your profile, you can't get it back.";
+        int result = JOptionPane.showConfirmDialog(this, message, "Delete Profile", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            resetDeliveryPerson(deliveryPerson.getID());
+            dpm.removeDeliveryPerson(deliveryPerson.getID());
+            this.dispose();
+        }       
+    }//GEN-LAST:event_deleteAccountLabelMouseClicked
     
     private void refreshInformation(){
         displayDeliveryPersonInfo();
@@ -282,6 +346,26 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
         else{
             vehicleLabel.setText("Delivery Vehicle has not been set.");
         }
+    }
+    
+    private void revertInformation(){
+        DeliveryPerson original = new LoadSaveDeliveryPerson().loadDeliveryPerson(employeeId);
+        
+        deliveryPerson.setName(original.getName());
+        deliveryPerson.setEmail(original.getEmail());
+        deliveryPerson.setPassword(original.getPassword());
+        deliveryPerson.setDeliveryVehicle(original.getDeliveryVehicle());
+        deliveryPerson.setPNM(original.getPNM());
+    }
+    
+    private void resetDeliveryPerson(int id){
+        DeliveryPerson fauxDP = new DeliveryPerson("DeliveryPerson", id);
+        fauxDP.setEmail(String.valueOf(id * id));
+        fauxDP.setPassword("password");
+        if(deliveryPerson.getDeliveryVehicle() != null)
+            fauxDP.getDeliveryVehicle().equals(deliveryPerson.getDeliveryVehicle());
+        
+        new LoadSaveDeliveryPerson().saveDeliveryPerson(fauxDP);
     }
     /**
      * @param args the command line arguments

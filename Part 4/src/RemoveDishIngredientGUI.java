@@ -46,7 +46,7 @@ public class RemoveDishIngredientGUI extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Remove Dish Ingredient");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -59,7 +59,6 @@ public class RemoveDishIngredientGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -86,7 +85,6 @@ public class RemoveDishIngredientGUI extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField3.setText("jTextField1");
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -178,7 +176,7 @@ public class RemoveDishIngredientGUI extends javax.swing.JFrame {
             }
         }    
         rM.getGUIIngredients().clear();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fName + "RecipeData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/" + fName + "RecipeData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -192,7 +190,7 @@ public class RemoveDishIngredientGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
         rM.removeIngredient(name);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fName + "RecipeData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/" + fName + "RecipeData.txt"))){
             for (IngredientManager ingredient : rM.getGUIIngredients()){
                 writer.write(ingredient.getName() + "," + ingredient.getQuantity() + "\n");
             }
@@ -204,7 +202,7 @@ public class RemoveDishIngredientGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("dishData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/dishData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

@@ -65,6 +65,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="placeOrderTabPane">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="placeOrderTabPaneStateChanged"/>
       </Events>

@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -216,15 +219,35 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
         );
 
         exitSaveButton.setText("Exit and Save");
+        exitSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitSaveButtonActionPerformed(evt);
+            }
+        });
 
         exitWOSaveButton.setText("Exit Without Saving");
+        exitWOSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitWOSaveButtonActionPerformed(evt);
+            }
+        });
 
         revertButton.setText("Revert Information");
+        revertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                revertButtonActionPerformed(evt);
+            }
+        });
 
         deleteAcctDescrLabel.setText("If you want to delete your account,");
 
         deleteAccountLabel.setForeground(new java.awt.Color(255, 0, 0));
         deleteAccountLabel.setText("click here");
+        deleteAccountLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteAccountLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -309,6 +332,48 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new PaymentManagementMenuGUI(customer.getPayment()).setVisible(true);
     }//GEN-LAST:event_managePaymentButtonActionPerformed
+
+    private void exitSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitSaveButtonActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit and save?", "Exit and Save", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            new LoadSaveCustomer().saveCustomer(customer);
+            this.dispose();
+        }
+    }//GEN-LAST:event_exitSaveButtonActionPerformed
+
+    private void exitWOSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitWOSaveButtonActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit without saving?", "Exit Without Saving", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            revertInformation();
+            this.dispose();
+        }
+    }//GEN-LAST:event_exitWOSaveButtonActionPerformed
+
+    private void revertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revertButtonActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to revert your changes?", "Revert Changes", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            revertInformation();
+        }
+    }//GEN-LAST:event_revertButtonActionPerformed
+
+    private void deleteAccountLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAccountLabelMouseClicked
+        // TODO add your handling code here:
+        String message = "<html>Are you sure you want to delete your account?<br>"+
+                         "WARNING!!! Once you delete your profile, you can't get it back.";
+        int result = JOptionPane.showConfirmDialog(this, message, "Delete Profile", JOptionPane.YES_NO_OPTION);
+        
+        if(result == JOptionPane.YES_OPTION){
+            resetCustomer(customer.getID());
+            cm.removeCustomer(customer.getID());
+            this.dispose();
+        }
+    }//GEN-LAST:event_deleteAccountLabelMouseClicked
     
     private void refreshInformation(){
         displayCustomerInfo();
@@ -336,6 +401,29 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
         else
             payMethodLabel.setText("Current Pay Method: none");
     }
+    
+    private void revertInformation(){
+        Customer original = new LoadSaveCustomer().loadCustomer(customerId);
+        
+        customer.setName(original.getName());
+        customer.setEmail(original.getEmail());
+        customer.setPassword(original.getPassword());
+        customer.setPayment(original.getPayment());
+        customer.setAddressManager(original.getAddressManager());
+        customer.setPNM(original.getPNM());
+    }
+    
+    private void resetCustomer(int id){
+        Customer newcustomer = new Customer("Customer", id, false);
+        newcustomer.setEmail(String.valueOf(id * id));
+        newcustomer.setPassword("password");
+        if(customer.getAddressManager() != null)
+            newcustomer.getAddressManager().equals(customer.getAddressManager());
+        newcustomer.getPayment().equals(customer.getPayment());
+        
+        new LoadSaveCustomer().saveCustomer(newcustomer);
+    }
+    
     /**
      * @param args the command line arguments
      */

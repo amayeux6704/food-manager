@@ -1,4 +1,4 @@
 John Doe,101,false,jdoe123@johndoe.com,Password1,
-~p,mastercard,
+~p,mastercard,curr,
 ~a,1,123 Address ln.,,Addressia,ST,12345,true,
 ~ph,123-456-7890,

@@ -44,7 +44,7 @@ public class UpdateLocationGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Update Location");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -54,7 +54,6 @@ public class UpdateLocationGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -86,7 +85,6 @@ public class UpdateLocationGUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField2.setText("jTextField1");
         jTextField2.addActionListener(this::jTextField2ActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -175,7 +173,7 @@ public class UpdateLocationGUI extends javax.swing.JFrame {
         String oL = jTextField1.getText();
         String nL = jTextField2.getText();
         r.updateLocation(oL,nL);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("locationData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/locationData.txt"))){
             for (String location : r.getLocations()){
                 writer.write(location + "," + "\n");
             }
@@ -191,7 +189,7 @@ public class UpdateLocationGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("locationData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/locationData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

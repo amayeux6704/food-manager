@@ -49,7 +49,7 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Side Ingredient");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -66,7 +66,6 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField2.setText("jTextField1");
         jTextField2.addActionListener(this::jTextField2ActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -88,7 +87,6 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -115,7 +113,6 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField3.setText("jTextField1");
         jTextField3.addActionListener(this::jTextField3ActionPerformed);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -208,7 +205,7 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
         String fName = jTextField3.getText();
         System.out.println(fName);
         rM.getGUIIngredients().clear();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fName + "SideRecipeData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/" + fName + "SideRecipeData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -223,7 +220,7 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
         }
         rM.addIngredient(name,quantity);
         System.out.println(fName);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fName + "SideRecipeData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/" + fName + "SideRecipeData.txt"))){
             for (IngredientManager ingredient : rM.getGUIIngredients()){
                 writer.write(ingredient.getName() + "," + ingredient.getQuantity() + "\n");
             }
@@ -235,7 +232,7 @@ public class AddSideIngredientGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("sideData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/sideData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

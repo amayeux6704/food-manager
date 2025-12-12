@@ -32,6 +32,8 @@ Key:
 	IDGenerator (Needs Documentation)
 	InitialDataGenerator
 	LoadSaveCustomer (Needs Documentation)
+	LoadSaveDeliveryPerson (Needs Documentation)
+	LoadSaveOrder (Needs Documentation)
 	Main
 	MainMenu
 	Order

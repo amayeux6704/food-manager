@@ -16,7 +16,7 @@ public class Main {
          * argument most of the time to grant other submenus access to it so 
          * they can operate on the data of customers. 
          */
-        CustomerManager customerManager = new CustomerManager();
+        CustomerManager customerManager = new LoadSaveCustomer().loadCustomerManager();
         /**
          * The delivery person manager that stores and operates on the 
          * information about all of the delivery people/employees within the 
@@ -24,7 +24,40 @@ public class Main {
          * other submenus access to it so they can operate on the data of 
          * employees. 
          */
-        DeliveryPersonManager deliveryPersonManager = new DeliveryPersonManager();
+        DeliveryPersonManager deliveryPersonManager = new LoadSaveDeliveryPerson().loadDeliveryPersonManager();
+        /**
+         * The food menu that stores all of the food items available for order.
+         * This will be passed as an argument most of the time so that other
+         * submenus can access information about the food items available for 
+         * sale in the system.
+         */
+        Menu menu = new DataLoader().loadMenu();
+        /**
+         * The inventory of ingredients needed for each food item. This will
+         * be passed as an argument most of the time so that other submenus
+         * can access information about the inventory status of the system.
+         */
+        Inventory inventory = new DataLoader().loadInventory();
+        /**
+         * The restaurant that sells the food items. This will be passed as an
+         * argument most of the time so that other submenus can access
+         * information about the restaurant's location and status.
+         */
+        Restaurant restaurant = new DataLoader().loadRestaurant();
+        /**
+         * The cost calculation object that calculates the cost of orders. This
+         * will be passed as an argument most of the time so that there can be
+         * a standardized tax rate and method of calculation throughout the 
+         * system.
+         */
+        CostCalculation costCalculation = new DataLoader().loadCostCalculation();
+        
+        /**
+         * A RecipeManager object to be used to manage the recipes for items in
+         * the system settings menu.
+         */
+        RecipeManager recipeManager = new RecipeManager();
+        
         /**
          * The general order manager that stores and operates on all of the
          * orders placed by all of the customers in the system. This will be
@@ -32,48 +65,15 @@ public class Main {
          * access the information about all of the orders that have been placed
          * in the system.
          */
-        OrderManager generalOrderManager = new OrderManager();
-        /**
-         * The food menu that stores all of the food items avaiable for order.
-         * This will be passed as an argument most of the time so that other
-         * submenus can access information about the food items available for 
-         * sale in the system.
-         */
-        Menu menu = new Menu();
-        /**
-         * The inventory of ingredients needed for each food item. This will
-         * be passed as an argument most of the time so that other submenus
-         * can access information about the inventory status of the system.
-         */
-        Inventory inventory = new Inventory();
-        /**
-         * The restaurant that sells the food items. This will be passed as an
-         * argument most of the time so that other submenus can access
-         * information about the restaurant's location and status.
-         */
-        Restaurant restaurant = new Restaurant("Restaurant");
-        /**
-         * The cost calculation object that calculates the cost of orders. This
-         * will be passed as an argument most of the time so that there can be
-         * a standardized tax rate and method of calculation throughout the 
-         * system.
-         */
-        CostCalculation costCalculation = new CostCalculation();
-        
-        InitialDataGenerator idg = new InitialDataGenerator(customerManager, deliveryPersonManager, 
-                generalOrderManager, menu, restaurant, inventory, costCalculation);
-        
-        idg.generateDummyData();
+        OrderManager generalOrderManager = new LoadSaveOrder().loadOrderManager(menu, costCalculation, customerManager, deliveryPersonManager);
+
         
         /**
          * The main menu GUI object that displays the main menu to the user.
          */
         MainMenuGUI mmGUI = new MainMenuGUI(customerManager, deliveryPersonManager, generalOrderManager, menu,
-                                        restaurant, inventory, costCalculation);
-        
-        MainMenu mainMenu = new MainMenu(customerManager, deliveryPersonManager, generalOrderManager, menu,
-                                        restaurant, inventory, costCalculation);
-        //mainMenu.showMenu();
+                                        restaurant, inventory, costCalculation, recipeManager);
+       
         
         //Display the main menu to the user.
         mmGUI.setVisible(true);

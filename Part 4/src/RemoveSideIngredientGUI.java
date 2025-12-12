@@ -46,7 +46,7 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
         jTextField14 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Remove Side Ingredient");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -59,7 +59,6 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -86,7 +85,6 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
 
         jPanel14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField14.setText("jTextField1");
         jTextField14.addActionListener(this::jTextField14ActionPerformed);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -172,7 +170,7 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
         String name = jTextField1.getText();
         String fName = jTextField14.getText();
         rM.getGUIIngredients().clear();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fName + "SideRecipeData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/" + fName + "SideRecipeData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -186,7 +184,7 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
         rM.removeIngredient(name);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fName + "SideRecipeData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/" + fName + "SideRecipeData.txt"))){
             for (IngredientManager ingredient : rM.getGUIIngredients()){
                 writer.write(ingredient.getName() + "," + ingredient.getQuantity() + "\n");
             }
@@ -198,7 +196,7 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("sideData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/sideData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");
@@ -251,30 +249,8 @@ public class RemoveSideIngredientGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

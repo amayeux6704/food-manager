@@ -41,7 +41,7 @@ public class SetTaxRateGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Enter Tax Rate");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -52,8 +52,6 @@ public class SetTaxRateGUI extends javax.swing.JFrame {
         jLabel1.setText("Enter New Tax Rate:");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jTextField1.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -126,7 +124,7 @@ public class SetTaxRateGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         double tax = Double.parseDouble(jTextField1.getText());
         c.setTaxRate(tax);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("taxData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/taxData.txt"))){
             writer.write(tax + "," + "\n");
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,7 +134,7 @@ public class SetTaxRateGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("taxData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/taxData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

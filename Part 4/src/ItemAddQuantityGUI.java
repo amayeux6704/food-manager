@@ -62,7 +62,6 @@ public class ItemAddQuantityGUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField2.setText("jTextField1");
         jTextField2.addActionListener(this::jTextField2ActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -84,7 +83,6 @@ public class ItemAddQuantityGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -172,7 +170,7 @@ public class ItemAddQuantityGUI extends javax.swing.JFrame {
         String name = jTextField1.getText();
         int quantity = Integer.parseInt(jTextField2.getText());
         i.addOrUpdateItem(name, quantity);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("inventoryData.txt"))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("txtDataFiles/inventoryData.txt"))){
             for (InventoryItem inventoryItem : i.getInventoryItems()){
                 writer.write(inventoryItem.getName() + "," + inventoryItem.getQuantity() + "\n");
             }
@@ -192,7 +190,7 @@ public class ItemAddQuantityGUI extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try (BufferedReader reader = new BufferedReader(new FileReader("inventoryData.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("txtDataFiles/inventoryData.txt"))){
             String data;
             while ((data = reader.readLine()) != null){
                 String[] txtData = data.split(",");

@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class LoadSaveDeliveryPerson {
     
-    public DeliveryPerson LoadDeliveryPerson(int id){
+    public DeliveryPerson loadDeliveryPerson(int id){
         
         String fileName = "txtDataFiles/deliveryPersonFiles/dp" + id + ".txt";
         System.out.println(fileName);
@@ -61,19 +61,22 @@ public class LoadSaveDeliveryPerson {
 
     
     private void setVehicle(DeliveryPerson deliveryPerson, String[] tempArr){
+        if(tempArr.length > 1){
         int vehicleId = Integer.parseInt(tempArr[1]);
-        Vehicle vehicle = new Vehicle(deliveryPerson, vehicleId);
-        vehicle.setYear(Short.parseShort(tempArr[2]));
-        vehicle.setMake(tempArr[3]);
-        vehicle.setModel(tempArr[4]);
-        vehicle.setColor(tempArr[5]);
-        vehicle.setBodyStyle(tempArr[6]);
-        vehicle.setLicensePlate(tempArr[7]);
+            Vehicle vehicle = new Vehicle(deliveryPerson, vehicleId);
+            vehicle.setYear(Short.parseShort(tempArr[2]));
+            vehicle.setMake(tempArr[3]);
+            vehicle.setModel(tempArr[4]);
+            vehicle.setColor(tempArr[5]);
+            vehicle.setBodyStyle(tempArr[6]);
+            vehicle.setLicensePlate(tempArr[7]);
         
-        deliveryPerson.setDeliveryVehicle(vehicle);
+            deliveryPerson.setDeliveryVehicle(vehicle);
+        }
     }
     private void setPhone(DeliveryPerson deliveryPerson, String[] tempArr){
-        deliveryPerson.getPNM().addPhoneNumber(tempArr[1]);
+        if(tempArr.length > 1)
+            deliveryPerson.getPNM().addPhoneNumber(tempArr[1]);
     }
     
     public void saveDeliveryPerson(DeliveryPerson deliveryPerson){
@@ -119,6 +122,48 @@ public class LoadSaveDeliveryPerson {
         return "~v," + vehicle.getVehicleID() + "," + vehicle.getYear() + 
                 "," + vehicle.getMake() + "," + vehicle.getModel()+ "," + 
                 vehicle.getColor()+ "," + vehicle.getBodyStyle() + "," +
-                vehicle.getBodyStyle() + ",\n";
+                vehicle.getLicensePlate() + ",\n";
+    }
+    
+    public DeliveryPersonManager loadDeliveryPersonManager(){
+        String fileName = "txtDataFiles/deliveryPersonFiles/dpIDList.txt";
+        try{
+            DeliveryPersonManager dpm = new DeliveryPersonManager();
+            File file = new File(fileName);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            
+            String line = "";
+
+            while((line = br.readLine()) != null){
+                DeliveryPerson deliveryPerson = loadDeliveryPerson(Integer.parseInt(line));
+                dpm.addDeliveryPerson(deliveryPerson);
+                
+            }
+            br.close();
+            
+            return dpm;
+        }
+        catch(IOException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public void saveDeliveryPersonManager(DeliveryPersonManager dpm){
+        String fileName = "txtDataFiles/deliveryPersonFiles/dpIDList.txt";
+        try{
+            File file = new File(fileName);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            
+            for(int id: dpm.getDeliveryPeople().keySet()){
+                bw.write(id + "\n");
+            }
+            bw.close();
+            
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
     }
 }

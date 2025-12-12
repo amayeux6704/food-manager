@@ -30,6 +30,8 @@ public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
      */
     private CostCalculation cc;
     
+    private RecipeManager rp;
+    
     /**
      * Creates new form SystemSettingsSubmenuGUI.
      */
@@ -48,14 +50,18 @@ public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
      * @param cc              The cost calculation object to calculate the cost 
      *                        of orders and keep a standard tax rate throughout
      *                        the system. 
+     * @param rp              The recipe manager being used throughout the
+     *                        system.
      */
     public SystemSettingsSubmenuGUI(Restaurant restaurant, Menu menu, Inventory inventory,
-            CostCalculation cc) {
+            CostCalculation cc, RecipeManager rp) {
         this();
         this.restaurant = restaurant;
         this.menu = menu;
         this.inventory = inventory;
         this.cc = cc;
+        this.rp = rp;
+        
     }
 
     /**
@@ -123,11 +129,11 @@ public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mngRestaurantBttn)
-                    .addComponent(mngMenuBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mngInventoryBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mngCostBttn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(mngRestaurantBttn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mngInventoryBttn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mngCostBttn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mngMenuBttn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,7 +155,7 @@ public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(systemSettingsLabel)
                     .addComponent(exitBttn))
@@ -171,7 +177,7 @@ public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        setSize(new java.awt.Dimension(416, 258));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,7 +199,7 @@ public class SystemSettingsSubmenuGUI extends javax.swing.JFrame {
      */
     private void mngMenuBttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngMenuBttnActionPerformed
         // TODO add your handling code here:
-        new MenuManagementMenuGUI(menu, ).setVisible(true);
+        new MenuManagementMenuGUI(menu, rp).setVisible(true);
     }//GEN-LAST:event_mngMenuBttnActionPerformed
 
     /**
