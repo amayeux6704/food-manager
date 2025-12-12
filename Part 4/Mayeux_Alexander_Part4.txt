@@ -1,76 +1,72 @@
 Tasks:
 
-Key:
-	+: Classes that are in progress.
-	~: Classes that need to be implemented.
-	-: Classes that may need to be removed.
-
 • Added back the UML diagram for editing as needed.
 • Write the code for the following classes:
 	AccountManager
 	Address
 	AddressManager
 	AddressesSubmenu
-	AddressesSubmenuManager (Needs Documentation)
+	AddressesSubmenuManager
 	Customer
 	CustomerEntrySubmenu
 	CustomerManager
-	CustomerSettingsManager (Needs Documentation)
+	CustomerSettingsManager
 	CustomerSettingsSubmenu
 	CustomerSubmenu
-	CustomerSubmenuManager (Needs Documentation)
-	DataLoader (Needs Documentation)
+	CustomerSubmenuManager
+	DataLoader
 	DeliveryPerson
 	DeliveryPersonManager
 	EditVehicleSubmenu
-	EditVehicleSubmenuManager (Needs Documentation)
+	EditVehicleSubmenuManager
 	EmployeeEntrySubmenu
-	EmployeeSettingsManager (Needs Documentation)
+	EmployeeSettingsManager
 	EmployeeSettingsSubmenu
 	EmployeeSubmenu
-	EmployeeSubmenuManager (Needs Documentation)
-	IDGenerator (Needs Documentation)
+	EmployeeSubmenuManager
+	IDGenerator
 	InitialDataGenerator
-	LoadSaveCustomer (Needs Documentation)
-	LoadSaveDeliveryPerson (Needs Documentation)
-	LoadSaveOrder (Needs Documentation)
+	LoadSaveCustomer
+	LoadSaveDeliveryPerson
+	LoadSaveOrder
 	Main
 	MainMenu
 	Order
-	OrderAddressPlacer (Needs Documentation)
+	OrderAddressPlacer
 	OrderInventoryChanger
 	OrderManager
-	OrderPaymentPlacer (Needs Documentation)
+	OrderPaymentPlacer
 	OrderPlacer
 	Person
 	PhoneSubmenu
-	PhoneSubmenuManager (Needs Documentation)
+	PhoneSubmenuManager
 	PlaceOrderMenu
-	PlaceOrderMenuManager (Needs Documentation)
+	PlaceOrderMenuManager
 	ProgramMenu
 	ReceiptGenerator
 	SystemSettingsSubmenu
 	Vehicle
 	VehicleSubmenu
-	VehicleSubmenuManager (Needs Documentation)
+	VehicleSubmenuManager
 
 • Create GUI Frames for the following Menus:
-	+AddressesSubmenuGUI (Needs Documentation)
-	+CustomerMenuGUI (Needs Documentation)
-	+CustomerSettingsSubmenuGUI (Needs Documentation)
-	+EditAddressSubmenuGUI (Needs Documentation)
-	+EditVehicleSubmenuGUI (Needs Documentation)
-	+EmployeeMenuGUI (Needs Documentation)
-	+EmployeeSettingsSubmenuGUI (Needs Documentation)
+	+AddressesSubmenuGUI
+	+CustomerMenuGUI
+	+CustomerSettingsSubmenuGUI
+	+EditAddressSubmenuGUI
+	+EditVehicleSubmenuGUI
+	+EmployeeMenuGUI
+	+EmployeeSettingsSubmenuGUI
 	+MainMenuGUI
 	+OrderHistoryGUI 
-	+PhoneSubmenuGUI (Needs Documentation)
-	+PlaceOrderMenuGUI (Needs Documentation)
+	+PhoneSubmenuGUI
+	+PlaceOrderMenuGUI
 	+SystemSettingsSubmenuGUI
-	+UpdateAddPhoneSubmenuGUI (Needs Documentation)
+	+UpdateAddPhoneSubmenuGUI
 	+UserEntryMenuGUI
-	+UserInfoGUI (Needs Documentation)
+	+UserInfoGUI
 	+ViewOrderInfoGUI
 
 • Write the intsructions PDF for the program	
+• Converted the UML Diagram to a PDF
 • Added readme.txt with instructions to compile the program.

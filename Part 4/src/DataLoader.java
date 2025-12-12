@@ -1,7 +1,10 @@
 import java.io.*;
 
 /**
- *
+ * This class handles loading the data upon startup for the menu, menu recipes,
+ * restaurant, inventory, and cost calculation objects to be used throughout
+ * the system.
+ * 
  * @author Alexander
  */
 public class DataLoader {
@@ -34,7 +37,7 @@ public class DataLoader {
         } catch (Exception e){
             e.printStackTrace();
         }
-        
+        loadRecipes(menu);
         return menu;
     }
     

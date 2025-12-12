@@ -2,13 +2,10 @@
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
- *
+ * This class provides a GUI for a customer user to manage the addresses that 
+ * they have stored on file.
+ * 
  * @author Alexander
  */
 public class AddressesSubmenuGUI extends javax.swing.JFrame {
@@ -224,6 +221,7 @@ public class AddressesSubmenuGUI extends javax.swing.JFrame {
         refreshAddresses();
     }//GEN-LAST:event_formWindowGainedFocus
 
+    @SuppressWarnings("unchecked")
     private void addAddrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAddrButtonActionPerformed
         // TODO add your handling code here:
         
@@ -239,6 +237,7 @@ public class AddressesSubmenuGUI extends javax.swing.JFrame {
         easGUI.setVisible(true);
     }//GEN-LAST:event_addAddrButtonActionPerformed
     
+    @SuppressWarnings("unchecked")
     private void initializeAddresses(){
         int numAddresses = am.getNumAddresses();
         
@@ -252,6 +251,7 @@ public class AddressesSubmenuGUI extends javax.swing.JFrame {
         }
     }
     
+    @SuppressWarnings("unchecked")
     private void refreshAddresses(){
         
         int numAddresses = am.getNumAddresses();

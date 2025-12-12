@@ -1,11 +1,6 @@
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  * This class provides a GUI for the user to enter the system either as a customer
  * or employee. It allows the user to enter their credentials to log in to the 
@@ -183,12 +178,6 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
 
         nameLabel.setText("Name:");
 
-        nameTF.setNextFocusableComponent(emailTF);
-
-        emailTF.setNextFocusableComponent(jPasswordField1);
-
-        jPasswordField1.setNextFocusableComponent(loginCreateButton);
-
         passwordLabel.setText("Password:");
 
         emailLabel.setText("Email:");
@@ -227,7 +216,6 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
         );
 
         loginCreateButton.setText("Log In");
-        loginCreateButton.setNextFocusableComponent(signUpLabel);
         loginCreateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginCreateButtonActionPerformed(evt);
@@ -236,7 +224,6 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
 
         signUpLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         signUpLabel.setText("Don't have an account? Click here to Sign Up");
-        signUpLabel.setNextFocusableComponent(guestLabel);
         signUpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signUpLabelMouseClicked(evt);
@@ -250,7 +237,6 @@ public class UserEntryMenuGUI extends javax.swing.JFrame {
 
         guestLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guestLabel.setText("Not ready to sign up? Click here to continue as a guest");
-        guestLabel.setNextFocusableComponent(nameTF);
         guestLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 guestLabelMouseClicked(evt);

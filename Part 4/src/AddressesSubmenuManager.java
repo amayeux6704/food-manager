@@ -2,10 +2,12 @@
 import java.util.Scanner;
 
 /**
- *
+ * This class manages all of the methods and functionality of the addresses
+ * submenu.
  * @author Alexander
  */
 public class AddressesSubmenuManager {
+    
     private Customer customer;
     private AddressManager am;
     

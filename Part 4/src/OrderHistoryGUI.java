@@ -217,6 +217,7 @@ public class OrderHistoryGUI extends javax.swing.JFrame {
      * is set as the model for the orderList, and the updateUI() method for the
      * orderList is called to update any changes.
      */
+    @SuppressWarnings("unchecked")
     private void initializeOrders(){
         orderModel = new DefaultListModel();
         Map<Integer, Order> orders = om.getAllOrders();

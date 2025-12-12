@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
+ * This class provides the GUI for a user to manage their phone numbers that
+ * they have stored on file.
  * @author Alexander
  */
 public class PhoneSubmenuGUI extends javax.swing.JFrame {
@@ -226,6 +227,7 @@ public class PhoneSubmenuGUI extends javax.swing.JFrame {
         uapsGUI.setVisible(true);
     }//GEN-LAST:event_addPhnButtonActionPerformed
     
+    @SuppressWarnings("unchecked")
     private void showPhoneNumbers(){
         model = new DefaultListModel();
         Set<String> phoneNumbers = pm.getPhoneNumbers();

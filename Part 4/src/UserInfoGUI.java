@@ -7,21 +7,34 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
+ * This class provides a GUI for users to edit their account information.
  * @author Alexander
  */
 public class UserInfoGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UserInfoGUI.class.getName());
-    private Person person;
+    
     /**
-     * Creates new form CustomerInfoGUI
+     * The person whose information is being edited.
+     */
+    private Person person;
+    
+    /**
+     * Creates new form CustomerInfoGUI and disables the password fields by
+     * default.
      */
     public UserInfoGUI() {
         initComponents();
         enableDisablePWChange(false);
     }
     
+    /**
+     * Creates new form CustomerInfoGUI by calling the no argument constructor.
+     * It also initializes the person variable based on the input parameter. 
+     * Using the person variable, it retrieves the name and email associated
+     * the user and places it in the text box.
+     * @param person 
+     */
     public UserInfoGUI(Person person){
         this();
         this.person = person;
@@ -206,6 +219,7 @@ public class UserInfoGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    
     private boolean updateUserInfo(){
         updateName();
         updateEmail();

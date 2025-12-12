@@ -7,7 +7,8 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
+ * This class provides a GUI menu for an employee user to edit the information 
+ * associated with their profile.
  * @author Alexander
  */
 public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
@@ -348,6 +349,10 @@ public class EmployeeSettingsSubmenuGUI extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * This method reverts the delivery person's information back to its 
+     * original state before it was edited.
+     */
     private void revertInformation(){
         DeliveryPerson original = new LoadSaveDeliveryPerson().loadDeliveryPerson(employeeId);
         

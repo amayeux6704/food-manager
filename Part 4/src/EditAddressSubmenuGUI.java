@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
 /**
- *
+ * This class provides a GUI menu for a customer user to edit one of their
+ * addresses.
+ * 
  * @author Alexander
  */
 public class EditAddressSubmenuGUI extends javax.swing.JFrame {

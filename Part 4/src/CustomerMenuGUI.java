@@ -4,7 +4,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * This class provides a GUI menu for a user to interact with the system as a 
+ * customer.
+ * 
  * @author Alexander
  */
 public class CustomerMenuGUI extends javax.swing.JFrame {
@@ -260,6 +262,7 @@ public class CustomerMenuGUI extends javax.swing.JFrame {
         showUnfulfilledOrders();
     }
     
+    @SuppressWarnings("unchecked")
     private void showUnfulfilledOrders(){
         unfulfilledOrders = customer.getOrderHistory().getUnfulfilledOrders();
         

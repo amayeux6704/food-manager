@@ -2,7 +2,7 @@
 import java.io.*;
 
 /**
- *
+ * This class handles loading and saving delivery person information to files.
  * @author Alexander
  */
 public class LoadSaveDeliveryPerson {

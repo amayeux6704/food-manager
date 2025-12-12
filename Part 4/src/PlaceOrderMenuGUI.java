@@ -10,7 +10,8 @@ import javax.swing.JOptionPane;
  */
 
 /**
- *
+ * This class provides a command line interface menu for a customer user to
+ * place an order for delivery in the system.
  * @author Alexander
  */
 public class PlaceOrderMenuGUI extends javax.swing.JFrame {
@@ -46,8 +47,6 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         payMethodModel = new DefaultComboBoxModel();
         
         initComponents();
-        
-        sideInfoBttn.setEnabled(false);
         
         addDishBttn.setEnabled(false);
         addSideBttn.setEnabled(false);
@@ -94,7 +93,6 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         dishSpinner = new javax.swing.JSpinner();
         menuSidesPnl = new javax.swing.JPanel();
         addSideBttn = new javax.swing.JButton();
-        sideInfoBttn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         menuSidesLst = new javax.swing.JList<>();
         sideSpinner = new javax.swing.JSpinner();
@@ -211,8 +209,6 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             }
         });
 
-        sideInfoBttn.setText("View Side Information");
-
         menuSidesLst.setModel(menuSidesModel);
         menuSidesLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         menuSidesLst.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -233,12 +229,9 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
                 .addGroup(menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                     .addGroup(menuSidesPnlLayout.createSequentialGroup()
-                        .addGroup(menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(sideInfoBttn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(menuSidesPnlLayout.createSequentialGroup()
-                                .addComponent(addSideBttn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sideSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addSideBttn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sideSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -246,8 +239,6 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuSidesPnlLayout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sideInfoBttn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(menuSidesPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addSideBttn)
@@ -702,7 +693,6 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         int selectedIndex = menuSidesLst.getSelectedIndex();
         boolean enable = selectedIndex > -1;
         
-        sideInfoBttn.setEnabled(enable);
         addSideBttn.setEnabled(enable);
     }//GEN-LAST:event_menuSidesLstValueChanged
 
@@ -752,6 +742,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, message);
             
             this.dispose();
+            new CustomerMenuGUI(cm, customer.getID(), gom, menu, restaurant, inventory, cc).setVisible(true);
             new ViewOrderInfoGUI(order).setVisible(true);
         }
     }//GEN-LAST:event_placeOrderBtnActionPerformed
@@ -766,6 +757,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         setSidesDishes();
     }
     
+    @SuppressWarnings("unchecked")
     private void setMenuDishes(){
         Set<Dish> dishes = menu.getDishManager().getDishes();
         
@@ -776,6 +768,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         menuDishesLst.updateUI();
     }
     
+    @SuppressWarnings("unchecked")
     private void setSidesDishes(){
         Set<Side> sides = menu.getSidesManager().getSides();
         for(Side side: sides){
@@ -784,6 +777,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         menuDishesLst.updateUI();
     }
     
+    @SuppressWarnings("unchecked")
     private void addDish(){
         int id = menuDishesLst.getSelectedIndex() + 1;
         int num = (Integer)dishSpinner.getValue();
@@ -794,6 +788,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
             orderDishesModel.addElement(dish);
     }
     
+    @SuppressWarnings("unchecked")
     private void addSide(){
         String sideName = menuSidesLst.getSelectedValue();
         int num = (Integer)sideSpinner.getValue();
@@ -828,6 +823,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         }
     }
     
+    @SuppressWarnings("unchecked")
     private void setAddrCB(){
         addressModel = new DefaultComboBoxModel();
         AddressManager am = customer.getAddressManager();
@@ -865,6 +861,7 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
         }
     }
     
+    @SuppressWarnings("unchecked")
     private void setPayMthdCB(){
         payMethodModel = new DefaultComboBoxModel();
         Payment payment = customer.getPayment();
@@ -981,7 +978,6 @@ public class PlaceOrderMenuGUI extends javax.swing.JFrame {
     private javax.swing.JPanel selectedAddressPanel;
     private javax.swing.JPanel setAddressPanel;
     private javax.swing.JPanel setPaymentPanel;
-    private javax.swing.JButton sideInfoBttn;
     private javax.swing.JSpinner sideSpinner;
     // End of variables declaration//GEN-END:variables
 }

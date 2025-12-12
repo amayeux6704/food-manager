@@ -3,13 +3,9 @@ import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
- *
+ * This class provides a command line interface menu for a user to interact with 
+ * the system as an employee.
  * @author Alexander
  */
 public class EmployeeMenuGUI extends javax.swing.JFrame {
@@ -382,6 +378,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         showAvailableOrders();
     }
     
+    @SuppressWarnings("unchecked")
     private void showUnfulfilledOrders(){
         unfulfilledOrders = deliveryPerson.getOrderHistory().getUnfulfilledOrders();
         
@@ -398,6 +395,7 @@ public class EmployeeMenuGUI extends javax.swing.JFrame {
         unfulfillOrdersLst.updateUI();
     }
     
+    @SuppressWarnings("unchecked")
     private void showAvailableOrders(){
         availableOrders = gom.getAvailableOrders();
         

@@ -1,13 +1,8 @@
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
- *
+ * This class provides a GUI menu for a customer user to edit the information associated with their profile.
  * @author Alexander
  */
 public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
@@ -402,6 +397,10 @@ public class CustomerSettingsSubmenuGUI extends javax.swing.JFrame {
             payMethodLabel.setText("Current Pay Method: none");
     }
     
+    /**
+     * This method reverts the customer's information back to its original state
+     * before it was edited.
+     */
     private void revertInformation(){
         Customer original = new LoadSaveCustomer().loadCustomer(customerId);
         

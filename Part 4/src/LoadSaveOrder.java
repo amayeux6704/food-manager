@@ -2,7 +2,7 @@
 import java.io.*;
 
 /**
- *
+ * This class handles loading and saving order information to files.
  * @author Alexander
  */
 public class LoadSaveOrder {

@@ -1,13 +1,9 @@
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
- *
+ * This class provides a GUI menu for an employee user to edit the information 
+ * about their delivery vehicle that they have stored on their profile.
  * @author Alexander
  */
 public class EditVehicleSubmenuGUI extends javax.swing.JFrame {
