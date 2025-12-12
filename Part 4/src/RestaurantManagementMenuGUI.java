@@ -39,7 +39,7 @@ public class RestaurantManagementMenuGUI extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Restaurant Management Menu");
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

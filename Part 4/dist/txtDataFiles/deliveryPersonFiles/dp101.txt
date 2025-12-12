@@ -1,0 +1,3 @@
+John Smith,101,jsmith678@gmail.com,passwordJS,
+~v,101,2018,Toyota,Prius,White,Hatchback,ABC123
+~ph,765-098-4321,

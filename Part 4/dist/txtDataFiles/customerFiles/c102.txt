@@ -1,0 +1,4 @@
+Mary Sue,102,false,ms567@yahoo.com,Password2,
+~p,visa,curr,
+~a,1,4567 Location st.,,Cityville,EX,56789,true,
+~ph,098-765-4321,

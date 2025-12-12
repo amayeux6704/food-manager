@@ -1,0 +1,2 @@
+noodles,2
+tomato,5
